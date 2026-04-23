@@ -6,15 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Notes techniques Intune, M365, Datto, Graph">
+        <meta name="description" content="Autopilot v1 vs Device Preparation (v2), prérequis Entra ID et workflow de provisionnement">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/exemple/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/autopilot/">
       
       
-        <link rel="prev" href="../autopilot/">
+        <link rel="prev" href="..">
       
+      
+        <link rel="next" href="../exemple/">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>Page d'exemple — test des fonctionnalités - KB — Base de connaissances MSP</title>
+        <title>Windows Autopilot — vue d'ensemble - KB — Base de connaissances MSP</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#page-dexemple-test-des-fonctionnalites" class="md-skip">
+        <a href="#windows-autopilot" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Page d'exemple — test des fonctionnalités
+              Windows Autopilot — vue d'ensemble
             
           </span>
         </div>
@@ -228,9 +230,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../autopilot/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -247,11 +251,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../exemple/" class="md-tabs__link">
         
   
   
@@ -328,33 +330,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../autopilot/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Windows Autopilot — vue d'ensemble
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -374,7 +349,7 @@
   <span class="md-ellipsis">
     
   
-    Page d'exemple — test des fonctionnalités
+    Windows Autopilot — vue d'ensemble
   
 
     
@@ -392,7 +367,7 @@
   <span class="md-ellipsis">
     
   
-    Page d'exemple — test des fonctionnalités
+    Windows Autopilot — vue d'ensemble
   
 
     
@@ -418,10 +393,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#texte-et-mise-en-forme" class="md-nav__link">
+  <a href="#v1-vs-device-preparation-v2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Texte et mise en forme
+        v1 vs Device Preparation (v2)
       
     </span>
   </a>
@@ -429,10 +404,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#listes-a-cocher" class="md-nav__link">
+  <a href="#scenarios-v1-en-bref" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Listes à cocher
+        Scénarios v1 en bref
       
     </span>
   </a>
@@ -440,10 +415,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bloc-de-code-powershell" class="md-nav__link">
+  <a href="#prerequis-entra-id-et-licences" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bloc de code PowerShell
+        Prérequis Entra ID et licences
       
     </span>
   </a>
@@ -451,10 +426,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bloc-de-code-bash" class="md-nav__link">
+  <a href="#workflow-de-provisionnement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bloc de code Bash
+        Workflow de provisionnement
       
     </span>
   </a>
@@ -462,10 +437,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tableau" class="md-nav__link">
+  <a href="#cas-dusage-msp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tableau
+        Cas d'usage MSP
       
     </span>
   </a>
@@ -473,10 +448,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#encadres-admonitions" class="md-nav__link">
+  <a href="#pieges-courants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Encadrés (admonitions)
+        Pièges courants
       
     </span>
   </a>
@@ -484,10 +459,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagramme-mermaid" class="md-nav__link">
+  <a href="#a-lire-ensuite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme Mermaid
+        À lire ensuite
       
     </span>
   </a>
@@ -498,6 +473,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exemple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Page d'exemple — test des fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -529,10 +531,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#texte-et-mise-en-forme" class="md-nav__link">
+  <a href="#v1-vs-device-preparation-v2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Texte et mise en forme
+        v1 vs Device Preparation (v2)
       
     </span>
   </a>
@@ -540,10 +542,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#listes-a-cocher" class="md-nav__link">
+  <a href="#scenarios-v1-en-bref" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Listes à cocher
+        Scénarios v1 en bref
       
     </span>
   </a>
@@ -551,10 +553,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bloc-de-code-powershell" class="md-nav__link">
+  <a href="#prerequis-entra-id-et-licences" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bloc de code PowerShell
+        Prérequis Entra ID et licences
       
     </span>
   </a>
@@ -562,10 +564,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bloc-de-code-bash" class="md-nav__link">
+  <a href="#workflow-de-provisionnement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bloc de code Bash
+        Workflow de provisionnement
       
     </span>
   </a>
@@ -573,10 +575,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tableau" class="md-nav__link">
+  <a href="#cas-dusage-msp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tableau
+        Cas d'usage MSP
       
     </span>
   </a>
@@ -584,10 +586,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#encadres-admonitions" class="md-nav__link">
+  <a href="#pieges-courants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Encadrés (admonitions)
+        Pièges courants
       
     </span>
   </a>
@@ -595,10 +597,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diagramme-mermaid" class="md-nav__link">
+  <a href="#a-lire-ensuite" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Diagramme Mermaid
+        À lire ensuite
       
     </span>
   </a>
@@ -622,84 +624,176 @@
 
 
 
-<h1 id="page-dexemple-test-des-fonctionnalites">Page d'exemple — test des fonctionnalités<a class="headerlink" href="#page-dexemple-test-des-fonctionnalites" title="Permanent link">&para;</a></h1>
-<p>Cette page sert à vérifier que toutes les fonctionnalités de rendu Markdown fonctionnent correctement.</p>
-<h2 id="texte-et-mise-en-forme">Texte et mise en forme<a class="headerlink" href="#texte-et-mise-en-forme" title="Permanent link">&para;</a></h2>
-<p>Du texte avec <em>italique</em>, <strong>gras</strong>, et <code>code inline</code>. On peut aussi faire des <a href="https://learn.microsoft.com">liens externes</a>.</p>
-<h2 id="listes-a-cocher">Listes à cocher<a class="headerlink" href="#listes-a-cocher" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Créer le repo GitHub</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configurer MkDocs</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Déployer via GitHub Actions</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Ajouter du vrai contenu</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Connecter un domaine custom</li>
-</ul>
-<h2 id="bloc-de-code-powershell">Bloc de code PowerShell<a class="headerlink" href="#bloc-de-code-powershell" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># Exemple : connexion à Microsoft Graph</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">Connect-MgGraph</span> <span class="n">-Scopes</span> <span class="s2">&quot;User.Read.All&quot;</span><span class="p">,</span> <span class="s2">&quot;Group.Read.All&quot;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">Get-MgUser</span> <span class="n">-Filter</span> <span class="s2">&quot;accountEnabled eq true&quot;</span> <span class="n">-Top</span> <span class="n">10</span> <span class="p">|</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nb">Select-Object</span> <span class="n">DisplayName</span><span class="p">,</span> <span class="n">UserPrincipalName</span><span class="p">,</span> <span class="n">Mail</span>
-</code></pre></div>
-<h2 id="bloc-de-code-bash">Bloc de code Bash<a class="headerlink" href="#bloc-de-code-bash" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Installer MkDocs Material en local</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mkdocs<span class="w"> </span>serve
-</code></pre></div>
-<h2 id="tableau">Tableau<a class="headerlink" href="#tableau" title="Permanent link">&para;</a></h2>
+<h1 id="windows-autopilot">Windows Autopilot<a class="headerlink" href="#windows-autopilot" title="Permanent link">&para;</a></h1>
+<p>Autopilot est le service cloud Microsoft pour provisionner des postes Windows directement depuis l'OOBE, sans image ni intervention physique. Le poste sort de son carton, l'utilisateur se connecte, Intune fait le reste.</p>
+<p>Deux générations coexistent aujourd'hui dans le même tenant : Autopilot <em>classic</em> (v1) et Autopilot <em>Device Preparation</em> (v2).</p>
+<h2 id="v1-vs-device-preparation-v2">v1 vs Device Preparation (v2)<a class="headerlink" href="#v1-vs-device-preparation-v2" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Outil</th>
-<th>Usage MSP</th>
-<th>Licence requise</th>
+<th>Critère</th>
+<th>Autopilot v1 (classic)</th>
+<th>Device Preparation (v2)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Intune</td>
-<td>Gestion de postes</td>
-<td>Business Premium</td>
+<td>Approche</td>
+<td>Device-centric (device pré-enregistré)</td>
+<td>User-centric (enrôlement au sign-in)</td>
 </tr>
 <tr>
-<td>Datto RMM</td>
-<td>Monitoring, patch</td>
-<td>Abonnement Datto</td>
+<td>Hardware hash</td>
+<td>Requis (upload préalable)</td>
+<td>Non requis</td>
 </tr>
 <tr>
-<td>CIPP</td>
-<td>Multi-tenant M365</td>
-<td>Open source</td>
+<td>Identité</td>
+<td>Entra Join + Entra Hybrid Join</td>
+<td>Entra Join uniquement</td>
+</tr>
+<tr>
+<td>Scénarios</td>
+<td>User-driven, Self-deploying, Pre-provisioned, Existing</td>
+<td>User-driven, Automatic (Windows 365)</td>
+</tr>
+<tr>
+<td>Co-management (Intune + ConfigMgr)</td>
+<td>Supporté</td>
+<td>Non supporté</td>
+</tr>
+<tr>
+<td>ESP</td>
+<td>Enrollment Status Page classique</td>
+<td>Progress bar unifiée, pas d'ESP séparé</td>
+</tr>
+<tr>
+<td>Apps pendant OOBE</td>
+<td>Illimité (tracké via ESP)</td>
+<td>10 max (sélection explicite)</td>
+</tr>
+<tr>
+<td>Scripts PowerShell pré-desktop</td>
+<td>Non</td>
+<td>Oui (10 max)</td>
+</tr>
+<tr>
+<td>Reporting</td>
+<td>Standard Intune</td>
+<td>Near real-time, export diagnostics intégré</td>
+</tr>
+<tr>
+<td>OS minimum</td>
+<td>Windows 10 / 11</td>
+<td>Windows 11 22H2 ou 23H2 + KB5035942, ou 24H2+</td>
+</tr>
+<tr>
+<td>Clouds souverains</td>
+<td>Commercial</td>
+<td>Commercial + GCC High + DoD</td>
+</tr>
+<tr>
+<td>Type d'appareil par défaut</td>
+<td>Corporate</td>
+<td>Personal (sauf Corporate Identifier)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="encadres-admonitions">Encadrés (admonitions)<a class="headerlink" href="#encadres-admonitions" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
-<p class="admonition-title">Astuce</p>
-<p>Les admonitions sont parfaites pour mettre en valeur une information clé dans un runbook.</p>
+<p class="admonition-title">Choix MSP — règle simple</p>
+<ul>
+<li>Environnement <strong>cloud-only</strong>, Windows 11, tenant récent → Device Preparation</li>
+<li><strong>Hybrid Join</strong>, <strong>Self-deploying</strong> (kiosque, borne), <strong>pre-provisioning</strong> OEM, co-management → v1 obligatoire</li>
+<li>Les deux peuvent cohabiter dans le même tenant, mais <strong>jamais</strong> sur le même device (v1 prend toujours le dessus).</li>
+</ul>
+</div>
+<h2 id="scenarios-v1-en-bref">Scénarios v1 en bref<a class="headerlink" href="#scenarios-v1-en-bref" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>User-driven</strong> : l'utilisateur déballe, se connecte avec son compte Entra, le device se joint et s'enrôle. Le cas 90 % des déploiements MSP.</li>
+<li><strong>Self-deploying</strong> : aucun utilisateur pendant l'OOBE. Requiert TPM 2.0 avec attestation. Utile pour bornes, salles de réunion, kiosques.</li>
+<li><strong>Pre-provisioned</strong> (ex-White Glove) : le technicien fait tourner l'ESP côté device en atelier, l'utilisateur finit en quelques minutes à la réception. Pratique pour les flottes livrées au MSP avant dispatch.</li>
+<li><strong>Existing device</strong> : conversion d'un poste déjà en production vers Autopilot, via un package Intune.</li>
+</ul>
+<h2 id="prerequis-entra-id-et-licences">Prérequis Entra ID et licences<a class="headerlink" href="#prerequis-entra-id-et-licences" title="Permanent link">&para;</a></h2>
+<p>Côté <strong>licences</strong> (v1 comme v2) :</p>
+<ul>
+<li>Intune (inclus dans M365 Business Premium, M365 E3/E5, EMS E3/E5)</li>
+<li>Entra ID P1 minimum (MDM auto-enrollment, group-based targeting)</li>
+</ul>
+<p>Côté <strong>tenant Entra</strong> :</p>
+<ul>
+<li>MDM auto-enrollment configuré : <em>Entra admin center → Mobility (MDM and WIP) → Microsoft Intune → User scope = All ou Some</em></li>
+<li>Branding de la page de connexion configuré (sinon OOBE affiche un message d'erreur trompeur)</li>
+<li>Device settings : <em>Users may join devices to Microsoft Entra</em> = All (ou scope groupe)</li>
+</ul>
+<p>Spécifique <strong>Device Preparation (v2)</strong> :</p>
+<ul>
+<li>Groupe de sécurité Entra <strong>assignable</strong> (pas dynamique) pour l'<em>Enrollment Time Grouping</em></li>
+<li>Le compte de service <code>Intune Autopilot ConfigurationManager</code> doit être <strong>Owner</strong> du groupe (sinon le device ne peut pas s'ajouter au groupe pendant l'enrôlement — erreur classique)</li>
+<li>Optionnel mais recommandé : <em>Corporate Identifiers</em> (serial, manufacturer, model) pour marquer les devices comme Corporate</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Piège Device Preparation</p>
+<p>Si le groupe assignable n'a pas le bon propriétaire, le déploiement échoue avec une erreur générique sans pointer la cause. Vérifier les propriétaires du groupe <em>avant</em> le premier test.</p>
+</div>
+<h2 id="workflow-de-provisionnement">Workflow de provisionnement<a class="headerlink" href="#workflow-de-provisionnement" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A[Device neuf allumé] --&gt; B{Enregistré&lt;br/&gt;Autopilot v1 ?}
+    B -- Oui --&gt; C[OOBE détecte le profil v1]
+    B -- Non --&gt; D{Device Preparation&lt;br/&gt;policy assignée&lt;br/&gt;à l'utilisateur ?}
+
+    C --&gt; E[Branding tenant&lt;br/&gt;+ pages OOBE masquées]
+    E --&gt; F[Connexion Entra utilisateur]
+    F --&gt; G[Join Entra ID&lt;br/&gt;+ enrôlement Intune]
+    G --&gt; H[ESP : apps, policies,&lt;br/&gt;certificats, scripts]
+    H --&gt; I[Bureau utilisateur]
+
+    D -- Oui --&gt; J[OOBE standard&lt;br/&gt;jusqu'au sign-in]
+    J --&gt; K[Connexion Entra utilisateur]
+    K --&gt; L[Ajout au groupe&lt;br/&gt;Enrollment Time]
+    L --&gt; M[Push policy +&lt;br/&gt;10 apps + 10 scripts]
+    M --&gt; N[Progress bar unifiée]
+    N --&gt; I
+
+    D -- Non --&gt; O[OOBE Windows standard&lt;br/&gt;pas de provisioning auto]</code></pre>
+<h2 id="cas-dusage-msp">Cas d'usage MSP<a class="headerlink" href="#cas-dusage-msp" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Nouveau client cloud-first Windows 11</strong> : partir directement sur Device Preparation. Pas de hash à collecter, onboarding plus rapide.</li>
+<li><strong>Client existant avec AD on-prem + ConfigMgr</strong> : rester sur v1 Hybrid Join tant que la migration Entra Join n'est pas terminée.</li>
+<li><strong>Flotte de bornes / salles de réunion</strong> : v1 Self-deploying, pas d'alternative en v2 aujourd'hui.</li>
+<li><strong>Préparation atelier avant livraison</strong> : v1 Pre-provisioned. Le technicien valide le device, l'utilisateur final reçoit un poste quasi prêt.</li>
+</ul>
+<h2 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Actions irréversibles</p>
+<ul>
+<li>Supprimer un device d'Autopilot <strong>ne</strong> le désenrôle <strong>pas</strong> d'Intune automatiquement. Toujours faire les deux.</li>
+<li>Passer un device de v1 à v2 impose de le désenregistrer d'Autopilot <strong>et</strong> de le retirer d'Intune/Entra avant reset.</li>
+</ul>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Attention</p>
-<p>À utiliser avec précaution sur un tenant de production.</p>
+<p class="admonition-title">À vérifier avant chaque déploiement</p>
+<ul>
+<li>Heure système du device correcte (sinon échec TLS avec les services Autopilot)</li>
+<li>Connexion réseau câblée ou Wi-Fi avec accès aux <a href="https://learn.microsoft.com/en-us/autopilot/requirements-network">endpoints Autopilot requis</a></li>
+<li>Utilisateur a bien une licence Intune <strong>avant</strong> le premier sign-in (erreur la plus fréquente)</li>
+</ul>
 </div>
-<div class="admonition danger">
-<p class="admonition-title">Irréversible</p>
-<p>Cette commande supprime définitivement les données.</p>
-</div>
-<h2 id="diagramme-mermaid">Diagramme Mermaid<a class="headerlink" href="#diagramme-mermaid" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-    A[Nouveau poste] --&gt; B{Autopilot ?}
-    B --&gt;|Oui| C[Enrollment Intune]
-    B --&gt;|Non| D[Enrollment manuel]
-    C --&gt; E[ESP]
-    D --&gt; E
-    E --&gt; F[Poste prêt]</code></pre>
+<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="autopilot-hash.md">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a> <em>(à venir)</em></li>
+<li><a href="autopilot-v2-setup.md">Configurer une politique Device Preparation pas à pas</a> <em>(à venir)</em></li>
+<li><a href="autopilot-troubleshooting.md">Troubleshooting ESP et codes d'erreur courants</a> <em>(à venir)</em></li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 
