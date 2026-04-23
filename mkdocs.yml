@@ -9,18 +9,18 @@ theme:
   name: material
   language: fr
   palette:
-    - scheme: default
-      primary: custom
-      accent: custom
-      toggle:
-        icon: material/brightness-7
-        name: Mode sombre
     - scheme: slate
       primary: custom
       accent: custom
       toggle:
-        icon: material/brightness-4
+        icon: material/brightness-7
         name: Mode clair
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Mode sombre
   features:
     - navigation.tabs
     - navigation.sections
