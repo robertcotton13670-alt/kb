@@ -1,20 +1,45 @@
-# KB — Base de connaissances MSP
+---
+title: Base de connaissances MSP
+description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, Datto RMM et Microsoft Graph
+---
 
-Bienvenue sur ma base de connaissances! 
+# Base de connaissances MSP
 
-Cette documentation couvre mes notes, procédures et retours d'expérience sur les sujets MSP du quotidien.
+Notes de terrain et runbooks sur les technologies Microsoft et les outils MSP du quotidien.
 
-## Domaines couverts
+<div class="kb-cards">
 
-- **Microsoft 365** — administration tenant, licences, Exchange Online, SharePoint
-- **Intune** — Autopilot, déploiement d'applications, politiques de conformité
-- **Entra ID** — Conditional Access, PIM, groupes dynamiques
-- **Datto RMM** — composants, patch management, monitoring
-- **Microsoft Graph** — scripts PowerShell, automatisation
+  <a href="intune/autopilot/" class="kb-card">
+    <div class="kb-card__icon">🖥️</div>
+    <h3>Intune</h3>
+    <p>Autopilot, déploiement d'applications, politiques de conformité, gestion des devices Windows.</p>
+  </a>
 
-## Comment utiliser cette doc
+  <a href="DAtto/Toast%20notif%20depuis%20datto/" class="kb-card">
+    <div class="kb-card__icon">🔧</div>
+    <h3>Datto RMM</h3>
+    <p>Composants, monitoring, patch management, automatisation via agents.</p>
+  </a>
 
-Utilise la barre de recherche en haut (raccourci `/`) pour trouver rapidement un sujet. La navigation à gauche liste toutes les pages disponibles.
+  <a href="#" class="kb-card kb-card--disabled">
+    <div class="kb-card__icon">📧</div>
+    <h3>Microsoft 365</h3>
+    <p>Administration tenant, Exchange Online, SharePoint, Teams. <em>À venir.</em></p>
+  </a>
+
+  <a href="#" class="kb-card kb-card--disabled">
+    <div class="kb-card__icon">🔐</div>
+    <h3>Entra ID</h3>
+    <p>Conditional Access, PIM, groupes dynamiques, identités hybrides. <em>À venir.</em></p>
+  </a>
+
+  <a href="#" class="kb-card kb-card--disabled">
+    <div class="kb-card__icon">⚡</div>
+    <h3>Microsoft Graph</h3>
+    <p>Scripts PowerShell, automatisation multi-tenant, API Graph. <em>À venir.</em></p>
+  </a>
+
+</div>
 
 !!! info "Travail en cours"
-    Cette base est alimentée progressivement. Les pages sont rédigées avec l'aide d'IA (Claude, Copilot) puis relues et complétées avec mes retours terrain.
+    Cette base est alimentée progressivement. Les pages sont rédigées avec l'aide de Claude puis relues et complétées avec des retours terrain.

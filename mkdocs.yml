@@ -2,19 +2,22 @@ site_name: KB — Base de connaissances MSP
 site_description: Notes techniques Intune, M365, Datto, Graph
 site_url: https://robertcotton13670-alt.github.io/kb/
 
+extra_css:
+  - assets/extra.css
+
 theme:
   name: material
   language: fr
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Mode sombre
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Mode clair

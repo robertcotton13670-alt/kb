@@ -1,0 +1,69 @@
+/* ── Couleurs Poweriti ─────────────────────────────────────────────────────── */
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color:             #FF6B00;
+  --md-primary-fg-color--light:      #FF8C33;
+  --md-primary-fg-color--dark:       #CC5500;
+  --md-primary-bg-color:             #ffffff;
+  --md-primary-bg-color--light:      rgba(255, 255, 255, 0.7);
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color:              #FF6B00;
+  --md-accent-fg-color--transparent: rgba(255, 107, 0, 0.1);
+  --md-accent-bg-color:              #ffffff;
+}
+
+/* ── Cards page d'accueil ──────────────────────────────────────────────────── */
+
+.kb-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.kb-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.4rem;
+  border-radius: 0.3rem;
+  border: 0.05rem solid var(--md-default-fg-color--lightest);
+  background: var(--md-code-bg-color);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  transition: border-color 125ms, box-shadow 125ms;
+}
+
+.kb-card:hover {
+  border-color: #FF6B00;
+  box-shadow: 0 0.2rem 0.8rem rgba(255, 107, 0, 0.15);
+  text-decoration: none;
+  color: var(--md-default-fg-color);
+}
+
+.kb-card--disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
+.kb-card__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.kb-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+
+.kb-card p {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.55;
+}
