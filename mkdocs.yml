@@ -1,6 +1,8 @@
 site_name: "⚡ TechBase"
 site_description: Notes techniques Intune, M365, Datto, Entra ID, Graph
 site_url: https://robertcotton13670-alt.github.io/kb/
+repo_url: https://github.com/robertcotton13670-alt/kb
+repo_name: robertcotton13670-alt/kb
 
 extra_css:
   - assets/extra.css
@@ -10,14 +12,14 @@ theme:
   language: fr
   palette:
     - scheme: slate
-      primary: custom
-      accent: custom
+      primary: black
+      accent: blue
       toggle:
         icon: material/brightness-7
         name: Mode clair
     - scheme: default
-      primary: custom
-      accent: custom
+      primary: black
+      accent: blue
       toggle:
         icon: material/brightness-4
         name: Mode sombre
