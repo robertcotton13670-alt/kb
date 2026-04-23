@@ -1,6 +1,6 @@
 # KB — Base de connaissances MSP
 
-Bienvenue sur ma base de connaissances technique.
+Bienvenue sur ma base de connaissances! 
 
 Cette documentation couvre mes notes, procédures et retours d'expérience sur les sujets MSP du quotidien.
 
