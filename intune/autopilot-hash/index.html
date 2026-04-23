@@ -1,0 +1,1289 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Utiliser Get-WindowsAutopilotInfo pour exporter le hash matériel et l'enregistrer dans Intune — local, distant ou upload direct">
+      
+      
+      
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/autopilot-hash/">
+      
+      
+        <link rel="prev" href="../../exemple/">
+      
+      
+        <link rel="next" href="../autopilot/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Collecter le hardware hash Autopilot - KB — Base de connaissances MSP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#collecter-le-hardware-hash-avec-get-windowsautopilotinfo" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="KB — Base de connaissances MSP" class="md-header__button md-logo" aria-label="KB — Base de connaissances MSP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KB — Base de connaissances MSP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Collecter le hardware hash Autopilot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  KB — Base de connaissances MSP
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exemple/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Page d'exemple — test des fonctionnalités
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Intune
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KB — Base de connaissances MSP" class="md-nav__button md-logo" aria-label="KB — Base de connaissances MSP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    KB — Base de connaissances MSP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB — Base de connaissances MSP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exemple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Page d'exemple — test des fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intune
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Intune
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecter le hardware hash Autopilot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecter le hardware hash Autopilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prérequis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modules-et-outils-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules et outils PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#droits-requis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Droits requis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-du-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation du module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation du module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powershell-gallery-methode-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PowerShell Gallery (méthode standard)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avec-les-modules-graph-pour-lupload-direct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avec les modules Graph (pour l'upload direct)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-de-collecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes de collecte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes de collecte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collecte-locale-export-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collecte locale — export CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collecte-distante-winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collecte distante — WinRM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-direct-vers-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload direct vers Intune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-csv-manuel-dans-le-portail-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import CSV manuel dans le portail Intune
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tableau-comparatif-des-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau comparatif des méthodes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-post-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification post-import
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-rapide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting rapide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Autopilot — vue d'ensemble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prérequis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modules-et-outils-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modules et outils PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#droits-requis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Droits requis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-du-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation du module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation du module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#powershell-gallery-methode-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PowerShell Gallery (méthode standard)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avec-les-modules-graph-pour-lupload-direct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avec les modules Graph (pour l'upload direct)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-de-collecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes de collecte
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes de collecte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collecte-locale-export-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collecte locale — export CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collecte-distante-winrm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collecte distante — WinRM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-direct-vers-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload direct vers Intune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-csv-manuel-dans-le-portail-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import CSV manuel dans le portail Intune
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tableau-comparatif-des-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau comparatif des méthodes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-post-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification post-import
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-rapide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting rapide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="collecter-le-hardware-hash-avec-get-windowsautopilotinfo">Collecter le hardware hash avec <code>Get-WindowsAutopilotInfo</code><a class="headerlink" href="#collecter-le-hardware-hash-avec-get-windowsautopilotinfo" title="Permanent link">&para;</a></h1>
+<p>Le hardware hash est l'empreinte matérielle unique d'un device Windows. Pour Autopilot v1, il doit être importé dans Intune <strong>avant</strong> que le device passe par l'OOBE. <code>Get-WindowsAutopilotInfo</code> est le script PowerShell de référence pour cette collecte.</p>
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<h3 id="modules-et-outils-powershell">Modules et outils PowerShell<a class="headerlink" href="#modules-et-outils-powershell" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get-WindowsAutopilotInfo</code></td>
+<td>Script de collecte du hash</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td><code>Microsoft.Graph.Authentication</code></td>
+<td>Authentification Graph (upload direct)</td>
+<td>Upload direct uniquement</td>
+</tr>
+<tr>
+<td><code>WindowsAutopilotIntune</code></td>
+<td>Module complémentaire (méthodes v2 Graph)</td>
+<td>Upload direct uniquement</td>
+</tr>
+<tr>
+<td>PowerShell 5.1 ou 7+</td>
+<td>Environnement d'exécution</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>NuGet provider</td>
+<td>Requis par <code>Install-Script</code> / <code>Install-Module</code></td>
+<td>Oui (auto-installé)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="droits-requis">Droits requis<a class="headerlink" href="#droits-requis" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Collecte locale (export CSV)</label><label for="__tabbed_1_2">Collecte distante (WinRM)</label><label for="__tabbed_1_3">Upload direct vers Intune</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>Administrateur local</strong> sur le device cible (ou exécution depuis le compte <code>defaultuser0</code> pendant l'OOBE via Shift+F10)</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Administrateur local</strong> sur le device cible</li>
+<li>WinRM activé sur le device cible (<code>Enable-PSRemoting</code>)</li>
+<li>Pare-feu autorisant le port <strong>5985</strong> (HTTP) ou <strong>5986</strong> (HTTPS) vers la cible</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Administrateur local</strong> sur le device (ou droits WinRM pour la collecte distante)</li>
+<li>Compte Entra avec le rôle <strong>Intune Administrator</strong> ou <strong>Windows Autopilot deployment profile manager</strong> (minimum)</li>
+<li>Accès Internet vers <code>graph.microsoft.com</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Collecte depuis l'OOBE</p>
+<p>Pendant l'OOBE, le compte <code>defaultuser0</code> dispose de droits limités. Ouvrir un terminal avec <code>Shift+F10</code> puis exécuter <code>PowerShell</code> en tant qu'administrateur. Aucun module ne pouvant être installé depuis le Store en OOBE, <strong>préparer le script sur une clé USB ou le déposer en pré-boot via WinPE</strong>.</p>
+</div>
+<hr />
+<h2 id="installation-du-module">Installation du module<a class="headerlink" href="#installation-du-module" title="Permanent link">&para;</a></h2>
+<h3 id="powershell-gallery-methode-standard">PowerShell Gallery (méthode standard)<a class="headerlink" href="#powershell-gallery-methode-standard" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># Installer le script depuis la PSGallery</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">Install-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Force</span> <span class="n">-Scope</span> <span class="n">AllUsers</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c"># Vérifier la version installée</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">Get-InstalledScript</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Version</span>
+</code></pre></div>
+<h3 id="avec-les-modules-graph-pour-lupload-direct">Avec les modules Graph (pour l'upload direct)<a class="headerlink" href="#avec-les-modules-graph-pour-lupload-direct" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># Installer les dépendances Graph</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">Graph</span><span class="p">.</span><span class="n">Authentication</span> <span class="n">-Scope</span> <span class="n">AllUsers</span> <span class="n">-Force</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">Install-Module</span> <span class="n">-Name</span> <span class="n">WindowsAutopilotIntune</span> <span class="n">-Scope</span> <span class="n">AllUsers</span> <span class="n">-Force</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c"># Puis le script</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">Install-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Force</span> <span class="n">-Scope</span> <span class="n">AllUsers</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Environnement sans accès Internet</p>
+<p>Télécharger le script sur un poste connecté, puis le copier sur la cible :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Save-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Path</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">AutopilotScript</span>
+</code></pre></div>
+<p>Copier ensuite le dossier sur la machine isolée. Le script <code>.ps1</code> peut être exécuté directement sans installation dans la PSGallery.</p>
+</div>
+<hr />
+<h2 id="commandes-de-collecte">Commandes de collecte<a class="headerlink" href="#commandes-de-collecte" title="Permanent link">&para;</a></h2>
+<h3 id="collecte-locale-export-csv">Collecte locale — export CSV<a class="headerlink" href="#collecte-locale-export-csv" title="Permanent link">&para;</a></h3>
+<p>Cas d'usage : technicien sur place, device pas encore connecté au réseau d'entreprise.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Export dans un fichier CSV local</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">autopilot-hash</span><span class="p">.</span><span class="n">csv</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Export avec le numéro de série et le nom du device dans le nom de fichier</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="s2">&quot;C:\Temp\</span><span class="p">$(</span><span class="n">hostname</span><span class="p">)</span><span class="s2">-</span><span class="p">$(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="n">yyyyMMdd</span><span class="p">)</span><span class="s2">.csv&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c"># Ajouter un GroupTag (utile pour l&#39;affectation de profil dynamique)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">autopilot-hash</span><span class="p">.</span><span class="n">csv</span> <span class="n">-GroupTag</span> <span class="s2">&quot;SITE-PARIS&quot;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># Ajouter un AssignedUser (pre-provisioning user-driven)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">autopilot-hash</span><span class="p">.</span><span class="n">csv</span> <span class="n">-AssignedUser</span> <span class="s2">&quot;jean.dupont@contoso.com&quot;</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Contenu du CSV</p>
+<p>Le fichier généré contient quatre colonnes : <code>Device Serial Number</code>, <code>Windows Product ID</code>, <code>Hardware Hash</code>, <code>Group Tag</code> (vide si non renseigné). C'est le format accepté directement par le portail Intune pour l'import manuel.</p>
+</div>
+<h3 id="collecte-distante-winrm">Collecte distante — WinRM<a class="headerlink" href="#collecte-distante-winrm" title="Permanent link">&para;</a></h3>
+<p>Cas d'usage : batch de devices accessibles sur le réseau, sans intervention physique.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c"># Un seul device distant</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-ComputerName</span> <span class="n">PC-FINANCE</span><span class="p">-</span><span class="n">01</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">autopilot-hash</span><span class="p">.</span><span class="n">csv</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c"># Plusieurs devices — liste depuis un fichier texte</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$computers</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">liste-devices</span><span class="p">.</span><span class="n">txt</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-ComputerName</span> <span class="nv">$computers</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">autopilot-hash-batch</span><span class="p">.</span><span class="n">csv</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c"># Avec des credentials explicites (compte admin local commun)</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nv">$cred</span> <span class="p">=</span> <span class="nb">Get-Credential</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-ComputerName</span> <span class="n">PC-FINANCE</span><span class="p">-</span><span class="n">01</span> <span class="n">-Credential</span> <span class="nv">$cred</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">Temp</span><span class="p">\</span><span class="n">autopilot-hash</span><span class="p">.</span><span class="n">csv</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">WinRM et pare-feu</p>
+<p>Avant de lancer la collecte distante, s'assurer que WinRM est actif sur chaque cible. Sur un parc déjà géré par Intune ou GPO, cela peut être poussé centralement :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># Sur la machine cible (à exécuter en admin local)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Enable-PSRemoting</span> <span class="n">-Force</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">Set-Item</span> <span class="n">WSMan</span><span class="p">:\</span><span class="n">localhost</span><span class="p">\</span><span class="n">Client</span><span class="p">\</span><span class="n">TrustedHosts</span> <span class="n">-Value</span> <span class="s2">&quot;*&quot;</span> <span class="n">-Force</span>
+</code></pre></div>
+<p>Ne jamais laisser <code>TrustedHosts = *</code> en production. Restreindre à la plage IP de la console d'administration après la collecte.</p>
+</div>
+<h3 id="upload-direct-vers-intune">Upload direct vers Intune<a class="headerlink" href="#upload-direct-vers-intune" title="Permanent link">&para;</a></h3>
+<p>Cas d'usage : atelier OEM ou MSP, device neuf, pas d'accès au portail Intune souhaité.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Connexion Graph + upload immédiat</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Online</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c"># Avec GroupTag</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Online</span> <span class="n">-GroupTag</span> <span class="s2">&quot;SITE-LYON&quot;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c"># Avec AssignedUser</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Online</span> <span class="n">-AssignedUser</span> <span class="s2">&quot;marie.martin@contoso.com&quot;</span> <span class="n">-GroupTag</span> <span class="s2">&quot;FINANCE&quot;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c"># Depuis un device distant avec upload direct</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-ComputerName</span> <span class="n">PC-NEUF</span><span class="p">-</span><span class="n">42</span> <span class="n">-Online</span> <span class="n">-GroupTag</span> <span class="s2">&quot;POSTE-STD&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Flux d'authentification avec <code>-Online</code></p>
+<p>Le script ouvre une fenêtre de connexion Microsoft. Le compte doit avoir les droits Intune décrits dans les prérequis. L'upload passe par l'API Graph (<code>/deviceManagement/importedWindowsAutopilotDeviceIdentities</code>). Le device apparaît dans <strong>Intune → Devices → Enrollment → Windows → Windows Autopilot devices</strong> sous quelques minutes.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Délai de synchronisation</p>
+<p>Après un upload via <code>-Online</code> ou via import CSV dans le portail, un <strong>délai de 15 à 60 minutes</strong> est normal avant que le profil Autopilot soit assigné au device. Ne pas lancer l'OOBE immédiatement après l'import. Attendre la confirmation dans le portail que le device affiche le bon <strong>Deployment Profile Status = Assigned</strong>.</p>
+</div>
+<hr />
+<h2 id="import-csv-manuel-dans-le-portail-intune">Import CSV manuel dans le portail Intune<a class="headerlink" href="#import-csv-manuel-dans-le-portail-intune" title="Permanent link">&para;</a></h2>
+<p>Si l'upload direct n'est pas possible, importer le CSV via le portail :</p>
+<ol>
+<li><strong>Intune admin center</strong> → <code>Devices</code> → <code>Enrollment</code> → <code>Windows</code> → <code>Windows Autopilot devices</code></li>
+<li><code>Import</code> → sélectionner le fichier CSV généré par <code>Get-WindowsAutopilotInfo</code></li>
+<li>Attendre que le statut passe à <strong>Complete</strong> (rafraîchir manuellement)</li>
+<li>Assigner un profil Autopilot au device (directement ou via groupe dynamique sur le GroupTag)</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Groupe dynamique sur GroupTag</p>
+<p>Créer un groupe Entra dynamique avec la règle :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>(device.devicePhysicalIds -any (_ -eq &quot;[OrderID]:SITE-PARIS&quot;))
+</code></pre></div>
+<p>Tout device importé avec <code>-GroupTag "SITE-PARIS"</code> intégrera automatiquement ce groupe, et le profil Autopilot assigné au groupe s'appliquera sans action manuelle.</p>
+</div>
+<hr />
+<h2 id="tableau-comparatif-des-methodes">Tableau comparatif des méthodes<a class="headerlink" href="#tableau-comparatif-des-methodes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Commande clé</th>
+<th>Résultat</th>
+<th>Accès Internet</th>
+<th>Droits requis</th>
+<th>Idéal pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Local → CSV</strong></td>
+<td><code>-OutputFile</code></td>
+<td>Fichier <code>.csv</code> local</td>
+<td>Non</td>
+<td>Admin local</td>
+<td>OOBE, device isolé, batch manuel</td>
+</tr>
+<tr>
+<td><strong>Distant → CSV</strong></td>
+<td><code>-ComputerName</code> + <code>-OutputFile</code></td>
+<td>Fichier <code>.csv</code> centralisé</td>
+<td>Non (réseau LAN)</td>
+<td>Admin local + WinRM</td>
+<td>Parc géré, collecte en masse avant expédition</td>
+</tr>
+<tr>
+<td><strong>Local → Upload direct</strong></td>
+<td><code>-Online</code></td>
+<td>Import Graph immédiat</td>
+<td>Oui</td>
+<td>Admin local + rôle Intune</td>
+<td>Atelier OEM, device neuf avec accès Internet</td>
+</tr>
+<tr>
+<td><strong>Distant → Upload direct</strong></td>
+<td><code>-ComputerName</code> + <code>-Online</code></td>
+<td>Import Graph immédiat</td>
+<td>Oui</td>
+<td>Admin local + WinRM + rôle Intune</td>
+<td>Console centrale MSP, batch avec upload auto</td>
+</tr>
+<tr>
+<td><strong>Import CSV portail</strong></td>
+<td><em>(portail Intune)</em></td>
+<td>Import manuel</td>
+<td>Oui (navigateur)</td>
+<td>Rôle Intune</td>
+<td>Consolidation de CSV issus de plusieurs sites</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="verification-post-import">Vérification post-import<a class="headerlink" href="#verification-post-import" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c"># Via Graph (vérifier que le device est bien enregistré)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">Connect-MgGraph</span> <span class="n">-Scopes</span> <span class="s2">&quot;DeviceManagementServiceConfig.Read.All&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">Get-MgDeviceManagementImportedWindowsAutopilotDeviceIdentity</span> <span class="p">|</span> 
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="nb">Select-Object</span> <span class="n">SerialNumber</span><span class="p">,</span> <span class="n">State</span><span class="p">,</span> <span class="n">AssignedUserPrincipalName</span> <span class="p">|</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="nb">Sort-Object</span> <span class="n">SerialNumber</span>
+</code></pre></div>
+<p>Dans le portail, le device doit afficher :</p>
+<ul>
+<li><strong>Profile status</strong> : <code>Assigned</code> (sinon vérifier l'assignation du profil au groupe)</li>
+<li><strong>Deployment profile</strong> : le nom du profil attendu</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Device déjà existant dans Intune</p>
+<p>Si le device est déjà enrôlé dans Intune (via OOBE standard ou MDM enrollment), l'enregistrement Autopilot se crée mais le profil ne s'appliquera qu'au <strong>prochain reset</strong> (<code>Settings → Recovery → Reset this PC</code>). Un re-enrôlement sans reset ne prend pas en compte le profil Autopilot.</p>
+</div>
+<hr />
+<h2 id="troubleshooting-rapide">Troubleshooting rapide<a class="headerlink" href="#troubleshooting-rapide" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Cause probable</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Install-Script</code> échoue sans erreur claire</td>
+<td>NuGet provider absent</td>
+<td><code>Install-PackageProvider -Name NuGet -Force</code></td>
+</tr>
+<tr>
+<td>Erreur <code>Access Denied</code> sur la cible distante</td>
+<td>WinRM non activé ou droits insuffisants</td>
+<td><code>Enable-PSRemoting -Force</code> sur la cible</td>
+</tr>
+<tr>
+<td>Upload <code>-Online</code> bloqué après auth</td>
+<td>MFA ou Conditional Access bloquant</td>
+<td>Utiliser un compte exempt de CA pour l'upload, ou exporter en CSV</td>
+</tr>
+<tr>
+<td>Device importé mais profil non assigné</td>
+<td>GroupTag ne correspond à aucun groupe dynamique</td>
+<td>Vérifier la règle du groupe Entra et l'opérateur <code>[OrderID]:</code></td>
+</tr>
+<tr>
+<td>Délai &gt; 1h après import</td>
+<td>Sync Autopilot service lente</td>
+<td>Forcer via <strong>Intune → Devices → Windows Autopilot devices → Sync</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../autopilot/">Windows Autopilot — vue d'ensemble</a></li>
+<li><a href="autopilot-v2-setup.md">Configurer une politique Device Preparation pas à pas</a> <em>(à venir)</em></li>
+<li><a href="autopilot-troubleshooting.md">Troubleshooting ESP et codes d'erreur courants</a> <em>(à venir)</em></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
