@@ -69,18 +69,13 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#base-de-connaissances-msp" class="md-skip">
-          Aller au contenu
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -125,9 +120,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -135,9 +130,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -352,8 +347,6 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
       <a href="." class="md-nav__link md-nav__link--active">
@@ -710,8 +703,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -728,45 +719,55 @@
 
 
 
-<h1 id="base-de-connaissances-msp">Base de connaissances MSP<a class="headerlink" href="#base-de-connaissances-msp" title="Permanent link">&para;</a></h1>
-<p>Notes de terrain et runbooks sur les technologies Microsoft et les outils MSP du quotidien.</p>
-<div class="kb-cards">
-
-  <a href="intune/autopilot/" class="kb-card">
-    <div class="kb-card__icon">🖥️</div>
-    <h3>Intune</h3>
-    <p>Autopilot, déploiement d'applications, politiques de conformité, gestion des devices Windows.</p>
-  </a>
-
-  <a href="DAtto/Toast%20notif%20depuis%20datto/" class="kb-card">
-    <div class="kb-card__icon">🔧</div>
-    <h3>Datto RMM</h3>
-    <p>Composants, monitoring, patch management, automatisation via agents.</p>
-  </a>
-
-  <a href="#" class="kb-card kb-card--disabled">
-    <div class="kb-card__icon">📧</div>
-    <h3>Microsoft 365</h3>
-    <p>Administration tenant, Exchange Online, SharePoint, Teams. <em>À venir.</em></p>
-  </a>
-
-  <a href="#" class="kb-card kb-card--disabled">
-    <div class="kb-card__icon">🔐</div>
-    <h3>Entra ID</h3>
-    <p>Conditional Access, PIM, groupes dynamiques, identités hybrides. <em>À venir.</em></p>
-  </a>
-
-  <a href="#" class="kb-card kb-card--disabled">
-    <div class="kb-card__icon">⚡</div>
-    <h3>Microsoft Graph</h3>
-    <p>Scripts PowerShell, automatisation multi-tenant, API Graph. <em>À venir.</em></p>
-  </a>
-
+<div class="kb-hero">
+  <h1 class="kb-hero__title">KB — Base de <span class="kb-hero__accent">connaissances MSP</span></h1>
+  <p class="kb-hero__subtitle">Notes de terrain et runbooks sur les technologies Microsoft et les outils MSP du quotidien.</p>
 </div>
 
-<div class="admonition info">
-<p class="admonition-title">Travail en cours</p>
-<p>Cette base est alimentée progressivement. Les pages sont rédigées avec l'aide de Claude puis relues et complétées avec des retours terrain.</p>
+<div class="kb-cards">
+
+  <a href="intune/autopilot/" class="kb-card kb-card--intune">
+    <div class="kb-card__icon">🖥️</div>
+    <h3 class="kb-card__title">Intune</h3>
+    <p class="kb-card__desc">Autopilot, déploiement d'applications, politiques de conformité, gestion des devices Windows.</p>
+    <span class="kb-card__badge kb-card__badge--available">2 pages disponibles</span>
+  </a>
+
+  <a href="DAtto/Toast%20notif%20depuis%20datto/" class="kb-card kb-card--datto">
+    <div class="kb-card__icon">🔧</div>
+    <h3 class="kb-card__title">Datto RMM</h3>
+    <p class="kb-card__desc">Composants, monitoring, patch management, automatisation via agents.</p>
+    <span class="kb-card__badge kb-card__badge--available">1 page disponible</span>
+  </a>
+
+  <a href="#" class="kb-card kb-card--m365 kb-card--disabled">
+    <div class="kb-card__icon">📧</div>
+    <h3 class="kb-card__title">Microsoft 365</h3>
+    <p class="kb-card__desc">Administration tenant, Exchange Online, SharePoint, Teams.</p>
+    <span class="kb-card__badge kb-card__badge--soon">À venir</span>
+  </a>
+
+  <a href="#" class="kb-card kb-card--entra kb-card--disabled">
+    <div class="kb-card__icon">🔐</div>
+    <h3 class="kb-card__title">Entra ID</h3>
+    <p class="kb-card__desc">Conditional Access, PIM, groupes dynamiques, identités hybrides.</p>
+    <span class="kb-card__badge kb-card__badge--soon">À venir</span>
+  </a>
+
+  <a href="#" class="kb-card kb-card--graph kb-card--disabled">
+    <div class="kb-card__icon">⚡</div>
+    <h3 class="kb-card__title">Microsoft Graph</h3>
+    <p class="kb-card__desc">Scripts PowerShell, automatisation multi-tenant, API Graph.</p>
+    <span class="kb-card__badge kb-card__badge--soon">À venir</span>
+  </a>
+
+  <a href="workflow/kb-setup/" class="kb-card kb-card--workflow">
+    <div class="kb-card__icon">📖</div>
+    <h3 class="kb-card__title">Workflow KB</h3>
+    <p class="kb-card__desc">Architecture du site, stack technique, commandes et circuit de publication.</p>
+    <span class="kb-card__badge kb-card__badge--available">1 page disponible</span>
+  </a>
+
 </div>
 
 
