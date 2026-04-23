@@ -1,5 +1,5 @@
-site_name: KB — Base de connaissances MSP
-site_description: Notes techniques Intune, M365, Datto, Graph
+site_name: "⚡ TechBase"
+site_description: Notes techniques Intune, M365, Datto, Entra ID, Graph
 site_url: https://robertcotton13670-alt.github.io/kb/
 
 extra_css:
@@ -55,3 +55,15 @@ markdown_extensions:
 plugins:
   - search:
       lang: fr
+
+nav:
+  - Intune:
+      - Vue d'ensemble: intune/autopilot.md
+      - Hardware Hash: intune/autopilot-hash.md
+  - Datto RMM:
+      - Toast Notifications: DAtto/Toast notif depuis datto.md
+  - Microsoft 365: index.md
+  - Entra ID: index.md
+  - Microsoft Graph: index.md
+  - Workflow KB:
+      - Setup et commandes: workflow/kb-setup.md

@@ -1,10 +1,10 @@
 ---
-title: Base de connaissances MSP
+title: TechBase
 description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, Datto RMM et Microsoft Graph
 ---
 
 <div class="kb-hero">
-  <h1 class="kb-hero__title">KB — Base de <span class="kb-hero__accent">connaissances MSP</span></h1>
+  <h1 class="kb-hero__title">⚡ Tech<span class="kb-hero__accent">Base</span></h1>
   <p class="kb-hero__subtitle">Notes de terrain et runbooks sur les technologies Microsoft et les outils MSP du quotidien.</p>
 </div>
 
