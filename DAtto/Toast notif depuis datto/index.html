@@ -1,0 +1,1319 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Envoi de notifications toast Windows aux utilisateurs via le composant PowerShell POWERiti.">
+      
+      
+      
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/DAtto/Toast%20notif%20depuis%20datto/">
+      
+      
+        <link rel="prev" href="../../exemple/">
+      
+      
+        <link rel="next" href="../../intune/autopilot-hash/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Toast Notifications Datto RMM - KB — Base de connaissances MSP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#toast-notifications-datto-rmm" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="KB — Base de connaissances MSP" class="md-header__button md-logo" aria-label="KB — Base de connaissances MSP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KB — Base de connaissances MSP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Toast Notifications Datto RMM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  KB — Base de connaissances MSP
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exemple/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Page d'exemple — test des fonctionnalités
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  DAtto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../intune/autopilot-hash/" class="md-tabs__link">
+          
+  
+  
+  Intune
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KB — Base de connaissances MSP" class="md-nav__button md-logo" aria-label="KB — Base de connaissances MSP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    KB — Base de connaissances MSP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KB — Base de connaissances MSP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exemple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Page d'exemple — test des fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DAtto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DAtto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toast Notifications Datto RMM
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toast Notifications Datto RMM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables Datto RMM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages-predefinis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Messages prédéfinis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logique-dexecution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logique d'exécution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-requis-dans-le-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers requis dans le composant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-generes-sur-le-poste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers générés sur le poste
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codes-de-sortie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codes de sortie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-stdout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log StdOut
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommandations-par-cas-dusage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommandations par cas d'usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historique-des-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historique des versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intune
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Intune
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intune/autopilot-hash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecter le hardware hash Autopilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intune/autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Autopilot — vue d'ensemble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables Datto RMM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages-predefinis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Messages prédéfinis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logique-dexecution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logique d'exécution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-requis-dans-le-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers requis dans le composant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-generes-sur-le-poste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers générés sur le poste
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codes-de-sortie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codes de sortie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-stdout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log StdOut
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommandations-par-cas-dusage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommandations par cas d'usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historique-des-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historique des versions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="toast-notifications-datto-rmm">Toast Notifications Datto RMM<a class="headerlink" href="#toast-notifications-datto-rmm" title="Permanent link">&para;</a></h1>
+<p>Le composant Toast Notification envoie une notification toast Windows à l'utilisateur connecté sur un poste géré. Il s'exécute en contexte SYSTEM via l'agent Datto, et affiche la notification dans la session utilisateur grâce à CPAs.dll (murrayju.ProcessExtensions).</p>
+<p>Version courante : <strong>V9.1</strong> — Mars 2026.</p>
+<hr />
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Windows 10 / Server 2016 minimum</li>
+<li>CPAs.dll inclus comme embedded file dans le composant</li>
+<li>4 images hero incluses comme embedded files</li>
+<li>Exécution en contexte SYSTEM (agent Datto)</li>
+</ul>
+<hr />
+<h2 id="variables-datto-rmm">Variables Datto RMM<a class="headerlink" href="#variables-datto-rmm" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>usrMessageType</code></td>
+<td>Sélection</td>
+<td>Détermine le message et l'image affichés</td>
+</tr>
+<tr>
+<td><code>usrMessageComplement</code></td>
+<td>Chaîne</td>
+<td>Texte libre affiché sous le message prédéfini</td>
+</tr>
+<tr>
+<td><code>usrShowRestart</code></td>
+<td>Booléen</td>
+<td>Afficher le bouton "Redemarrer maintenant"</td>
+</tr>
+<tr>
+<td><code>usrInfoLabel</code></td>
+<td>Sélection</td>
+<td>Label du bouton lien (ex: "Accéder à mon ticket")</td>
+</tr>
+<tr>
+<td><code>usrInfoURL</code></td>
+<td>Chaîne</td>
+<td>URL du bouton lien — bouton affiché automatiquement si renseigné</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="messages-predefinis">Messages prédéfinis<a class="headerlink" href="#messages-predefinis" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Valeur dropdown</th>
+<th>Image hero</th>
+<th>Titre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bienvenue</code></td>
+<td>hero-bienvenue.png</td>
+<td>Bienvenue !</td>
+</tr>
+<tr>
+<td><code>academy</code></td>
+<td>hero-information.png</td>
+<td>Nouveau parcours sur Power Academy</td>
+</tr>
+<tr>
+<td><code>technicien_termine</code></td>
+<td>hero-technicien.png</td>
+<td>Intervention terminée</td>
+</tr>
+<tr>
+<td><code>ticket_fermeture</code></td>
+<td>hero-ticket.png</td>
+<td>Votre ticket sera bientôt clôturé</td>
+</tr>
+<tr>
+<td><code>ticket_retour</code></td>
+<td>hero-ticket.png</td>
+<td>Votre retour est requis</td>
+</tr>
+<tr>
+<td><code>panne</code></td>
+<td>hero-information.png</td>
+<td>Incident en cours - merci de patienter</td>
+</tr>
+<tr>
+<td><code>injoignable</code></td>
+<td>hero-ticket.png</td>
+<td>Tentative de contact</td>
+</tr>
+<tr>
+<td><code>technicien_info</code></td>
+<td>hero-information.png</td>
+<td>Info de votre technicien</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Valeur par défaut</p>
+<p>Si <code>usrMessageType</code> est absent ou invalide, le script utilise <code>technicien_info</code>.</p>
+</div>
+<hr />
+<h2 id="logique-dexecution">Logique d'exécution<a class="headerlink" href="#logique-dexecution" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A[Démarrage SYSTEM] --&gt; B[Nettoyage tâche + fichiers existants]
+    B --&gt; C{Windows 10+ ?}
+    C -- Non --&gt; D[exit 1 - OS incompatible]
+    C -- Oui --&gt; E[Résolution message + image hero]
+    E --&gt; F[Écriture toast.ps1 + toast.vbs]
+    F --&gt; G{Session explorer.exe détectée ?}
+    G -- Non --&gt; H[exit 0 - Aucun utilisateur connecté]
+    G -- Oui --&gt; I{CPAs.dll présent ?}
+    I -- Non --&gt; K[Fallback tâche planifiée +5s]
+    I -- Oui --&gt; J[StartProcessAsCurrentUser via CPAs.dll\ntimeout 10s]
+    J -- Succès --&gt; L[Statut : AFFICHE]
+    J -- Échec/Timeout --&gt; K
+    K -- Succès --&gt; L
+    K -- Échec --&gt; M[exit 1 - ERREUR]</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Pas de tâche AtLogOn</p>
+<p>Si aucun utilisateur n'est connecté au moment de l'exécution, le script quitte proprement sans planifier de toast différé.</p>
+</div>
+<hr />
+<h2 id="fichiers-requis-dans-le-composant">Fichiers requis dans le composant<a class="headerlink" href="#fichiers-requis-dans-le-composant" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPAs.dll</code></td>
+<td>Impersonation utilisateur (CreateProcessAsUser)</td>
+</tr>
+<tr>
+<td><code>hero-bienvenue.png</code></td>
+<td>Image hero — bienvenue</td>
+</tr>
+<tr>
+<td><code>hero-information.png</code></td>
+<td>Image hero — academy, panne, technicien_info</td>
+</tr>
+<tr>
+<td><code>hero-technicien.png</code></td>
+<td>Image hero — technicien_termine</td>
+</tr>
+<tr>
+<td><code>hero-ticket.png</code></td>
+<td>Image hero — ticket_fermeture, ticket_retour, injoignable</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Fallback image</p>
+<p>Si l'image attendue est introuvable, le script utilise la première <code>hero*.png</code> disponible dans le répertoire de travail.</p>
+</div>
+<hr />
+<h2 id="fichiers-generes-sur-le-poste">Fichiers générés sur le poste<a class="headerlink" href="#fichiers-generes-sur-le-poste" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Chemin</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%ProgramData%\CentraStage\ToastNotifications\toast.ps1</code></td>
+<td>Script PowerShell qui affiche la notification</td>
+</tr>
+<tr>
+<td><code>%ProgramData%\CentraStage\ToastNotifications\toast.vbs</code></td>
+<td>Lanceur VBS silencieux (fenêtre cachée)</td>
+</tr>
+<tr>
+<td><code>%ProgramData%\CentraStage\ToastNotifications\hero.png</code></td>
+<td>Copie locale de l'image hero sélectionnée</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="branding">Branding<a class="headerlink" href="#branding" title="Permanent link">&para;</a></h2>
+<p>Le nom affiché dans la notification est lu depuis :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%ProgramData%\CentraStage\Brand\keys.xml  →  clé productShortNameText
+</code></pre></div>
+<p>Fallback : <code>Support IT</code> si la valeur est absente. Le logo circulaire est lu depuis <code>primaryLogo.png</code> dans le même répertoire.</p>
+<hr />
+<h2 id="codes-de-sortie">Codes de sortie<a class="headerlink" href="#codes-de-sortie" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Succès, ou aucun utilisateur connecté (exit propre)</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Erreur : OS incompatible, répertoire inaccessible, ou impossible d'écrire les fichiers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="log-stdout">Log StdOut<a class="headerlink" href="#log-stdout" title="Permanent link">&para;</a></h2>
+<p>Le closeout produit deux blocs :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>============================================
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  TOAST NOTIFICATION V9.1
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>============================================
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  Type     : technicien_info
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  Titre    : Info de votre technicien
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  Corps    : Votre technicien souhaite vous contacter...
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  Bouton   : Accéder à mon ticket
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  URL      : https://...
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  Image    : hero-information.png
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  Expire   : 2026-03-15T10:32:00
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>============================================
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  Session  : DOMAIN\username
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  Methode  : CPAs.dll
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  Statut   : AFFICHE
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>============================================
+</code></pre></div>
+<p>Valeurs possibles pour <code>Statut</code> : <code>AFFICHE</code> / <code>NON AFFICHE</code> / <code>ERREUR</code>.</p>
+<hr />
+<h2 id="recommandations-par-cas-dusage">Recommandations par cas d'usage<a class="headerlink" href="#recommandations-par-cas-dusage" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bouton recommandé</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bienvenue</code></td>
+<td>Ouvrir Power Academy</td>
+<td><code>https://academy.poweriti.com/login</code></td>
+</tr>
+<tr>
+<td><code>academy</code></td>
+<td>Ouvrir Power Academy</td>
+<td>Lien direct vers le cours</td>
+</tr>
+<tr>
+<td><code>ticket_fermeture</code></td>
+<td>Accéder à mon ticket</td>
+<td>Lien ticket Autotask</td>
+</tr>
+<tr>
+<td><code>ticket_retour</code></td>
+<td>Donner mes informations</td>
+<td>Lien ticket Autotask</td>
+</tr>
+<tr>
+<td><code>injoignable</code></td>
+<td>Accéder à mon ticket</td>
+<td>Lien ticket Autotask</td>
+</tr>
+<tr>
+<td><code>technicien_termine</code></td>
+<td><em>(aucun)</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>panne</code></td>
+<td><em>(aucun)</em></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>technicien_info</code></td>
+<td>Optionnel</td>
+<td>Selon contexte</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="historique-des-versions">Historique des versions<a class="headerlink" href="#historique-des-versions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changements principaux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V9</td>
+<td>Mars 2026</td>
+<td>Messages prédéfinis, scenario <code>incomingCall</code>, suppression <code>usrMessageTitle</code> et <code>usrShowInfo</code>, nouveau format log</td>
+</tr>
+<tr>
+<td>V9.1</td>
+<td>Mars 2026</td>
+<td>Timeout CPAs.dll 10s via <code>Start-Job</code>, expiration toast +2h, try/catch sur écriture disque</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="composants-datto.md">Composants Datto RMM</a> <em>(à venir)</em></li>
+<li><a href="audit-onedrive-sharepoint.md">Audit OneDrive SharePoint</a> <em>(à venir)</em></li>
+<li><a href="sync-sharepoint.md">Sync SharePoint Bibliothèque</a> <em>(à venir)</em></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
