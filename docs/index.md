@@ -10,58 +10,58 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
 
 <div class="kb-cards">
 
-  <a href="intune/autopilot/" class="kb-card kb-card--intune">
-    <div class="kb-card__header">
-      <div class="kb-card__icon">🖥️</div>
-      <h3 class="kb-card__title">Intune</h3>
+  <a href="intune/" class="kb-card kb-intune">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">🖥️</div>
+      <h3>Intune</h3>
     </div>
-    <p class="kb-card__desc">Autopilot, déploiement d'applications, politiques de conformité, gestion des devices Windows.</p>
-    <span class="kb-card__count">2 pages ›</span>
+    <p>Autopilot, déploiement d'apps, conformité, devices Windows.</p>
+    <span class="kb-card-count">2 pages ›</span>
   </a>
 
-  <a href="DAtto/Toast%20notif%20depuis%20datto/" class="kb-card kb-card--datto">
-    <div class="kb-card__header">
-      <div class="kb-card__icon">🔧</div>
-      <h3 class="kb-card__title">Datto RMM</h3>
+  <a href="datto/" class="kb-card kb-datto">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">🔧</div>
+      <h3>Datto RMM</h3>
     </div>
-    <p class="kb-card__desc">Composants, monitoring, patch management, automatisation via agents.</p>
-    <span class="kb-card__count">1 page ›</span>
+    <p>Composants RMM, monitoring, patch, automatisation agents.</p>
+    <span class="kb-card-count">1 page ›</span>
   </a>
 
-  <a href="#" class="kb-card kb-card--m365 kb-card--disabled">
-    <div class="kb-card__header">
-      <div class="kb-card__icon">📧</div>
-      <h3 class="kb-card__title">Microsoft 365</h3>
+  <a href="m365/" class="kb-card kb-m365 kb-disabled">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">📧</div>
+      <h3>Microsoft 365</h3>
     </div>
-    <p class="kb-card__desc">Administration tenant, Exchange Online, SharePoint, Teams.</p>
-    <span class="kb-card__count">À venir</span>
+    <p>Tenant M365, Exchange Online, SharePoint, Teams.</p>
+    <span class="kb-card-count">À venir</span>
   </a>
 
-  <a href="#" class="kb-card kb-card--entra kb-card--disabled">
-    <div class="kb-card__header">
-      <div class="kb-card__icon">🔐</div>
-      <h3 class="kb-card__title">Entra ID</h3>
+  <a href="entra/" class="kb-card kb-entra kb-disabled">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">🔐</div>
+      <h3>Entra ID</h3>
     </div>
-    <p class="kb-card__desc">Conditional Access, PIM, groupes dynamiques, identités hybrides.</p>
-    <span class="kb-card__count">À venir</span>
+    <p>Conditional Access, PIM, groupes dynamiques, identités.</p>
+    <span class="kb-card-count">À venir</span>
   </a>
 
-  <a href="#" class="kb-card kb-card--graph kb-card--disabled">
-    <div class="kb-card__header">
-      <div class="kb-card__icon">⚡</div>
-      <h3 class="kb-card__title">Microsoft Graph</h3>
+  <a href="graph/" class="kb-card kb-graph kb-disabled">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">⚡</div>
+      <h3>Microsoft Graph</h3>
     </div>
-    <p class="kb-card__desc">Scripts PowerShell, automatisation multi-tenant, API Graph.</p>
-    <span class="kb-card__count">À venir</span>
+    <p>Scripts PowerShell, automatisation multi-tenant, API Graph.</p>
+    <span class="kb-card-count">À venir</span>
   </a>
 
-  <a href="workflow/kb-setup/" class="kb-card kb-card--workflow">
-    <div class="kb-card__header">
-      <div class="kb-card__icon">📖</div>
-      <h3 class="kb-card__title">Workflow KB</h3>
+  <a href="workflow/" class="kb-card kb-workflow">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">📖</div>
+      <h3>Workflow KB</h3>
     </div>
-    <p class="kb-card__desc">Architecture du site, stack technique, commandes et circuit de publication.</p>
-    <span class="kb-card__count">1 page ›</span>
+    <p>Architecture du site, commandes, circuit de publication.</p>
+    <span class="kb-card-count">1 page ›</span>
   </a>
 
 </div>

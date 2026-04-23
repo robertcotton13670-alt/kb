@@ -59,13 +59,10 @@ plugins:
       lang: fr
 
 nav:
-  - Intune:
-      - Vue d'ensemble: intune/autopilot.md
-      - Hardware Hash: intune/autopilot-hash.md
-  - Datto RMM:
-      - Toast Notifications: DAtto/Toast notif depuis datto.md
-  - Microsoft 365: index.md
-  - Entra ID: index.md
-  - Microsoft Graph: index.md
-  - Workflow KB:
-      - Setup et commandes: workflow/kb-setup.md
+  - Accueil: index.md
+  - Intune: intune/index.md
+  - Datto RMM: datto/index.md
+  - Microsoft 365: m365/index.md
+  - Entra ID: entra/index.md
+  - Microsoft Graph: graph/index.md
+  - Workflow KB: workflow/index.md
