@@ -14,7 +14,7 @@
   --md-accent-bg-color:              #ffffff;
 }
 
-/* ── Fond sombre GitHub-style pour le thème slate ──────────────────────────── */
+/* ── Fond sombre GitHub-style (scheme slate) ───────────────────────────────── */
 
 [data-md-color-scheme="slate"] {
   --md-default-bg-color:             #0d1117;
@@ -24,31 +24,31 @@
   --md-code-bg-color:                #161b22;
 }
 
-/* ── Variables des cards adaptées au thème ─────────────────────────────────── */
+/* ── Tokens des cards adaptés au thème ────────────────────────────────────── */
 
 [data-md-color-scheme="slate"] {
-  --kb-card-bg:            #161b22;
-  --kb-card-border:        #30363d;
-  --kb-card-title:         #f0f6fc;
-  --kb-card-desc:          #8b949e;
-  --kb-badge-ok-bg:        rgba(46, 160, 67, 0.15);
-  --kb-badge-ok-fg:        #3fb950;
-  --kb-badge-soon-bg:      rgba(139, 148, 158, 0.1);
-  --kb-badge-soon-fg:      #8b949e;
+  --kb-card-bg:          #161b22;
+  --kb-card-border:      #30363d;
+  --kb-card-title:       #f0f6fc;
+  --kb-card-desc:        #8b949e;
+  --kb-badge-ok-bg:      rgba(46, 160, 67, 0.15);
+  --kb-badge-ok-fg:      #3fb950;
+  --kb-badge-soon-bg:    rgba(139, 148, 158, 0.1);
+  --kb-badge-soon-fg:    #8b949e;
 }
 
 [data-md-color-scheme="default"] {
-  --kb-card-bg:            #f6f8fa;
-  --kb-card-border:        #d0d7de;
-  --kb-card-title:         #1f2328;
-  --kb-card-desc:          #656d76;
-  --kb-badge-ok-bg:        rgba(31, 136, 61, 0.12);
-  --kb-badge-ok-fg:        #1a7f37;
-  --kb-badge-soon-bg:      rgba(110, 118, 129, 0.1);
-  --kb-badge-soon-fg:      #57606a;
+  --kb-card-bg:          #f6f8fa;
+  --kb-card-border:      #d0d7de;
+  --kb-card-title:       #1f2328;
+  --kb-card-desc:        #656d76;
+  --kb-badge-ok-bg:      rgba(31, 136, 61, 0.12);
+  --kb-badge-ok-fg:      #1a7f37;
+  --kb-badge-soon-bg:    rgba(110, 118, 129, 0.1);
+  --kb-badge-soon-fg:    #57606a;
 }
 
-/* ── Hero page d'accueil ───────────────────────────────────────────────────── */
+/* ── Hero ──────────────────────────────────────────────────────────────────── */
 
 .kb-hero {
   text-align: center;
@@ -64,9 +64,7 @@
   margin: 0 0 0.8rem;
 }
 
-.kb-hero__accent {
-  color: #FF6B00;
-}
+.kb-hero__accent { color: #FF6B00; }
 
 .kb-hero__subtitle {
   font-size: 1rem;
@@ -76,7 +74,7 @@
   line-height: 1.65;
 }
 
-/* ── Grille de cards ───────────────────────────────────────────────────────── */
+/* ── Grille ────────────────────────────────────────────────────────────────── */
 
 .kb-cards {
   display: grid;
@@ -85,22 +83,23 @@
   margin: 2.5rem 0 3rem;
 }
 
-@media (max-width: 960px) {
-  .kb-cards { grid-template-columns: repeat(2, 1fr); }
-}
+@media (max-width: 960px) { .kb-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .kb-cards { grid-template-columns: 1fr; } }
 
-@media (max-width: 600px) {
-  .kb-cards { grid-template-columns: 1fr; }
-}
+/* ── Card — base ───────────────────────────────────────────────────────────── */
 
-/* ── Card de base ──────────────────────────────────────────────────────────── */
-
+/*
+  Technique : --_accent est défini sur chaque variante (.kb-card--*).
+  Comme c'est une custom property sur le même élément, elle est disponible
+  via var(--_accent) dans toutes les règles qui s'appliquent à .kb-card.
+  Le fallback var(--kb-card-border) s'active pour les cards sans variante.
+*/
 .kb-card {
   display: flex;
   flex-direction: column;
   background: var(--kb-card-bg);
   border: 1px solid var(--kb-card-border);
-  border-top: 3px solid var(--kb-card-border); /* overridden per variant */
+  border-top: 3px solid var(--_accent, var(--kb-card-border));
   border-radius: 0.5rem;
   padding: 1.4rem 1.5rem 1.2rem;
   text-decoration: none;
@@ -112,6 +111,10 @@
   transform: translateY(-3px);
   text-decoration: none;
   color: var(--kb-card-title);
+  border-color: var(--_accent, var(--kb-card-border));
+  box-shadow:
+    0 0 0 1px var(--_accent, var(--kb-card-border)),
+    0 8px 28px color-mix(in srgb, var(--_accent, #888) 22%, transparent);
 }
 
 .kb-card--disabled {
@@ -120,7 +123,7 @@
   cursor: default;
 }
 
-/* ── Contenu de la card ────────────────────────────────────────────────────── */
+/* ── Card — contenu ────────────────────────────────────────────────────────── */
 
 .kb-card__icon {
   display: flex;
@@ -132,6 +135,8 @@
   font-size: 1.45rem;
   margin-bottom: 1rem;
   flex-shrink: 0;
+  /* --_icon-bg défini par les variantes via custom property héritée */
+  background: var(--_icon-bg, rgba(128, 128, 128, 0.1));
 }
 
 .kb-card__title {
@@ -160,44 +165,14 @@
   text-transform: uppercase;
 }
 
-.kb-card__badge--available {
-  background: var(--kb-badge-ok-bg);
-  color: var(--kb-badge-ok-fg);
-}
+.kb-card__badge--available { background: var(--kb-badge-ok-bg);   color: var(--kb-badge-ok-fg); }
+.kb-card__badge--soon      { background: var(--kb-badge-soon-bg); color: var(--kb-badge-soon-fg); }
 
-.kb-card__badge--soon {
-  background: var(--kb-badge-soon-bg);
-  color: var(--kb-badge-soon-fg);
-}
+/* ── Variantes couleur ─────────────────────────────────────────────────────── */
 
-/* ── Variantes couleur par thème ───────────────────────────────────────────── */
-
-/* Intune — bleu Microsoft */
-.kb-card--intune { border-top-color: #0078D4; }
-.kb-card--intune .kb-card__icon { background: rgba(0, 120, 212, 0.12); color: #388bfd; }
-.kb-card--intune:hover { box-shadow: 0 0 0 1px #0078D4, 0 8px 28px rgba(0, 120, 212, 0.22); border-color: #0078D4; }
-
-/* Datto RMM — orange Poweriti */
-.kb-card--datto { border-top-color: #FF6B00; }
-.kb-card--datto .kb-card__icon { background: rgba(255, 107, 0, 0.12); color: #FF6B00; }
-.kb-card--datto:hover { box-shadow: 0 0 0 1px #FF6B00, 0 8px 28px rgba(255, 107, 0, 0.22); border-color: #FF6B00; }
-
-/* Microsoft 365 — vert */
-.kb-card--m365 { border-top-color: #28A745; }
-.kb-card--m365 .kb-card__icon { background: rgba(40, 167, 69, 0.12); color: #3fb950; }
-.kb-card--m365:hover { box-shadow: 0 0 0 1px #28A745, 0 8px 28px rgba(40, 167, 69, 0.22); border-color: #28A745; }
-
-/* Entra ID — violet */
-.kb-card--entra { border-top-color: #8B5CF6; }
-.kb-card--entra .kb-card__icon { background: rgba(139, 92, 246, 0.12); color: #a371f7; }
-.kb-card--entra:hover { box-shadow: 0 0 0 1px #8B5CF6, 0 8px 28px rgba(139, 92, 246, 0.22); border-color: #8B5CF6; }
-
-/* Microsoft Graph — cyan */
-.kb-card--graph { border-top-color: #00B4D8; }
-.kb-card--graph .kb-card__icon { background: rgba(0, 180, 216, 0.12); color: #39d3f5; }
-.kb-card--graph:hover { box-shadow: 0 0 0 1px #00B4D8, 0 8px 28px rgba(0, 180, 216, 0.22); border-color: #00B4D8; }
-
-/* Workflow KB — ambre */
-.kb-card--workflow { border-top-color: #F59E0B; }
-.kb-card--workflow .kb-card__icon { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
-.kb-card--workflow:hover { box-shadow: 0 0 0 1px #F59E0B, 0 8px 28px rgba(245, 158, 11, 0.22); border-color: #F59E0B; }
+.kb-card--intune   { --_accent: #3B82F6; --_icon-bg: rgba(59,  130, 246, 0.12); }
+.kb-card--datto    { --_accent: #F97316; --_icon-bg: rgba(249, 115,  22, 0.12); }
+.kb-card--m365     { --_accent: #22C55E; --_icon-bg: rgba(34,  197,  94, 0.12); }
+.kb-card--entra    { --_accent: #A855F7; --_icon-bg: rgba(168,  85, 247, 0.12); }
+.kb-card--graph    { --_accent: #06B6D4; --_icon-bg: rgba(6,   182, 212, 0.12); }
+.kb-card--workflow { --_accent: #EAB308; --_icon-bg: rgba(234, 179,   8, 0.12); }
