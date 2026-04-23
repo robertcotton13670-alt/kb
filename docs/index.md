@@ -5,14 +5,14 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
 
 <div class="kb-hero">
   <h1 class="kb-hero__title">⚡ TechBase</h1>
-  <p class="kb-hero__subtitle">Notes de terrain et runbooks sur les technologies Microsoft et les outils MSP du quotidien.</p>
+  <p class="kb-hero__subtitle">Notes de terrain et runbooks sur les outils MSP.</p>
 </div>
 
 <div class="kb-cards">
 
   <a href="intune/" class="kb-card kb-intune">
     <div class="kb-card-header">
-      <div class="kb-card-icon">🖥️</div>
+      <div class="kb-card-icon">💻</div>
       <h3>Intune</h3>
     </div>
     <p>Autopilot, déploiement d'apps, conformité, devices Windows.</p>
@@ -30,7 +30,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
 
   <a href="m365/" class="kb-card kb-m365 kb-disabled">
     <div class="kb-card-header">
-      <div class="kb-card-icon">📧</div>
+      <div class="kb-card-icon">☁️</div>
       <h3>Microsoft 365</h3>
     </div>
     <p>Tenant M365, Exchange Online, SharePoint, Teams.</p>
@@ -57,7 +57,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
 
   <a href="workflow/" class="kb-card kb-workflow">
     <div class="kb-card-header">
-      <div class="kb-card-icon">📖</div>
+      <div class="kb-card-icon">📋</div>
       <h3>Workflow KB</h3>
     </div>
     <p>Architecture du site, commandes, circuit de publication.</p>
