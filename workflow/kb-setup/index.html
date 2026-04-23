@@ -1,0 +1,1406 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Architecture, stack technique et workflow quotidien pour maintenir la base de connaissances MSP avec Claude Code, VS Code et GitHub Pages">
+      
+      
+      
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/workflow/kb-setup/">
+      
+      
+        <link rel="prev" href="../../intune/autopilot/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Workflow KB MkDocs Material - KB — Base de connaissances MSP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workflow-kb-mkdocs-material" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="KB — Base de connaissances MSP" class="md-header__button md-logo" aria-label="KB — Base de connaissances MSP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KB — Base de connaissances MSP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Workflow KB MkDocs Material
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Base de connaissances MSP
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exemple/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Page d'exemple — test des fonctionnalités
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../DAtto/Toast%20notif%20depuis%20datto/" class="md-tabs__link">
+          
+  
+  
+  DAtto
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../intune/autopilot-hash/" class="md-tabs__link">
+          
+  
+  
+  Intune
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Workflow
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KB — Base de connaissances MSP" class="md-nav__button md-logo" aria-label="KB — Base de connaissances MSP" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    KB — Base de connaissances MSP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base de connaissances MSP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exemple/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Page d'exemple — test des fonctionnalités
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DAtto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DAtto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DAtto/Toast%20notif%20depuis%20datto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toast Notifications Datto RMM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intune
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Intune
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intune/autopilot-hash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecter le hardware hash Autopilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intune/autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Autopilot — vue d'ensemble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow KB MkDocs Material
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow KB MkDocs Material
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-globale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture globale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stack technique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-essentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes essentielles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes essentielles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-quotidien-ajouter-une-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow quotidien — ajouter une page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-depuis-un-projet-claudeai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow depuis un projet claude.ai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raccourcis-vs-code-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raccourcis VS Code utiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-code-commandes-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code — commandes utiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-cles-du-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers clés du repo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-globale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture globale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stack technique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-essentielles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes essentielles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commandes essentielles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MkDocs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-quotidien-ajouter-une-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow quotidien — ajouter une page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-depuis-un-projet-claudeai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow depuis un projet claude.ai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raccourcis-vs-code-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raccourcis VS Code utiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claude-code-commandes-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code — commandes utiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-cles-du-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers clés du repo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="workflow-kb-mkdocs-material">Workflow KB MkDocs Material<a class="headerlink" href="#workflow-kb-mkdocs-material" title="Permanent link">&para;</a></h1>
+<p>Ce document décrit le setup complet mis en place pour produire et publier cette base de connaissances : de la génération de contenu avec Claude jusqu'au site live sur GitHub Pages.</p>
+<hr />
+<h2 id="architecture-globale">Architecture globale<a class="headerlink" href="#architecture-globale" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A["🤖 claude.ai\n(génération contenu)"] --&gt;|copier-coller\nou Claude Code| B
+
+    subgraph local ["💻 Poste local"]
+        B["VS Code\n.md édité"]
+        B --&gt; C["Git local\ngit add / commit"]
+    end
+
+    C --&gt;|git push| D["GitHub\nbranche main"]
+
+    D --&gt;|on push| E["GitHub Actions\nmkdocs gh-deploy"]
+
+    E --&gt;|build| F["GitHub Pages\nsite live"]
+
+    style local fill:#f5f5f5,stroke:#ccc
+    style F fill:#FF6B00,color:#fff,stroke:#CC5500</code></pre>
+<hr />
+<h2 id="stack-technique">Stack technique<a class="headerlink" href="#stack-technique" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Composant</th>
+<th>Rôle</th>
+<th>Version / Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Git</strong></td>
+<td>Versionnement, historique</td>
+<td>installé globalement</td>
+</tr>
+<tr>
+<td><strong>VS Code</strong></td>
+<td>Éditeur principal, terminal intégré</td>
+<td>Extension Claude Code recommandée</td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>Requis par MkDocs</td>
+<td>3.x (géré par GitHub Actions en CI)</td>
+</tr>
+<tr>
+<td><strong>MkDocs Material</strong></td>
+<td>Générateur de site statique</td>
+<td><code>pip install mkdocs-material</code></td>
+</tr>
+<tr>
+<td><strong>pymdown-extensions</strong></td>
+<td>Extensions Markdown avancées</td>
+<td>inclus avec <code>mkdocs-material</code></td>
+</tr>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>CLI IA dans VS Code</td>
+<td>Extension VS Code Anthropic</td>
+</tr>
+<tr>
+<td><strong>GitHub Actions</strong></td>
+<td>CI/CD — build et déploiement auto</td>
+<td><code>.github/workflows/deploy.yml</code></td>
+</tr>
+<tr>
+<td><strong>GitHub Pages</strong></td>
+<td>Hébergement gratuit du site</td>
+<td>branche <code>gh-pages</code> auto-gérée</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Installation locale complète</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span>pymdown-extensions
+</code></pre></div></td></tr></table></div>
+Pas besoin d'installer autre chose : <code>mkdocs-material</code> embarque déjà les extensions pymdownx.</p>
+</div>
+<hr />
+<h2 id="commandes-essentielles">Commandes essentielles<a class="headerlink" href="#commandes-essentielles" title="Permanent link">&para;</a></h2>
+<h3 id="mkdocs">MkDocs<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Lancer le serveur de dev avec rechargement automatique</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>mkdocs<span class="w"> </span>serve
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1"># Build statique dans /site (gitignored)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>mkdocs<span class="w"> </span>build
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1"># Déployer manuellement vers GitHub Pages (remplace le CI)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
+</code></pre></div></td></tr></table></div>
+<h3 id="git">Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># Voir l&#39;état du dépôt</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>git<span class="w"> </span>status
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c1"># Ajouter des fichiers au prochain commit</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>git<span class="w"> </span>add<span class="w"> </span>docs/intune/nouvelle-page.md
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># Créer un commit</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout page : titre de la page&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="c1"># Pousser vers GitHub (déclenche le déploiement automatique)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>git<span class="w"> </span>push
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="c1"># Vérifier les commits en avance sur origin</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>git<span class="w"> </span>log<span class="w"> </span>origin/main..HEAD<span class="w"> </span>--oneline
+</code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">Déploiement automatique</p>
+<p>Chaque <code>git push</code> sur <code>main</code> déclenche le workflow GitHub Actions qui rebuilde et déploie le site en 1 à 2 minutes. Pas besoin de lancer <code>mkdocs gh-deploy</code> manuellement.</p>
+</div>
+<hr />
+<h2 id="workflow-quotidien-ajouter-une-page">Workflow quotidien — ajouter une page<a class="headerlink" href="#workflow-quotidien-ajouter-une-page" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Générer le contenu</strong> avec Claude (claude.ai ou Claude Code dans VS Code)</li>
+<li><strong>Créer le fichier</strong> dans le bon sous-dossier de <code>docs/</code> :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docs/intune/nom-de-la-page.md
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docs/DAtto/nom-de-la-page.md
+</code></pre></div></li>
+<li><strong>Ajouter le frontmatter</strong> en haut du fichier :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nn">---</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Titre affiché dans la nav et l&#39;onglet</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Une ligne pour le SEO et la recherche</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nn">---</span>
+</code></pre></div></li>
+<li><strong>Prévisualiser</strong> en local avec <code>mkdocs serve</code> (optionnel mais recommandé pour les Mermaid et tableaux complexes)</li>
+<li><strong>Commiter et pousser</strong> — via Claude Code ou directement :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>add<span class="w"> </span>docs/intune/nom-de-la-page.md
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Ajout page : Titre de la page&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git<span class="w"> </span>push
+</code></pre></div></li>
+<li><strong>Vérifier le déploiement</strong> dans l'onglet <em>Actions</em> du repo GitHub — icône verte = site mis à jour</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Pas de <code>nav:</code> dans mkdocs.yml</p>
+<p>La navigation est générée automatiquement depuis l'arborescence <code>docs/</code>. Pas besoin de déclarer chaque nouvelle page — il suffit de créer le fichier au bon endroit.</p>
+</div>
+<hr />
+<h2 id="workflow-depuis-un-projet-claudeai">Workflow depuis un projet claude.ai<a class="headerlink" href="#workflow-depuis-un-projet-claudeai" title="Permanent link">&para;</a></h2>
+<p>Le cas typique : travailler sur une procédure dans claude.ai, puis la publier dans le KB.</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Nouveau sujet à documenter"] --&gt; B["Rédiger le prompt\ndans claude.ai"]
+    B --&gt; C["Claude génère\nle contenu Markdown"]
+    C --&gt; D{Méthode de transfert}
+
+    D --&gt;|Claude Code dans VS Code| E["Demander à Claude Code :\n'Crée le fichier docs/xxx/yyy.md'\navec le contenu"]
+    D --&gt;|Copier-coller manuel| F["Créer le fichier\ndans VS Code\ncoller le contenu"]
+
+    E --&gt; G["Relecture rapide\n+ ajustements éventuels"]
+    F --&gt; G
+    G --&gt; H["git add / commit / push\n(ou dire à Claude Code\n'push et commit')"]
+    H --&gt; I["Site mis à jour\ndans ~2 min"]</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Prompt type pour Claude Code</p>
+<p>Dans le chat Claude Code (VS Code), écrire simplement :</p>
+<blockquote>
+<p>Crée le fichier <code>docs/intune/mon-sujet.md</code> sur le thème "…". Inclure : prérequis, commandes, admonitions, tableau. Format MkDocs Material, français.</p>
+</blockquote>
+<p>Claude Code connaît les conventions du repo grâce au fichier <code>CLAUDE.md</code>.</p>
+</div>
+<hr />
+<h2 id="raccourcis-vs-code-utiles">Raccourcis VS Code utiles<a class="headerlink" href="#raccourcis-vs-code-utiles" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Raccourci</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`Ctrl+``</td>
+<td>Ouvrir / fermer le terminal intégré</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+E</code></td>
+<td>Panneau Explorateur de fichiers</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+G</code></td>
+<td>Panneau Git (voir les fichiers modifiés)</td>
+</tr>
+<tr>
+<td><code>Ctrl+K V</code></td>
+<td>Prévisualisation Markdown côte à côte</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+P</code></td>
+<td>Palette de commandes (tout faire)</td>
+</tr>
+<tr>
+<td><code>Ctrl+P</code></td>
+<td>Ouvrir un fichier rapidement par nom</td>
+</tr>
+<tr>
+<td><code>Ctrl+,</code></td>
+<td>Paramètres VS Code</td>
+</tr>
+<tr>
+<td>`Ctrl+Shift+``</td>
+<td>Nouveau terminal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="claude-code-commandes-utiles">Claude Code — commandes utiles<a class="headerlink" href="#claude-code-commandes-utiles" title="Permanent link">&para;</a></h2>
+<p>Claude Code comprend le langage naturel. Voici les formulations les plus utiles dans ce repo :</p>
+<table>
+<thead>
+<tr>
+<th>Ce qu'on dit</th>
+<th>Ce que ça fait</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>push et commit</code></td>
+<td>Crée un commit avec message descriptif et pousse sur <code>main</code></td>
+</tr>
+<tr>
+<td><code>/init</code></td>
+<td>Analyse le repo et génère / met à jour <code>CLAUDE.md</code></td>
+</tr>
+<tr>
+<td><code>Crée le fichier docs/xxx/yyy.md sur le sujet "…"</code></td>
+<td>Génère une page complète au format MkDocs Material</td>
+</tr>
+<tr>
+<td><code>Mets à jour mkdocs.yml pour…</code></td>
+<td>Modifie la config MkDocs</td>
+</tr>
+<tr>
+<td><code>Qu'est-ce qui n'est pas encore poussé ?</code></td>
+<td>Vérifie <code>git log origin/main..HEAD</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">CLAUDE.md = mémoire contextuelle</p>
+<p>Le fichier <code>CLAUDE.md</code> à la racine du repo est automatiquement lu par Claude Code à chaque session. Il contient les conventions du projet (frontmatter obligatoire, langue française, extensions activées, structure des pages). Garder ce fichier à jour garantit que les pages générées respectent le format sans avoir à le préciser à chaque fois.</p>
+</div>
+<hr />
+<h2 id="fichiers-cles-du-repo">Fichiers clés du repo<a class="headerlink" href="#fichiers-cles-du-repo" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdocs.yml</code></td>
+<td>Configuration complète : thème, couleurs, extensions Markdown, plugins</td>
+</tr>
+<tr>
+<td><code>docs/assets/extra.css</code></td>
+<td>Styles personnalisés : couleurs Poweriti (#FF6B00), cards page d'accueil</td>
+</tr>
+<tr>
+<td><code>docs/index.md</code></td>
+<td>Page d'accueil avec les cards de navigation par domaine</td>
+</tr>
+<tr>
+<td><code>CLAUDE.md</code></td>
+<td>Instructions contextuelles pour Claude Code (conventions, commandes, structure)</td>
+</tr>
+<tr>
+<td><code>.github/workflows/deploy.yml</code></td>
+<td>Pipeline CI/CD : build MkDocs + déploiement GitHub Pages sur push <code>main</code></td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Exclut <code>/site</code> (build local) et <code>.claude/</code> (settings locaux Claude Code)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../intune/autopilot/">Windows Autopilot — vue d'ensemble</a></li>
+<li><a href="../../intune/autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a></li>
+<li><a href="../../DAtto/Toast%20notif%20depuis%20datto/">Toast Notifications Datto RMM</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
