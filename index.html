@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Notes techniques Intune, M365, Datto, Graph">
+        <meta name="description" content="Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, Datto RMM et Microsoft Graph">
       
       
       
@@ -25,7 +25,7 @@
     
     
       
-        <title>KB — Base de connaissances MSP</title>
+        <title>Base de connaissances MSP - KB — Base de connaissances MSP</title>
       
     
     
@@ -51,6 +51,8 @@
       
     
     
+      <link rel="stylesheet" href="assets/extra.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -67,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kb-base-de-connaissances-msp" class="md-skip">
+        <a href="#base-de-connaissances-msp" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              KB — Base de connaissances MSP
+              Base de connaissances MSP
             
           </span>
         </div>
@@ -123,7 +125,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -133,7 +135,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -219,7 +221,7 @@
   
     
   
-  KB — Base de connaissances MSP
+  Base de connaissances MSP
 
       </a>
     </li>
@@ -334,24 +336,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    KB — Base de connaissances MSP
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -359,7 +343,7 @@
   <span class="md-ellipsis">
     
   
-    KB — Base de connaissances MSP
+    Base de connaissances MSP
   
 
     
@@ -368,47 +352,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#domaines-couverts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Domaines couverts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comment-utiliser-cette-doc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comment utiliser cette doc
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -663,36 +606,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#domaines-couverts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Domaines couverts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comment-utiliser-cette-doc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comment utiliser cette doc
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -708,22 +621,45 @@
 
 
 
-<h1 id="kb-base-de-connaissances-msp">KB — Base de connaissances MSP<a class="headerlink" href="#kb-base-de-connaissances-msp" title="Permanent link">&para;</a></h1>
-<p>Bienvenue sur ma base de connaissances! </p>
-<p>Cette documentation couvre mes notes, procédures et retours d'expérience sur les sujets MSP du quotidien.</p>
-<h2 id="domaines-couverts">Domaines couverts<a class="headerlink" href="#domaines-couverts" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Microsoft 365</strong> — administration tenant, licences, Exchange Online, SharePoint</li>
-<li><strong>Intune</strong> — Autopilot, déploiement d'applications, politiques de conformité</li>
-<li><strong>Entra ID</strong> — Conditional Access, PIM, groupes dynamiques</li>
-<li><strong>Datto RMM</strong> — composants, patch management, monitoring</li>
-<li><strong>Microsoft Graph</strong> — scripts PowerShell, automatisation</li>
-</ul>
-<h2 id="comment-utiliser-cette-doc">Comment utiliser cette doc<a class="headerlink" href="#comment-utiliser-cette-doc" title="Permanent link">&para;</a></h2>
-<p>Utilise la barre de recherche en haut (raccourci <code>/</code>) pour trouver rapidement un sujet. La navigation à gauche liste toutes les pages disponibles.</p>
+<h1 id="base-de-connaissances-msp">Base de connaissances MSP<a class="headerlink" href="#base-de-connaissances-msp" title="Permanent link">&para;</a></h1>
+<p>Notes de terrain et runbooks sur les technologies Microsoft et les outils MSP du quotidien.</p>
+<div class="kb-cards">
+
+  <a href="intune/autopilot/" class="kb-card">
+    <div class="kb-card__icon">🖥️</div>
+    <h3>Intune</h3>
+    <p>Autopilot, déploiement d'applications, politiques de conformité, gestion des devices Windows.</p>
+  </a>
+
+  <a href="DAtto/Toast%20notif%20depuis%20datto/" class="kb-card">
+    <div class="kb-card__icon">🔧</div>
+    <h3>Datto RMM</h3>
+    <p>Composants, monitoring, patch management, automatisation via agents.</p>
+  </a>
+
+  <a href="#" class="kb-card kb-card--disabled">
+    <div class="kb-card__icon">📧</div>
+    <h3>Microsoft 365</h3>
+    <p>Administration tenant, Exchange Online, SharePoint, Teams. <em>À venir.</em></p>
+  </a>
+
+  <a href="#" class="kb-card kb-card--disabled">
+    <div class="kb-card__icon">🔐</div>
+    <h3>Entra ID</h3>
+    <p>Conditional Access, PIM, groupes dynamiques, identités hybrides. <em>À venir.</em></p>
+  </a>
+
+  <a href="#" class="kb-card kb-card--disabled">
+    <div class="kb-card__icon">⚡</div>
+    <h3>Microsoft Graph</h3>
+    <p>Scripts PowerShell, automatisation multi-tenant, API Graph. <em>À venir.</em></p>
+  </a>
+
+</div>
+
 <div class="admonition info">
 <p class="admonition-title">Travail en cours</p>
-<p>Cette base est alimentée progressivement. Les pages sont rédigées avec l'aide d'IA (Claude, Copilot) puis relues et complétées avec mes retours terrain.</p>
+<p>Cette base est alimentée progressivement. Les pages sont rédigées avec l'aide de Claude puis relues et complétées avec des retours terrain.</p>
 </div>
 
 
@@ -731,6 +667,9 @@
 
 
 
+
+  
+  
 
 
 
