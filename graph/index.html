@@ -6,31 +6,35 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Autopilot v1 vs Device Preparation (v2), prérequis Entra ID et workflow de provisionnement">
+        <meta name="description" content="Section en cours de construction">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/autopilot/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/graph/">
       
       
+        <link rel="prev" href="../entra/">
+      
+      
+        <link rel="next" href="../workflow/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Windows Autopilot — vue d'ensemble - ⚡ TechBase</title>
+        <title>Microsoft Graph - ⚡ TechBase</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,9 +53,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/extra.css">
+      <link rel="stylesheet" href="../assets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-autopilot" class="md-skip">
+        <a href="#microsoft-graph" class="md-skip">
           Aller au contenu
         </a>
       
@@ -90,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href=".." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows Autopilot — vue d'ensemble
+              Microsoft Graph
             
           </span>
         </div>
@@ -223,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -242,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../intune/" class="md-tabs__link">
         
   
   
@@ -261,7 +265,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../datto/" class="md-tabs__link">
+      <a href="../datto/" class="md-tabs__link">
         
   
   
@@ -280,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../m365/" class="md-tabs__link">
+      <a href="../m365/" class="md-tabs__link">
         
   
   
@@ -299,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../entra/" class="md-tabs__link">
+      <a href="../entra/" class="md-tabs__link">
         
   
   
@@ -316,9 +320,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../../graph/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
   
@@ -337,7 +343,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../workflow/" class="md-tabs__link">
+      <a href="../workflow/" class="md-tabs__link">
         
   
   
@@ -372,7 +378,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href=".." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -402,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -429,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../intune/" class="md-nav__link">
         
   
   
@@ -456,7 +462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../datto/" class="md-nav__link">
+      <a href="../datto/" class="md-nav__link">
         
   
   
@@ -483,7 +489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m365/" class="md-nav__link">
+      <a href="../m365/" class="md-nav__link">
         
   
   
@@ -510,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../entra/" class="md-nav__link">
+      <a href="../entra/" class="md-nav__link">
         
   
   
@@ -534,10 +540,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../graph/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -553,6 +568,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -564,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../workflow/" class="md-nav__link">
+      <a href="../workflow/" class="md-nav__link">
         
   
   
@@ -604,91 +620,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#v1-vs-device-preparation-v2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        v1 vs Device Preparation (v2)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scenarios-v1-en-bref" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scénarios v1 en bref
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequis-entra-id-et-licences" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prérequis Entra ID et licences
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-de-provisionnement" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Workflow de provisionnement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cas-dusage-msp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cas d'usage MSP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pieges-courants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pièges courants
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#a-lire-ensuite" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        À lire ensuite
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -707,167 +638,11 @@
   
 
 
-<h1 id="windows-autopilot">Windows Autopilot<a class="headerlink" href="#windows-autopilot" title="Permanent link">&para;</a></h1>
-<p>Autopilot est le service cloud Microsoft pour provisionner des postes Windows directement depuis l'OOBE, sans image ni intervention physique. Le poste sort de son carton, l'utilisateur se connecte, Intune fait le reste.</p>
-<p>Deux générations coexistent aujourd'hui dans le même tenant : Autopilot <em>classic</em> (v1) et Autopilot <em>Device Preparation</em> (v2).</p>
-<h2 id="v1-vs-device-preparation-v2">v1 vs Device Preparation (v2)<a class="headerlink" href="#v1-vs-device-preparation-v2" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Critère</th>
-<th>Autopilot v1 (classic)</th>
-<th>Device Preparation (v2)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Approche</td>
-<td>Device-centric (device pré-enregistré)</td>
-<td>User-centric (enrôlement au sign-in)</td>
-</tr>
-<tr>
-<td>Hardware hash</td>
-<td>Requis (upload préalable)</td>
-<td>Non requis</td>
-</tr>
-<tr>
-<td>Identité</td>
-<td>Entra Join + Entra Hybrid Join</td>
-<td>Entra Join uniquement</td>
-</tr>
-<tr>
-<td>Scénarios</td>
-<td>User-driven, Self-deploying, Pre-provisioned, Existing</td>
-<td>User-driven, Automatic (Windows 365)</td>
-</tr>
-<tr>
-<td>Co-management (Intune + ConfigMgr)</td>
-<td>Supporté</td>
-<td>Non supporté</td>
-</tr>
-<tr>
-<td>ESP</td>
-<td>Enrollment Status Page classique</td>
-<td>Progress bar unifiée, pas d'ESP séparé</td>
-</tr>
-<tr>
-<td>Apps pendant OOBE</td>
-<td>Illimité (tracké via ESP)</td>
-<td>10 max (sélection explicite)</td>
-</tr>
-<tr>
-<td>Scripts PowerShell pré-desktop</td>
-<td>Non</td>
-<td>Oui (10 max)</td>
-</tr>
-<tr>
-<td>Reporting</td>
-<td>Standard Intune</td>
-<td>Near real-time, export diagnostics intégré</td>
-</tr>
-<tr>
-<td>OS minimum</td>
-<td>Windows 10 / 11</td>
-<td>Windows 11 22H2 ou 23H2 + KB5035942, ou 24H2+</td>
-</tr>
-<tr>
-<td>Clouds souverains</td>
-<td>Commercial</td>
-<td>Commercial + GCC High + DoD</td>
-</tr>
-<tr>
-<td>Type d'appareil par défaut</td>
-<td>Corporate</td>
-<td>Personal (sauf Corporate Identifier)</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition tip">
-<p class="admonition-title">Choix MSP — règle simple</p>
-<ul>
-<li>Environnement <strong>cloud-only</strong>, Windows 11, tenant récent → Device Preparation</li>
-<li><strong>Hybrid Join</strong>, <strong>Self-deploying</strong> (kiosque, borne), <strong>pre-provisioning</strong> OEM, co-management → v1 obligatoire</li>
-<li>Les deux peuvent cohabiter dans le même tenant, mais <strong>jamais</strong> sur le même device (v1 prend toujours le dessus).</li>
-</ul>
+<h1 id="microsoft-graph">Microsoft Graph<a class="headerlink" href="#microsoft-graph" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">À venir</p>
+<p>Cette section est en cours de construction.</p>
 </div>
-<h2 id="scenarios-v1-en-bref">Scénarios v1 en bref<a class="headerlink" href="#scenarios-v1-en-bref" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>User-driven</strong> : l'utilisateur déballe, se connecte avec son compte Entra, le device se joint et s'enrôle. Le cas 90 % des déploiements MSP.</li>
-<li><strong>Self-deploying</strong> : aucun utilisateur pendant l'OOBE. Requiert TPM 2.0 avec attestation. Utile pour bornes, salles de réunion, kiosques.</li>
-<li><strong>Pre-provisioned</strong> (ex-White Glove) : le technicien fait tourner l'ESP côté device en atelier, l'utilisateur finit en quelques minutes à la réception. Pratique pour les flottes livrées au MSP avant dispatch.</li>
-<li><strong>Existing device</strong> : conversion d'un poste déjà en production vers Autopilot, via un package Intune.</li>
-</ul>
-<h2 id="prerequis-entra-id-et-licences">Prérequis Entra ID et licences<a class="headerlink" href="#prerequis-entra-id-et-licences" title="Permanent link">&para;</a></h2>
-<p>Côté <strong>licences</strong> (v1 comme v2) :</p>
-<ul>
-<li>Intune (inclus dans M365 Business Premium, M365 E3/E5, EMS E3/E5)</li>
-<li>Entra ID P1 minimum (MDM auto-enrollment, group-based targeting)</li>
-</ul>
-<p>Côté <strong>tenant Entra</strong> :</p>
-<ul>
-<li>MDM auto-enrollment configuré : <em>Entra admin center → Mobility (MDM and WIP) → Microsoft Intune → User scope = All ou Some</em></li>
-<li>Branding de la page de connexion configuré (sinon OOBE affiche un message d'erreur trompeur)</li>
-<li>Device settings : <em>Users may join devices to Microsoft Entra</em> = All (ou scope groupe)</li>
-</ul>
-<p>Spécifique <strong>Device Preparation (v2)</strong> :</p>
-<ul>
-<li>Groupe de sécurité Entra <strong>assignable</strong> (pas dynamique) pour l'<em>Enrollment Time Grouping</em></li>
-<li>Le compte de service <code>Intune Autopilot ConfigurationManager</code> doit être <strong>Owner</strong> du groupe (sinon le device ne peut pas s'ajouter au groupe pendant l'enrôlement — erreur classique)</li>
-<li>Optionnel mais recommandé : <em>Corporate Identifiers</em> (serial, manufacturer, model) pour marquer les devices comme Corporate</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Piège Device Preparation</p>
-<p>Si le groupe assignable n'a pas le bon propriétaire, le déploiement échoue avec une erreur générique sans pointer la cause. Vérifier les propriétaires du groupe <em>avant</em> le premier test.</p>
-</div>
-<h2 id="workflow-de-provisionnement">Workflow de provisionnement<a class="headerlink" href="#workflow-de-provisionnement" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Device neuf allumé] --&gt; B{Enregistré&lt;br/&gt;Autopilot v1 ?}
-    B -- Oui --&gt; C[OOBE détecte le profil v1]
-    B -- Non --&gt; D{Device Preparation&lt;br/&gt;policy assignée&lt;br/&gt;à l'utilisateur ?}
-
-    C --&gt; E[Branding tenant&lt;br/&gt;+ pages OOBE masquées]
-    E --&gt; F[Connexion Entra utilisateur]
-    F --&gt; G[Join Entra ID&lt;br/&gt;+ enrôlement Intune]
-    G --&gt; H[ESP : apps, policies,&lt;br/&gt;certificats, scripts]
-    H --&gt; I[Bureau utilisateur]
-
-    D -- Oui --&gt; J[OOBE standard&lt;br/&gt;jusqu'au sign-in]
-    J --&gt; K[Connexion Entra utilisateur]
-    K --&gt; L[Ajout au groupe&lt;br/&gt;Enrollment Time]
-    L --&gt; M[Push policy +&lt;br/&gt;10 apps + 10 scripts]
-    M --&gt; N[Progress bar unifiée]
-    N --&gt; I
-
-    D -- Non --&gt; O[OOBE Windows standard&lt;br/&gt;pas de provisioning auto]</code></pre>
-<h2 id="cas-dusage-msp">Cas d'usage MSP<a class="headerlink" href="#cas-dusage-msp" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Nouveau client cloud-first Windows 11</strong> : partir directement sur Device Preparation. Pas de hash à collecter, onboarding plus rapide.</li>
-<li><strong>Client existant avec AD on-prem + ConfigMgr</strong> : rester sur v1 Hybrid Join tant que la migration Entra Join n'est pas terminée.</li>
-<li><strong>Flotte de bornes / salles de réunion</strong> : v1 Self-deploying, pas d'alternative en v2 aujourd'hui.</li>
-<li><strong>Préparation atelier avant livraison</strong> : v1 Pre-provisioned. Le technicien valide le device, l'utilisateur final reçoit un poste quasi prêt.</li>
-</ul>
-<h2 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h2>
-<div class="admonition danger">
-<p class="admonition-title">Actions irréversibles</p>
-<ul>
-<li>Supprimer un device d'Autopilot <strong>ne</strong> le désenrôle <strong>pas</strong> d'Intune automatiquement. Toujours faire les deux.</li>
-<li>Passer un device de v1 à v2 impose de le désenregistrer d'Autopilot <strong>et</strong> de le retirer d'Intune/Entra avant reset.</li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">À vérifier avant chaque déploiement</p>
-<ul>
-<li>Heure système du device correcte (sinon échec TLS avec les services Autopilot)</li>
-<li>Connexion réseau câblée ou Wi-Fi avec accès aux <a href="https://learn.microsoft.com/en-us/autopilot/requirements-network">endpoints Autopilot requis</a></li>
-<li>Utilisateur a bien une licence Intune <strong>avant</strong> le premier sign-in (erreur la plus fréquente)</li>
-</ul>
-</div>
-<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a> <em>(à venir)</em></li>
-<li><a href="autopilot-v2-setup.md">Configurer une politique Device Preparation pas à pas</a> <em>(à venir)</em></li>
-<li><a href="autopilot-troubleshooting.md">Troubleshooting ESP et codes d'erreur courants</a> <em>(à venir)</em></li>
-</ul>
 
 
 
@@ -926,10 +701,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

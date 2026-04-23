@@ -44,20 +44,11 @@
 .md-search__input { color: #F0F6FC; }
 .md-search__input::placeholder { color: #8B949E; }
 
-/* ── Liens & accents ──────────────────────────────────────────────────────── */
+/* ── Liens ────────────────────────────────────────────────────────────────── */
 
-[data-md-color-scheme="slate"] .md-content a:not([class]) {
-  color: #58A6FF;
-}
-
-[data-md-color-scheme="slate"] .md-nav__link:is(:focus, :hover) {
-  color: #58A6FF;
-}
-
-[data-md-color-scheme="slate"] .md-nav__link--active {
-  color: #ffffff;
-  font-weight: 600;
-}
+[data-md-color-scheme="slate"] .md-content a:not([class]) { color: #58A6FF; }
+[data-md-color-scheme="slate"] .md-nav__link:is(:focus, :hover) { color: #58A6FF; }
+[data-md-color-scheme="slate"] .md-nav__link--active { color: #ffffff; font-weight: 600; }
 
 /* ── Tokens cards par scheme ──────────────────────────────────────────────── */
 
@@ -73,7 +64,7 @@
   --kb-card-desc:  #656d76;
 }
 
-/* ── Hero page d'accueil ──────────────────────────────────────────────────── */
+/* ── Hero ─────────────────────────────────────────────────────────────────── */
 
 .kb-hero {
   text-align: center;
@@ -129,34 +120,28 @@
   color: var(--kb-card-title);
 }
 
-.kb-card--disabled {
+.kb-disabled {
   opacity: 0.4;
   pointer-events: none;
   cursor: default;
 }
 
-/* ── Header card : icône + titre sur la même ligne ────────────────────────── */
+/* ── Card header : icône + titre sur la même ligne ────────────────────────── */
 
-.kb-card__header {
+.kb-card-header {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 14px;
 }
 
-.kb-card__icon {
-  width: 48px;
-  height: 48px;
+.kb-card-icon {
+  font-size: 28px;
+  line-height: 1;
   flex-shrink: 0;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  background: var(--_icon-bg, rgba(88, 166, 255, 0.1));
 }
 
-.kb-card__title {
+.kb-card-header h3 {
   font-size: 1rem;
   font-weight: 700;
   color: var(--kb-card-title);
@@ -164,7 +149,7 @@
   line-height: 1.2;
 }
 
-.kb-card__desc {
+.kb-card > p {
   font-size: 0.82rem;
   color: var(--kb-card-desc);
   line-height: 1.55;
@@ -172,33 +157,34 @@
   flex: 1;
 }
 
-/* Compteur "X pages >" en couleur de bordure ─────────────────────────────── */
+/* ── Compteur "X pages ›" en couleur de bordure ───────────────────────────── */
 
-.kb-card__count {
+.kb-card-count {
+  display: block;
   margin-top: 16px;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--_accent, #58A6FF);
 }
 
-.kb-card--disabled .kb-card__count {
+.kb-disabled .kb-card-count {
   color: #8B949E;
 }
 
-/* ── Hover glow par variante ──────────────────────────────────────────────── */
+/* ── Hover glow par section ───────────────────────────────────────────────── */
 
-.kb-card--intune:hover   { box-shadow: 0 0 0 1px #3B82F6, 0 8px 32px rgba(59,  130, 246, 0.25); }
-.kb-card--datto:hover    { box-shadow: 0 0 0 1px #F97316, 0 8px 32px rgba(249, 115,  22, 0.25); }
-.kb-card--m365:hover     { box-shadow: 0 0 0 1px #22C55E, 0 8px 32px rgba(34,  197,  94, 0.25); }
-.kb-card--entra:hover    { box-shadow: 0 0 0 1px #A855F7, 0 8px 32px rgba(168,  85, 247, 0.25); }
-.kb-card--graph:hover    { box-shadow: 0 0 0 1px #06B6D4, 0 8px 32px rgba(6,   182, 212, 0.25); }
-.kb-card--workflow:hover { box-shadow: 0 0 0 1px #EAB308, 0 8px 32px rgba(234, 179,   8, 0.25); }
+.kb-intune:hover   { box-shadow: 0 0 0 1px #3B82F6, 0 8px 32px rgba(59,  130, 246, 0.25); }
+.kb-datto:hover    { box-shadow: 0 0 0 1px #F97316, 0 8px 32px rgba(249, 115,  22, 0.25); }
+.kb-m365:hover     { box-shadow: 0 0 0 1px #22C55E, 0 8px 32px rgba(34,  197,  94, 0.25); }
+.kb-entra:hover    { box-shadow: 0 0 0 1px #A855F7, 0 8px 32px rgba(168,  85, 247, 0.25); }
+.kb-graph:hover    { box-shadow: 0 0 0 1px #06B6D4, 0 8px 32px rgba(6,   182, 212, 0.25); }
+.kb-workflow:hover { box-shadow: 0 0 0 1px #EAB308, 0 8px 32px rgba(234, 179,   8, 0.25); }
 
-/* ── Variantes couleur (border + icône) ───────────────────────────────────── */
+/* ── Couleurs par section (border + icône) ────────────────────────────────── */
 
-.kb-card--intune   { --_accent: #3B82F6; --_icon-bg: rgba(59,  130, 246, 0.12); }
-.kb-card--datto    { --_accent: #F97316; --_icon-bg: rgba(249, 115,  22, 0.12); }
-.kb-card--m365     { --_accent: #22C55E; --_icon-bg: rgba(34,  197,  94, 0.12); }
-.kb-card--entra    { --_accent: #A855F7; --_icon-bg: rgba(168,  85, 247, 0.12); }
-.kb-card--graph    { --_accent: #06B6D4; --_icon-bg: rgba(6,   182, 212, 0.12); }
-.kb-card--workflow { --_accent: #EAB308; --_icon-bg: rgba(234, 179,   8, 0.12); }
+.kb-intune   { --_accent: #3B82F6; }
+.kb-datto    { --_accent: #F97316; }
+.kb-m365     { --_accent: #22C55E; }
+.kb-entra    { --_accent: #A855F7; }
+.kb-graph    { --_accent: #06B6D4; }
+.kb-workflow { --_accent: #EAB308; }
