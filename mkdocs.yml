@@ -65,4 +65,5 @@ nav:
   - Microsoft 365: m365/index.md
   - Entra ID: entra/index.md
   - Microsoft Graph: graph/index.md
+  - PowerAcademy: poweracademy/index.md
   - Workflow KB: workflow/index.md
