@@ -16,7 +16,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
       <h3>Intune</h3>
     </div>
     <p>Autopilot, déploiement d'apps, conformité, devices Windows.</p>
-    <span class="kb-card-count">5 pages ›</span>
+    <span class="kb-card-count">6 pages ›</span>
   </a>
 
   <a href="datto/" class="kb-card kb-datto">
