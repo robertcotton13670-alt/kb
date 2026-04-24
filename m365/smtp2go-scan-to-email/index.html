@@ -6,35 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Section en cours de construction">
+        <meta name="description" content="Configurer un copieur/scanner pour envoyer des mails via SMTP2GO en remplacement d'Exchange Online Basic Auth">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/m365/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/m365/smtp2go-scan-to-email/">
       
       
-        <link rel="prev" href="../datto/">
-      
-      
-        <link rel="next" href="../entra/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Microsoft 365 - ⚡ TechBase</title>
+        <title>Scan-to-email via SMTP2GO - ⚡ TechBase</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#microsoft-365" class="md-skip">
+        <a href="#scan-to-email-via-smtp2go" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href=".." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Microsoft 365
+              Scan-to-email via SMTP2GO
             
           </span>
         </div>
@@ -227,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -246,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../intune/" class="md-tabs__link">
+      <a href="../../intune/" class="md-tabs__link">
         
   
   
@@ -265,7 +261,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../datto/" class="md-tabs__link">
+      <a href="../../datto/" class="md-tabs__link">
         
   
   
@@ -282,11 +278,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
         
   
   
@@ -305,7 +299,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../entra/" class="md-tabs__link">
+      <a href="../../entra/" class="md-tabs__link">
         
   
   
@@ -324,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../graph/" class="md-tabs__link">
+      <a href="../../graph/" class="md-tabs__link">
         
   
   
@@ -343,7 +337,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../poweracademy/" class="md-tabs__link">
+      <a href="../../poweracademy/" class="md-tabs__link">
         
   
   
@@ -378,7 +372,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -408,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -435,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/" class="md-nav__link">
+      <a href="../../intune/" class="md-nav__link">
         
   
   
@@ -462,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/" class="md-nav__link">
+      <a href="../../datto/" class="md-nav__link">
         
   
   
@@ -486,37 +480,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Microsoft 365
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -532,37 +499,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages disponibles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -574,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entra/" class="md-nav__link">
+      <a href="../../entra/" class="md-nav__link">
         
   
   
@@ -601,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph/" class="md-nav__link">
+      <a href="../../graph/" class="md-nav__link">
         
   
   
@@ -628,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/" class="md-nav__link">
+      <a href="../../poweracademy/" class="md-nav__link">
         
   
   
@@ -675,10 +611,76 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
+  <a href="#prerequis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pages disponibles
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-verifier-le-domaine-dans-smtp2go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vérifier le domaine dans SMTP2GO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-creer-un-utilisateur-smtp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Créer un utilisateur SMTP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configurer-le-copieur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configurer le copieur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dmarc-optionnel-mais-recommande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DMARC (optionnel mais recommandé)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
       
     </span>
   </a>
@@ -705,11 +707,124 @@
   
 
 
-<h1 id="microsoft-365">Microsoft 365<a class="headerlink" href="#microsoft-365" title="Permanent link">&para;</a></h1>
-<p>Tenant M365, Exchange Online, messagerie et outils de collaboration.</p>
-<h2 id="pages-disponibles">Pages disponibles<a class="headerlink" href="#pages-disponibles" title="Permanent link">&para;</a></h2>
+<h1 id="scan-to-email-via-smtp2go">Scan-to-email via SMTP2GO<a class="headerlink" href="#scan-to-email-via-smtp2go" title="Permanent link">&para;</a></h1>
+<p>Microsoft a supprimé l'authentification basique (Basic Auth) sur Exchange Online. Les copieurs qui envoyaient directement via <code>smtp.office365.com</code> avec un identifiant/mot de passe ne fonctionnent plus. La solution recommandée est d'utiliser un relay SMTP tiers comme SMTP2GO, indépendant de Microsoft.</p>
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="smtp2go-scan-to-email/">Scan-to-email via SMTP2GO</a></li>
+<li>Accès au DNS du domaine client (Cloudflare, OVH, etc.)</li>
+<li>Un compte SMTP2GO (offre gratuite : 1 000 mails/mois, suffisant pour un copieur de bureau)</li>
+<li>Accès à l'interface web du copieur (via son IP sur le réseau local)</li>
+</ul>
+<h2 id="1-verifier-le-domaine-dans-smtp2go">1. Vérifier le domaine dans SMTP2GO<a class="headerlink" href="#1-verifier-le-domaine-dans-smtp2go" title="Permanent link">&para;</a></h2>
+<p>Dans l'interface SMTP2GO : Sending &gt; Verified Senders &gt; Sender Domains &gt; Add Sender Domain.</p>
+<p>Entrer le domaine client (ex. <code>clientdomaine.fr</code>). SMTP2GO génère 3 enregistrements CNAME à ajouter au DNS :</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Hostname (exemple)</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNAME</td>
+<td><code>em895751.clientdomaine.fr</code></td>
+<td><code>return.smtp2go.net</code></td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td><code>s895751._domainkey.clientdomaine.fr</code></td>
+<td><code>dkim.smtp2go.net</code></td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td><code>link.clientdomaine.fr</code></td>
+<td><code>track.smtp2go.net</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Cloudflare</p>
+<p>Les CNAME doivent être en mode "DNS only" (nuage gris). Le mode proxy (nuage orange) empêche la vérification.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Propagation DNS</p>
+<p>Vérifier la propagation sur <a href="https://dnschecker.org/">dnschecker.org</a> (type CNAME) avant de cliquer Verify. Délai possible jusqu'à 72h selon le bureau d'enregistrement.</p>
+</div>
+<p>Une fois les 3 CNAME en place, cliquer Verify dans SMTP2GO. Les 3 lignes passent au vert (✓).</p>
+<div class="admonition info">
+<p class="admonition-title">SPF et DKIM automatiques</p>
+<p>Pas besoin de modifier l'enregistrement SPF existant. Le premier CNAME (return-path) gère le SPF automatiquement via VERP. DKIM est couvert par le second CNAME.</p>
+</div>
+<h2 id="2-creer-un-utilisateur-smtp">2. Créer un utilisateur SMTP<a class="headerlink" href="#2-creer-un-utilisateur-smtp" title="Permanent link">&para;</a></h2>
+<p>Sending &gt; SMTP Users &gt; Add SMTP User.</p>
+<ul>
+<li>Username : ex. <code>copieur@clientdomaine.fr</code> (format libre, pas besoin que la boîte existe)</li>
+<li>Password : utiliser le générateur SMTP2GO ou définir un mot de passe fort</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ces identifiants sont propres à SMTP2GO. Ne pas utiliser un compte M365 ou Google existant.</p>
+</div>
+<p>Noter le username et le mot de passe — ils seront saisis dans le copieur.</p>
+<h2 id="3-configurer-le-copieur">3. Configurer le copieur<a class="headerlink" href="#3-configurer-le-copieur" title="Permanent link">&para;</a></h2>
+<p>Accéder à l'interface web du copieur en saisissant son IP dans un navigateur (même réseau). L'IP se trouve en imprimant une page de configuration réseau depuis le menu du copieur, ou dans la liste des appareils connectés du routeur.</p>
+<p>Chercher la section Email Settings ou SMTP Settings (généralement sous Network ou Scan) :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Serveur SMTP  : mail.smtp2go.com
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Port          : 2525  (ou 587 si 2525 bloqué)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Authentification : SMTP Auth
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Username      : (username créé à l&#39;étape 2)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Password      : (mot de passe créé à l&#39;étape 2)
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Port 25</p>
+<p>Ne pas utiliser le port 25 — il est bloqué en sortie par la quasi-totalité des FAI pour lutter contre le spam.</p>
+</div>
+<p>Lancer le test d'envoi depuis l'interface du copieur pour valider.</p>
+<h2 id="depannage">Dépannage<a class="headerlink" href="#depannage" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Cause probable</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vérification domaine KO</td>
+<td>DNS pas encore propagé</td>
+<td>Attendre + vérifier sur dnschecker.org</td>
+</tr>
+<tr>
+<td>Test d'envoi échoue</td>
+<td>Mauvais identifiants</td>
+<td>Vérifier username/password sans espace</td>
+</tr>
+<tr>
+<td>Erreur connexion port 2525</td>
+<td>Port bloqué par le FAI</td>
+<td>Essayer le port 587</td>
+</tr>
+<tr>
+<td>Mails en spam</td>
+<td>DKIM pas encore propagé ou DMARC absent</td>
+<td>Attendre la propagation, ajouter un enregistrement DMARC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dmarc-optionnel-mais-recommande">DMARC (optionnel mais recommandé)<a class="headerlink" href="#dmarc-optionnel-mais-recommande" title="Permanent link">&para;</a></h2>
+<p>SMTP2GO ne gère pas le DMARC. Si le domaine n'en a pas, ajouter un enregistrement TXT minimal :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Nom  : _dmarc.clientdomaine.fr
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Type : TXT
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Valeur : v=DMARC1; p=none; rua=mailto:dmarc@clientdomaine.fr
+</code></pre></div>
+<p>Commencer avec <code>p=none</code> (monitoring uniquement) avant de passer à <code>p=quarantine</code> ou <code>p=reject</code>.</p>
+<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="multi-tenant.md">Gestion multi-tenant M365</a> <em>(à venir)</em></li>
+<li><a href="dns-deliverabilite.md">DNS et délivrabilité email</a> <em>(à venir)</em></li>
 </ul>
 
 
@@ -769,10 +884,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
