@@ -28,13 +28,13 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
     <span class="kb-card-count">1 page ›</span>
   </a>
 
-  <a href="m365/" class="kb-card kb-m365 kb-disabled">
+  <a href="m365/" class="kb-card kb-m365">
     <div class="kb-card-header">
       <div class="kb-card-icon">☁️</div>
       <h3>Microsoft 365</h3>
     </div>
     <p>Tenant M365, Exchange Online, SharePoint, Teams.</p>
-    <span class="kb-card-count">À venir</span>
+    <span class="kb-card-count">1 page ›</span>
   </a>
 
   <a href="entra/" class="kb-card kb-entra kb-disabled">

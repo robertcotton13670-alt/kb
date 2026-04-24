@@ -5,5 +5,8 @@ description: Section en cours de construction
 
 # Microsoft 365
 
-!!! info "À venir"
-    Cette section est en cours de construction.
+Tenant M365, Exchange Online, messagerie et outils de collaboration.
+
+## Pages disponibles
+
+- [Scan-to-email via SMTP2GO](smtp2go-scan-to-email.md)
