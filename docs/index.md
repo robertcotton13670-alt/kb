@@ -55,4 +55,13 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
     <span class="kb-card-count">À venir</span>
   </a>
 
+  <a href="poweracademy/" class="kb-card kb-poweracademy">
+    <div class="kb-card-header">
+      <div class="kb-card-icon">🎓</div>
+      <h3>PowerAcademy</h3>
+    </div>
+    <p>Modules de formation MySerenity — offre MSP Poweriti basée sur M365.</p>
+    <span class="kb-card-count">15 pages ›</span>
+  </a>
+
 </div>
