@@ -55,13 +55,4 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
     <span class="kb-card-count">À venir</span>
   </a>
 
-  <a href="workflow/" class="kb-card kb-workflow">
-    <div class="kb-card-header">
-      <div class="kb-card-icon">📋</div>
-      <h3>Workflow KB</h3>
-    </div>
-    <p>Architecture du site, commandes, circuit de publication.</p>
-    <span class="kb-card-count">1 page ›</span>
-  </a>
-
 </div>
