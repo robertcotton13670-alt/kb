@@ -185,7 +185,7 @@
 .kb-datto:hover    { box-shadow: 0 0 0 1px #F97316, 0 8px 32px rgba(249, 115,  22, 0.25); }
 .kb-m365:hover     { box-shadow: 0 0 0 1px #22C55E, 0 8px 32px rgba(34,  197,  94, 0.25); }
 .kb-entra:hover    { box-shadow: 0 0 0 1px #A855F7, 0 8px 32px rgba(168,  85, 247, 0.25); }
-.kb-graph:hover    { box-shadow: 0 0 0 1px #06B6D4, 0 8px 32px rgba(6,   182, 212, 0.25); }
+.kb-refs:hover     { box-shadow: 0 0 0 1px #06B6D4, 0 8px 32px rgba(6,   182, 212, 0.25); }
 .kb-poweracademy:hover { box-shadow: 0 0 0 1px #EAB308, 0 8px 32px rgba(234, 179,   8, 0.25); }
 
 /* ── Couleurs par section (border + icône) ────────────────────────────────── */
@@ -194,5 +194,5 @@
 .kb-datto    { --_accent: #F97316; --_icon-bg: rgba(249, 115,  22, 0.15); }
 .kb-m365     { --_accent: #22C55E; --_icon-bg: rgba(34,  197,  94, 0.15); }
 .kb-entra    { --_accent: #A855F7; --_icon-bg: rgba(168,  85, 247, 0.15); }
-.kb-graph    { --_accent: #06B6D4; --_icon-bg: rgba(6,   182, 212, 0.15); }
+.kb-refs     { --_accent: #06B6D4; --_icon-bg: rgba(6,   182, 212, 0.15); }
 .kb-poweracademy { --_accent: #EAB308; --_icon-bg: rgba(234, 179,   8, 0.15); }

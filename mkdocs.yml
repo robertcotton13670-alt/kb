@@ -64,5 +64,5 @@ nav:
   - Datto RMM: datto/index.md
   - Microsoft 365: m365/index.md
   - Entra ID: entra/index.md
-  - Microsoft Graph: graph/index.md
+  - Commandes & Références: refs/index.md
   - PowerAcademy: poweracademy/index.md

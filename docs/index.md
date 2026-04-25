@@ -46,13 +46,13 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
     <span class="kb-card-count">À venir</span>
   </a>
 
-  <a href="graph/" class="kb-card kb-graph kb-disabled">
+  <a href="refs/" class="kb-card kb-refs">
     <div class="kb-card-header">
-      <div class="kb-card-icon">⚡</div>
-      <h3>Microsoft Graph</h3>
+      <div class="kb-card-icon">📋</div>
+      <h3>Commandes & Références</h3>
     </div>
-    <p>Scripts PowerShell, automatisation multi-tenant, API Graph.</p>
-    <span class="kb-card-count">À venir</span>
+    <p>Commandes Windows, portails admin, outils en ligne et procédures rapides.</p>
+    <span class="kb-card-count">7 pages ›</span>
   </a>
 
   <a href="poweracademy/" class="kb-card kb-poweracademy">
