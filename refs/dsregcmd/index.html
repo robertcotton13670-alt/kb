@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Autopilot v1 vs Device Preparation (v2), prérequis Entra ID et workflow de provisionnement">
+        <meta name="description" content="Diagnostic et gestion du statut Entra Join, Hybrid Join, PRT et MDM enrollment">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/autopilot/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/refs/dsregcmd/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Windows Autopilot — vue d'ensemble - ⚡ TechBase</title>
+        <title>dsregcmd - ⚡ TechBase</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-autopilot" class="md-skip">
+        <a href="#dsregcmd" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows Autopilot — vue d'ensemble
+              dsregcmd
             
           </span>
         </div>
@@ -242,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../intune/" class="md-tabs__link">
         
   
   
@@ -318,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../refs/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link">
         
   
   
@@ -429,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../intune/" class="md-nav__link">
         
   
   
@@ -537,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../refs/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -611,10 +611,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#v1-vs-device-preparation-v2" class="md-nav__link">
+  <a href="#commandes-principales" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1 vs Device Preparation (v2)
+        Commandes principales
       
     </span>
   </a>
@@ -622,10 +622,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scenarios-v1-en-bref" class="md-nav__link">
+  <a href="#lire-le-resultat-de-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scénarios v1 en bref
+        Lire le résultat de /status
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lire le résultat de /status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device State
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-state-le-prt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSO State — Le PRT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mdm-enrollment-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MDM — Enrollment Intune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forcer-lenrollment-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forcer l'enrollment Intune
       
     </span>
   </a>
@@ -633,10 +683,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequis-entra-id-et-licences" class="md-nav__link">
+  <a href="#diagnostic-pas-a-pas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis Entra ID et licences
+        Diagnostic pas à pas
       
     </span>
   </a>
@@ -644,10 +694,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-de-provisionnement" class="md-nav__link">
+  <a href="#logs-associes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow de provisionnement
+        Logs associés
       
     </span>
   </a>
@@ -655,21 +705,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cas-dusage-msp" class="md-nav__link">
+  <a href="#cas-dusage-msp-frequents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cas d'usage MSP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pieges-courants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pièges courants
+        Cas d'usage MSP fréquents
       
     </span>
   </a>
@@ -707,166 +746,169 @@
   
 
 
-<h1 id="windows-autopilot">Windows Autopilot<a class="headerlink" href="#windows-autopilot" title="Permanent link">&para;</a></h1>
-<p>Autopilot est le service cloud Microsoft pour provisionner des postes Windows directement depuis l'OOBE, sans image ni intervention physique. Le poste sort de son carton, l'utilisateur se connecte, Intune fait le reste.</p>
-<p>Deux générations coexistent aujourd'hui dans le même tenant : Autopilot <em>classic</em> (v1) et Autopilot <em>Device Preparation</em> (v2).</p>
-<h2 id="v1-vs-device-preparation-v2">v1 vs Device Preparation (v2)<a class="headerlink" href="#v1-vs-device-preparation-v2" title="Permanent link">&para;</a></h2>
+<h1 id="dsregcmd">dsregcmd<a class="headerlink" href="#dsregcmd" title="Permanent link">&para;</a></h1>
+<p><code>dsregcmd</code> est l'outil Windows natif pour diagnostiquer et gérer l'état d'un poste vis-à-vis d'Entra ID (Azure AD Join, Hybrid Join, PRT, MDM enrollment). Indispensable en MSP pour comprendre pourquoi un poste n'apparaît pas dans Intune ou ne reçoit pas les politiques.</p>
+<h2 id="commandes-principales">Commandes principales<a class="headerlink" href="#commandes-principales" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Critère</th>
-<th>Autopilot v1 (classic)</th>
-<th>Device Preparation (v2)</th>
+<th>Commande</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Approche</td>
-<td>Device-centric (device pré-enregistré)</td>
-<td>User-centric (enrôlement au sign-in)</td>
+<td><code>dsregcmd /status</code></td>
+<td>Affiche l'état complet du poste</td>
 </tr>
 <tr>
-<td>Hardware hash</td>
-<td>Requis (upload préalable)</td>
-<td>Non requis</td>
+<td><code>dsregcmd /leave</code></td>
+<td>Quitte le join Entra (redémarrage requis pour se rejoindre)</td>
 </tr>
 <tr>
-<td>Identité</td>
-<td>Entra Join + Entra Hybrid Join</td>
-<td>Entra Join uniquement</td>
-</tr>
-<tr>
-<td>Scénarios</td>
-<td>User-driven, Self-deploying, Pre-provisioned, Existing</td>
-<td>User-driven, Automatic (Windows 365)</td>
-</tr>
-<tr>
-<td>Co-management (Intune + ConfigMgr)</td>
-<td>Supporté</td>
-<td>Non supporté</td>
-</tr>
-<tr>
-<td>ESP</td>
-<td>Enrollment Status Page classique</td>
-<td>Progress bar unifiée, pas d'ESP séparé</td>
-</tr>
-<tr>
-<td>Apps pendant OOBE</td>
-<td>Illimité (tracké via ESP)</td>
-<td>10 max (sélection explicite)</td>
-</tr>
-<tr>
-<td>Scripts PowerShell pré-desktop</td>
-<td>Non</td>
-<td>Oui (10 max)</td>
-</tr>
-<tr>
-<td>Reporting</td>
-<td>Standard Intune</td>
-<td>Near real-time, export diagnostics intégré</td>
-</tr>
-<tr>
-<td>OS minimum</td>
-<td>Windows 10 / 11</td>
-<td>Windows 11 22H2 ou 23H2 + KB5035942, ou 24H2+</td>
-</tr>
-<tr>
-<td>Clouds souverains</td>
-<td>Commercial</td>
-<td>Commercial + GCC High + DoD</td>
-</tr>
-<tr>
-<td>Type d'appareil par défaut</td>
-<td>Corporate</td>
-<td>Personal (sauf Corporate Identifier)</td>
+<td><code>dsregcmd /join</code></td>
+<td>Force le rejoin (rare, généralement automatique)</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition tip">
-<p class="admonition-title">Choix MSP — règle simple</p>
-<ul>
-<li>Environnement <strong>cloud-only</strong>, Windows 11, tenant récent → Device Preparation</li>
-<li><strong>Hybrid Join</strong>, <strong>Self-deploying</strong> (kiosque, borne), <strong>pre-provisioning</strong> OEM, co-management → v1 obligatoire</li>
-<li>Les deux peuvent cohabiter dans le même tenant, mais <strong>jamais</strong> sur le même device (v1 prend toujours le dessus).</li>
-</ul>
-</div>
-<h2 id="scenarios-v1-en-bref">Scénarios v1 en bref<a class="headerlink" href="#scenarios-v1-en-bref" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>User-driven</strong> : l'utilisateur déballe, se connecte avec son compte Entra, le device se joint et s'enrôle. Le cas 90 % des déploiements MSP.</li>
-<li><strong>Self-deploying</strong> : aucun utilisateur pendant l'OOBE. Requiert TPM 2.0 avec attestation. Utile pour bornes, salles de réunion, kiosques.</li>
-<li><strong>Pre-provisioned</strong> (ex-White Glove) : le technicien fait tourner l'ESP côté device en atelier, l'utilisateur finit en quelques minutes à la réception. Pratique pour les flottes livrées au MSP avant dispatch.</li>
-<li><strong>Existing device</strong> : conversion d'un poste déjà en production vers Autopilot, via un package Intune.</li>
-</ul>
-<h2 id="prerequis-entra-id-et-licences">Prérequis Entra ID et licences<a class="headerlink" href="#prerequis-entra-id-et-licences" title="Permanent link">&para;</a></h2>
-<p>Côté <strong>licences</strong> (v1 comme v2) :</p>
-<ul>
-<li>Intune (inclus dans M365 Business Premium, M365 E3/E5, EMS E3/E5)</li>
-<li>Entra ID P1 minimum (MDM auto-enrollment, group-based targeting)</li>
-</ul>
-<p>Côté <strong>tenant Entra</strong> :</p>
-<ul>
-<li>MDM auto-enrollment configuré : <em>Entra admin center → Mobility (MDM and WIP) → Microsoft Intune → User scope = All ou Some</em></li>
-<li>Branding de la page de connexion configuré (sinon OOBE affiche un message d'erreur trompeur)</li>
-<li>Device settings : <em>Users may join devices to Microsoft Entra</em> = All (ou scope groupe)</li>
-</ul>
-<p>Spécifique <strong>Device Preparation (v2)</strong> :</p>
-<ul>
-<li>Groupe de sécurité Entra <strong>assignable</strong> (pas dynamique) pour l'<em>Enrollment Time Grouping</em></li>
-<li>Le compte de service <code>Intune Autopilot ConfigurationManager</code> doit être <strong>Owner</strong> du groupe (sinon le device ne peut pas s'ajouter au groupe pendant l'enrôlement — erreur classique)</li>
-<li>Optionnel mais recommandé : <em>Corporate Identifiers</em> (serial, manufacturer, model) pour marquer les devices comme Corporate</li>
-</ul>
 <div class="admonition warning">
-<p class="admonition-title">Piège Device Preparation</p>
-<p>Si le groupe assignable n'a pas le bon propriétaire, le déploiement échoue avec une erreur générique sans pointer la cause. Vérifier les propriétaires du groupe <em>avant</em> le premier test.</p>
+<p class="admonition-title">dsregcmd /leave</p>
+<p>Après <code>/leave</code>, le poste n'est plus Entra Joined jusqu'au prochain redémarrage et resynchronisation AD. À utiliser uniquement pour dépannage.</p>
 </div>
-<h2 id="workflow-de-provisionnement">Workflow de provisionnement<a class="headerlink" href="#workflow-de-provisionnement" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Device neuf allumé] --&gt; B{Enregistré&lt;br/&gt;Autopilot v1 ?}
-    B -- Oui --&gt; C[OOBE détecte le profil v1]
-    B -- Non --&gt; D{Device Preparation&lt;br/&gt;policy assignée&lt;br/&gt;à l'utilisateur ?}
-
-    C --&gt; E[Branding tenant&lt;br/&gt;+ pages OOBE masquées]
-    E --&gt; F[Connexion Entra utilisateur]
-    F --&gt; G[Join Entra ID&lt;br/&gt;+ enrôlement Intune]
-    G --&gt; H[ESP : apps, policies,&lt;br/&gt;certificats, scripts]
-    H --&gt; I[Bureau utilisateur]
-
-    D -- Oui --&gt; J[OOBE standard&lt;br/&gt;jusqu'au sign-in]
-    J --&gt; K[Connexion Entra utilisateur]
-    K --&gt; L[Ajout au groupe&lt;br/&gt;Enrollment Time]
-    L --&gt; M[Push policy +&lt;br/&gt;10 apps + 10 scripts]
-    M --&gt; N[Progress bar unifiée]
-    N --&gt; I
-
-    D -- Non --&gt; O[OOBE Windows standard&lt;br/&gt;pas de provisioning auto]</code></pre>
-<h2 id="cas-dusage-msp">Cas d'usage MSP<a class="headerlink" href="#cas-dusage-msp" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Nouveau client cloud-first Windows 11</strong> : partir directement sur Device Preparation. Pas de hash à collecter, onboarding plus rapide.</li>
-<li><strong>Client existant avec AD on-prem + ConfigMgr</strong> : rester sur v1 Hybrid Join tant que la migration Entra Join n'est pas terminée.</li>
-<li><strong>Flotte de bornes / salles de réunion</strong> : v1 Self-deploying, pas d'alternative en v2 aujourd'hui.</li>
-<li><strong>Préparation atelier avant livraison</strong> : v1 Pre-provisioned. Le technicien valide le device, l'utilisateur final reçoit un poste quasi prêt.</li>
-</ul>
-<h2 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h2>
+<h2 id="lire-le-resultat-de-status">Lire le résultat de /status<a class="headerlink" href="#lire-le-resultat-de-status" title="Permanent link">&para;</a></h2>
+<p>Le résultat est divisé en sections. Voici les sections clés à analyser :</p>
+<h3 id="device-state">Device State<a class="headerlink" href="#device-state" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+----------------------------------------------------------------------+
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>| Device State                                                         |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>+----------------------------------------------------------------------+
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>AzureAdJoined     : YES       ← Entra ID Join OK
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>EnterpriseJoined  : NO        ← Normal (pas de MDM legacy)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>DomainJoined      : YES       ← Membre du domaine AD on-prem
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>DomainName        : CONTOSO
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Valeur</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AzureAdJoined : YES</code></td>
+<td>Poste joint à Entra ID</td>
+</tr>
+<tr>
+<td><code>DomainJoined : YES</code> + <code>AzureAdJoined : YES</code></td>
+<td>Hybrid Azure AD Join</td>
+</tr>
+<tr>
+<td><code>AzureAdJoined : NO</code></td>
+<td>Poste non joint — vérifier la config Entra Connect</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sso-state-le-prt">SSO State — Le PRT<a class="headerlink" href="#sso-state-le-prt" title="Permanent link">&para;</a></h3>
+<p>Le PRT (Primary Refresh Token) est le jeton qui permet le SSO et conditionne l'accès aux ressources M365.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>+----------------------------------------------------------------------+
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>| SSO State                                                            |
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>+----------------------------------------------------------------------+
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>AzureAdPrt        : YES       ← PRT présent = SSO fonctionnel
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>AzureAdPrtUpdateTime : ...
+</code></pre></div>
 <div class="admonition danger">
-<p class="admonition-title">Actions irréversibles</p>
-<ul>
-<li>Supprimer un device d'Autopilot <strong>ne</strong> le désenrôle <strong>pas</strong> d'Intune automatiquement. Toujours faire les deux.</li>
-<li>Passer un device de v1 à v2 impose de le désenregistrer d'Autopilot <strong>et</strong> de le retirer d'Intune/Entra avant reset.</li>
-</ul>
+<p class="admonition-title">PRT manquant</p>
+<p>Si <code>AzureAdPrt : NO</code>, l'utilisateur n'a pas de SSO M365. Causes fréquentes : compte non synchronisé via Entra Connect, mot de passe expiré, Conditional Access bloquant l'obtention du PRT.</p>
 </div>
+<h3 id="mdm-enrollment-intune">MDM — Enrollment Intune<a class="headerlink" href="#mdm-enrollment-intune" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>+----------------------------------------------------------------------+
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>| MDM                                                                  |
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>+----------------------------------------------------------------------+
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>MdmUrl            : https://enrollment.manage.microsoft.com/...
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>MdmTouUrl         : https://portal.manage.microsoft.com/...
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>MdmComplianceUrl  : https://portal.manage.microsoft.com/...
+</code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">À vérifier avant chaque déploiement</p>
-<ul>
-<li>Heure système du device correcte (sinon échec TLS avec les services Autopilot)</li>
-<li>Connexion réseau câblée ou Wi-Fi avec accès aux <a href="https://learn.microsoft.com/en-us/autopilot/requirements-network">endpoints Autopilot requis</a></li>
-<li>Utilisateur a bien une licence Intune <strong>avant</strong> le premier sign-in (erreur la plus fréquente)</li>
-</ul>
+<p class="admonition-title">MdmUrl vide</p>
+<p>Si les URLs MDM sont vides, l'auto-enrollment Intune ne peut pas fonctionner. Vérifier dans Entra ID &gt; Appareils &gt; Enrollment automatique que le scope MDM est bien configuré.</p>
 </div>
+<h2 id="forcer-lenrollment-intune">Forcer l'enrollment Intune<a class="headerlink" href="#forcer-lenrollment-intune" title="Permanent link">&para;</a></h2>
+<p>Si le poste est bien Hybrid Joined mais absent d'Intune, forcer l'enrollment :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c"># Méthode 1 — deviceenroller (CMD, pas PowerShell)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">%</span><span class="n">windir</span><span class="p">%\</span><span class="n">system32</span><span class="p">\</span><span class="n">deviceenroller</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">c</span> <span class="p">/</span><span class="n">AutoEnrollMDM</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c"># Méthode 2 — via le planificateur de tâches</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c"># Ouvrir Task Scheduler &gt; Microsoft &gt; Windows &gt; EnterpriseMgmt</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c"># Clic droit sur la tâche &quot;Schedule created by enrollment client&quot; &gt; Run</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">PowerShell vs CMD</p>
+<p>La commande <code>deviceenroller.exe</code> doit être lancée depuis CMD (invite de commandes), pas depuis PowerShell — PowerShell interprète <code>%windir%</code> différemment et génère une erreur.</p>
+</div>
+<h2 id="diagnostic-pas-a-pas">Diagnostic pas à pas<a class="headerlink" href="#diagnostic-pas-a-pas" title="Permanent link">&para;</a></h2>
+<p>Voici le workflow de diagnostic recommandé quand un poste n'apparaît pas dans Intune :</p>
+<pre class="mermaid"><code>graph TD
+    A[dsregcmd /status] --&gt; B{AzureAdJoined ?}
+    B -- NO --&gt; C[Vérifier Entra Connect / sync AD]
+    B -- YES --&gt; D{AzureAdPrt ?}
+    D -- NO --&gt; E[Vérifier compte user, MFA, Conditional Access]
+    D -- YES --&gt; F{MdmUrl renseigné ?}
+    F -- NO --&gt; G[Vérifier scope MDM dans Entra ID &gt; Enrollment auto]
+    F -- YES --&gt; H[Forcer deviceenroller /c /AutoEnrollMDM]
+    H --&gt; I[Vérifier logs DeviceManagement dans eventvwr.msc]</code></pre>
+<h2 id="logs-associes">Logs associés<a class="headerlink" href="#logs-associes" title="Permanent link">&para;</a></h2>
+<p>Dans l'observateur d'événements (<code>eventvwr.msc</code>) :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Applications and Services Logs
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>└── Microsoft
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    └── Windows
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        ├── DeviceManagement-Enterprise-Diagnostics-Provider &gt; Admin
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        └── EnterpriseMgmt
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Filtrer les événements</p>
+<p>Dans l'observateur, filtrer sur les niveaux Erreur et Avertissement pour aller à l'essentiel. Les Event ID 75, 76, 96 correspondent aux tentatives d'enrollment.</p>
+</div>
+<h2 id="cas-dusage-msp-frequents">Cas d'usage MSP fréquents<a class="headerlink" href="#cas-dusage-msp-frequents" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Première vérification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poste absent d'Intune</td>
+<td><code>dsregcmd /status</code> → section MDM</td>
+</tr>
+<tr>
+<td>SSO M365 ne fonctionne pas</td>
+<td><code>dsregcmd /status</code> → <code>AzureAdPrt</code></td>
+</tr>
+<tr>
+<td>Politiques Intune non appliquées</td>
+<td>Vérifier enrollment + PRT</td>
+</tr>
+<tr>
+<td>Poste en double dans Entra ID</td>
+<td><code>dsregcmd /leave</code> puis redémarrage</td>
+</tr>
+<tr>
+<td>Nouveau poste Hybrid non enrollé</td>
+<td>Attendre 90 min ou forcer <code>deviceenroller</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a> <em>(à venir)</em></li>
-<li><a href="autopilot-v2-setup.md">Configurer une politique Device Preparation pas à pas</a> <em>(à venir)</em></li>
-<li><a href="autopilot-troubleshooting.md">Troubleshooting ESP et codes d'erreur courants</a> <em>(à venir)</em></li>
+<li><a href="../">Commandes &amp; références MSP</a></li>
+<li><a href="../autopilot-hash/">Get-WindowsAutopilotInfo — Hardware hash</a></li>
+<li><a href="../rds-sessions/">RDS — Gestion des sessions</a></li>
 </ul>
 
 

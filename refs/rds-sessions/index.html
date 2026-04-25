@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Autopilot v1 vs Device Preparation (v2), prérequis Entra ID et workflow de provisionnement">
+        <meta name="description" content="Commandes RDS pour gérer les sessions utilisateurs, le drain serveur et la communication avec les utilisateurs connectés">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/autopilot/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/refs/rds-sessions/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Windows Autopilot — vue d'ensemble - ⚡ TechBase</title>
+        <title>RDS — Gestion des sessions - ⚡ TechBase</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-autopilot" class="md-skip">
+        <a href="#rds-gestion-des-sessions" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows Autopilot — vue d'ensemble
+              RDS — Gestion des sessions
             
           </span>
         </div>
@@ -242,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../intune/" class="md-tabs__link">
         
   
   
@@ -318,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../refs/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link">
         
   
   
@@ -429,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../intune/" class="md-nav__link">
         
   
   
@@ -537,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../refs/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -611,10 +611,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#v1-vs-device-preparation-v2" class="md-nav__link">
+  <a href="#voir-les-sessions-actives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1 vs Device Preparation (v2)
+        Voir les sessions actives
       
     </span>
   </a>
@@ -622,10 +622,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scenarios-v1-en-bref" class="md-nav__link">
+  <a href="#gerer-une-session" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scénarios v1 en bref
+        Gérer une session
       
     </span>
   </a>
@@ -633,10 +633,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequis-entra-id-et-licences" class="md-nav__link">
+  <a href="#envoyer-un-message-aux-utilisateurs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis Entra ID et licences
+        Envoyer un message aux utilisateurs
       
     </span>
   </a>
@@ -644,10 +644,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-de-provisionnement" class="md-nav__link">
+  <a href="#drain-bloquer-les-nouvelles-connexions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow de provisionnement
+        Drain — Bloquer les nouvelles connexions
       
     </span>
   </a>
@@ -655,10 +655,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cas-dusage-msp" class="md-nav__link">
+  <a href="#procedure-de-maintenance-complete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cas d'usage MSP
+        Procédure de maintenance complète
       
     </span>
   </a>
@@ -666,10 +666,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pieges-courants" class="md-nav__link">
+  <a href="#tableau-recapitulatif-des-commandes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pièges courants
+        Tableau récapitulatif des commandes
       
     </span>
   </a>
@@ -707,166 +707,217 @@
   
 
 
-<h1 id="windows-autopilot">Windows Autopilot<a class="headerlink" href="#windows-autopilot" title="Permanent link">&para;</a></h1>
-<p>Autopilot est le service cloud Microsoft pour provisionner des postes Windows directement depuis l'OOBE, sans image ni intervention physique. Le poste sort de son carton, l'utilisateur se connecte, Intune fait le reste.</p>
-<p>Deux générations coexistent aujourd'hui dans le même tenant : Autopilot <em>classic</em> (v1) et Autopilot <em>Device Preparation</em> (v2).</p>
-<h2 id="v1-vs-device-preparation-v2">v1 vs Device Preparation (v2)<a class="headerlink" href="#v1-vs-device-preparation-v2" title="Permanent link">&para;</a></h2>
+<h1 id="rds-gestion-des-sessions">RDS — Gestion des sessions<a class="headerlink" href="#rds-gestion-des-sessions" title="Permanent link">&para;</a></h1>
+<p>En environnement RDS (Remote Desktop Services), la gestion des sessions utilisateurs depuis la ligne de commande est essentielle pour les interventions de maintenance, les redémarrages planifiés et le support terrain.</p>
+<h2 id="voir-les-sessions-actives">Voir les sessions actives<a class="headerlink" href="#voir-les-sessions-actives" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c"># Lister toutes les sessions (ID, utilisateur, état)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">query</span> <span class="n">session</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c"># Lister uniquement les utilisateurs connectés</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">query</span> <span class="n">user</span>
+</code></pre></div></td></tr></table></div>
+<p>Exemple de résultat <code>query session</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a> SESSIONNAME       USERNAME         ID  STATE   TYPE        DEVICE
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> services                            0  Disc
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> console           Administrateur    1  Conn    wdtshare
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> rdp-tcp#2         jdupont           2  Active  rdpwd
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> rdp-tcp#3         mmartin           3  Active  rdpwd
+</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>Critère</th>
-<th>Autopilot v1 (classic)</th>
-<th>Device Preparation (v2)</th>
+<th>Colonne</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Approche</td>
-<td>Device-centric (device pré-enregistré)</td>
-<td>User-centric (enrôlement au sign-in)</td>
+<td>ID</td>
+<td>Identifiant de session — utilisé pour les commandes ciblées</td>
 </tr>
 <tr>
-<td>Hardware hash</td>
-<td>Requis (upload préalable)</td>
-<td>Non requis</td>
-</tr>
-<tr>
-<td>Identité</td>
-<td>Entra Join + Entra Hybrid Join</td>
-<td>Entra Join uniquement</td>
-</tr>
-<tr>
-<td>Scénarios</td>
-<td>User-driven, Self-deploying, Pre-provisioned, Existing</td>
-<td>User-driven, Automatic (Windows 365)</td>
-</tr>
-<tr>
-<td>Co-management (Intune + ConfigMgr)</td>
-<td>Supporté</td>
-<td>Non supporté</td>
-</tr>
-<tr>
-<td>ESP</td>
-<td>Enrollment Status Page classique</td>
-<td>Progress bar unifiée, pas d'ESP séparé</td>
-</tr>
-<tr>
-<td>Apps pendant OOBE</td>
-<td>Illimité (tracké via ESP)</td>
-<td>10 max (sélection explicite)</td>
-</tr>
-<tr>
-<td>Scripts PowerShell pré-desktop</td>
-<td>Non</td>
-<td>Oui (10 max)</td>
-</tr>
-<tr>
-<td>Reporting</td>
-<td>Standard Intune</td>
-<td>Near real-time, export diagnostics intégré</td>
-</tr>
-<tr>
-<td>OS minimum</td>
-<td>Windows 10 / 11</td>
-<td>Windows 11 22H2 ou 23H2 + KB5035942, ou 24H2+</td>
-</tr>
-<tr>
-<td>Clouds souverains</td>
-<td>Commercial</td>
-<td>Commercial + GCC High + DoD</td>
-</tr>
-<tr>
-<td>Type d'appareil par défaut</td>
-<td>Corporate</td>
-<td>Personal (sauf Corporate Identifier)</td>
+<td>STATE</td>
+<td><code>Active</code> = connecté, <code>Disc</code> = déconnecté mais session active en mémoire</td>
 </tr>
 </tbody>
 </table>
+<h2 id="gerer-une-session">Gérer une session<a class="headerlink" href="#gerer-une-session" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c"># Déconnecter une session (l&#39;utilisateur est déconnecté, session conservée en mémoire)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">logoff</span> <span class="p">&lt;</span><span class="n">ID</span><span class="p">&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="c"># Réinitialiser une session bloquée (fermeture forcée)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">reset</span> <span class="n">session</span> <span class="p">&lt;</span><span class="n">ID</span><span class="p">&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c"># Prendre la main sur une session (shadow)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="n">shadow</span> <span class="p">&lt;</span><span class="n">ID</span><span class="p">&gt;</span> <span class="p">/</span><span class="n">control</span>        <span class="c"># Avec contrôle clavier/souris</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="n">shadow</span> <span class="p">&lt;</span><span class="n">ID</span><span class="p">&gt;</span>                 <span class="c"># Visualisation uniquement</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">logoff vs reset session</p>
+<p><code>logoff</code> déconnecte proprement l'utilisateur mais conserve la session en mémoire (données non sauvegardées perdues). <code>reset session</code> ferme la session de force — à utiliser uniquement si la session est bloquée.</p>
+</div>
 <div class="admonition tip">
-<p class="admonition-title">Choix MSP — règle simple</p>
-<ul>
-<li>Environnement <strong>cloud-only</strong>, Windows 11, tenant récent → Device Preparation</li>
-<li><strong>Hybrid Join</strong>, <strong>Self-deploying</strong> (kiosque, borne), <strong>pre-provisioning</strong> OEM, co-management → v1 obligatoire</li>
-<li>Les deux peuvent cohabiter dans le même tenant, mais <strong>jamais</strong> sur le même device (v1 prend toujours le dessus).</li>
-</ul>
+<p class="admonition-title">Shadow — consentement utilisateur</p>
+<p>Sur Windows Server 2012 R2 et ultérieur, <code>shadow</code> peut nécessiter le consentement de l'utilisateur selon la configuration GPO. Vérifier la politique "Set rules for remote control of Remote Desktop Services user sessions".</p>
 </div>
-<h2 id="scenarios-v1-en-bref">Scénarios v1 en bref<a class="headerlink" href="#scenarios-v1-en-bref" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>User-driven</strong> : l'utilisateur déballe, se connecte avec son compte Entra, le device se joint et s'enrôle. Le cas 90 % des déploiements MSP.</li>
-<li><strong>Self-deploying</strong> : aucun utilisateur pendant l'OOBE. Requiert TPM 2.0 avec attestation. Utile pour bornes, salles de réunion, kiosques.</li>
-<li><strong>Pre-provisioned</strong> (ex-White Glove) : le technicien fait tourner l'ESP côté device en atelier, l'utilisateur finit en quelques minutes à la réception. Pratique pour les flottes livrées au MSP avant dispatch.</li>
-<li><strong>Existing device</strong> : conversion d'un poste déjà en production vers Autopilot, via un package Intune.</li>
-</ul>
-<h2 id="prerequis-entra-id-et-licences">Prérequis Entra ID et licences<a class="headerlink" href="#prerequis-entra-id-et-licences" title="Permanent link">&para;</a></h2>
-<p>Côté <strong>licences</strong> (v1 comme v2) :</p>
-<ul>
-<li>Intune (inclus dans M365 Business Premium, M365 E3/E5, EMS E3/E5)</li>
-<li>Entra ID P1 minimum (MDM auto-enrollment, group-based targeting)</li>
-</ul>
-<p>Côté <strong>tenant Entra</strong> :</p>
-<ul>
-<li>MDM auto-enrollment configuré : <em>Entra admin center → Mobility (MDM and WIP) → Microsoft Intune → User scope = All ou Some</em></li>
-<li>Branding de la page de connexion configuré (sinon OOBE affiche un message d'erreur trompeur)</li>
-<li>Device settings : <em>Users may join devices to Microsoft Entra</em> = All (ou scope groupe)</li>
-</ul>
-<p>Spécifique <strong>Device Preparation (v2)</strong> :</p>
-<ul>
-<li>Groupe de sécurité Entra <strong>assignable</strong> (pas dynamique) pour l'<em>Enrollment Time Grouping</em></li>
-<li>Le compte de service <code>Intune Autopilot ConfigurationManager</code> doit être <strong>Owner</strong> du groupe (sinon le device ne peut pas s'ajouter au groupe pendant l'enrôlement — erreur classique)</li>
-<li>Optionnel mais recommandé : <em>Corporate Identifiers</em> (serial, manufacturer, model) pour marquer les devices comme Corporate</li>
-</ul>
+<h2 id="envoyer-un-message-aux-utilisateurs">Envoyer un message aux utilisateurs<a class="headerlink" href="#envoyer-un-message-aux-utilisateurs" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span>
+<span class="normal"><a href="#__codelineno-3-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c"># Envoyer un message à une session spécifique</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">msg</span> <span class="p">&lt;</span><span class="n">ID</span><span class="p">&gt;</span> <span class="s2">&quot;Votre message ici&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c"># Envoyer un message à tous les utilisateurs connectés</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">msg</span> <span class="p">*</span> <span class="s2">&quot;Le serveur redémarre dans 15 minutes. Veuillez sauvegarder votre travail.&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c"># Envoyer à un utilisateur par nom</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="n">msg</span> <span class="n">jdupont</span> <span class="s2">&quot;Votre session sera fermée dans 5 minutes.&quot;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Prévenir avant une maintenance</p>
+<p>Toujours envoyer un message aux utilisateurs avant un redémarrage serveur. Laisser au moins 10 à 15 minutes pour qu'ils puissent sauvegarder.</p>
+</div>
+<h2 id="drain-bloquer-les-nouvelles-connexions">Drain — Bloquer les nouvelles connexions<a class="headerlink" href="#drain-bloquer-les-nouvelles-connexions" title="Permanent link">&para;</a></h2>
+<p>Le mode drain empêche de nouveaux utilisateurs de se connecter sans déconnecter ceux déjà en session. Indispensable avant une maintenance planifiée.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c"># Activer le drain (bloquer nouvelles connexions)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">change</span> <span class="n">logon</span> <span class="p">/</span><span class="n">drain</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c"># Drain jusqu&#39;au prochain redémarrage uniquement</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="n">change</span> <span class="n">logon</span> <span class="p">/</span><span class="n">drainuntilrestart</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c"># Vérifier l&#39;état actuel</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="n">change</span> <span class="n">logon</span> <span class="p">/</span><span class="n">query</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="c"># Réactiver les connexions après maintenance</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="n">change</span> <span class="n">logon</span> <span class="p">/</span><span class="n">enable</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition warning">
-<p class="admonition-title">Piège Device Preparation</p>
-<p>Si le groupe assignable n'a pas le bon propriétaire, le déploiement échoue avec une erreur générique sans pointer la cause. Vérifier les propriétaires du groupe <em>avant</em> le premier test.</p>
+<p class="admonition-title">change logon /drain</p>
+<p>Le drain ne déconnecte pas les utilisateurs déjà connectés. Il faut attendre qu'ils terminent leur session ou les déconnecter manuellement avec <code>logoff</code>.</p>
 </div>
-<h2 id="workflow-de-provisionnement">Workflow de provisionnement<a class="headerlink" href="#workflow-de-provisionnement" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Device neuf allumé] --&gt; B{Enregistré&lt;br/&gt;Autopilot v1 ?}
-    B -- Oui --&gt; C[OOBE détecte le profil v1]
-    B -- Non --&gt; D{Device Preparation&lt;br/&gt;policy assignée&lt;br/&gt;à l'utilisateur ?}
-
-    C --&gt; E[Branding tenant&lt;br/&gt;+ pages OOBE masquées]
-    E --&gt; F[Connexion Entra utilisateur]
-    F --&gt; G[Join Entra ID&lt;br/&gt;+ enrôlement Intune]
-    G --&gt; H[ESP : apps, policies,&lt;br/&gt;certificats, scripts]
-    H --&gt; I[Bureau utilisateur]
-
-    D -- Oui --&gt; J[OOBE standard&lt;br/&gt;jusqu'au sign-in]
-    J --&gt; K[Connexion Entra utilisateur]
-    K --&gt; L[Ajout au groupe&lt;br/&gt;Enrollment Time]
-    L --&gt; M[Push policy +&lt;br/&gt;10 apps + 10 scripts]
-    M --&gt; N[Progress bar unifiée]
-    N --&gt; I
-
-    D -- Non --&gt; O[OOBE Windows standard&lt;br/&gt;pas de provisioning auto]</code></pre>
-<h2 id="cas-dusage-msp">Cas d'usage MSP<a class="headerlink" href="#cas-dusage-msp" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Nouveau client cloud-first Windows 11</strong> : partir directement sur Device Preparation. Pas de hash à collecter, onboarding plus rapide.</li>
-<li><strong>Client existant avec AD on-prem + ConfigMgr</strong> : rester sur v1 Hybrid Join tant que la migration Entra Join n'est pas terminée.</li>
-<li><strong>Flotte de bornes / salles de réunion</strong> : v1 Self-deploying, pas d'alternative en v2 aujourd'hui.</li>
-<li><strong>Préparation atelier avant livraison</strong> : v1 Pre-provisioned. Le technicien valide le device, l'utilisateur final reçoit un poste quasi prêt.</li>
-</ul>
-<h2 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h2>
-<div class="admonition danger">
-<p class="admonition-title">Actions irréversibles</p>
-<ul>
-<li>Supprimer un device d'Autopilot <strong>ne</strong> le désenrôle <strong>pas</strong> d'Intune automatiquement. Toujours faire les deux.</li>
-<li>Passer un device de v1 à v2 impose de le désenregistrer d'Autopilot <strong>et</strong> de le retirer d'Intune/Entra avant reset.</li>
-</ul>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">À vérifier avant chaque déploiement</p>
-<ul>
-<li>Heure système du device correcte (sinon échec TLS avec les services Autopilot)</li>
-<li>Connexion réseau câblée ou Wi-Fi avec accès aux <a href="https://learn.microsoft.com/en-us/autopilot/requirements-network">endpoints Autopilot requis</a></li>
-<li>Utilisateur a bien une licence Intune <strong>avant</strong> le premier sign-in (erreur la plus fréquente)</li>
-</ul>
-</div>
+<h2 id="procedure-de-maintenance-complete">Procédure de maintenance complète<a class="headerlink" href="#procedure-de-maintenance-complete" title="Permanent link">&para;</a></h2>
+<p>Workflow recommandé avant un redémarrage serveur RDS :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c"># 1. Activer le drain</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">change</span> <span class="n">logon</span> <span class="p">/</span><span class="n">drain</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c"># 2. Prévenir les utilisateurs</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="n">msg</span> <span class="p">*</span> <span class="s2">&quot;Maintenance planifiée dans 15 minutes. Veuillez sauvegarder et vous déconnecter.&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c"># 3. Vérifier les sessions restantes (répéter jusqu&#39;à ce que tout soit vide)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="n">query</span> <span class="n">user</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="c"># 4. Si des sessions persistent après délai, déconnecter</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="n">logoff</span> <span class="n">2</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="n">logoff</span> <span class="n">3</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="c"># 5. Vérifier qu&#39;il ne reste plus de sessions actives</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="n">query</span> <span class="n">session</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="c"># 6. Redémarrer le serveur</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="n">shutdown</span> <span class="p">/</span><span class="nb">r </span><span class="p">/</span><span class="n">t</span> <span class="n">60</span> <span class="p">/</span><span class="n">c</span> <span class="s2">&quot;Redémarrage maintenance - dans 60 secondes&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tableau-recapitulatif-des-commandes">Tableau récapitulatif des commandes<a class="headerlink" href="#tableau-recapitulatif-des-commandes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query session</code></td>
+<td>Lister toutes les sessions avec leur état et ID</td>
+</tr>
+<tr>
+<td><code>query user</code></td>
+<td>Lister les utilisateurs connectés</td>
+</tr>
+<tr>
+<td><code>logoff &lt;ID&gt;</code></td>
+<td>Déconnecter une session</td>
+</tr>
+<tr>
+<td><code>reset session &lt;ID&gt;</code></td>
+<td>Réinitialiser une session bloquée</td>
+</tr>
+<tr>
+<td><code>shadow &lt;ID&gt; /control</code></td>
+<td>Prendre la main sur une session</td>
+</tr>
+<tr>
+<td><code>msg &lt;ID&gt; "texte"</code></td>
+<td>Envoyer un message à une session</td>
+</tr>
+<tr>
+<td><code>msg * "texte"</code></td>
+<td>Envoyer un message à tous</td>
+</tr>
+<tr>
+<td><code>change logon /drain</code></td>
+<td>Bloquer les nouvelles connexions</td>
+</tr>
+<tr>
+<td><code>change logon /drainuntilrestart</code></td>
+<td>Drain jusqu'au prochain redémarrage</td>
+</tr>
+<tr>
+<td><code>change logon /enable</code></td>
+<td>Réactiver les connexions</td>
+</tr>
+<tr>
+<td><code>change logon /query</code></td>
+<td>Vérifier l'état drain actuel</td>
+</tr>
+</tbody>
+</table>
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a> <em>(à venir)</em></li>
-<li><a href="autopilot-v2-setup.md">Configurer une politique Device Preparation pas à pas</a> <em>(à venir)</em></li>
-<li><a href="autopilot-troubleshooting.md">Troubleshooting ESP et codes d'erreur courants</a> <em>(à venir)</em></li>
+<li><a href="../">Commandes &amp; références MSP</a></li>
+<li><a href="../dsregcmd/">dsregcmd — Diagnostic Entra / Intune</a></li>
 </ul>
 
 

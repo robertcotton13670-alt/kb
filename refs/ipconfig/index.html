@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Autopilot v1 vs Device Preparation (v2), prérequis Entra ID et workflow de provisionnement">
+        <meta name="description" content="Toutes les options ipconfig pour le diagnostic réseau en MSP">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/autopilot/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/refs/ipconfig/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Windows Autopilot — vue d'ensemble - ⚡ TechBase</title>
+        <title>ipconfig - ⚡ TechBase</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows-autopilot" class="md-skip">
+        <a href="#ipconfig" class="md-skip">
           Aller au contenu
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows Autopilot — vue d'ensemble
+              ipconfig
             
           </span>
         </div>
@@ -242,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../intune/" class="md-tabs__link">
         
   
   
@@ -318,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../refs/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link">
         
   
   
@@ -429,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../intune/" class="md-nav__link">
         
   
   
@@ -537,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../refs/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -611,10 +611,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#v1-vs-device-preparation-v2" class="md-nav__link">
+  <a href="#options-essentielles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        v1 vs Device Preparation (v2)
+        Options essentielles
       
     </span>
   </a>
@@ -622,10 +622,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#scenarios-v1-en-bref" class="md-nav__link">
+  <a href="#detail-des-options-cles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scénarios v1 en bref
+        Détail des options clés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Détail des options clés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all-configuration-complete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /all — Configuration complète
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flushdns-vider-le-cache-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /flushdns — Vider le cache DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#release-renew-renouveler-le-bail-dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /release + /renew — Renouveler le bail DHCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registerdns-reenregistrer-le-nom-dhote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        /registerdns — Réenregistrer le nom d'hôte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commandes-reseau-complementaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commandes réseau complémentaires
       
     </span>
   </a>
@@ -633,10 +694,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequis-entra-id-et-licences" class="md-nav__link">
+  <a href="#workflow-de-diagnostic-reseau" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis Entra ID et licences
+        Workflow de diagnostic réseau
       
     </span>
   </a>
@@ -644,32 +705,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-de-provisionnement" class="md-nav__link">
+  <a href="#cas-dusage-msp-frequents" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow de provisionnement
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cas-dusage-msp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cas d'usage MSP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pieges-courants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pièges courants
+        Cas d'usage MSP fréquents
       
     </span>
   </a>
@@ -707,166 +746,183 @@
   
 
 
-<h1 id="windows-autopilot">Windows Autopilot<a class="headerlink" href="#windows-autopilot" title="Permanent link">&para;</a></h1>
-<p>Autopilot est le service cloud Microsoft pour provisionner des postes Windows directement depuis l'OOBE, sans image ni intervention physique. Le poste sort de son carton, l'utilisateur se connecte, Intune fait le reste.</p>
-<p>Deux générations coexistent aujourd'hui dans le même tenant : Autopilot <em>classic</em> (v1) et Autopilot <em>Device Preparation</em> (v2).</p>
-<h2 id="v1-vs-device-preparation-v2">v1 vs Device Preparation (v2)<a class="headerlink" href="#v1-vs-device-preparation-v2" title="Permanent link">&para;</a></h2>
+<h1 id="ipconfig">ipconfig<a class="headerlink" href="#ipconfig" title="Permanent link">&para;</a></h1>
+<p><code>ipconfig</code> est la commande réseau de base sur Windows. Elle affiche et gère la configuration TCP/IP de toutes les interfaces réseau. Premier réflexe sur tout problème de connectivité.</p>
+<h2 id="options-essentielles">Options essentielles<a class="headerlink" href="#options-essentielles" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">ipconfig</span>              <span class="c"># Résumé : IP, masque, passerelle</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">all</span>         <span class="c"># Config complète : IP, MAC, DNS, DHCP, bail</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">flushdns</span>    <span class="c"># Vider le cache DNS</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">displaydns</span>  <span class="c"># Afficher le contenu du cache DNS actuel</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">registerdns</span> <span class="c"># Forcer la réinscription du nom d&#39;hôte dans le DNS</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">release</span>     <span class="c"># Libérer l&#39;adresse IP DHCP (IPv4)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">renew</span>       <span class="c"># Renouveler l&#39;adresse IP DHCP (IPv4)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">release6</span>    <span class="c"># Libérer l&#39;adresse IPv6</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">renew6</span>      <span class="c"># Renouveler l&#39;adresse IPv6</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="detail-des-options-cles">Détail des options clés<a class="headerlink" href="#detail-des-options-cles" title="Permanent link">&para;</a></h2>
+<h3 id="all-configuration-complete">/all — Configuration complète<a class="headerlink" href="#all-configuration-complete" title="Permanent link">&para;</a></h3>
+<p>La plus utilisée en diagnostic. Retourne pour chaque interface :</p>
 <table>
 <thead>
 <tr>
-<th>Critère</th>
-<th>Autopilot v1 (classic)</th>
-<th>Device Preparation (v2)</th>
+<th>Champ</th>
+<th>Utilité</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Approche</td>
-<td>Device-centric (device pré-enregistré)</td>
-<td>User-centric (enrôlement au sign-in)</td>
+<td>Adresse physique (MAC)</td>
+<td>Identifier la carte réseau</td>
 </tr>
 <tr>
-<td>Hardware hash</td>
-<td>Requis (upload préalable)</td>
-<td>Non requis</td>
+<td>DHCP activé</td>
+<td>Savoir si l'IP est statique ou dynamique</td>
 </tr>
 <tr>
-<td>Identité</td>
-<td>Entra Join + Entra Hybrid Join</td>
-<td>Entra Join uniquement</td>
+<td>Adresse IPv4</td>
+<td>IP du poste</td>
 </tr>
 <tr>
-<td>Scénarios</td>
-<td>User-driven, Self-deploying, Pre-provisioned, Existing</td>
-<td>User-driven, Automatic (Windows 365)</td>
+<td>Passerelle par défaut</td>
+<td>Routeur / gateway</td>
 </tr>
 <tr>
-<td>Co-management (Intune + ConfigMgr)</td>
-<td>Supporté</td>
-<td>Non supporté</td>
+<td>Serveurs DNS</td>
+<td>Vérifier que le DNS pointe vers le bon serveur</td>
 </tr>
 <tr>
-<td>ESP</td>
-<td>Enrollment Status Page classique</td>
-<td>Progress bar unifiée, pas d'ESP séparé</td>
-</tr>
-<tr>
-<td>Apps pendant OOBE</td>
-<td>Illimité (tracké via ESP)</td>
-<td>10 max (sélection explicite)</td>
-</tr>
-<tr>
-<td>Scripts PowerShell pré-desktop</td>
-<td>Non</td>
-<td>Oui (10 max)</td>
-</tr>
-<tr>
-<td>Reporting</td>
-<td>Standard Intune</td>
-<td>Near real-time, export diagnostics intégré</td>
-</tr>
-<tr>
-<td>OS minimum</td>
-<td>Windows 10 / 11</td>
-<td>Windows 11 22H2 ou 23H2 + KB5035942, ou 24H2+</td>
-</tr>
-<tr>
-<td>Clouds souverains</td>
-<td>Commercial</td>
-<td>Commercial + GCC High + DoD</td>
-</tr>
-<tr>
-<td>Type d'appareil par défaut</td>
-<td>Corporate</td>
-<td>Personal (sauf Corporate Identifier)</td>
+<td>Bail obtenu / expirant</td>
+<td>Diagnostic DHCP</td>
 </tr>
 </tbody>
 </table>
+<h3 id="flushdns-vider-le-cache-dns">/flushdns — Vider le cache DNS<a class="headerlink" href="#flushdns-vider-le-cache-dns" title="Permanent link">&para;</a></h3>
+<p>À utiliser quand un utilisateur n'arrive pas à accéder à un site ou une ressource après un changement DNS récent (migration, changement d'IP serveur).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">flushdns</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c"># Résultat attendu :</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c"># La configuration IP de Windows a bien vidé le cache du programme de résolution DNS.</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition tip">
-<p class="admonition-title">Choix MSP — règle simple</p>
-<ul>
-<li>Environnement <strong>cloud-only</strong>, Windows 11, tenant récent → Device Preparation</li>
-<li><strong>Hybrid Join</strong>, <strong>Self-deploying</strong> (kiosque, borne), <strong>pre-provisioning</strong> OEM, co-management → v1 obligatoire</li>
-<li>Les deux peuvent cohabiter dans le même tenant, mais <strong>jamais</strong> sur le même device (v1 prend toujours le dessus).</li>
-</ul>
+<p class="admonition-title">Quand utiliser /flushdns</p>
+<p>Après une migration DNS, un changement d'enregistrement SPF/MX, ou quand un utilisateur signale qu'il n'arrive pas à joindre une ressource interne alors que d'autres y accèdent sans problème.</p>
 </div>
-<h2 id="scenarios-v1-en-bref">Scénarios v1 en bref<a class="headerlink" href="#scenarios-v1-en-bref" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>User-driven</strong> : l'utilisateur déballe, se connecte avec son compte Entra, le device se joint et s'enrôle. Le cas 90 % des déploiements MSP.</li>
-<li><strong>Self-deploying</strong> : aucun utilisateur pendant l'OOBE. Requiert TPM 2.0 avec attestation. Utile pour bornes, salles de réunion, kiosques.</li>
-<li><strong>Pre-provisioned</strong> (ex-White Glove) : le technicien fait tourner l'ESP côté device en atelier, l'utilisateur finit en quelques minutes à la réception. Pratique pour les flottes livrées au MSP avant dispatch.</li>
-<li><strong>Existing device</strong> : conversion d'un poste déjà en production vers Autopilot, via un package Intune.</li>
-</ul>
-<h2 id="prerequis-entra-id-et-licences">Prérequis Entra ID et licences<a class="headerlink" href="#prerequis-entra-id-et-licences" title="Permanent link">&para;</a></h2>
-<p>Côté <strong>licences</strong> (v1 comme v2) :</p>
-<ul>
-<li>Intune (inclus dans M365 Business Premium, M365 E3/E5, EMS E3/E5)</li>
-<li>Entra ID P1 minimum (MDM auto-enrollment, group-based targeting)</li>
-</ul>
-<p>Côté <strong>tenant Entra</strong> :</p>
-<ul>
-<li>MDM auto-enrollment configuré : <em>Entra admin center → Mobility (MDM and WIP) → Microsoft Intune → User scope = All ou Some</em></li>
-<li>Branding de la page de connexion configuré (sinon OOBE affiche un message d'erreur trompeur)</li>
-<li>Device settings : <em>Users may join devices to Microsoft Entra</em> = All (ou scope groupe)</li>
-</ul>
-<p>Spécifique <strong>Device Preparation (v2)</strong> :</p>
-<ul>
-<li>Groupe de sécurité Entra <strong>assignable</strong> (pas dynamique) pour l'<em>Enrollment Time Grouping</em></li>
-<li>Le compte de service <code>Intune Autopilot ConfigurationManager</code> doit être <strong>Owner</strong> du groupe (sinon le device ne peut pas s'ajouter au groupe pendant l'enrôlement — erreur classique)</li>
-<li>Optionnel mais recommandé : <em>Corporate Identifiers</em> (serial, manufacturer, model) pour marquer les devices comme Corporate</li>
-</ul>
+<h3 id="release-renew-renouveler-le-bail-dhcp">/release + /renew — Renouveler le bail DHCP<a class="headerlink" href="#release-renew-renouveler-le-bail-dhcp" title="Permanent link">&para;</a></h3>
+<p>Séquence classique pour résoudre un conflit d'adresse IP ou forcer l'attribution d'une nouvelle IP :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">release</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">renew</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition warning">
-<p class="admonition-title">Piège Device Preparation</p>
-<p>Si le groupe assignable n'a pas le bon propriétaire, le déploiement échoue avec une erreur générique sans pointer la cause. Vérifier les propriétaires du groupe <em>avant</em> le premier test.</p>
+<p class="admonition-title">Sur un poste distant</p>
+<p>Ne jamais lancer <code>/release</code> seul sur un poste accessible uniquement en RDP — la connexion sera coupée. Toujours enchaîner <code>/release</code> et <code>/renew</code> dans le même script, ou passer par Datto RMM / Intune.</p>
 </div>
-<h2 id="workflow-de-provisionnement">Workflow de provisionnement<a class="headerlink" href="#workflow-de-provisionnement" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Device neuf allumé] --&gt; B{Enregistré&lt;br/&gt;Autopilot v1 ?}
-    B -- Oui --&gt; C[OOBE détecte le profil v1]
-    B -- Non --&gt; D{Device Preparation&lt;br/&gt;policy assignée&lt;br/&gt;à l'utilisateur ?}
-
-    C --&gt; E[Branding tenant&lt;br/&gt;+ pages OOBE masquées]
-    E --&gt; F[Connexion Entra utilisateur]
-    F --&gt; G[Join Entra ID&lt;br/&gt;+ enrôlement Intune]
-    G --&gt; H[ESP : apps, policies,&lt;br/&gt;certificats, scripts]
-    H --&gt; I[Bureau utilisateur]
-
-    D -- Oui --&gt; J[OOBE standard&lt;br/&gt;jusqu'au sign-in]
-    J --&gt; K[Connexion Entra utilisateur]
-    K --&gt; L[Ajout au groupe&lt;br/&gt;Enrollment Time]
-    L --&gt; M[Push policy +&lt;br/&gt;10 apps + 10 scripts]
-    M --&gt; N[Progress bar unifiée]
-    N --&gt; I
-
-    D -- Non --&gt; O[OOBE Windows standard&lt;br/&gt;pas de provisioning auto]</code></pre>
-<h2 id="cas-dusage-msp">Cas d'usage MSP<a class="headerlink" href="#cas-dusage-msp" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>Nouveau client cloud-first Windows 11</strong> : partir directement sur Device Preparation. Pas de hash à collecter, onboarding plus rapide.</li>
-<li><strong>Client existant avec AD on-prem + ConfigMgr</strong> : rester sur v1 Hybrid Join tant que la migration Entra Join n'est pas terminée.</li>
-<li><strong>Flotte de bornes / salles de réunion</strong> : v1 Self-deploying, pas d'alternative en v2 aujourd'hui.</li>
-<li><strong>Préparation atelier avant livraison</strong> : v1 Pre-provisioned. Le technicien valide le device, l'utilisateur final reçoit un poste quasi prêt.</li>
-</ul>
-<h2 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h2>
+<h3 id="registerdns-reenregistrer-le-nom-dhote">/registerdns — Réenregistrer le nom d'hôte<a class="headerlink" href="#registerdns-reenregistrer-le-nom-dhote" title="Permanent link">&para;</a></h3>
+<p>Force le poste à se réenregistrer auprès du serveur DNS. Utile quand un poste n'est pas résolu par son nom dans le réseau.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">ipconfig</span> <span class="p">/</span><span class="n">registerdns</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="c"># Redémarrer le service DNS Client si nécessaire :</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">net</span> <span class="n">stop</span> <span class="n">dnscache</span> <span class="p">&amp;&amp;</span> <span class="n">net</span> <span class="nb">start </span><span class="n">dnscache</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="commandes-reseau-complementaires">Commandes réseau complémentaires<a class="headerlink" href="#commandes-reseau-complementaires" title="Permanent link">&para;</a></h2>
+<p>À utiliser en combinaison avec <code>ipconfig</code> pour un diagnostic complet :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c"># Tester la connectivité</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">ping</span> <span class="n">8</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">8</span>              <span class="c"># Accès Internet</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">ping</span> <span class="p">&lt;</span><span class="n">nom-serveur</span><span class="p">&gt;</span>        <span class="c"># Résolution DNS + connectivité</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c"># Tracer le chemin réseau</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">tracert</span> <span class="n">8</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">8</span>           <span class="c"># Hop par hop vers Internet</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="n">pathping</span> <span class="p">&lt;</span><span class="n">host</span><span class="p">&gt;</span>           <span class="c"># Combine ping + tracert avec latence par saut</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="c"># DNS</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="n">nslookup</span> <span class="p">&lt;</span><span class="n">domaine</span><span class="p">&gt;</span>        <span class="c"># Résolution DNS manuelle</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="n">nslookup</span> <span class="p">&lt;</span><span class="n">domaine</span><span class="p">&gt;</span> <span class="n">8</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">8</span><span class="p">.</span><span class="n">8</span>  <span class="c"># Résolution via un DNS spécifique</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="c"># Reset pile réseau (en dernier recours)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="n">netsh</span> <span class="n">int</span> <span class="n">ip</span> <span class="n">reset</span>        <span class="c"># Reset TCP/IP (redémarrage requis)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="n">netsh</span> <span class="n">winsock</span> <span class="n">reset</span>       <span class="c"># Reset Winsock (redémarrage requis)</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition danger">
-<p class="admonition-title">Actions irréversibles</p>
-<ul>
-<li>Supprimer un device d'Autopilot <strong>ne</strong> le désenrôle <strong>pas</strong> d'Intune automatiquement. Toujours faire les deux.</li>
-<li>Passer un device de v1 à v2 impose de le désenregistrer d'Autopilot <strong>et</strong> de le retirer d'Intune/Entra avant reset.</li>
-</ul>
+<p class="admonition-title">netsh int ip reset / winsock reset</p>
+<p>Ces commandes réinitialisent complètement la pile réseau. À n'utiliser qu'en dernier recours après avoir épuisé les autres options. Toujours redémarrer le poste après.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">À vérifier avant chaque déploiement</p>
-<ul>
-<li>Heure système du device correcte (sinon échec TLS avec les services Autopilot)</li>
-<li>Connexion réseau câblée ou Wi-Fi avec accès aux <a href="https://learn.microsoft.com/en-us/autopilot/requirements-network">endpoints Autopilot requis</a></li>
-<li>Utilisateur a bien une licence Intune <strong>avant</strong> le premier sign-in (erreur la plus fréquente)</li>
-</ul>
-</div>
+<h2 id="workflow-de-diagnostic-reseau">Workflow de diagnostic réseau<a class="headerlink" href="#workflow-de-diagnostic-reseau" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    A[Problème réseau signalé] --&gt; B[ipconfig /all]
+    B --&gt; C{IP correcte ?}
+    C -- Non / 169.254.x.x --&gt; D[ipconfig /release + /renew]
+    C -- Oui --&gt; E{DNS correct ?}
+    E -- Non --&gt; F[Vérifier DNS dans ipconfig /all]
+    E -- Oui --&gt; G[ping passerelle]
+    G -- KO --&gt; H[Problème local / switch]
+    G -- OK --&gt; I[ping 8.8.8.8]
+    I -- KO --&gt; J[Problème routeur / FAI]
+    I -- OK --&gt; K[nslookup domaine]
+    K -- KO --&gt; L[ipconfig /flushdns puis retest]
+    K -- OK --&gt; M[tracert pour identifier le saut défaillant]</code></pre>
+<h2 id="cas-dusage-msp-frequents">Cas d'usage MSP fréquents<a class="headerlink" href="#cas-dusage-msp-frequents" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pas d'accès Internet mais réseau local OK</td>
+<td><code>ping 8.8.8.8</code> puis <code>tracert 8.8.8.8</code></td>
+</tr>
+<tr>
+<td>IP en 169.254.x.x (APIPA)</td>
+<td><code>ipconfig /release</code> + <code>/renew</code></td>
+</tr>
+<tr>
+<td>Site interne inaccessible après migration DNS</td>
+<td><code>ipconfig /flushdns</code></td>
+</tr>
+<tr>
+<td>Poste non résolu par nom sur le réseau</td>
+<td><code>ipconfig /registerdns</code></td>
+</tr>
+<tr>
+<td>Conflit d'adresse IP</td>
+<td><code>ipconfig /release</code> + <code>/renew</code> + vérifier le DHCP</td>
+</tr>
+<tr>
+<td>Problème de connexion après changement réseau</td>
+<td><code>netsh winsock reset</code> + redémarrage</td>
+</tr>
+</tbody>
+</table>
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a> <em>(à venir)</em></li>
-<li><a href="autopilot-v2-setup.md">Configurer une politique Device Preparation pas à pas</a> <em>(à venir)</em></li>
-<li><a href="autopilot-troubleshooting.md">Troubleshooting ESP et codes d'erreur courants</a> <em>(à venir)</em></li>
+<li><a href="../">Commandes &amp; références MSP</a></li>
+<li><a href="../dsregcmd/">dsregcmd — Diagnostic Entra / Intune</a></li>
 </ul>
 
 
