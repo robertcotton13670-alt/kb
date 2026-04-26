@@ -102,20 +102,6 @@ Voir la [page dédiée RDS](rds-sessions.md) pour les cas d'usage MSP complets.
 | `Connect-MgGraph -Scopes "..."` | Connexion Graph API |
 | `Get-Mailbox -ResultSize Unlimited \| Get-MailboxStatistics \| Select-Object DisplayName, TotalItemSize, ItemCount \| Export-Csv -Path "C:\tmp\rapport.csv" -NoTypeInformation -Encoding UTF8` | Export tailles boîtes mail |
 
-## Graph API — OneDrive Shortcuts
-
-Voir la [page dédiée Graph API OneDrive Shortcuts](graph-onedrive-shortcuts.md) pour le script V3 complet.
-
-| Endpoint | Description |
-|---|---|
-| `POST https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token` | Obtenir un token app (client_credentials) |
-| `GET /users/{email}/drive/root:/{FolderName}` | Vérifier si un dossier existe |
-| `POST /users/{email}/drive/root/children` | Créer un dossier ou raccourci à la racine |
-| `POST /users/{email}/drive/root:/{FolderName}:/children` | Créer un raccourci dans un sous-dossier |
-| `GET /users/{userId}/drive/root/children` | Lister les items racine OneDrive |
-| `DELETE /users/{userId}/drive/items/{itemId}` | Supprimer un raccourci |
-| `GET /groups/{groupId}/members/microsoft.graph.user` | Membres d'un groupe Azure AD |
-
 ## Applications client M365
 
 ### Outlook (nouveau client)
@@ -199,4 +185,3 @@ Voir la [page dédiée Graph API OneDrive Shortcuts](graph-onedrive-shortcuts.md
 - [winget — Guide MSP](winget.md)
 - [Get-WindowsAutopilotInfo — Hardware hash](autopilot-hash.md)
 - [RDS — Gestion des sessions](rds-sessions.md)
-- [Graph API — OneDrive Shortcuts](graph-onedrive-shortcuts.md)
