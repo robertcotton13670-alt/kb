@@ -16,7 +16,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
       <h3>Intune</h3>
     </div>
     <p>Autopilot, déploiement d'apps, conformité, devices Windows.</p>
-    <span class="kb-card-count">6 pages ›</span>
+    <span class="kb-card-count">7 pages ›</span>
   </a>
 
   <a href="datto/" class="kb-card kb-datto">
@@ -25,7 +25,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
       <h3>Datto RMM</h3>
     </div>
     <p>Composants RMM, monitoring, patch, automatisation agents.</p>
-    <span class="kb-card-count">1 page ›</span>
+    <span class="kb-card-count">2 pages ›</span>
   </a>
 
   <a href="m365/" class="kb-card kb-m365">
@@ -34,7 +34,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
       <h3>Microsoft 365</h3>
     </div>
     <p>Tenant M365, Exchange Online, SharePoint, Teams.</p>
-    <span class="kb-card-count">1 page ›</span>
+    <span class="kb-card-count">2 pages ›</span>
   </a>
 
   <a href="entra/" class="kb-card kb-entra kb-disabled">
@@ -52,7 +52,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
       <h3>Commandes & Références</h3>
     </div>
     <p>Commandes Windows, portails admin, outils en ligne et procédures rapides.</p>
-    <span class="kb-card-count">7 pages ›</span>
+    <span class="kb-card-count">5 pages ›</span>
   </a>
 
   <a href="poweracademy/" class="kb-card kb-poweracademy">
@@ -61,7 +61,7 @@ description: Notes techniques et runbooks sur Intune, Entra ID, Microsoft 365, D
       <h3>PowerAcademy</h3>
     </div>
     <p>Modules de formation MySerenity — offre MSP Poweriti basée sur M365.</p>
-    <span class="kb-card-count">15 pages ›</span>
+    <span class="kb-card-count">14 pages ›</span>
   </a>
 
 </div>
