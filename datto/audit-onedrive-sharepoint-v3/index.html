@@ -6,35 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Composants, monitoring, patch management et automatisation via agents">
+        <meta name="description" content="Audit de la configuration OneDrive Business et des bibliothèques SharePoint synchronisées via Datto RMM.">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/datto/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/datto/audit-onedrive-sharepoint-v3/">
       
       
-        <link rel="prev" href="../intune/">
-      
-      
-        <link rel="next" href="../m365/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Datto RMM - ⚡ TechBase</title>
+        <title>Audit OneDrive / SharePoint V3 - ⚡ TechBase</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#datto-rmm" class="md-skip">
+        <a href="#audit-onedrive-sharepoint-v3" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href=".." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Datto RMM
+              Audit OneDrive / SharePoint V3
             
           </span>
         </div>
@@ -227,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -246,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../intune/" class="md-tabs__link">
+      <a href="../../intune/" class="md-tabs__link">
         
   
   
@@ -263,11 +259,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link">
         
   
   
@@ -286,7 +280,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../m365/" class="md-tabs__link">
+      <a href="../../m365/" class="md-tabs__link">
         
   
   
@@ -305,7 +299,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../entra/" class="md-tabs__link">
+      <a href="../../entra/" class="md-tabs__link">
         
   
   
@@ -324,7 +318,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../refs/" class="md-tabs__link">
+      <a href="../../refs/" class="md-tabs__link">
         
   
   
@@ -343,7 +337,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../poweracademy/" class="md-tabs__link">
+      <a href="../../poweracademy/" class="md-tabs__link">
         
   
   
@@ -378,7 +372,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -408,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -435,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/" class="md-nav__link">
+      <a href="../../intune/" class="md-nav__link">
         
   
   
@@ -459,37 +453,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Datto RMM
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -505,37 +472,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages disponibles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -547,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/" class="md-nav__link">
+      <a href="../../m365/" class="md-nav__link">
         
   
   
@@ -574,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entra/" class="md-nav__link">
+      <a href="../../entra/" class="md-nav__link">
         
   
   
@@ -601,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/" class="md-nav__link">
+      <a href="../../refs/" class="md-nav__link">
         
   
   
@@ -628,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/" class="md-nav__link">
+      <a href="../../poweracademy/" class="md-nav__link">
         
   
   
@@ -675,10 +611,115 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
+  <a href="#informations-generales" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pages disponibles
+        Informations générales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#donnees-collectees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Données collectées
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logique-dexecution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logique d'exécution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables Datto RMM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sortie-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sortie console
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sortie console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valeurs-possibles-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valeurs possibles — Sync
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#export-fichier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export fichier
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codes-de-sortie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codes de sortie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fichiers-requis-dans-le-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fichiers requis dans le composant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
       
     </span>
   </a>
@@ -705,12 +746,223 @@
   
 
 
-<h1 id="datto-rmm">Datto RMM<a class="headerlink" href="#datto-rmm" title="Permanent link">&para;</a></h1>
-<p>Monitoring, patch management et automatisation via les agents Datto RMM.</p>
-<h2 id="pages-disponibles">Pages disponibles<a class="headerlink" href="#pages-disponibles" title="Permanent link">&para;</a></h2>
+<h1 id="audit-onedrive-sharepoint-v3">Audit OneDrive / SharePoint V3<a class="headerlink" href="#audit-onedrive-sharepoint-v3" title="Permanent link">&para;</a></h1>
+<p>Script PowerShell exécuté en contexte Utilisateur Connecté via Datto RMM. Il audite le compte OneDrive Business, le statut de synchronisation, le Known Folder Move et les bibliothèques SharePoint synchronisées sur le poste.</p>
+<hr />
+<h2 id="informations-generales">Informations générales<a class="headerlink" href="#informations-generales" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Mars 2026</td>
+</tr>
+<tr>
+<td>Langage</td>
+<td>PowerShell 5.1+</td>
+</tr>
+<tr>
+<td>Plateforme</td>
+<td>Datto RMM</td>
+</tr>
+<tr>
+<td>OS requis</td>
+<td>Windows 10 / Server 2016 minimum</td>
+</tr>
+<tr>
+<td>Contexte</td>
+<td>Utilisateur Connecté (Datto RMM)</td>
+</tr>
+<tr>
+<td>Dépendance</td>
+<td>Aucune (lecture registre + système de fichiers)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="donnees-collectees">Données collectées<a class="headerlink" href="#donnees-collectees" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Donnée</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compte OneDrive</td>
+<td>Email du compte Business1 lu dans le registre HKCU</td>
+</tr>
+<tr>
+<td>Version OneDrive</td>
+<td>Version de <code>OneDrive.exe</code> détectée sur le poste</td>
+</tr>
+<tr>
+<td>Statut sync</td>
+<td>A jour / En cours / En pause / Erreur / Inconnu</td>
+</tr>
+<tr>
+<td>Known Folder Move</td>
+<td>Desktop, Documents, Images — redirigés ou non vers OneDrive</td>
+</tr>
+<tr>
+<td>Bibliothèques SPO</td>
+<td>Nom + URL des bibliothèques SharePoint synchronisées</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="logique-dexecution">Logique d'exécution<a class="headerlink" href="#logique-dexecution" title="Permanent link">&para;</a></h2>
+<p>Le script suit une logique linéaire en 4 étapes :</p>
+<ol>
+<li>Vérification utilisateur — <code>exit 3</code> propre si aucun utilisateur connecté ou contexte SYSTEM.</li>
+<li>Collecte OneDrive — lecture <code>HKCU:\Software\Microsoft\OneDrive\Accounts\Business1</code> pour l'email, le statut sync, et détection de la version via <code>OneDrive.exe</code>.</li>
+<li>KFM et SharePoint — lecture <code>User Shell Folders</code> pour KFM, scan <code>Tenants</code> + fallback récursif pour les bibliothèques synchronisées.</li>
+<li>Export et closeout — génération du fichier <code>.txt</code> dans <code>C:\tmp</code> avec URLs complètes, puis affichage du bloc closeout structuré.</li>
+</ol>
+<p>Pas de tâche planifiée, pas de dépendance externe.</p>
+<hr />
+<h2 id="variables-datto-rmm">Variables Datto RMM<a class="headerlink" href="#variables-datto-rmm" title="Permanent link">&para;</a></h2>
+<p>Ce composant ne définit pas de variables d'entrée. Il utilise uniquement la variable système standard :</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CS_PROFILE_NAME</code></td>
+<td>Système</td>
+<td>Nom du site Datto RMM — affiché dans le closeout</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sortie-console">Sortie console<a class="headerlink" href="#sortie-console" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>============================================
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  AUDIT ONEDRIVE / SHAREPOINT V3
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>============================================
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  Utilisateur : DOMAIN\bob
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  Site Datto  : Nom du site
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  Date        : 08/03/2026 14:30
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  OneDrive    : bob@contoso.com
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  Version OD  : 24.201.1003.0005
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  Sync        : A jour
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>--------------------------------------------
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  KFM         : Desktop, Documents
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>               (Non redirige : Images)
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>--------------------------------------------
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  SharePoint  : Projet Alpha
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>               RH - Documents
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>               IT - Partages
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>--------------------------------------------
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>  Export      : C:\tmp\audit_OneDrive_SharePoint_20260308_1430.txt
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>============================================
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>  Statut      : SUCCES
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>============================================
+</code></pre></div>
+<h3 id="valeurs-possibles-sync">Valeurs possibles — Sync<a class="headerlink" href="#valeurs-possibles-sync" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valeur</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A jour</code></td>
+<td>Aucun fichier en attente, pas d'erreur ni de pause</td>
+</tr>
+<tr>
+<td><code>En cours</code></td>
+<td>Fichiers en attente d'upload (nombre affiché)</td>
+</tr>
+<tr>
+<td><code>En pause</code></td>
+<td>Synchronisation mise en pause par l'utilisateur</td>
+</tr>
+<tr>
+<td><code>Erreur</code></td>
+<td>Clé <code>SyncError</code> présente dans le registre</td>
+</tr>
+<tr>
+<td><code>Inconnu</code></td>
+<td>Clé Business1 introuvable ou lecture impossible</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="export-fichier">Export fichier<a class="headerlink" href="#export-fichier" title="Permanent link">&para;</a></h2>
+<p>Un fichier texte est généré à chaque exécution dans <code>C:\tmp</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>audit_OneDrive_SharePoint_AAAAMMJJ_HHMM.txt
+</code></pre></div>
+<p>Le fichier contient le détail complet incluant les URLs SharePoint (<code>WebUrl</code>) et les chemins <code>MountPoint</code>, non affichés en console pour des raisons de lisibilité.</p>
+<div class="admonition tip">
+<p class="admonition-title">Création automatique</p>
+<p>Si <code>C:\tmp</code> n'existe pas, il est créé automatiquement.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Échec d'écriture</p>
+<p>En cas d'échec, le statut passe à <code>AVERTISSEMENT</code> et le script continue (<code>exit 0</code>). L'audit console reste complet.</p>
+</div>
+<hr />
+<h2 id="codes-de-sortie">Codes de sortie<a class="headerlink" href="#codes-de-sortie" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Succès — données collectées et affichées</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Erreur générale inattendue (exception non gérée)</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>Aucun utilisateur connecté — script ignoré proprement</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fichiers-requis-dans-le-composant">Fichiers requis dans le composant<a class="headerlink" href="#fichiers-requis-dans-le-composant" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audit_onedrive_sharepoint_v3.ps1</code></td>
+<td>Script principal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="Toast%20notif%20depuis%20datto/">Toast Notifications depuis Datto</a></li>
-<li><a href="audit-onedrive-sharepoint-v3/">Audit OneDrive / SharePoint V3</a></li>
+<li><a href="../../m365/onedrive-shortcuts-groupe/">Raccourcis OneDrive SharePoint par groupe</a></li>
+<li><a href="../azure/app-registration-graph.md">App Registration Graph API</a> <em>(à venir)</em></li>
 </ul>
 
 
@@ -770,10 +1022,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
