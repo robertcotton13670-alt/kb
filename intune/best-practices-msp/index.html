@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Envoi de notifications toast Windows aux utilisateurs via le composant PowerShell POWERiti.">
+        <meta name="description" content="Best practices issues des sessions BCloud 1 et 2, orientées déploiement PME/MSP.">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/datto/Toast%20notif%20depuis%20datto/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/best-practices-msp/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../winget-deploy-intune/">
       
       
-        <link rel="next" href="../audit-onedrive-sharepoint-v3/">
+        <link rel="next" href="../../datto/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Toast Notifications Datto RMM - ⚡ TechBase</title>
+        <title>Intune — Bonnes pratiques MSP - ⚡ TechBase</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#toast-notifications-datto-rmm" class="md-skip">
+        <a href="#intune-bonnes-pratiques-msp" class="md-skip">
           Aller au contenu
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Toast Notifications Datto RMM
+              Intune — Bonnes pratiques MSP
             
           </span>
         </div>
@@ -244,11 +244,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../intune/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -264,13 +266,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../datto/" class="md-tabs__link">
           
   
   
@@ -437,289 +437,6 @@
       
   
   
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intune
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Intune
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vue d'ensemble
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/autopilot/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Autopilot
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/autopilot-hash/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hash Autopilot
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/laps/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    LAPS
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/reset-wipe/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Reset / Wipe
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/imprimantes-intune-printservertointune/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Imprimantes (PrintServerToIntune)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/winget-deploy-intune/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Winget — Déploiement Intune
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../intune/best-practices-msp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bonnes pratiques MSP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -741,17 +458,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Datto RMM
+    Intune
   
 
     
@@ -762,12 +479,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Datto RMM
+    Intune
   
 
           </label>
@@ -805,6 +522,174 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autopilot-hash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hash Autopilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../laps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LAPS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reset-wipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reset / Wipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../imprimantes-intune-printservertointune/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imprimantes (PrintServerToIntune)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../winget-deploy-intune/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Winget — Déploiement Intune
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -824,7 +709,7 @@
   <span class="md-ellipsis">
     
   
-    Toast Notifications
+    Bonnes pratiques MSP
   
 
     
@@ -842,7 +727,7 @@
   <span class="md-ellipsis">
     
   
-    Toast Notifications
+    Bonnes pratiques MSP
   
 
     
@@ -868,10 +753,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequis" class="md-nav__link">
+  <a href="#tenant-entra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis
+        Tenant / Entra
       
     </span>
   </a>
@@ -879,10 +764,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#variables-datto-rmm" class="md-nav__link">
+  <a href="#autopilot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variables Datto RMM
+        Autopilot
       
     </span>
   </a>
@@ -890,10 +775,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#messages-predefinis" class="md-nav__link">
+  <a href="#esp-enrollment-status-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Messages prédéfinis
+        ESP (Enrollment Status Page)
       
     </span>
   </a>
@@ -901,10 +786,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logique-dexecution" class="md-nav__link">
+  <a href="#profils-de-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Logique d'exécution
+        Profils de configuration
       
     </span>
   </a>
@@ -912,10 +797,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fichiers-requis-dans-le-composant" class="md-nav__link">
+  <a href="#windows-update-for-business-wufb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fichiers requis dans le composant
+        Windows Update for Business (WUfB)
       
     </span>
   </a>
@@ -923,10 +808,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fichiers-generes-sur-le-poste" class="md-nav__link">
+  <a href="#applications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fichiers générés sur le poste
+        Applications
       
     </span>
   </a>
@@ -934,54 +819,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#branding" class="md-nav__link">
+  <a href="#scripts-powershell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Branding
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#codes-de-sortie" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Codes de sortie
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-stdout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log StdOut
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommandations-par-cas-dusage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommandations par cas d'usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#historique-des-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Historique des versions
+        Scripts PowerShell
       
     </span>
   </a>
@@ -1008,6 +849,65 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datto RMM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Datto RMM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -1015,7 +915,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../audit-onedrive-sharepoint-v3/" class="md-nav__link">
+      <a href="../../datto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue d'ensemble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datto/Toast%20notif%20depuis%20datto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toast Notifications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datto/audit-onedrive-sharepoint-v3/" class="md-nav__link">
         
   
   
@@ -1946,10 +1902,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequis" class="md-nav__link">
+  <a href="#tenant-entra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis
+        Tenant / Entra
       
     </span>
   </a>
@@ -1957,10 +1913,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#variables-datto-rmm" class="md-nav__link">
+  <a href="#autopilot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Variables Datto RMM
+        Autopilot
       
     </span>
   </a>
@@ -1968,10 +1924,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#messages-predefinis" class="md-nav__link">
+  <a href="#esp-enrollment-status-page" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Messages prédéfinis
+        ESP (Enrollment Status Page)
       
     </span>
   </a>
@@ -1979,10 +1935,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logique-dexecution" class="md-nav__link">
+  <a href="#profils-de-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Logique d'exécution
+        Profils de configuration
       
     </span>
   </a>
@@ -1990,10 +1946,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fichiers-requis-dans-le-composant" class="md-nav__link">
+  <a href="#windows-update-for-business-wufb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fichiers requis dans le composant
+        Windows Update for Business (WUfB)
       
     </span>
   </a>
@@ -2001,10 +1957,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fichiers-generes-sur-le-poste" class="md-nav__link">
+  <a href="#applications" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fichiers générés sur le poste
+        Applications
       
     </span>
   </a>
@@ -2012,54 +1968,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#branding" class="md-nav__link">
+  <a href="#scripts-powershell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Branding
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#codes-de-sortie" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Codes de sortie
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-stdout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log StdOut
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommandations-par-cas-dusage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Recommandations par cas d'usage
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#historique-des-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Historique des versions
+        Scripts PowerShell
       
     </span>
   </a>
@@ -2097,321 +2009,162 @@
   
 
 
-<h1 id="toast-notifications-datto-rmm">Toast Notifications Datto RMM<a class="headerlink" href="#toast-notifications-datto-rmm" title="Permanent link">&para;</a></h1>
-<p>Le composant Toast Notification envoie une notification toast Windows à l'utilisateur connecté sur un poste géré. Il s'exécute en contexte SYSTEM via l'agent Datto, et affiche la notification dans la session utilisateur grâce à CPAs.dll (murrayju.ProcessExtensions).</p>
-<p>Version courante : <strong>V9.1</strong> — Mars 2026.</p>
+<h1 id="intune-bonnes-pratiques-msp">Intune — Bonnes pratiques MSP<a class="headerlink" href="#intune-bonnes-pratiques-msp" title="Permanent link">&para;</a></h1>
+<p>Synthèse des bonnes pratiques issues des webinaires BCloud sessions 1 et 2, complétées par le lab <code>crecas84.onmicrosoft.com</code>.</p>
 <hr />
-<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<h2 id="tenant-entra">Tenant / Entra<a class="headerlink" href="#tenant-entra" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Windows 10 / Server 2016 minimum</li>
-<li>CPAs.dll inclus comme embedded file dans le composant</li>
-<li>4 images hero incluses comme embedded files</li>
-<li>Exécution en contexte SYSTEM (agent Datto)</li>
+<li>
+<p>Configurer le domaine personnalisé avant de créer les utilisateurs — les UPN créés avec le domaine <code>onmicrosoft.com</code> ne peuvent pas être renommés proprement ensuite. Si le domaine client est ajouté après, les utilisateurs gardent une adresse en <code>@client.onmicrosoft.com</code> sauf recréation manuelle.</p>
+</li>
+<li>
+<p>Scope MDM sur groupe ciblé en production — mettre "Tous" signifie que n'importe quel utilisateur qui joint un appareil à Entra déclenche automatiquement l'enrôlement Intune, y compris sur un PC personnel. Un groupe ciblé permet de contrôler qui est géré.</p>
+</li>
+<li>
+<p>Bloquer les appareils personnels dans les restrictions de plateforme — un appareil est considéré "professionnel" uniquement s'il est dans la liste Autopilot. Sans cette restriction, un utilisateur peut enrôler son PC personnel et recevoir toutes les politiques de l'entreprise.</p>
+</li>
+<li>
+<p>Activer LAPS sur tous les tenants clients — crée un compte admin local avec un mot de passe unique par machine, tournant automatiquement. Permet l'intervention technique sans partager un mot de passe global. Récupérable depuis Intune ou Entra sur la fiche appareil.</p>
+</li>
+<li>
+<p>Désactiver "l'utilisateur qui inscrit est admin local" — sans cette option désactivée, le premier utilisateur à enrôler la machine devient admin local. En Autopilot user-driven, c'est l'utilisateur final qui enrôle, pas le technicien.</p>
+</li>
 </ul>
 <hr />
-<h2 id="variables-datto-rmm">Variables Datto RMM<a class="headerlink" href="#variables-datto-rmm" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>usrMessageType</code></td>
-<td>Sélection</td>
-<td>Détermine le message et l'image affichés</td>
-</tr>
-<tr>
-<td><code>usrMessageComplement</code></td>
-<td>Chaîne</td>
-<td>Texte libre affiché sous le message prédéfini</td>
-</tr>
-<tr>
-<td><code>usrShowRestart</code></td>
-<td>Booléen</td>
-<td>Afficher le bouton "Redemarrer maintenant"</td>
-</tr>
-<tr>
-<td><code>usrInfoLabel</code></td>
-<td>Sélection</td>
-<td>Label du bouton lien (ex: "Accéder à mon ticket")</td>
-</tr>
-<tr>
-<td><code>usrInfoURL</code></td>
-<td>Chaîne</td>
-<td>URL du bouton lien — bouton affiché automatiquement si renseigné</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="messages-predefinis">Messages prédéfinis<a class="headerlink" href="#messages-predefinis" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Valeur dropdown</th>
-<th>Image hero</th>
-<th>Titre</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bienvenue</code></td>
-<td>hero-bienvenue.png</td>
-<td>Bienvenue !</td>
-</tr>
-<tr>
-<td><code>academy</code></td>
-<td>hero-information.png</td>
-<td>Nouveau parcours sur Power Academy</td>
-</tr>
-<tr>
-<td><code>technicien_termine</code></td>
-<td>hero-technicien.png</td>
-<td>Intervention terminée</td>
-</tr>
-<tr>
-<td><code>ticket_fermeture</code></td>
-<td>hero-ticket.png</td>
-<td>Votre ticket sera bientôt clôturé</td>
-</tr>
-<tr>
-<td><code>ticket_retour</code></td>
-<td>hero-ticket.png</td>
-<td>Votre retour est requis</td>
-</tr>
-<tr>
-<td><code>panne</code></td>
-<td>hero-information.png</td>
-<td>Incident en cours - merci de patienter</td>
-</tr>
-<tr>
-<td><code>injoignable</code></td>
-<td>hero-ticket.png</td>
-<td>Tentative de contact</td>
-</tr>
-<tr>
-<td><code>technicien_info</code></td>
-<td>hero-information.png</td>
-<td>Info de votre technicien</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition tip">
-<p class="admonition-title">Valeur par défaut</p>
-<p>Si <code>usrMessageType</code> est absent ou invalide, le script utilise <code>technicien_info</code>.</p>
-</div>
-<hr />
-<h2 id="logique-dexecution">Logique d'exécution<a class="headerlink" href="#logique-dexecution" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Démarrage SYSTEM] --&gt; B[Nettoyage tâche + fichiers existants]
-    B --&gt; C{Windows 10+ ?}
-    C -- Non --&gt; D[exit 1 - OS incompatible]
-    C -- Oui --&gt; E[Résolution message + image hero]
-    E --&gt; F[Écriture toast.ps1 + toast.vbs]
-    F --&gt; G{Session explorer.exe détectée ?}
-    G -- Non --&gt; H[exit 0 - Aucun utilisateur connecté]
-    G -- Oui --&gt; I{CPAs.dll présent ?}
-    I -- Non --&gt; K[Fallback tâche planifiée +5s]
-    I -- Oui --&gt; J[StartProcessAsCurrentUser via CPAs.dll\ntimeout 10s]
-    J -- Succès --&gt; L[Statut : AFFICHE]
-    J -- Échec/Timeout --&gt; K
-    K -- Succès --&gt; L
-    K -- Échec --&gt; M[exit 1 - ERREUR]</code></pre>
+<h2 id="autopilot">Autopilot<a class="headerlink" href="#autopilot" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Toujours définir un Group Tag à l'import du hash — sans Group Tag, l'appareil n'intègre aucun groupe dynamique basé sur <code>OrderID</code>. Il ne reçoit donc ni profil de déploiement ni ESP, et passe en OOBE standard sans configuration MSP.</p>
+</li>
+<li>
+<p>Affectation des profils sur groupes d'appareils uniquement — au moment où le profil Autopilot est appliqué, l'utilisateur n'est pas encore authentifié. Un groupe utilisateur ne peut pas être évalué à ce stade.</p>
+</li>
+<li>
+<p>Un seul profil par appareil — si un appareil est membre de deux groupes ayant chacun un profil Autopilot, c'est le profil le plus ancien (par date de création) qui s'applique, pas le plus récent. Difficile à déboguer si non anticipé.</p>
+</li>
+<li>
+<p>Supprimer l'appareil de l'ancien tenant Autopilot avant réimport — un hash ne peut appartenir qu'à un seul tenant à la fois. Supprimer l'appareil dans Intune ne suffit pas, il faut aussi le supprimer de la liste Autopilot séparément.</p>
+</li>
+<li>
+<p>Convention de nommage : préfixe client + aléatoire (ex : <code>PCP-%RAND:4%</code>) — facilite l'identification dans la console Intune et dans Datto RMM. Le suffixe <code>%RAND:4%</code> génère 4 caractères alphanumériques aléatoires au moment de l'enrôlement.</p>
+</li>
+</ul>
 <div class="admonition warning">
-<p class="admonition-title">Pas de tâche AtLogOn</p>
-<p>Si aucun utilisateur n'est connecté au moment de l'exécution, le script quitte proprement sans planifier de toast différé.</p>
+<p class="admonition-title">Suppression Autopilot</p>
+<p>Supprimer un appareil dans Intune &gt; Appareils ne le retire pas de la liste Autopilot. Les deux suppressions sont indépendantes.</p>
 </div>
 <hr />
-<h2 id="fichiers-requis-dans-le-composant">Fichiers requis dans le composant<a class="headerlink" href="#fichiers-requis-dans-le-composant" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Fichier</th>
-<th>Rôle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CPAs.dll</code></td>
-<td>Impersonation utilisateur (CreateProcessAsUser)</td>
-</tr>
-<tr>
-<td><code>hero-bienvenue.png</code></td>
-<td>Image hero — bienvenue</td>
-</tr>
-<tr>
-<td><code>hero-information.png</code></td>
-<td>Image hero — academy, panne, technicien_info</td>
-</tr>
-<tr>
-<td><code>hero-technicien.png</code></td>
-<td>Image hero — technicien_termine</td>
-</tr>
-<tr>
-<td><code>hero-ticket.png</code></td>
-<td>Image hero — ticket_fermeture, ticket_retour, injoignable</td>
-</tr>
-</tbody>
-</table>
+<h2 id="esp-enrollment-status-page">ESP (Enrollment Status Page)<a class="headerlink" href="#esp-enrollment-status-page" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Apps bloquantes limitées au strict minimum — l'ESP attend que toutes les apps bloquantes soient installées avant de libérer le poste. Chaque app ajoutée est un risque de timeout ou d'échec. Seules les apps critiques pour la sécurité ou la gestion méritent d'être bloquantes.</p>
+</li>
+<li>
+<p>Exclure Office 365 des apps bloquantes — l'installation pèse entre 2 et 4 Go. Avec un timeout de 15 à 60 minutes, c'est souvent insuffisant selon la connexion client. L'utilisateur peut recevoir son poste sans Office, l'installation se termine en arrière-plan.</p>
+</li>
+<li>
+<p>Ne pas inclure les EXE, MSI user-scope, ou apps Store en bloquant — les EXE ne sont pas supportés pendant l'ESP. Les MSI qui s'installent dans le profil utilisateur échouent car le profil n'est pas encore créé. Les apps Store nécessitent également un profil utilisateur existant.</p>
+</li>
+</ul>
 <div class="admonition tip">
-<p class="admonition-title">Fallback image</p>
-<p>Si l'image attendue est introuvable, le script utilise la première <code>hero*.png</code> disponible dans le répertoire de travail.</p>
+<p class="admonition-title">Apps bloquantes recommandées</p>
+<p>Portail d'entreprise, Datto RMM, ThreatDown — uniquement. Office 365 à exclure systématiquement.</p>
 </div>
 <hr />
-<h2 id="fichiers-generes-sur-le-poste">Fichiers générés sur le poste<a class="headerlink" href="#fichiers-generes-sur-le-poste" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Chemin</th>
-<th>Rôle</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>%ProgramData%\CentraStage\ToastNotifications\toast.ps1</code></td>
-<td>Script PowerShell qui affiche la notification</td>
-</tr>
-<tr>
-<td><code>%ProgramData%\CentraStage\ToastNotifications\toast.vbs</code></td>
-<td>Lanceur VBS silencieux (fenêtre cachée)</td>
-</tr>
-<tr>
-<td><code>%ProgramData%\CentraStage\ToastNotifications\hero.png</code></td>
-<td>Copie locale de l'image hero sélectionnée</td>
-</tr>
-</tbody>
-</table>
+<h2 id="profils-de-configuration">Profils de configuration<a class="headerlink" href="#profils-de-configuration" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Catalogue de paramètres plutôt que Modèles pour tous les nouveaux profils — les Modèles n'ont que deux états : Activé ou Désactivé. Si un paramètre est mal configuré et poussé, il reste tatoué sur le poste même si la stratégie est supprimée. Le Catalogue offre un troisième état "Non configuré" qui efface le tatouage et permet de corriger sans réinstaller.</p>
+</li>
+<li>
+<p>Une stratégie = un sujet — si deux stratégies contiennent le même paramètre, Intune détecte le conflit et bloque les deux. Avec une stratégie par sujet (ex : <code>Edge - moteur de recherche</code>, <code>Bluetooth</code>), l'origine d'un problème est immédiatement identifiable.</p>
+</li>
+<li>
+<p>Rechercher en anglais dans le Catalogue — l'interface Intune est traduite en français mais le moteur de recherche du Catalogue indexe les termes anglais. Chercher <code>control panel</code> et non <code>panneau de configuration</code>.</p>
+</li>
+<li>
+<p>Ne jamais bloquer tout le panneau de configuration — certaines sections comme les paramètres d'affichage ou de résolution d'écran doivent rester accessibles à l'utilisateur. Un blocage total génère des tickets inutiles.</p>
+</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Tatouage</p>
+<p>Un paramètre appliqué via un Modèle reste actif sur le poste même après suppression de la stratégie. Seul le Catalogue de paramètres permet de l'effacer proprement via l'état "Non configuré".</p>
+</div>
 <hr />
-<h2 id="branding">Branding<a class="headerlink" href="#branding" title="Permanent link">&para;</a></h2>
-<p>Le nom affiché dans la notification est lu depuis :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%ProgramData%\CentraStage\Brand\keys.xml  →  clé productShortNameText
-</code></pre></div>
-<p>Fallback : <code>Support IT</code> si la valeur est absente. Le logo circulaire est lu depuis <code>primaryLogo.png</code> dans le même répertoire.</p>
+<h2 id="windows-update-for-business-wufb">Windows Update for Business (WUfB)<a class="headerlink" href="#windows-update-for-business-wufb" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Deux anneaux minimum — l'anneau Test (0 jour) reçoit les mises à jour immédiatement, idéalement sur les postes IT. L'anneau Production attend 14 jours, ce qui laisse le temps de détecter les régressions avant diffusion générale.</p>
+</li>
+<li>
+<p>Toujours affecter à des groupes d'appareils — une stratégie WUfB liée à un utilisateur changerait le comportement de mise à jour quand un autre utilisateur se connecte sur le même poste.</p>
+</li>
+<li>
+<p>Feature Update configuré séparément — les mises à jour de fonctionnalités (ex : passage à Windows 11 24H2) se configurent dans "Stratégies de mise à jour de fonctionnalités", pas dans les anneaux. Cela permet de verrouiller une version Windows précise pour tout un parc.</p>
+</li>
+<li>
+<p>Approbation manuelle des pilotes pour les clients critiques — dans les environnements médicaux, industriels ou avec du matériel spécifique, une mise à jour de pilote automatique peut casser un équipement ou un logiciel métier.</p>
+</li>
+</ul>
 <hr />
-<h2 id="codes-de-sortie">Codes de sortie<a class="headerlink" href="#codes-de-sortie" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Signification</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>0</code></td>
-<td>Succès, ou aucun utilisateur connecté (exit propre)</td>
-</tr>
-<tr>
-<td><code>1</code></td>
-<td>Erreur : OS incompatible, répertoire inaccessible, ou impossible d'écrire les fichiers</td>
-</tr>
-</tbody>
-</table>
+<h2 id="applications">Applications<a class="headerlink" href="#applications" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Microsoft Store nouveau en priorité — basé sur Winget, la mise à jour est gérée automatiquement par le Store sans intervention MSP. Méthode la moins coûteuse en maintenance.</p>
+</li>
+<li>
+<p>Chrome Enterprise MSI obligatoire — le Chrome standard (<code>.exe</code>) s'installe dans le profil utilisateur (<code>AppData</code>). Sans droits admin, il ne se met pas à jour correctement et ne supporte pas les stratégies de groupe ni Intune. Chrome Enterprise s'installe dans <code>Programme Files</code> en contexte Système.</p>
+</li>
+<li>
+<p>Office 365 exclu de l'ESP — voir section ESP ci-dessus.</p>
+</li>
+<li>
+<p>Vérifier le scope Winget avant de packager — un installeur en user-scope s'installe dans le profil utilisateur. Déployé en contexte SYSTEM via Intune, l'installation échoue silencieusement car le profil cible n'existe pas au moment de l'exécution.</p>
+</li>
+<li>
+<p>Portail d'entreprise en obligatoire sur tous les postes — c'est l'interface utilisateur d'Intune. Sans lui, l'utilisateur ne peut pas installer les apps disponibles, voir son état de conformité ni synchroniser manuellement ses politiques.</p>
+</li>
+<li>
+<p>Ne jamais cumuler Win32 en Obligatoire + ESP bloquante — une app Win32 en mode Obligatoire est installée lors de l'OOBE. Si cette même app est aussi dans les bloquantes de l'ESP, le moindre délai ou échec bloque l'OOBE entière.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Chrome Enterprise</p>
+<p>URL de téléchargement : <a href="https://enterprise.google.com/chrome/chrome-browser/">https://enterprise.google.com/chrome/chrome-browser/</a> — choisir le MSI 64 bits.</p>
+</div>
 <hr />
-<h2 id="log-stdout">Log StdOut<a class="headerlink" href="#log-stdout" title="Permanent link">&para;</a></h2>
-<p>Le closeout produit deux blocs :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>============================================
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  TOAST NOTIFICATION V9.1
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>============================================
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  Type     : technicien_info
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  Titre    : Info de votre technicien
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  Corps    : Votre technicien souhaite vous contacter...
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  Bouton   : Accéder à mon ticket
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  URL      : https://...
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  Image    : hero-information.png
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  Expire   : 2026-03-15T10:32:00
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>============================================
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  Session  : DOMAIN\username
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  Methode  : CPAs.dll
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  Statut   : AFFICHE
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>============================================
-</code></pre></div>
-<p>Valeurs possibles pour <code>Statut</code> : <code>AFFICHE</code> / <code>NON AFFICHE</code> / <code>ERREUR</code>.</p>
-<hr />
-<h2 id="recommandations-par-cas-dusage">Recommandations par cas d'usage<a class="headerlink" href="#recommandations-par-cas-dusage" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Bouton recommandé</th>
-<th>URL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bienvenue</code></td>
-<td>Ouvrir Power Academy</td>
-<td><code>https://academy.poweriti.com/login</code></td>
-</tr>
-<tr>
-<td><code>academy</code></td>
-<td>Ouvrir Power Academy</td>
-<td>Lien direct vers le cours</td>
-</tr>
-<tr>
-<td><code>ticket_fermeture</code></td>
-<td>Accéder à mon ticket</td>
-<td>Lien ticket Autotask</td>
-</tr>
-<tr>
-<td><code>ticket_retour</code></td>
-<td>Donner mes informations</td>
-<td>Lien ticket Autotask</td>
-</tr>
-<tr>
-<td><code>injoignable</code></td>
-<td>Accéder à mon ticket</td>
-<td>Lien ticket Autotask</td>
-</tr>
-<tr>
-<td><code>technicien_termine</code></td>
-<td><em>(aucun)</em></td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>panne</code></td>
-<td><em>(aucun)</em></td>
-<td>—</td>
-</tr>
-<tr>
-<td><code>technicien_info</code></td>
-<td>Optionnel</td>
-<td>Selon contexte</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="historique-des-versions">Historique des versions<a class="headerlink" href="#historique-des-versions" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Version</th>
-<th>Date</th>
-<th>Changements principaux</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V9</td>
-<td>Mars 2026</td>
-<td>Messages prédéfinis, scenario <code>incomingCall</code>, suppression <code>usrMessageTitle</code> et <code>usrShowInfo</code>, nouveau format log</td>
-</tr>
-<tr>
-<td>V9.1</td>
-<td>Mars 2026</td>
-<td>Timeout CPAs.dll 10s via <code>Start-Job</code>, expiration toast +2h, try/catch sur écriture disque</td>
-</tr>
-</tbody>
-</table>
+<h2 id="scripts-powershell">Scripts PowerShell<a class="headerlink" href="#scripts-powershell" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Contexte SYSTEM par défaut — les scripts s'exécutent sans profil utilisateur. Adapter uniquement si le script doit modifier le profil utilisateur (<code>HKCU</code>, Documents, etc.), auquel cas cocher "Exécuter avec les droits de l'utilisateur connecté".</p>
+</li>
+<li>
+<p>Chocolatey poussé avant les applications — l'ordre d'exécution Intune lors de l'Autopilot est : certificats → profils de configuration → scripts → applications. Pousser Chocolatey en script garantit sa disponibilité avant les déploiements d'applications qui en dépendent.</p>
+</li>
+<li>
+<p>Scripts de remédiation pour les services critiques — la correction fonctionne en deux scripts : le premier détecte un état problématique (<code>exit code 1</code>), le second corrige uniquement si la détection a échoué. Utile pour s'assurer que l'agent Datto ou ThreatDown est toujours actif.</p>
+</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c"># Exemple — Détection service Datto RMM</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nv">$service</span> <span class="p">=</span> <span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="s2">&quot;CagService&quot;</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">if</span> <span class="p">(</span><span class="nv">$service</span> <span class="o">-and</span> <span class="nv">$service</span><span class="p">.</span><span class="n">Status</span> <span class="o">-eq</span> <span class="s2">&quot;Running&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">exit</span> <span class="n">0</span>  <span class="c"># OK</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">exit</span> <span class="n">1</span>  <span class="c"># Problème détecté → déclenche le script de remédiation</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="composants-datto.md">Composants Datto RMM</a> <em>(à venir)</em></li>
-<li><a href="audit-onedrive-sharepoint.md">Audit OneDrive SharePoint</a> <em>(à venir)</em></li>
-<li><a href="sync-sharepoint.md">Sync SharePoint Bibliothèque</a> <em>(à venir)</em></li>
+<li><a href="intune_lab_session1.md">Autopilot — Lab session 1</a></li>
+<li><a href="intune_bcloud_session2.md">Profils de configuration</a></li>
+<li><a href="wintuner_intune.md">Wintuner — Packaging applications</a></li>
 </ul>
 
 
