@@ -60,9 +60,44 @@ plugins:
 
 nav:
   - Accueil: index.md
-  - Intune: intune/index.md
-  - Datto RMM: datto/index.md
-  - Microsoft 365: m365/index.md
+  - Intune:
+    - Vue d'ensemble: intune/index.md
+    - Autopilot: intune/autopilot.md
+    - Hash Autopilot: intune/autopilot-hash.md
+    - LAPS: intune/laps.md
+    - Reset / Wipe: intune/reset-wipe.md
+    - Imprimantes (PrintServerToIntune): intune/imprimantes-intune-printservertointune.md
+    - Winget — Déploiement Intune: intune/winget-deploy-intune.md
+    - Bonnes pratiques MSP: intune/best-practices-msp.md
+  - Datto RMM:
+    - Vue d'ensemble: datto/index.md
+    - Toast Notifications: datto/Toast notif depuis datto.md
+    - Audit OneDrive / SharePoint V3: datto/audit-onedrive-sharepoint-v3.md
+  - Microsoft 365:
+    - Vue d'ensemble: m365/index.md
+    - Scan-to-email via SMTP2GO: m365/smtp2go-scan-to-email.md
+    - Raccourcis OneDrive par groupe: m365/onedrive-shortcuts-groupe.md
   - Entra ID: entra/index.md
-  - Commandes & Références: refs/index.md
-  - PowerAcademy: poweracademy/index.md
+  - Commandes & Références:
+    - Vue d'ensemble: refs/index.md
+    - dsregcmd: refs/dsregcmd.md
+    - ipconfig: refs/ipconfig.md
+    - winget: refs/winget.md
+    - Get-WindowsAutopilotInfo: refs/autopilot-hash.md
+    - RDS — Sessions: refs/rds-sessions.md
+  - PowerAcademy:
+    - Vue d'ensemble: poweracademy/index.md
+    - Présentation MySérenité: poweracademy/myserenity-presentation.md
+    - Authentification: poweracademy/myserenity-authentification.md
+    - Cybersécurité: poweracademy/myserenity-cybersecurite.md
+    - Exchange / Outlook: poweracademy/myserenity-exchange-outlook.md
+    - FAQ: poweracademy/myserenity-faq.md
+    - Keeper: poweracademy/myserenity-keeper.md
+    - OneDrive: poweracademy/myserenity-onedrive.md
+    - Outils complémentaires: poweracademy/myserenity-outils-complementaires.md
+    - SharePoint: poweracademy/myserenity-sharepoint.md
+    - Support: poweracademy/myserenity-support.md
+    - Teams: poweracademy/myserenity-teams.md
+    - Vade: poweracademy/myserenity-vade.md
+    - Glossaire M365: poweracademy/glossaire-m365.md
+    - Glossaire Sécurité: poweracademy/glossaire-securite.md
