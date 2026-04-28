@@ -5,7 +5,7 @@ description: Best practices issues des sessions BCloud 1 et 2, orientées déplo
 
 # Intune — Bonnes pratiques MSP
 
-Synthèse des bonnes pratiques issues des webinaires BCloud sessions 1 et 2, complétées par le lab `crecas84.onmicrosoft.com`.
+Synthèse des bonnes pratiques.
 
 ---
 
@@ -121,6 +121,6 @@ if ($service -and $service.Status -eq "Running") {
 
 ## À lire ensuite
 
-- [Autopilot — Lab session 1](intune_lab_session1.md)
-- [Profils de configuration](intune_bcloud_session2.md)
-- [Wintuner — Packaging applications](wintuner_intune.md)
+- [Autopilot — Lab session 1](intune_lab_session1.md) *(à venir)*
+- [Profils de configuration](intune_bcloud_session2.md) *(à venir)*
+- [Wintuner — Packaging applications](wintuner_intune.md) *(à venir)*
