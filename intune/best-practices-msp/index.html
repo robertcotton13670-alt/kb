@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Best practices issues des sessions BCloud 1 et 2, orientées déploiement PME/MSP.">
+        <meta name="description" content="Best practices orientées déploiement PME/MSP.">
       
       
       
@@ -823,6 +823,28 @@
     <span class="md-ellipsis">
       
         Scripts PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conformite-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conformité / Sécurité
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offboarding-cycle-de-vie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Offboarding / cycle de vie
       
     </span>
   </a>
@@ -1979,6 +2001,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#conformite-securite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conformité / Sécurité
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offboarding-cycle-de-vie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Offboarding / cycle de vie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#a-lire-ensuite" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2010,7 +2054,7 @@
 
 
 <h1 id="intune-bonnes-pratiques-msp">Intune — Bonnes pratiques MSP<a class="headerlink" href="#intune-bonnes-pratiques-msp" title="Permanent link">&para;</a></h1>
-<p>Synthèse des bonnes pratiques.</p>
+<p>Synthèse des bonnes pratiques issues des webinaires BCloud et du lab <code>crecas84.onmicrosoft.com</code>.</p>
 <hr />
 <h2 id="tenant-entra">Tenant / Entra<a class="headerlink" href="#tenant-entra" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2018,18 +2062,36 @@
 <p>Configurer le domaine personnalisé avant de créer les utilisateurs — les UPN créés avec le domaine <code>onmicrosoft.com</code> ne peuvent pas être renommés proprement ensuite. Si le domaine client est ajouté après, les utilisateurs gardent une adresse en <code>@client.onmicrosoft.com</code> sauf recréation manuelle.</p>
 </li>
 <li>
+<p>Vérifier que le tenant n'est pas en mode "Intune for Education" — ce mode revient régulièrement par défaut sur certains tenants et écrase silencieusement les configurations personnalisées. Les options modifiées ne sont pas appliquées ou sont réinitialisées sans avertissement. Si les politiques ne semblent pas s'appliquer correctement, vérifier le mode du tenant en premier.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Intune for Education</p>
+<p>Si ce mode est actif sur un tenant PME standard, les personnalisations Intune peuvent ne pas être enregistrées ou appliquées. À vérifier systématiquement lors de la prise en charge d'un nouveau tenant.</p>
+</div>
+<ul>
+<li>
 <p>Scope MDM sur groupe ciblé en production — mettre "Tous" signifie que n'importe quel utilisateur qui joint un appareil à Entra déclenche automatiquement l'enrôlement Intune, y compris sur un PC personnel. Un groupe ciblé permet de contrôler qui est géré.</p>
 </li>
 <li>
-<p>Bloquer les appareils personnels dans les restrictions de plateforme — un appareil est considéré "professionnel" uniquement s'il est dans la liste Autopilot. Sans cette restriction, un utilisateur peut enrôler son PC personnel et recevoir toutes les politiques de l'entreprise.</p>
+<p>Bloquer les appareils personnels dans les restrictions de plateforme — un appareil est considéré "professionnel" uniquement s'il est dans la liste Autopilot. Tout appareil hors Autopilot est classé "personnel" par défaut par Intune. Dans Intune &gt; Appareils &gt; Inscription &gt; Restrictions de plateforme, la colonne "Propriété personnelle" permet de bloquer par type d'OS. Pour le BYOD Windows, mettre Windows MDM &gt; Propriété personnelle sur Bloquer empêche tout PC non présent dans Autopilot de s'enrôler.</p>
 </li>
+</ul>
+<p><img alt="Restrictions de plateforme Intune" src="../../assets/images/restriction%20plateforme.png" /></p>
+<ul>
 <li>
 <p>Activer LAPS sur tous les tenants clients — crée un compte admin local avec un mot de passe unique par machine, tournant automatiquement. Permet l'intervention technique sans partager un mot de passe global. Récupérable depuis Intune ou Entra sur la fiche appareil.</p>
 </li>
 <li>
-<p>Désactiver "l'utilisateur qui inscrit est admin local" — sans cette option désactivée, le premier utilisateur à enrôler la machine devient admin local. En Autopilot user-driven, c'est l'utilisateur final qui enrôle, pas le technicien.</p>
+<p>Désactiver "l'utilisateur qui inscrit est admin local" — par défaut, le premier utilisateur à enrôler la machine devient automatiquement admin local. En Autopilot user-driven, c'est l'utilisateur final qui enrôle, pas le technicien — il se retrouve donc admin de son propre poste sans que ce soit voulu. Depuis Entra ID &gt; Appareils &gt; Paramètres de l'appareil, le paramètre "L'utilisateur qui inscrit son appareil est ajouté en tant qu'administrateur local" propose trois options : Tout, Sélectionné, Aucun. Mettre sur Aucun empêche tout utilisateur enrôlant un appareil de devenir admin local.</p>
 </li>
 </ul>
+<p><img alt="Paramètre admin local inscription Entra" src="../../assets/images/inscription%20admin.png" /></p>
+<ul>
+<li>Activer "Désactiver l'inscription MDM lors de l'ajout d'un compte professionnel" dans Entra &gt; Mobilité &gt; Microsoft Intune — sans cette option, quand un utilisateur ajoute son compte pro sur un PC personnel, Windows affiche un pop-up avec la case "Allow my organization to manage my device" cochée par défaut. Un simple clic sur OK enrôle le PC perso dans Intune et lui pousse toutes les politiques de l'entreprise. Ce toggle supprime ce pop-up et empêche l'enrôlement automatique des BYOD.</li>
+</ul>
+<p><img alt="Pop-up enrôlement automatique" src="../../assets/images/popup%20inscription.png" />
+<img alt="Toggle désactiver inscription MDM" src="../../assets/images/evider%20enrollement.png" /></p>
 <hr />
 <h2 id="autopilot">Autopilot<a class="headerlink" href="#autopilot" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2160,10 +2222,55 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <hr />
+<h2 id="conformite-securite">Conformité / Sécurité<a class="headerlink" href="#conformite-securite" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>MAM + Conditional Access app-based pour les BYOD non enrôlés — un appareil personnel non enrôlé dans Intune MDM ne peut pas reporter d'état de conformité à Entra ID. Une règle Conditional Access qui exige "appareil conforme" bloque donc systématiquement ces utilisateurs. La solution est de combiner deux mécanismes :</p>
+<ul>
+<li>une App Protection Policy (MAM) appliquée sur Outlook, Teams, Edge — elle sécurise les données au niveau de l'app sans toucher au reste de l'appareil (pas de wipe total possible, pas de visibilité sur le perso)</li>
+<li>une règle Conditional Access de type "app-based" qui exige que l'app utilisée soit protégée par une APP, plutôt qu'exiger un appareil conforme</li>
+</ul>
+<p>Résultat : l'utilisateur accède à sa messagerie et Teams depuis son téléphone perso, mais les données restent dans un conteneur sécurisé — copier-coller vers des apps personnelles bloqué, wipe sélectif possible en cas de départ.</p>
+</li>
+<li>
+<p>Tester les politiques Conditional Access en mode Report-Only avant activation — ce mode simule l'impact de la règle sans bloquer personne. Permet de détecter les utilisateurs ou appareils qui seraient bloqués avant le basculement en production.</p>
+</li>
+<li>
+<p>Conformité couplée à Conditional Access — une politique de conformité seule n'a aucun effet bloquant. Elle étiquette le poste "non conforme" dans la console, mais sans règle CA associée, l'utilisateur continue d'accéder à ses ressources normalement.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">BYOD en PME</p>
+<p>MAM-only (sans enrôlement MDM) est l'approche recommandée par défaut pour les appareils mobiles personnels en PME. Friction minimale pour l'utilisateur, protection maximale pour les données métier.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Conditional Access et comptes break-glass</p>
+<p>Toujours exclure au moins un compte break-glass admin de toutes les politiques CA. Sans ça, une mauvaise configuration peut verrouiller l'accès total au tenant.</p>
+</div>
+<hr />
+<h2 id="offboarding-cycle-de-vie">Offboarding / cycle de vie<a class="headerlink" href="#offboarding-cycle-de-vie" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Suppression Intune et Entra ID sont deux actions indépendantes — supprimer un appareil dans Intune ne le retire pas d'Entra ID, et inversement. À chaque offboarding, vérifier que les deux suppressions sont bien effectuées pour éviter des enregistrements fantômes avec des permissions résiduelles.</p>
+</li>
+<li>
+<p>Autopilot Reset pour la réaffectation interne — quand un appareil change d'utilisateur au sein du même tenant, l'Autopilot Reset est l'action adaptée : wipe du profil utilisateur, conservation de l'enrôlement Intune et du profil de déploiement. Le poste est prêt pour le nouvel utilisateur sans intervention physique.</p>
+</li>
+<li>
+<p>Wipe complet pour les départs définitifs ou changements de tenant — efface toutes les données, désactive l'enrôlement. Couplé à la suppression dans la liste Autopilot si le poste doit être transféré à un autre client.</p>
+</li>
+<li>
+<p>Audits trimestriels du parc — identifier les appareils inactifs depuis plus de 90 jours, les retirements non finalisés et les enregistrements obsolètes. Un appareil inactif qui reste enrôlé conserve un accès potentiel aux ressources du tenant.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Offboarding incomplet</p>
+<p>Un appareil retiré d'Intune mais toujours présent dans Entra ID peut conserver des permissions d'accès résiduelles. Toujours supprimer les deux entrées.</p>
+</div>
+<hr />
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="intune_lab_session1.md">Autopilot — Lab session 1</a> <em>(à venir)</em></li>
-<li><a href="intune_bcloud_session2.md">Profils de configuration</a> <em>(à venir)</em></li>
 <li><a href="wintuner_intune.md">Wintuner — Packaging applications</a> <em>(à venir)</em></li>
 </ul>
 
