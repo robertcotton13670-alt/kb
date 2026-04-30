@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Collecter le hardware hash Windows pour l'enrôlement Autopilot — local, CSV et upload direct Intune">
+        <meta name="description" content="Toutes les méthodes pour récupérer le hardware hash d'un poste Windows en vue de l'enrôlement Autopilot">
       
       
       
@@ -27,7 +27,7 @@
     
     
       
-        <title>Get-WindowsAutopilotInfo - ⚡ TechBase</title>
+        <title>Collecte du hardware hash Autopilot - ⚡ TechBase</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#get-windowsautopilotinfo" class="md-skip">
+        <a href="#collecte-du-hardware-hash-autopilot" class="md-skip">
           Aller au contenu
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Get-WindowsAutopilotInfo
+              Collecte du hardware hash Autopilot
             
           </span>
         </div>
@@ -1221,7 +1221,7 @@
   <span class="md-ellipsis">
     
   
-    Get-WindowsAutopilotInfo
+    Collecte hash Autopilot
   
 
     
@@ -1239,7 +1239,7 @@
   <span class="md-ellipsis">
     
   
-    Get-WindowsAutopilotInfo
+    Collecte hash Autopilot
   
 
     
@@ -1265,10 +1265,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequis" class="md-nav__link">
+  <a href="#comparatif-des-methodes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis
+        Comparatif des méthodes
       
     </span>
   </a>
@@ -1276,55 +1276,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-du-script" class="md-nav__link">
+  <a href="#methode-1-oobe-ctrlshiftd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation du script
+        Méthode 1 — OOBE : Ctrl+Shift+D
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methodes-de-collecte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Méthodes de collecte
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Méthodes de collecte">
+    <nav class="md-nav" aria-label="Méthode 1 — OOBE : Ctrl+Shift+D">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#methode-1-export-csv-local" class="md-nav__link">
+  <a href="#procedure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Méthode 1 — Export CSV (local)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methode-2-upload-direct-vers-intune" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Méthode 2 — Upload direct vers Intune
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methode-3-csv-avec-group-tag" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Méthode 3 — CSV avec Group Tag
+        Procédure
       
     </span>
   </a>
@@ -1337,10 +1304,243 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#collecte-en-masse-via-datto-rmm" class="md-nav__link">
+  <a href="#methode-2-diagnostic-windows-mdmdiagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Collecte en masse via Datto RMM
+        Méthode 2 — Diagnostic Windows (MDMDiagnostics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 2 — Diagnostic Windows (MDMDiagnostics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procédure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methode-3-powershell-get-windowsautopilotinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 3 — PowerShell : Get-WindowsAutopilotInfo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 3 — PowerShell : Get-WindowsAutopilotInfo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-csv-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export CSV (standard)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-csv-avec-group-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export CSV avec Group Tag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-direct-vers-intune-mode-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload direct vers Intune (mode Online)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-dans-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import dans Intune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methode-4-datto-rmm-composant-azure-blob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 4 — Datto RMM : composant Azure Blob
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 4 — Datto RMM : composant Azure Blob">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-du-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables du composant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-du-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script du composant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequis-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis Azure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-dans-intune-apres-collecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import dans Intune après collecte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methode-5-profil-autopilot-conversion-automatique-des-appareils-cibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 5 — Profil Autopilot : conversion automatique des appareils ciblés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 5 — Profil Autopilot : conversion automatique des appareils ciblés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procédure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow global
       
     </span>
   </a>
@@ -1348,21 +1548,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-complet" class="md-nav__link">
+  <a href="#pieges-courants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow complet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cas-dusage-msp-frequents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cas d'usage MSP fréquents
+        Pièges courants
       
     </span>
   </a>
@@ -1930,10 +2119,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequis" class="md-nav__link">
+  <a href="#comparatif-des-methodes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prérequis
+        Comparatif des méthodes
       
     </span>
   </a>
@@ -1941,55 +2130,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-du-script" class="md-nav__link">
+  <a href="#methode-1-oobe-ctrlshiftd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation du script
+        Méthode 1 — OOBE : Ctrl+Shift+D
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methodes-de-collecte" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Méthodes de collecte
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Méthodes de collecte">
+    <nav class="md-nav" aria-label="Méthode 1 — OOBE : Ctrl+Shift+D">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#methode-1-export-csv-local" class="md-nav__link">
+  <a href="#procedure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Méthode 1 — Export CSV (local)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methode-2-upload-direct-vers-intune" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Méthode 2 — Upload direct vers Intune
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methode-3-csv-avec-group-tag" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Méthode 3 — CSV avec Group Tag
+        Procédure
       
     </span>
   </a>
@@ -2002,10 +2158,243 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#collecte-en-masse-via-datto-rmm" class="md-nav__link">
+  <a href="#methode-2-diagnostic-windows-mdmdiagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Collecte en masse via Datto RMM
+        Méthode 2 — Diagnostic Windows (MDMDiagnostics)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 2 — Diagnostic Windows (MDMDiagnostics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procédure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methode-3-powershell-get-windowsautopilotinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 3 — PowerShell : Get-WindowsAutopilotInfo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 3 — PowerShell : Get-WindowsAutopilotInfo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-csv-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export CSV (standard)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#export-csv-avec-group-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Export CSV avec Group Tag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-direct-vers-intune-mode-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload direct vers Intune (mode Online)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-dans-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import dans Intune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methode-4-datto-rmm-composant-azure-blob" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 4 — Datto RMM : composant Azure Blob
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 4 — Datto RMM : composant Azure Blob">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-du-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables du composant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-du-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script du composant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequis-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis Azure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-dans-intune-apres-collecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import dans Intune après collecte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methode-5-profil-autopilot-conversion-automatique-des-appareils-cibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 5 — Profil Autopilot : conversion automatique des appareils ciblés
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Méthode 5 — Profil Autopilot : conversion automatique des appareils ciblés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procédure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow global
       
     </span>
   </a>
@@ -2013,21 +2402,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-complet" class="md-nav__link">
+  <a href="#pieges-courants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow complet
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cas-dusage-msp-frequents" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cas d'usage MSP fréquents
+        Pièges courants
       
     </span>
   </a>
@@ -2065,144 +2443,328 @@
   
 
 
-<h1 id="get-windowsautopilotinfo">Get-WindowsAutopilotInfo<a class="headerlink" href="#get-windowsautopilotinfo" title="Permanent link">&para;</a></h1>
-<p><code>Get-WindowsAutopilotInfo</code> est un script PowerShell communautaire qui collecte le hardware hash d'un poste Windows, nécessaire pour l'enregistrement dans Windows Autopilot. Il peut exporter le hash en CSV ou l'uploader directement dans Intune.</p>
-<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
-<ul>
-<li>PowerShell 5.1 minimum (PS 7 compatible)</li>
-<li>Droits administrateur local sur le poste</li>
-<li>Accès Internet pour l'installation du script et pour le mode <code>-Online</code></li>
-<li>Pour le mode <code>-Online</code> : compte avec le rôle Intune Administrator ou Global Administrator</li>
-</ul>
-<h2 id="installation-du-script">Installation du script<a class="headerlink" href="#installation-du-script" title="Permanent link">&para;</a></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c"># Installer depuis la PowerShell Gallery</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">Install-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Force</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c"># Vérifier l&#39;installation</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nb">Get-InstalledScript</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition tip">
-<p class="admonition-title">NuGet requis</p>
-<p>Si le module NuGet n'est pas installé, PowerShell le demandera automatiquement. Accepter l'installation.</p>
-</div>
-<h2 id="methodes-de-collecte">Méthodes de collecte<a class="headerlink" href="#methodes-de-collecte" title="Permanent link">&para;</a></h2>
-<h3 id="methode-1-export-csv-local">Méthode 1 — Export CSV (local)<a class="headerlink" href="#methode-1-export-csv-local" title="Permanent link">&para;</a></h3>
-<p>Génère un fichier CSV à importer manuellement dans Intune.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">tmp</span><span class="p">\</span><span class="n">hash</span><span class="p">.</span><span class="n">csv</span>
-</code></pre></div></td></tr></table></div>
-<p>Le fichier CSV contient :
-- Device Serial Number
-- Windows Product ID
-- Hardware Hash
-- Group Tag (optionnel)
-- Assigned User (optionnel)</p>
-<p>Pour importer dans Intune : Appareils &gt; Enrôlement Windows &gt; Appareils &gt; Importer.</p>
-<h3 id="methode-2-upload-direct-vers-intune">Méthode 2 — Upload direct vers Intune<a class="headerlink" href="#methode-2-upload-direct-vers-intune" title="Permanent link">&para;</a></h3>
-<p>Upload automatique du hash directement dans le tenant Intune.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Online</span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition warning">
-<p class="admonition-title">Authentification interactive</p>
-<p>Le mode <code>-Online</code> ouvre une fenêtre d'authentification Microsoft. Il n'est pas utilisable dans un script non interactif (Datto RMM, Intune). Utiliser le mode CSV dans ce cas.</p>
-</div>
-<h3 id="methode-3-csv-avec-group-tag">Méthode 3 — CSV avec Group Tag<a class="headerlink" href="#methode-3-csv-avec-group-tag" title="Permanent link">&para;</a></h3>
-<p>Permet d'assigner directement un Group Tag Autopilot au moment de la collecte.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">tmp</span><span class="p">\</span><span class="n">hash</span><span class="p">.</span><span class="n">csv</span> <span class="n">-GroupTag</span> <span class="s2">&quot;Poweriti-Standard&quot;</span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition tip">
-<p class="admonition-title">Group Tag</p>
-<p>Le Group Tag permet de cibler automatiquement un profil Autopilot via un groupe dynamique Entra ID. Nommer le tag de manière cohérente pour tous les clients (ex. <code>NomClient-Profil</code>).</p>
-</div>
-<h2 id="collecte-en-masse-via-datto-rmm">Collecte en masse via Datto RMM<a class="headerlink" href="#collecte-en-masse-via-datto-rmm" title="Permanent link">&para;</a></h2>
-<p>Pour collecter le hash sur plusieurs postes simultanément via un composant Datto :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c"># Script Datto RMM — collecte hash et export CSV</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nv">$outputPath</span> <span class="p">=</span> <span class="s2">&quot;C:\tmp\autopilot-hash-$env:COMPUTERNAME.csv&quot;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c"># Installer le script si absent</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Get-InstalledScript</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span><span class="p">))</span> <span class="p">{</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="nb">Install-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Force</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">}</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="nv">$outputPath</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$outputPath</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="nb">Write-Output</span> <span class="s2">&quot;Hash collecté : $outputPath&quot;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="nb">Write-Error</span> <span class="s2">&quot;Échec de la collecte du hash&quot;</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="n">exit</span> <span class="n">1</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
-<div class="admonition tip">
-<p class="admonition-title">Récupérer les fichiers CSV</p>
-<p>Dans Datto RMM, utiliser la fonctionnalité "File Transfer" ou stocker les CSV dans un partage réseau accessible pour les regrouper avant import dans Intune.</p>
-</div>
-<h2 id="workflow-complet">Workflow complet<a class="headerlink" href="#workflow-complet" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>graph TD
-    A[Nouveau poste reçu] --&gt; B[Lancer PowerShell en admin]
-    B --&gt; C[Install-Script Get-WindowsAutopilotInfo]
-    C --&gt; D{Mode souhaité ?}
-    D -- CSV --&gt; E[Get-WindowsAutopilotInfo -OutputFile hash.csv]
-    D -- Direct --&gt; F[Get-WindowsAutopilotInfo -Online]
-    E --&gt; G[Importer CSV dans Intune]
-    F --&gt; H[Hash uploadé automatiquement]
-    G --&gt; I[Intune &gt; Appareils &gt; Enrôlement Windows &gt; Appareils]
-    H --&gt; I
-    I --&gt; J[Assigner profil Autopilot]
-    J --&gt; K[Reset ou premier démarrage OOBE]</code></pre>
-<h2 id="cas-dusage-msp-frequents">Cas d'usage MSP fréquents<a class="headerlink" href="#cas-dusage-msp-frequents" title="Permanent link">&para;</a></h2>
+<h1 id="collecte-du-hardware-hash-autopilot">Collecte du hardware hash Autopilot<a class="headerlink" href="#collecte-du-hardware-hash-autopilot" title="Permanent link">&para;</a></h1>
+<p>Le hardware hash est un identifiant unique généré à partir du matériel du poste (BIOS, carte mère, processeur...). Il doit être importé dans Intune pour que le poste soit reconnu lors de l'OOBE Autopilot.</p>
+<p>Il existe plusieurs méthodes pour le collecter, selon le contexte d'intervention.</p>
+<hr />
+<h2 id="comparatif-des-methodes">Comparatif des méthodes<a class="headerlink" href="#comparatif-des-methodes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Situation</th>
-<th>Commande recommandée</th>
+<th>Méthode</th>
+<th>Prérequis</th>
+<th>Contexte d'usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nouveau poste livré chez un client</td>
-<td><code>-OutputFile</code> + import CSV dans Intune</td>
+<td>OOBE — Ctrl+Shift+D</td>
+<td>Poste en cours d'OOBE</td>
+<td>Nouveau poste non configuré</td>
 </tr>
 <tr>
-<td>Pré-enregistrement en masse (livraison)</td>
-<td>Script Datto RMM avec <code>-OutputFile</code></td>
+<td>Diagnostic Windows (MDMDiagnostics)</td>
+<td>Windows installé, sans PowerShell</td>
+<td>Poste existant, accès limité</td>
 </tr>
 <tr>
-<td>Test rapide sur un poste unique</td>
-<td><code>-Online</code></td>
+<td>PowerShell Get-WindowsAutopilotInfo</td>
+<td>PowerShell admin</td>
+<td>Usage courant en lab ou production</td>
 </tr>
 <tr>
-<td>Autopilot avec profil spécifique par client</td>
-<td><code>-OutputFile</code> + <code>-GroupTag NomClient</code></td>
+<td>Datto RMM — composant Azure Blob</td>
+<td>Agent Datto déployé</td>
+<td>Collecte en masse sur parc existant</td>
+</tr>
+<tr>
+<td>Profil Autopilot — conversion automatique</td>
+<td>Postes déjà enrôlés dans Intune</td>
+<td>Migration de parc existant, zéro intervention</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition danger">
-<p class="admonition-title">Hash unique par poste</p>
-<p>Le hardware hash est unique et lié au matériel. Si la carte mère est remplacée, il faut recollecler le hash et ré-enregistrer le poste dans Autopilot.</p>
+<hr />
+<h2 id="methode-1-oobe-ctrlshiftd">Méthode 1 — OOBE : Ctrl+Shift+D<a class="headerlink" href="#methode-1-oobe-ctrlshiftd" title="Permanent link">&para;</a></h2>
+<p>Utilisable pendant l'assistant de configuration Windows (OOBE), avant toute configuration du poste.</p>
+<h3 id="procedure">Procédure<a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Démarrer le poste → attendre l'écran de sélection de langue de l'OOBE</li>
+<li>Appuyer sur <code>Ctrl + Shift + D</code> — une page de diagnostic Autopilot s'ouvre</li>
+<li>Cliquer sur "Export" — génère un fichier ZIP sur le bureau ou à la racine du lecteur USB</li>
+<li>Décompresser le ZIP → le fichier <code>AutopilotDiagnostics.zip</code> contient un CSV avec le hardware hash</li>
+<li>Importer le CSV dans Intune : Appareils &gt; Inscription &gt; Windows Autopilot &gt; Appareils &gt; Importer</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Clé USB</p>
+<p>Brancher une clé USB avant d'ouvrir la page de diagnostic. L'export se fait directement sur la clé, ce qui évite d'avoir à récupérer le fichier depuis la partition Windows (qui n'est pas encore configurée).</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Fenêtre de temps limitée</p>
+<p>Cette méthode n'est disponible que pendant l'OOBE, avant la connexion au compte Microsoft. Si l'OOBE est déjà terminée, passer à une autre méthode.</p>
+</div>
+<hr />
+<h2 id="methode-2-diagnostic-windows-mdmdiagnostics">Méthode 2 — Diagnostic Windows (MDMDiagnostics)<a class="headerlink" href="#methode-2-diagnostic-windows-mdmdiagnostics" title="Permanent link">&para;</a></h2>
+<p>Utilisable sur un poste Windows déjà installé, sans nécessiter PowerShell. Accessible depuis l'interface graphique Windows.</p>
+<h3 id="procedure_1">Procédure<a class="headerlink" href="#procedure_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ouvrir les Paramètres Windows → Comptes → Accès scolaire ou professionnel</li>
+<li>Cliquer sur "Exporter vos informations de gestion" (ou utiliser le rapport de diagnostic MDM)</li>
+<li>Alternativement, exécuter dans une invite de commande :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mdmdiagnosticstool.exe -area Autopilot -zip C:\tmp\autopilot-diag.zip
+</code></pre></div>
+<ol>
+<li>Décompresser le fichier ZIP généré</li>
+<li>Dans le dossier extrait, naviguer vers le sous-dossier <code>DeviceEnrollment</code> ou <code>AutopilotDDSZip</code></li>
+<li>Le fichier <code>DiagnosticReport.xml</code> ou un fichier CSV contient le hardware hash dans la section dédiée Autopilot</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Emplacement du fichier public</p>
+<p>Sans préciser de chemin, l'outil génère les fichiers dans <code>C:\Users\Public\Documents\MDMDiagnostics\</code>. Ce dossier est accessible sans droits admin, ce qui peut être utile pour la récupération à distance.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Hash dans un fichier XML</p>
+<p>Contrairement au CSV généré par PowerShell, le hash est intégré dans un rapport XML. Il faudra extraire manuellement la valeur ou la parser avant import dans Intune. Préférer PowerShell quand c'est possible.</p>
+</div>
+<hr />
+<h2 id="methode-3-powershell-get-windowsautopilotinfo">Méthode 3 — PowerShell : Get-WindowsAutopilotInfo<a class="headerlink" href="#methode-3-powershell-get-windowsautopilotinfo" title="Permanent link">&para;</a></h2>
+<p>Méthode de référence. Génère un CSV directement importable dans Intune, avec support du Group Tag.</p>
+<h3 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>PowerShell 5.1 minimum (PS 7 compatible)</li>
+<li>Droits administrateur local</li>
+<li>Accès Internet (installation depuis la PowerShell Gallery)</li>
+</ul>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">Install-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Force</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">NuGet</p>
+<p>Si NuGet n'est pas installé, PowerShell le proposera automatiquement. Accepter.</p>
+</div>
+<h3 id="export-csv-standard">Export CSV (standard)<a class="headerlink" href="#export-csv-standard" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">tmp</span><span class="p">\</span><span class="n">hash</span><span class="p">.</span><span class="n">csv</span>
+</code></pre></div></td></tr></table></div>
+<p>Contenu du CSV généré :</p>
+<ul>
+<li>Device Serial Number</li>
+<li>Windows Product ID</li>
+<li>Hardware Hash</li>
+<li>Group Tag (si précisé)</li>
+<li>Assigned User (si précisé)</li>
+</ul>
+<h3 id="export-csv-avec-group-tag">Export CSV avec Group Tag<a class="headerlink" href="#export-csv-avec-group-tag" title="Permanent link">&para;</a></h3>
+<p>Le Group Tag permet de cibler automatiquement un profil Autopilot via un groupe dynamique Entra ID.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-OutputFile</span> <span class="n">C</span><span class="p">:\</span><span class="n">tmp</span><span class="p">\</span><span class="n">hash</span><span class="p">.</span><span class="n">csv</span> <span class="n">-GroupTag</span> <span class="s2">&quot;Poweriti-Standard&quot;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Convention de nommage Group Tag</p>
+<p>Utiliser un format cohérent sur tous les clients : <code>NomClient-Profil</code> (ex. <code>CONTOSO-Standard</code>, <code>CONTOSO-Direction</code>). La règle du groupe dynamique Entra est sensible à la casse.</p>
+</div>
+<h3 id="upload-direct-vers-intune-mode-online">Upload direct vers Intune (mode Online)<a class="headerlink" href="#upload-direct-vers-intune-mode-online" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">Get-WindowsAutopilotInfo</span> <span class="n">-Online</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Non utilisable en script non interactif</p>
+<p>Le mode <code>-Online</code> ouvre une fenêtre d'authentification Microsoft interactive. Il ne peut pas être utilisé dans Datto RMM, Intune, ou tout autre contexte automatisé. Utiliser le mode CSV dans ce cas.</p>
+</div>
+<h3 id="import-dans-intune">Import dans Intune<a class="headerlink" href="#import-dans-intune" title="Permanent link">&para;</a></h3>
+<p>Intune &gt; Appareils &gt; Inscription &gt; Windows &gt; Windows Autopilot &gt; Appareils &gt; Importer</p>
+<p>Cliquer sur Synchroniser après l'import. Délai d'apparition : 5 à 15 minutes.</p>
+<hr />
+<h2 id="methode-4-datto-rmm-composant-azure-blob">Méthode 4 — Datto RMM : composant Azure Blob<a class="headerlink" href="#methode-4-datto-rmm-composant-azure-blob" title="Permanent link">&para;</a></h2>
+<p>Méthode recommandée pour la collecte en masse sur un parc existant. Le composant collecte le hash et l'uploade automatiquement dans un conteneur Azure Blob Storage, sans intervention manuelle poste par poste.</p>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[Job Datto RMM lancé sur N postes] --&gt; B[Composant exécuté en contexte SYSTEM]
+    B --&gt; C[Get-WindowsAutopilotInfo génère le CSV]
+    C --&gt; D[Upload vers Azure Blob Storage via SAS URL]
+    D --&gt; E[Conteneur autopilot-hashes]
+    E --&gt; F[Téléchargement des CSV]
+    F --&gt; G[Import dans Intune]
+    G --&gt; H[Synchroniser]</code></pre>
+<h3 id="variables-du-composant">Variables du composant<a class="headerlink" href="#variables-du-composant" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SAS_URL</code></td>
+<td>URL SAS du conteneur Azure Blob (droits Write)</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td><code>GROUP_TAG</code></td>
+<td>Group Tag Autopilot à assigner</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table>
+<h3 id="script-du-composant">Script du composant<a class="headerlink" href="#script-du-composant" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c"># Variables injectées par Datto RMM</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nv">$sasUrl</span>   <span class="p">=</span> <span class="nv">$env:SAS_URL</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nv">$groupTag</span> <span class="p">=</span> <span class="nv">$env:GROUP_TAG</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="c"># Installation de Get-WindowsAutopilotInfo</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="nb">Install-Script</span> <span class="n">-Name</span> <span class="nb">Get-WindowsAutoPilotInfo</span> <span class="n">-Force</span> <span class="n">-Scope</span> <span class="n">AllUsers</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="c"># Génération du CSV avec Group Tag</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="nv">$csvPath</span> <span class="p">=</span> <span class="s2">&quot;C:\Windows\Temp\$env:COMPUTERNAME-hash.csv&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="nb">Get-WindowsAutoPilotInfo</span> <span class="n">-OutputFile</span> <span class="nv">$csvPath</span> <span class="n">-GroupTag</span> <span class="nv">$groupTag</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="c"># Upload vers Azure Blob Storage</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="nv">$blobUrl</span>     <span class="p">=</span> <span class="s2">&quot;$sasUrl/$env:COMPUTERNAME-hash.csv&quot;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="nv">$headers</span>     <span class="p">=</span> <span class="p">@{</span> <span class="s2">&quot;x-ms-blob-type&quot;</span> <span class="p">=</span> <span class="s2">&quot;BlockBlob&quot;</span> <span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="nv">$fileContent</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="nv">$csvPath</span> <span class="n">-Raw</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$blobUrl</span> <span class="n">-Method</span> <span class="n">Put</span> <span class="n">-Headers</span> <span class="nv">$headers</span> <span class="n">-Body</span> <span class="nv">$fileContent</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="nb">Write-Host</span> <span class="s2">&quot;Upload terminé : $env:COMPUTERNAME-hash.csv&quot;</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="prerequis-azure">Prérequis Azure<a class="headerlink" href="#prerequis-azure" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Storage Account existant (ex. <code>stimages84</code>, region <code>francecentral</code>)</li>
+<li>Conteneur Blob dédié (ex. <code>autopilot-hashes</code>)</li>
+<li>SAS URL générée avec droits Read, Write, List — expiration suffisante (minimum 7 jours pour un grand parc)</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">SAS URL = donnée sensible</p>
+<p>Une SAS URL expose un accès en écriture à ton stockage Azure. Ne jamais la stocker en clair dans IT Glue ou un ticket. Configurer une alerte budget Azure pour détecter une utilisation anormale.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">SAS URL expirée</p>
+<p>Vérifier la date d'expiration avant de lancer un job sur grand parc. Un SAS expiré provoque des erreurs silencieuses sur les postes concernés — le hash n'est pas uploadé.</p>
+</div>
+<h3 id="import-dans-intune-apres-collecte">Import dans Intune après collecte<a class="headerlink" href="#import-dans-intune-apres-collecte" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Télécharger les CSV depuis le conteneur Azure (Azure Storage Explorer ou portail Azure)</li>
+<li>Fusionner les CSV si nécessaire (voir script <code>merge-csv.ps1</code>)</li>
+<li>Intune &gt; Appareils &gt; Inscription &gt; Windows &gt; Windows Autopilot &gt; Appareils &gt; Importer</li>
+<li>Cliquer sur Synchroniser</li>
+<li>Vérifier que chaque appareil apparaît avec le bon Group Tag</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Multi-tenant MSP</p>
+<p>Nommer les conteneurs Azure par client (<code>autopilot-client1</code>, <code>autopilot-client2</code>) pour isoler les hashs. Conserver les CSV dans IT Glue comme source de vérité par client.</p>
+</div>
+<hr />
+<h2 id="methode-5-profil-autopilot-conversion-automatique-des-appareils-cibles">Méthode 5 — Profil Autopilot : conversion automatique des appareils ciblés<a class="headerlink" href="#methode-5-profil-autopilot-conversion-automatique-des-appareils-cibles" title="Permanent link">&para;</a></h2>
+<p>Méthode la plus simple pour migrer un parc existant déjà enrôlé dans Intune. Aucune collecte manuelle de hash, aucune intervention poste par poste. Intune pousse automatiquement un script PowerShell sur les postes ciblés qui collecte et remonte le hash au service Autopilot.</p>
+<h3 id="principe">Principe<a class="headerlink" href="#principe" title="Permanent link">&para;</a></h3>
+<p>Lors de la création ou modification d'un profil de déploiement Autopilot, l'option "Convertir tous les appareils ciblés en Autopilot" est disponible. En la basculant sur Oui, Intune déploie silencieusement <code>Get-WindowsAutopilotInfo</code> sur tous les postes du groupe cible. Le hash est collecté et enregistré automatiquement dans la liste Autopilot du tenant, sans action utilisateur ni technicien.</p>
+<p><img alt="Option &quot;Convertir tous les appareils ciblés en Autopilot&quot; dans le profil de déploiement Intune" src="../../assets/images/autopilot-convert-profil.png" /></p>
+<h3 id="procedure_2">Procédure<a class="headerlink" href="#procedure_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Intune &gt; Appareils &gt; Inscription &gt; Windows &gt; Windows Autopilot &gt; Profils de déploiement</li>
+<li>Créer ou modifier un profil existant</li>
+<li>Dans l'onglet "Informations de base", basculer "Convertir tous les appareils ciblés en Autopilot" sur <strong>Oui</strong></li>
+<li>Assigner le profil au groupe d'appareils cible</li>
+<li>Attendre — les postes remontent dans Autopilot dans un délai de quelques heures à quelques jours selon la fréquence de synchronisation Intune</li>
+</ol>
+<h3 id="verification">Vérification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h3>
+<p>Intune &gt; Appareils &gt; Inscription &gt; Windows &gt; Windows Autopilot &gt; Appareils — les postes apparaissent progressivement avec leur numéro de série.</p>
+<div class="admonition tip">
+<p class="admonition-title">Compatible AD Connect (environnement hybride)</p>
+<p>Cette méthode fonctionne aussi sur les postes joints à un Active Directory local synchronisés via Entra Connect (ex-Azure AD Connect). Les postes hybrides déjà visibles dans Intune reçoivent le script de la même façon. Aucune configuration supplémentaire n'est requise côté AD.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Délai variable</p>
+<p>Le délai de remontée dépend de la fréquence de check-in Intune des postes (toutes les 8h par défaut). Sur un grand parc, prévoir 24 à 72h pour que tous les postes soient enregistrés.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Group Tag non assigné automatiquement</p>
+<p>Cette méthode n'assigne pas de Group Tag aux appareils convertis. Il faudra les assigner manuellement dans Intune &gt; Autopilot &gt; Appareils, ou utiliser une autre méthode si le Group Tag est critique pour le ciblage des profils.</p>
+</div>
+<hr />
+<h2 id="workflow-global">Workflow global<a class="headerlink" href="#workflow-global" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TD
+    A[Poste à enregistrer dans Autopilot] --&gt; B{État du poste ?}
+    B -- OOBE en cours --&gt; C[Ctrl+Shift+D → Export USB]
+    B -- Windows installé, pas PowerShell --&gt; D[MDMDiagnosticsTool → ZIP → XML]
+    B -- Windows installé, PowerShell dispo --&gt; E[Get-WindowsAutopilotInfo -OutputFile]
+    B -- Parc existant, Datto déployé --&gt; F[Composant Datto RMM → Azure Blob]
+    B -- Postes déjà dans Intune --&gt; M[Profil Autopilot → Convertir appareils ciblés]
+    C --&gt; G[CSV importable dans Intune]
+    D --&gt; H[Extraire hash du XML]
+    E --&gt; G
+    F --&gt; I[Télécharger CSV depuis Azure]
+    H --&gt; G
+    I --&gt; G
+    M --&gt; N[Hash remonté automatiquement — délai 24-72h]
+    G --&gt; J[Intune &gt; Autopilot &gt; Appareils &gt; Importer]
+    N --&gt; K[Synchroniser]
+    J --&gt; K
+    K --&gt; L[Vérifier Group Tag + apparition dans le groupe dynamique]</code></pre>
+<hr />
+<h2 id="pieges-courants">Pièges courants<a class="headerlink" href="#pieges-courants" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Piège</th>
+<th>Conséquence</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Import sans Group Tag</td>
+<td>L'appareil n'intègre aucun groupe dynamique, ne reçoit ni profil ni ESP</td>
+<td>Toujours définir le Group Tag à la collecte ou le corriger dans Intune &gt; Autopilot &gt; Appareils</td>
+</tr>
+<tr>
+<td>Hash déjà enregistré dans un autre tenant</td>
+<td>L'import échoue silencieusement</td>
+<td>Supprimer l'appareil de l'ancien tenant Autopilot (indépendant de la suppression dans Intune)</td>
+</tr>
+<tr>
+<td>SAS URL expirée (méthode Datto)</td>
+<td>Upload échoue, hash non collecté</td>
+<td>Vérifier l'expiration avant le job</td>
+</tr>
+<tr>
+<td>Remplacement carte mère</td>
+<td>Hash invalide</td>
+<td>Recollecler le hash et ré-enregistrer le poste</td>
+</tr>
+<tr>
+<td>Deux Group Tags différents pour le même client</td>
+<td>Groupes dynamiques incohérents</td>
+<td>Standardiser la convention de nommage dès le départ</td>
+</tr>
+<tr>
+<td>Conversion automatique sans Group Tag</td>
+<td>Appareils convertis sans profil ni ESP assignés</td>
+<td>Assigner le Group Tag manuellement après conversion, ou combiner avec une autre méthode</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../">Commandes &amp; références MSP</a></li>
 <li><a href="../dsregcmd/">dsregcmd — Diagnostic Entra / Intune</a></li>
+<li><a href="../">Commandes &amp; Références MSP</a></li>
 </ul>
 
 
