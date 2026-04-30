@@ -83,7 +83,7 @@ nav:
     - dsregcmd: refs/dsregcmd.md
     - ipconfig: refs/ipconfig.md
     - winget: refs/winget.md
-    - Get-WindowsAutopilotInfo: refs/autopilot-hash.md
+    - Collecte hash Autopilot: refs/autopilot-hash.md
     - RDS — Sessions: refs/rds-sessions.md
   - PowerAcademy:
     - Vue d'ensemble: poweracademy/index.md
