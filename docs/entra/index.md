@@ -1,9 +1,12 @@
 ---
 title: Entra ID
-description: Section en cours de construction
+description: Identité cloud, hybrid identity et accès aux ressources on-prem
 ---
 
 # Entra ID
 
-!!! info "À venir"
-    Cette section est en cours de construction.
+Gestion des identités cloud, synchronisation hybride et accès aux ressources on-prem.
+
+## Pages disponibles
+
+- [Cloud Kerberos Trust](cloud-kerberos-trust.md)
