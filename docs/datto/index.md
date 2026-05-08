@@ -12,3 +12,4 @@ Monitoring, patch management et automatisation via les agents Datto RMM.
 - [Toast Notifications depuis Datto](Toast notif depuis datto.md)
 - [Audit OneDrive / SharePoint V3](audit-onedrive-sharepoint-v3.md)
 - [Moniteur Defender - Age des signatures](defender-signature-age.md)
+- [Composant - Report Printers](report-printers.md)
