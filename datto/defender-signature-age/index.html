@@ -6,35 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Composants, monitoring, patch management et automatisation via agents">
+        <meta name="description" content="Composant Datto RMM qui alerte si les signatures Windows Defender ont plus de 24h (ou seuil configurable).">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/datto/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/datto/defender-signature-age/">
       
       
-        <link rel="prev" href="../intune/best-practices-msp/">
-      
-      
-        <link rel="next" href="Toast%20notif%20depuis%20datto/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Datto RMM - ⚡ TechBase</title>
+        <title>Moniteur Defender - Age des signatures - ⚡ TechBase</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#datto-rmm" class="md-skip">
+        <a href="#moniteur-defender-age-des-signatures" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href=".." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Datto RMM
+              Moniteur Defender - Age des signatures
             
           </span>
         </div>
@@ -227,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -248,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../intune/" class="md-tabs__link">
+        <a href="../../intune/" class="md-tabs__link">
           
   
   
@@ -264,13 +260,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -290,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../m365/" class="md-tabs__link">
+        <a href="../../m365/" class="md-tabs__link">
           
   
   
@@ -308,7 +302,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../entra/" class="md-tabs__link">
+      <a href="../../entra/" class="md-tabs__link">
         
   
   
@@ -329,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../refs/" class="md-tabs__link">
+        <a href="../../refs/" class="md-tabs__link">
           
   
   
@@ -349,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../poweracademy/" class="md-tabs__link">
+        <a href="../../poweracademy/" class="md-tabs__link">
           
   
   
@@ -383,7 +377,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -413,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -492,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/" class="md-nav__link">
+      <a href="../../intune/" class="md-nav__link">
         
   
   
@@ -520,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/autopilot/" class="md-nav__link">
+      <a href="../../intune/autopilot/" class="md-nav__link">
         
   
   
@@ -548,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/autopilot-hash/" class="md-nav__link">
+      <a href="../../intune/autopilot-hash/" class="md-nav__link">
         
   
   
@@ -576,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/laps/" class="md-nav__link">
+      <a href="../../intune/laps/" class="md-nav__link">
         
   
   
@@ -604,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/reset-wipe/" class="md-nav__link">
+      <a href="../../intune/reset-wipe/" class="md-nav__link">
         
   
   
@@ -632,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/imprimantes-intune-printservertointune/" class="md-nav__link">
+      <a href="../../intune/imprimantes-intune-printservertointune/" class="md-nav__link">
         
   
   
@@ -660,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/winget-deploy-intune/" class="md-nav__link">
+      <a href="../../intune/winget-deploy-intune/" class="md-nav__link">
         
   
   
@@ -688,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intune/best-practices-msp/" class="md-nav__link">
+      <a href="../../intune/best-practices-msp/" class="md-nav__link">
         
   
   
@@ -720,31 +714,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -762,7 +751,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -777,37 +766,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vue d'ensemble
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -823,37 +785,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages disponibles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -866,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Toast%20notif%20depuis%20datto/" class="md-nav__link">
+      <a href="../Toast%20notif%20depuis%20datto/" class="md-nav__link">
         
   
   
@@ -894,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="audit-onedrive-sharepoint-v3/" class="md-nav__link">
+      <a href="../audit-onedrive-sharepoint-v3/" class="md-nav__link">
         
   
   
@@ -981,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/" class="md-nav__link">
+      <a href="../../m365/" class="md-nav__link">
         
   
   
@@ -1009,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/smtp2go-scan-to-email/" class="md-nav__link">
+      <a href="../../m365/smtp2go-scan-to-email/" class="md-nav__link">
         
   
   
@@ -1037,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/onedrive-shortcuts-groupe/" class="md-nav__link">
+      <a href="../../m365/onedrive-shortcuts-groupe/" class="md-nav__link">
         
   
   
@@ -1072,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entra/" class="md-nav__link">
+      <a href="../../entra/" class="md-nav__link">
         
   
   
@@ -1151,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/" class="md-nav__link">
+      <a href="../../refs/" class="md-nav__link">
         
   
   
@@ -1179,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/dsregcmd/" class="md-nav__link">
+      <a href="../../refs/dsregcmd/" class="md-nav__link">
         
   
   
@@ -1207,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/ipconfig/" class="md-nav__link">
+      <a href="../../refs/ipconfig/" class="md-nav__link">
         
   
   
@@ -1235,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/winget/" class="md-nav__link">
+      <a href="../../refs/winget/" class="md-nav__link">
         
   
   
@@ -1263,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/autopilot-hash/" class="md-nav__link">
+      <a href="../../refs/autopilot-hash/" class="md-nav__link">
         
   
   
@@ -1291,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/rds-sessions/" class="md-nav__link">
+      <a href="../../refs/rds-sessions/" class="md-nav__link">
         
   
   
@@ -1378,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/" class="md-nav__link">
+      <a href="../../poweracademy/" class="md-nav__link">
         
   
   
@@ -1406,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-presentation/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-presentation/" class="md-nav__link">
         
   
   
@@ -1434,7 +1365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-authentification/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-authentification/" class="md-nav__link">
         
   
   
@@ -1462,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-cybersecurite/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-cybersecurite/" class="md-nav__link">
         
   
   
@@ -1490,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-exchange-outlook/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-exchange-outlook/" class="md-nav__link">
         
   
   
@@ -1518,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-faq/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-faq/" class="md-nav__link">
         
   
   
@@ -1546,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-keeper/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-keeper/" class="md-nav__link">
         
   
   
@@ -1574,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-onedrive/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-onedrive/" class="md-nav__link">
         
   
   
@@ -1602,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-outils-complementaires/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-outils-complementaires/" class="md-nav__link">
         
   
   
@@ -1630,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-sharepoint/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-sharepoint/" class="md-nav__link">
         
   
   
@@ -1658,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-support/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-support/" class="md-nav__link">
         
   
   
@@ -1686,7 +1617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-teams/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-teams/" class="md-nav__link">
         
   
   
@@ -1714,7 +1645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-vade/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-vade/" class="md-nav__link">
         
   
   
@@ -1742,7 +1673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/glossaire-m365/" class="md-nav__link">
+      <a href="../../poweracademy/glossaire-m365/" class="md-nav__link">
         
   
   
@@ -1770,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/glossaire-securite/" class="md-nav__link">
+      <a href="../../poweracademy/glossaire-securite/" class="md-nav__link">
         
   
   
@@ -1825,10 +1756,93 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
+  <a href="#variables-du-composant" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pages disponibles
+        Variables du composant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creer-le-composant-dans-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creer le composant dans Datto RMM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creer-le-moniteur-monitor-dans-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creer le moniteur (Monitor) dans Datto RMM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpreter-les-resultats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpreter les resultats
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interpreter les resultats">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statuts-possibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statuts possibles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-signatures-perimees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting signatures perimees
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codes-de-sortie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codes de sortie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A lire ensuite
       
     </span>
   </a>
@@ -1855,13 +1869,192 @@
   
 
 
-<h1 id="datto-rmm">Datto RMM<a class="headerlink" href="#datto-rmm" title="Permanent link">&para;</a></h1>
-<p>Monitoring, patch management et automatisation via les agents Datto RMM.</p>
-<h2 id="pages-disponibles">Pages disponibles<a class="headerlink" href="#pages-disponibles" title="Permanent link">&para;</a></h2>
+<h1 id="moniteur-defender-age-des-signatures">Moniteur Defender - Age des signatures<a class="headerlink" href="#moniteur-defender-age-des-signatures" title="Permanent link">&para;</a></h1>
+<p>Moniteur Datto RMM qui interroge <code>Get-MpComputerStatus</code> et remonte une alerte si les signatures antivirus Windows Defender n'ont pas ete mises a jour depuis plus de <code>MaxAgeHours</code> heures (defaut : 24h). Couvre aussi la detection du service desactive et de l'antivirus desactive par un tiers.</p>
+<p>Script source : <code>datto-rmm/monitors/defender-signature-age.ps1</code></p>
+<hr />
+<h2 id="variables-du-composant">Variables du composant<a class="headerlink" href="#variables-du-composant" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Defaut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MaxAgeHours</code></td>
+<td>Integer</td>
+<td><code>24</code></td>
+<td>Age maximum accepte des signatures en heures</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="creer-le-composant-dans-datto-rmm">Creer le composant dans Datto RMM<a class="headerlink" href="#creer-le-composant-dans-datto-rmm" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Ouvrir <strong>ComStore</strong> ou aller dans <strong>Components &gt; New Component</strong></li>
+<li>Remplir les champs :</li>
+<li><strong>Name</strong> : <code>Monitor - Defender Signature Age</code></li>
+<li><strong>Category</strong> : <code>Monitors</code></li>
+<li><strong>OS</strong> : <code>Windows</code></li>
+<li>Dans l'onglet <strong>Script</strong>, coller le contenu de <code>defender-signature-age.ps1</code></li>
+<li>Dans l'onglet <strong>Variables</strong>, ajouter :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MaxAgeHours</code></td>
+<td>Integer</td>
+<td><code>24</code></td>
+<td>Max signature age in hours</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Dans l'onglet <strong>Output Variables</strong>, configurer :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Output Variable Name</th>
+<th>Comparison</th>
+<th>Alert Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Status</code></td>
+<td>Contains</td>
+<td><code>CRITICAL</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Nom de la variable de sortie</p>
+<p>Le script ecrit <code>Status=...</code> dans le bloc resultat. Le champ <strong>Output Variable Name</strong> dans Datto doit etre exactement <code>Status</code> (sensible a la casse).</p>
+</div>
+<ol>
+<li><strong>Save</strong> le composant</li>
+</ol>
+<hr />
+<h2 id="creer-le-moniteur-monitor-dans-datto-rmm">Creer le moniteur (Monitor) dans Datto RMM<a class="headerlink" href="#creer-le-moniteur-monitor-dans-datto-rmm" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Aller dans <strong>Sites &gt; [Site cible] &gt; Monitors &gt; New Monitor</strong></li>
+<li>Choisir <strong>Component Monitor</strong></li>
+<li>Selectionner le composant <code>Monitor - Defender Signature Age</code></li>
+<li>Configurer :</li>
+<li><strong>Name</strong> : <code>Defender - Signatures outdated</code></li>
+<li><strong>Interval</strong> : <code>Every 4 hours</code> (recommande)</li>
+<li><strong>Alert Priority</strong> : <code>High</code></li>
+<li><strong>Auto-resolve</strong> : activer (le moniteur repasse OK quand les signatures sont a jour)</li>
+<li>Dans la section <strong>Variables</strong>, laisser <code>MaxAgeHours</code> vide pour utiliser 24h, ou saisir une valeur differente par client</li>
+<li><strong>Assign</strong> aux appareils ou groupe cible</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Intervalle de verification</p>
+<p>Avec un intervalle de 4h et un seuil de 24h, la fenetre d'alerte effective est 24h a 28h. Passer a 1h si tu veux une detection plus rapide.</p>
+</div>
+<hr />
+<h2 id="interpreter-les-resultats">Interpreter les resultats<a class="headerlink" href="#interpreter-les-resultats" title="Permanent link">&para;</a></h2>
+<h3 id="statuts-possibles">Statuts possibles<a class="headerlink" href="#statuts-possibles" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Status retourne</th>
+<th>Signification</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OK: Signatures 3.5 hours old (v1.419.xxx)</code></td>
+<td>Signatures a jour</td>
+<td>Aucune</td>
+</tr>
+<tr>
+<td><code>CRITICAL: Signatures are 36.2 hours old (threshold: 24 h)</code></td>
+<td>Signatures perimees</td>
+<td>Voir section troubleshooting</td>
+</tr>
+<tr>
+<td><code>CRITICAL: Windows Defender service is disabled</code></td>
+<td>Service MpsSvc arrete</td>
+<td>Verifier si desactive intentionnellement ou par GPO</td>
+</tr>
+<tr>
+<td><code>CRITICAL: Antivirus is disabled -- third-party AV may have taken over</code></td>
+<td>Defender desactive par un AV tiers</td>
+<td>Normal si Bitdefender/SentinelOne/etc. est en place</td>
+</tr>
+<tr>
+<td><code>CRITICAL: Cannot query Defender status -- cmdlet unavailable</code></td>
+<td><code>Get-MpComputerStatus</code> absent</td>
+<td>Defender completement desactive ou supprime</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">AV tiers installe</p>
+<p>Si un antivirus tiers est present (ex. SentinelOne, Bitdefender), Defender se desactive automatiquement. L'alerte <code>Antivirus is disabled</code> est alors un faux positif -- exclure ces machines du moniteur ou adapter le seuil.</p>
+</div>
+<hr />
+<h2 id="troubleshooting-signatures-perimees">Troubleshooting signatures perimees<a class="headerlink" href="#troubleshooting-signatures-perimees" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Verifier la connectivite Windows Update</strong> -- les signatures se telechargent via WU ou WSUS</li>
+<li><strong>Forcer la mise a jour manuellement</strong> depuis le poste :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Update-MpSignature</span> <span class="n">-UpdateSource</span> <span class="n">MicrosoftUpdateServer</span>
+</code></pre></div></li>
+<li><strong>Verifier l'etat du service</strong> :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">WinDefend</span><span class="p">,</span> <span class="n">WdNisSvc</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">Status</span><span class="p">,</span> <span class="n">StartType</span>
+</code></pre></div></li>
+<li><strong>Verifier si WSUS bloque</strong> les mises a jour de definitions (les signatures Defender utilisent le canal <code>Microsoft Malware Protection</code> dans WSUS)</li>
+<li><strong>Verifier les evenements</strong> :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Get-WinEvent</span> <span class="n">-LogName</span> <span class="s2">&quot;Microsoft-Windows-Windows Defender/Operational&quot;</span> <span class="n">-MaxEvents</span> <span class="n">20</span> <span class="p">|</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Id</span> <span class="n">-in</span> <span class="p">@(</span><span class="n">1000</span><span class="p">,</span> <span class="n">1001</span><span class="p">,</span> <span class="n">2001</span><span class="p">,</span> <span class="n">2003</span><span class="p">,</span> <span class="n">2004</span><span class="p">)</span> <span class="p">}</span> <span class="p">|</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="nb">Select-Object</span> <span class="n">TimeCreated</span><span class="p">,</span> <span class="n">Id</span><span class="p">,</span> <span class="n">Message</span> <span class="p">|</span> <span class="nb">Format-List</span>
+</code></pre></div></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">WSUS et definitions Defender</p>
+<p>Si le tenant utilise WSUS, verifier que les <strong>Definition Updates</strong> sont approuvees dans la console WSUS. Une definition bloquee <code>Not approved</code> maintient les signatures a la version du dernier push.</p>
+</div>
+<hr />
+<h2 id="codes-de-sortie">Codes de sortie<a class="headerlink" href="#codes-de-sortie" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Signatures a jour, service actif</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Alerte : signatures perimees, service desactive, ou erreur d'interrogation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-lire-ensuite">A lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="Toast%20notif%20depuis%20datto/">Toast Notifications depuis Datto</a></li>
-<li><a href="audit-onedrive-sharepoint-v3/">Audit OneDrive / SharePoint V3</a></li>
-<li><a href="defender-signature-age/">Moniteur Defender - Age des signatures</a></li>
+<li><a href="../Toast%20notif%20depuis%20datto/">Toast Notifications Datto RMM</a></li>
+<li><a href="../audit-onedrive-sharepoint-v3/">Audit OneDrive SharePoint</a></li>
+<li><a href="composants-datto.md">Composants Datto RMM -- bonnes pratiques</a> <em>(a venir)</em></li>
 </ul>
 
 
@@ -1921,10 +2114,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
