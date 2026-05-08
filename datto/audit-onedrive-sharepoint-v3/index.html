@@ -952,10 +952,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#valeurs-possibles-sync" class="md-nav__link">
+  <a href="#execution-normale" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Valeurs possibles — Sync
+        Exécution normale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plusieurs-statuts-sync-simultanes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plusieurs statuts sync simultanés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-hors-contexte-utilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exécution hors contexte utilisateur
       
     </span>
   </a>
@@ -964,6 +986,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valeurs-possibles-statut-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valeurs possibles — Statut sync
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-contexte-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Détection contexte SYSTEM
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1986,10 +2030,32 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#valeurs-possibles-sync" class="md-nav__link">
+  <a href="#execution-normale" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Valeurs possibles — Sync
+        Exécution normale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plusieurs-statuts-sync-simultanes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plusieurs statuts sync simultanés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-hors-contexte-utilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exécution hors contexte utilisateur
       
     </span>
   </a>
@@ -1998,6 +2064,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valeurs-possibles-statut-sync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valeurs possibles — Statut sync
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detection-contexte-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Détection contexte SYSTEM
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2066,7 +2154,7 @@
 
 
 <h1 id="audit-onedrive-sharepoint-v3">Audit OneDrive / SharePoint V3<a class="headerlink" href="#audit-onedrive-sharepoint-v3" title="Permanent link">&para;</a></h1>
-<p>Script PowerShell exécuté en contexte Utilisateur Connecté via Datto RMM. Il audite le compte OneDrive Business, le statut de synchronisation, le Known Folder Move et les bibliothèques SharePoint synchronisées sur le poste.</p>
+<p>Script PowerShell exécuté en contexte <strong>Utilisateur Connecté</strong> via Datto RMM. Il audite le compte OneDrive Business, le statut de synchronisation, le Known Folder Move et les bibliothèques SharePoint synchronisées sur le poste.</p>
 <hr />
 <h2 id="informations-generales">Informations générales<a class="headerlink" href="#informations-generales" title="Permanent link">&para;</a></h2>
 <table>
@@ -2083,7 +2171,7 @@
 </tr>
 <tr>
 <td>Date</td>
-<td>Mars 2026</td>
+<td>Mai 2026</td>
 </tr>
 <tr>
 <td>Langage</td>
@@ -2099,7 +2187,7 @@
 </tr>
 <tr>
 <td>Contexte</td>
-<td>Utilisateur Connecté (Datto RMM)</td>
+<td><strong>Utilisateur Connecté</strong> (Datto RMM)</td>
 </tr>
 <tr>
 <td>Dépendance</td>
@@ -2119,7 +2207,7 @@
 <tbody>
 <tr>
 <td>Compte OneDrive</td>
-<td>Email du compte Business1 lu dans le registre HKCU</td>
+<td>Email du compte Business1 lu dans le registre <code>HKCU</code></td>
 </tr>
 <tr>
 <td>Version OneDrive</td>
@@ -2127,7 +2215,7 @@
 </tr>
 <tr>
 <td>Statut sync</td>
-<td>A jour / En cours / En pause / Erreur / Inconnu</td>
+<td>Un ou plusieurs états simultanés — voir tableau ci-dessous</td>
 </tr>
 <tr>
 <td>Known Folder Move</td>
@@ -2143,10 +2231,10 @@
 <h2 id="logique-dexecution">Logique d'exécution<a class="headerlink" href="#logique-dexecution" title="Permanent link">&para;</a></h2>
 <p>Le script suit une logique linéaire en 4 étapes :</p>
 <ol>
-<li>Vérification utilisateur — <code>exit 3</code> propre si aucun utilisateur connecté ou contexte SYSTEM.</li>
-<li>Collecte OneDrive — lecture <code>HKCU:\Software\Microsoft\OneDrive\Accounts\Business1</code> pour l'email, le statut sync, et détection de la version via <code>OneDrive.exe</code>.</li>
-<li>KFM et SharePoint — lecture <code>User Shell Folders</code> pour KFM, scan <code>Tenants</code> + fallback récursif pour les bibliothèques synchronisées.</li>
-<li>Export et closeout — génération du fichier <code>.txt</code> dans <code>C:\tmp</code> avec URLs complètes, puis affichage du bloc closeout structuré.</li>
+<li><strong>Vérification utilisateur</strong> — Détecte si le script tourne en contexte SYSTEM ou compte machine (<code>USERNAME$</code>). Si oui : affiche un message d'avertissement explicite et <code>exit 3</code> propre. Sinon, continue normalement.</li>
+<li><strong>Collecte OneDrive</strong> — Lecture <code>HKCU:\Software\Microsoft\OneDrive\Accounts\Business1</code> pour l'email, le statut sync multi-état, et détection de la version via <code>OneDrive.exe</code>.</li>
+<li><strong>KFM et SharePoint</strong> — Lecture <code>User Shell Folders</code> pour KFM, scan <code>Tenants</code> + fallback récursif pour les bibliothèques synchronisées.</li>
+<li><strong>Export et closeout</strong> — Génération du fichier <code>.txt</code> dans <code>C:\tmp</code> avec URLs complètes, puis affichage du bloc closeout structuré.</li>
 </ol>
 <p>Pas de tâche planifiée, pas de dépendance externe.</p>
 <hr />
@@ -2170,6 +2258,7 @@
 </table>
 <hr />
 <h2 id="sortie-console">Sortie console<a class="headerlink" href="#sortie-console" title="Permanent link">&para;</a></h2>
+<h3 id="execution-normale">Exécution normale<a class="headerlink" href="#execution-normale" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>============================================
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  AUDIT ONEDRIVE / SHAREPOINT V3
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>============================================
@@ -2192,41 +2281,118 @@
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>  Statut      : SUCCES
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>============================================
 </code></pre></div>
-<h3 id="valeurs-possibles-sync">Valeurs possibles — Sync<a class="headerlink" href="#valeurs-possibles-sync" title="Permanent link">&para;</a></h3>
+<h3 id="plusieurs-statuts-sync-simultanes">Plusieurs statuts sync simultanés<a class="headerlink" href="#plusieurs-statuts-sync-simultanes" title="Permanent link">&para;</a></h3>
+<p>La ligne <code>Sync</code> peut afficher plusieurs états sur des lignes distinctes si plusieurs problèmes coexistent :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>  Sync        : Erreur de synchronisation
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>               Conflit (2 fichier(s))
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>               Upload en cours (5 fichier(s) en attente)
+</code></pre></div>
+<p>Dans le fichier export, les états sont joints sur une seule ligne séparés par <code>/</code>.</p>
+<h3 id="execution-hors-contexte-utilisateur">Exécution hors contexte utilisateur<a class="headerlink" href="#execution-hors-contexte-utilisateur" title="Permanent link">&para;</a></h3>
+<p>Si le composant est lancé en mode <strong>System</strong> au lieu de <strong>Utilisateur Connecté</strong> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>============================================
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  AUDIT ONEDRIVE / SHAREPOINT V3
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>============================================
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  Utilisateur : WORKGROUP\PCLAB01$
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  Statut      : NON EXECUTE
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  Raison      : Contexte SYSTEM detecte - relancer en mode
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                [Utilisateur Connecte] dans Datto RMM
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>============================================
+</code></pre></div>
+<p>Le nom du compte machine est affiché pour identifier le poste concerné. Code de sortie : <code>3</code>.</p>
+<hr />
+<h2 id="valeurs-possibles-statut-sync">Valeurs possibles — Statut sync<a class="headerlink" href="#valeurs-possibles-statut-sync" title="Permanent link">&para;</a></h2>
+<p>Plusieurs valeurs peuvent être présentes simultanément :</p>
 <table>
 <thead>
 <tr>
 <th>Valeur</th>
+<th>Source</th>
 <th>Signification</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>A jour</code></td>
-<td>Aucun fichier en attente, pas d'erreur ni de pause</td>
+<td><em>(aucun problème détecté)</em></td>
+<td>Synchronisation normale, aucun problème</td>
 </tr>
 <tr>
-<td><code>En cours</code></td>
-<td>Fichiers en attente d'upload (nombre affiché)</td>
+<td><code>Erreur de synchronisation</code></td>
+<td><code>SyncError</code> dans le registre</td>
+<td>Erreur signalée par le moteur de sync OneDrive</td>
+</tr>
+<tr>
+<td><code>Synchronisation en cours</code></td>
+<td>ODSyncUtil — <code>CurrentState = 1</code></td>
+<td>Sync active (ODSyncUtil requis)</td>
 </tr>
 <tr>
 <td><code>En pause</code></td>
-<td>Synchronisation mise en pause par l'utilisateur</td>
+<td>ODSyncUtil — <code>CurrentState = 2</code></td>
+<td>Pause manuelle (ODSyncUtil requis — voir note)</td>
 </tr>
 <tr>
-<td><code>Erreur</code></td>
-<td>Clé <code>SyncError</code> présente dans le registre</td>
+<td><code>Hors ligne</code></td>
+<td>ODSyncUtil — <code>CurrentState = 4</code></td>
+<td>Poste hors ligne (ODSyncUtil requis)</td>
+</tr>
+<tr>
+<td><code>Upload en cours (N fichier(s) en attente)</code></td>
+<td><code>NumberOfFilesToUpload &gt; 0</code></td>
+<td>Fichiers en attente d'envoi vers OneDrive</td>
+</tr>
+<tr>
+<td><code>Conflit (N fichier(s))</code></td>
+<td><code>NumberOfFilesWithConflict &gt; 0</code></td>
+<td>Fichiers en conflit de version</td>
 </tr>
 <tr>
 <td><code>Inconnu</code></td>
-<td>Clé Business1 introuvable ou lecture impossible</td>
+<td>Clé Business1 absente ou erreur</td>
+<td>OneDrive non configuré ou lecture registre impossible</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Pause manuelle — détection partielle</p>
+<p>La pause n'est pas exposée dans le registre (<code>Paused</code> n'existe pas, <code>global.ini</code> non fiable). Le script utilise <strong>ODSyncUtil</strong> en best-effort pour la détecter. Cependant, ODSyncUtil requiert <code>OneDriveFlyoutPS.dll</code> — ce fichier est <strong>absent sur les installations OneDrive per-machine</strong> (Windows 11, <code>Program Files</code>). Sur ces postes, une pause manuelle s'affiche comme <code>A jour</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Popup « Remplacer le dossier par votre raccourci »</p>
+<p>Ce type de notification OneDrive (apparaît lors de l'ajout d'un raccourci SharePoint via Graph API) n'est <strong>pas stocké dans le registre</strong> — OneDrive le gère dans sa base interne. Il n'est donc pas détectable par ce script.</p>
+</div>
+<hr />
+<h2 id="detection-contexte-system">Détection contexte SYSTEM<a class="headerlink" href="#detection-contexte-system" title="Permanent link">&para;</a></h2>
+<p>OneDrive stocke sa configuration dans <code>HKCU</code>, qui pointe vers le profil <strong>SYSTEM</strong> (et non celui de l'utilisateur connecté) quand le composant est mal configuré dans Datto RMM.</p>
+<p>Le script détecte trois cas d'exécution non-utilisateur :</p>
+<table>
+<thead>
+<tr>
+<th>Cas</th>
+<th>Détection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processus SYSTEM</td>
+<td><code>$env:USERNAME -eq "SYSTEM"</code></td>
+</tr>
+<tr>
+<td>Aucun utilisateur</td>
+<td><code>$env:USERNAME</code> vide</td>
+</tr>
+<tr>
+<td>Compte machine AD/AAD</td>
+<td><code>$env:USERNAME</code> se termine par <code>$</code> (ex. <code>PCLAB01$</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Dans ces cas, le script affiche le nom du compte détecté et sort proprement avec <code>exit 3</code> sans tenter de lire OneDrive.</p>
 <hr />
 <h2 id="export-fichier">Export fichier<a class="headerlink" href="#export-fichier" title="Permanent link">&para;</a></h2>
 <p>Un fichier texte est généré à chaque exécution dans <code>C:\tmp</code> :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>audit_OneDrive_SharePoint_AAAAMMJJ_HHMM.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>audit_OneDrive_SharePoint_AAAAMMJJ_HHMM.txt
 </code></pre></div>
 <p>Le fichier contient le détail complet incluant les URLs SharePoint (<code>WebUrl</code>) et les chemins <code>MountPoint</code>, non affichés en console pour des raisons de lisibilité.</p>
 <div class="admonition tip">
@@ -2257,7 +2423,7 @@
 </tr>
 <tr>
 <td><code>3</code></td>
-<td>Aucun utilisateur connecté — script ignoré proprement</td>
+<td>Contexte SYSTEM ou compte machine détecté — script ignoré proprement</td>
 </tr>
 </tbody>
 </table>
@@ -2275,8 +2441,20 @@
 <td><code>audit_onedrive_sharepoint_v3.ps1</code></td>
 <td>Script principal</td>
 </tr>
+<tr>
+<td><code>ODSyncUtil.exe</code></td>
+<td>Optionnel — détection pause/hors ligne via OneDrive COM</td>
+</tr>
+<tr>
+<td><code>ODSyncLib.dll</code></td>
+<td>Requis si ODSyncUtil.exe présent (dépendance directe)</td>
+</tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">ODSyncUtil</p>
+<p>ODSyncUtil (MIT, Rodney Viana) est uploadé dans le composant Datto en best-effort. S'il ne peut pas lire le statut OneDrive (ex. <code>OneDriveFlyoutPS.dll</code> absent), le script bascule automatiquement sur la lecture registre.</p>
+</div>
 <hr />
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
