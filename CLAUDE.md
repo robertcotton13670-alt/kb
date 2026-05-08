@@ -28,6 +28,22 @@ mkdocs gh-deploy --force
 - `docs/` — all content pages as Markdown files; no `nav:` section, so MkDocs auto-generates navigation from the folder structure
 - `.github/workflows/deploy.yml` — on push to `main`: installs deps, runs `mkdocs gh-deploy --force`
 
+## Author & audience context
+
+**Author:** Technicien MSP — daily hands-on with Intune/Autopilot, Entra ID/Conditional Access, Microsoft 365 (Exchange, Teams, SharePoint), and Datto RMM/PSA.
+
+**Audience:** MSP team colleagues, N2/N3 level — no need to explain basic concepts (what is a tenant, what is MFA). Assume familiarity with the Microsoft 365 admin portals and PowerShell.
+
+**Primary content types:**
+- Step-by-step operational procedures (with numbered steps, admonitions for warnings/tips)
+- Reference sheets (tables of settings, PowerShell commands, Graph API endpoints, Intune policy parameters)
+
+When writing or suggesting content:
+- Skip basic concept explanations unless the page is explicitly introductory
+- Prefer concrete values over abstract descriptions (e.g., show the exact registry key, the exact Graph permission, the exact Intune OMA-URI)
+- PowerShell snippets should be production-ready with proper error handling where relevant
+- Datto RMM context: scripts are deployed as components; note any required variables or output conventions
+
 ## Content conventions
 
 **Every page must have frontmatter:**
