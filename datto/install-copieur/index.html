@@ -2090,26 +2090,26 @@
 <td>Définit comme imprimante par défaut pour l'utilisateur connecté</td>
 </tr>
 <tr>
-<td><code>usrColorMode</code></td>
-<td>Chaîne</td>
-<td><code>Auto</code></td>
+<td><code>usrMonochrome</code></td>
+<td>Booléen</td>
+<td><code>Faux</code></td>
 <td>❌</td>
-<td><code>Auto</code> (couleur) ou <code>Monochrome</code> (N/B)</td>
+<td>Coché = Noir et Blanc — décoché = couleur automatique</td>
 </tr>
 <tr>
-<td><code>usrDuplexMode</code></td>
-<td>Chaîne</td>
-<td><code>OneSided</code></td>
+<td><code>usrRectoverso</code></td>
+<td>Booléen</td>
+<td><code>Faux</code></td>
 <td>❌</td>
-<td><code>OneSided</code>, <code>TwoSidedLongEdge</code>, <code>TwoSidedShortEdge</code></td>
+<td>Coché = recto-verso bord long — décoché = recto uniquement</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Casse des variables dans l'interface Datto</p>
 <p>Entrer les noms <strong>sans le préfixe <code>env:</code></strong>.<br />
-✅ Correct : <code>usrDuplexMode</code><br />
-❌ Incorrect : <code>env:usrDuplexMode</code></p>
+✅ Correct : <code>usrMonochrome</code><br />
+❌ Incorrect : <code>env:usrMonochrome</code></p>
 </div>
 <hr />
 <h2 id="procedure-admin-construire-ou-mettre-a-jour-un-composant">Procédure admin — Construire ou mettre à jour un composant<a class="headerlink" href="#procedure-admin-construire-ou-mettre-a-jour-un-composant" title="Permanent link">&para;</a></h2>
@@ -2223,20 +2223,20 @@
 <td><code>MARSEILLE - RDC</code></td>
 </tr>
 <tr>
-<td><code>usrColorMode</code></td>
-<td><code>Monochrome</code></td>
+<td><code>usrMonochrome</code></td>
+<td>✅ Coché</td>
 </tr>
 <tr>
-<td><code>usrDuplexMode</code></td>
-<td><code>TwoSidedLongEdge</code></td>
+<td><code>usrRectoverso</code></td>
+<td>✅ Coché</td>
 </tr>
 <tr>
 <td><code>usrReplace</code></td>
-<td><code>Faux</code></td>
+<td>Décoché</td>
 </tr>
 <tr>
 <td><code>usrSetDefault</code></td>
-<td><code>Faux</code></td>
+<td>Décoché</td>
 </tr>
 </tbody>
 </table>
@@ -2259,20 +2259,20 @@
 <td><code>MARSEILLE - RDC</code></td>
 </tr>
 <tr>
-<td><code>usrColorMode</code></td>
-<td><code>Monochrome</code></td>
+<td><code>usrMonochrome</code></td>
+<td>✅ Coché</td>
 </tr>
 <tr>
-<td><code>usrDuplexMode</code></td>
-<td><code>TwoSidedLongEdge</code></td>
+<td><code>usrRectoverso</code></td>
+<td>✅ Coché</td>
 </tr>
 <tr>
 <td><code>usrReplace</code></td>
-<td><code>Vrai</code></td>
+<td>✅ Coché</td>
 </tr>
 <tr>
 <td><code>usrSetDefault</code></td>
-<td><code>Vrai</code></td>
+<td>✅ Coché</td>
 </tr>
 </tbody>
 </table>
@@ -2287,12 +2287,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>usrColorMode</code></td>
-<td><code>Auto</code></td>
+<td><code>usrMonochrome</code></td>
+<td>Décoché</td>
 </tr>
 <tr>
-<td><code>usrDuplexMode</code></td>
-<td><code>OneSided</code></td>
+<td><code>usrRectoverso</code></td>
+<td>Décoché</td>
 </tr>
 </tbody>
 </table>
