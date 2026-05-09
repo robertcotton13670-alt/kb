@@ -7,7 +7,7 @@ description: Déployer un copieur réseau via Datto RMM — un composant par mar
 
 Six composants Datto RMM de type **Application**, un par marque de copieur. Chaque composant embarque le driver de sa marque directement dans le `.cpt` — le technicien n'a qu'à renseigner l'IP et le nom, aucun fichier à attacher.
 
-Tous partagent le même script source : `myrepo/Datto RMM/install printer/Install-Copieur.ps1`
+Tous partagent le même script source : `msp-scripts/datto-rmm/install-printer/Install-Copieur.ps1`
 
 ---
 
@@ -79,7 +79,7 @@ Récupérer le driver PCL6 ou PS du fabricant et le préparer selon la structure
 Placer ensuite le zip dans le dossier de la marque concernée :
 
 ```
-myrepo/Datto RMM/install printer/brands/
+msp-scripts/datto-rmm/install-printer/brands/
 ├── kyocera-ta/
 │   └── drivers.zip    ← placer ici
 ├── konica-develop/
@@ -97,7 +97,7 @@ myrepo/Datto RMM/install printer/brands/
 Avant de construire le `.cpt`, générer la liste des modèles détectés dans chaque `drivers.zip` :
 
 ```powershell linenums="1"
-cd "myrepo\Datto RMM\install printer"
+cd "msp-scripts\datto-rmm\install-printer"
 
 # Toutes les marques
 .\Generate-ModelesTxt.ps1
@@ -126,7 +126,7 @@ Le script crée `brands/<marque>/modeles.txt` avec la liste complète des modèl
 Depuis le dossier du composant :
 
 ```powershell linenums="1"
-cd "myrepo\Datto RMM\install printer"
+cd "msp-scripts\datto-rmm\install-printer"
 
 # Toutes les marques (ignore les marques sans drivers.zip)
 .\Build-Composants.ps1
