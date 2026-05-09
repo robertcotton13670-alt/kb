@@ -1,13 +1,26 @@
 ---
 title: Composant - Install Copieur Réseau
-description: Procédure complète pour déployer un copieur réseau via Datto RMM — driver, profil N/B et recto-verso, imprimante par défaut.
+description: Déployer un copieur réseau via Datto RMM — un composant par marque avec driver pré-embarqué, profil N/B et recto-verso, imprimante par défaut.
 ---
 
 # Composant - Install Copieur Réseau
 
-Composant Datto RMM de type **Application** qui installe un copieur réseau sur un poste Windows : staging du driver depuis un `drivers.zip`, création du port TCP/IP, ajout de l'imprimante et application d'un profil d'impression (couleur, recto-verso) sans fichier XML externe.
+Six composants Datto RMM de type **Application**, un par marque de copieur. Chaque composant embarque le driver de sa marque directement dans le `.cpt` — le technicien n'a qu'à renseigner l'IP et le nom, aucun fichier à attacher.
 
-Script source : `myrepo/Datto RMM/install printer/Install-Copieur.ps1`
+Tous partagent le même script source : `myrepo/Datto RMM/install printer/Install-Copieur.ps1`
+
+---
+
+## Composants disponibles
+
+| Composant Datto | Marques couvertes |
+|---|---|
+| `Install - Copieur Kyocera-TA [SYSTEM][WIN]` | Kyocera, Triumph-Adler |
+| `Install - Copieur Konica-Develop [SYSTEM][WIN]` | Konica Minolta, Develop |
+| `Install - Copieur Canon [SYSTEM][WIN]` | Canon |
+| `Install - Copieur Ricoh [SYSTEM][WIN]` | Ricoh |
+| `Install - Copieur Epson [SYSTEM][WIN]` | Epson |
+| `Install - Copieur Sharp [SYSTEM][WIN]` | Sharp |
 
 ---
 
@@ -30,23 +43,25 @@ Script source : `myrepo/Datto RMM/install printer/Install-Copieur.ps1`
 
 ---
 
-## Procédure de déploiement
+## Procédure admin — Construire ou mettre à jour un composant
+
+À effectuer lors de l'ajout d'un nouveau driver ou d'une mise à jour. Le `.cpt` généré est ensuite importé dans Datto RMM.
 
 ### Étape 1 — Préparer `drivers.zip`
 
-Le composant attend un fichier `drivers.zip` contenant le dossier driver du fabricant.
+Récupérer le driver PCL6 ou PS du fabricant et le préparer selon la structure attendue.
 
 === "Driver téléchargé depuis le site fabricant"
 
-    1. Télécharger le package PCL6 ou PS depuis le site du fabricant
-    2. Extraire l'archive et repérer le **dossier contenant le `.inf`**
-    3. Zipper ce dossier uniquement
+    1. Télécharger le package driver PCL6 (ou PS) depuis le site du fabricant
+    2. Extraire l'archive et repérer le **dossier contenant le fichier `.inf`**
+    3. Zipper ce dossier uniquement (pas l'intégralité du package)
     4. Renommer le zip `drivers.zip`
 
-=== "Driver déjà présent sur un poste"
+=== "Driver déjà déployé sur un poste"
 
     ```powershell
-    # Trouver le chemin du dossier driver
+    # Localiser le dossier du driver dans le store Windows
     Get-PrinterDriver -Name "NOM DU DRIVER" | Select-Object InfPath
     ```
 
@@ -61,37 +76,75 @@ Le composant attend un fichier `drivers.zip` contenant le dossier driver du fabr
         └── *.dll, *.gpd…
     ```
 
-### Étape 2 — Trouver le nom exact du driver
+Placer ensuite le zip dans le dossier de la marque concernée :
 
-Laisser `usrDriverName` **vide** en priorité — le script détecte automatiquement le nom depuis le `.inf`.
-
-Si la détection échoue (log : `Cannot auto-detect driver name from .inf`), récupérer le nom manuellement :
-
-```powershell
-# Sur un poste où le driver est déjà installé
-Get-PrinterDriver | Select-Object Name | Sort-Object Name
+```
+myrepo/Datto RMM/install printer/brands/
+├── kyocera-ta/
+│   └── drivers.zip    ← placer ici
+├── konica-develop/
+│   └── drivers.zip
+├── canon/
+│   └── drivers.zip
+...
 ```
 
-Copier-coller **exactement** le nom retourné dans `usrDriverName`.
+!!! info
+    Les fichiers `drivers.zip` ne sont pas versionnés (`.gitignore`). À conserver localement ou sur un partage réseau.
 
-??? note "Noms courants par fabricant"
-    | Fabricant | Nom driver typique |
-    |---|---|
-    | Konica Minolta / Develop | `Konica Minolta Universal PCL` |
-    | Kyocera | `Kyocera TASKalfa XXXXX KX` |
-    | Canon | `Canon Generic Plus PCL6` |
-    | Ricoh | `RICOH PCL6 UniversalDriver V4.X` |
-    | Sharp | `SHARP MX-XXXX PCL6` |
-    | Epson | `EPSON AL-CXXXX Advanced PCL6` |
+### Étape 2 — Générer les `.cpt`
 
-    Ces noms varient selon la version du package driver — toujours vérifier avec `Get-PrinterDriver`.
+Depuis le dossier du composant :
 
-### Étape 3 — Attacher le zip et renseigner les variables
+```powershell linenums="1"
+cd "myrepo\Datto RMM\install printer"
 
-1. Dans le composant Datto : **Fichiers > Ajouter** → sélectionner `drivers.zip`
-2. Renseigner les variables selon le copieur à déployer
+# Toutes les marques (ignore les marques sans drivers.zip)
+.\Build-Composants.ps1
 
-**Exemples :**
+# Une seule marque
+.\Build-Composants.ps1 -Brand kyocera-ta
+```
+
+Les `.cpt` sont générés dans `dist/` :
+
+```
+dist/
+├── Install-Copieur-Kyocera-Ta.cpt
+├── Install-Copieur-Konica-Develop.cpt
+├── Install-Copieur-Canon.cpt
+├── Install-Copieur-Ricoh.cpt
+├── Install-Copieur-Epson.cpt
+└── Install-Copieur-Sharp.cpt
+```
+
+??? note "Exemple de sortie du script"
+    ```
+    [kyocera-ta]
+      [OK]   Install-Copieur-Kyocera-Ta.cpt  (driver: 45.2 MB  total: 45.3 MB)
+
+    [konica-develop]
+      [OK]   Install-Copieur-Konica-Develop.cpt  (driver: 38.1 MB  total: 38.2 MB)
+
+    [canon]
+      [SKIP] drivers.zip missing -- copy the canon driver zip here as drivers.zip
+
+    Done -- Built: 2  Skipped: 1
+    ```
+
+### Étape 3 — Importer dans Datto RMM
+
+Dans Datto RMM : **Composants > Importer** → sélectionner le `.cpt`.
+
+Les GUIDs sont fixes par marque — un re-import met à jour le composant existant sans en créer un nouveau.
+
+---
+
+## Procédure déploiement — Installer un copieur
+
+### Étape 1 — Sélectionner le composant et renseigner les variables
+
+Dans Datto RMM, choisir le composant correspondant à la **marque du copieur** (ex. `Install - Copieur Kyocera-TA`) puis renseigner les variables.
 
 === "Nouveau copieur N/B recto-verso"
 
@@ -122,7 +175,10 @@ Copier-coller **exactement** le nom retourné dans `usrDriverName`.
     | `usrColorMode` | `Auto` |
     | `usrDuplexMode` | `OneSided` |
 
-### Étape 4 — Vérification après déploiement
+Laisser `usrDriverName` **vide** — le script détecte automatiquement le nom depuis le `.inf`.  
+Si la détection échoue (log : `Cannot auto-detect driver name from .inf`), voir la section [Dépannage](#cannot-auto-detect-driver-name-from-inf).
+
+### Étape 2 — Vérification après déploiement
 
 Le log Datto doit se terminer par :
 
@@ -154,7 +210,7 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 
 | Fabricant | Feature duplex | Testé |
 |---|---|---|
-| Kyocera | `psk:JobDuplexAllDocumentsContiguously` | ✅ |
+| Kyocera / TA | `psk:JobDuplexAllDocumentsContiguously` | ✅ |
 | Canon | `psk:DocumentDuplex` | ✅ |
 | Epson | `psk:JobDuplexAllDocumentsContiguously` | ✅ |
 | Ricoh | `psk:JobDuplexAllDocumentsContiguously` | ✅ |
@@ -177,12 +233,25 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 
 ### `Cannot auto-detect driver name from .inf`
 
-La détection auto n'a pas trouvé le nom dans le `.inf`.  
-→ Renseigner `usrDriverName` manuellement (voir Étape 2).
+La détection auto n'a pas trouvé le nom dans le `.inf`. Récupérer le nom manuellement sur un poste où le driver est installé :
 
-### `Attachment 'drivers.zip' not found`
+```powershell
+Get-PrinterDriver | Select-Object Name | Sort-Object Name
+```
 
-→ Vérifier que le zip est bien attaché au composant et nommé exactement `drivers.zip`.
+Copier-coller **exactement** le nom retourné dans `usrDriverName` (la casse compte).
+
+??? note "Noms courants par fabricant"
+    | Fabricant | Nom driver typique |
+    |---|---|
+    | Konica Minolta / Develop | `Konica Minolta Universal PCL` |
+    | Kyocera / TA | `Kyocera TASKalfa XXXXX KX` |
+    | Canon | `Canon Generic Plus PCL6` |
+    | Ricoh | `RICOH PCL6 UniversalDriver V4.X` |
+    | Sharp | `SHARP MX-XXXX PCL6` |
+    | Epson | `EPSON AL-CXXXX Advanced PCL6` |
+
+    Ces noms varient selon la version du package driver — toujours vérifier avec `Get-PrinterDriver`.
 
 ### `No ping response` — avertissement sur le ping
 
@@ -205,6 +274,10 @@ Avertissement normal — le fallback `rundll32` prend le relais. Pas d'action re
 1. Vérifier que `usrColorMode = Monochrome` est renseigné
 2. Sur une imprimante déjà existante, passer `usrReplace = Vrai` pour forcer la réapplication du profil
 3. Consulter le log pour la ligne `Config readback: Color=...` — `False` = N/B confirmé
+
+### Build : `[SKIP] drivers.zip missing`
+
+Le script de build ignore les marques sans `drivers.zip`. Placer le zip dans `brands/<marque>/drivers.zip` et relancer `Build-Composants.ps1`.
 
 ---
 
