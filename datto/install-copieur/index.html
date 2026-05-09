@@ -2395,7 +2395,7 @@
 
 <h1 id="composant-install-copieur-reseau">Composant - Install Copieur Réseau<a class="headerlink" href="#composant-install-copieur-reseau" title="Permanent link">&para;</a></h1>
 <p>Six composants Datto RMM de type <strong>Application</strong>, un par marque de copieur. Chaque composant embarque le driver de sa marque directement dans le <code>.cpt</code> — le technicien n'a qu'à renseigner l'IP et le nom, aucun fichier à attacher.</p>
-<p>Tous partagent le même script source : <code>myrepo/Datto RMM/install printer/Install-Copieur.ps1</code></p>
+<p>Tous partagent le même script source : <code>msp-scripts/datto-rmm/install-printer/Install-Copieur.ps1</code></p>
 <hr />
 <h2 id="composants-disponibles">Composants disponibles<a class="headerlink" href="#composants-disponibles" title="Permanent link">&para;</a></h2>
 <table>
@@ -2535,7 +2535,7 @@
 </code></pre></div>
 </div>
 <p>Placer ensuite le zip dans le dossier de la marque concernée :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>myrepo/Datto RMM/install printer/brands/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>msp-scripts/datto-rmm/install-printer/brands/
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── kyocera-ta/
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   └── drivers.zip    ← placer ici
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── konica-develop/
@@ -2556,7 +2556,7 @@
 <span class="normal"><a href="#__codelineno-3-4">4</a></span>
 <span class="normal"><a href="#__codelineno-3-5">5</a></span>
 <span class="normal"><a href="#__codelineno-3-6">6</a></span>
-<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">cd </span><span class="s2">&quot;myrepo\Datto RMM\install printer&quot;</span>
+<span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">cd </span><span class="s2">&quot;msp-scripts\datto-rmm\install-printer&quot;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c"># Toutes les marques</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">.\</span><span class="n">Generate-ModelesTxt</span><span class="p">.</span><span class="n">ps1</span>
@@ -2584,7 +2584,7 @@
 <span class="normal"><a href="#__codelineno-5-4">4</a></span>
 <span class="normal"><a href="#__codelineno-5-5">5</a></span>
 <span class="normal"><a href="#__codelineno-5-6">6</a></span>
-<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd </span><span class="s2">&quot;myrepo\Datto RMM\install printer&quot;</span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd </span><span class="s2">&quot;msp-scripts\datto-rmm\install-printer&quot;</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c"># Toutes les marques (ignore les marques sans drivers.zip)</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="p">.\</span><span class="n">Build-Composants</span><span class="p">.</span><span class="n">ps1</span>
