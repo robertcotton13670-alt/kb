@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/datto/install-copieur/">
       
       
+        <link rel="prev" href="../report-printers/">
+      
+      
+        <link rel="next" href="../../m365/">
       
       
         
@@ -260,10 +264,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -714,26 +720,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -751,7 +762,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -841,6 +852,375 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defender-signature-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Moniteur Defender — Signatures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../report-printers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Report Printers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Copieur Réseau
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install Copieur Réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#composants-disponibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composants disponibles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-du-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables du composant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure-admin-construire-ou-mettre-a-jour-un-composant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procédure admin — Construire ou mettre à jour un composant
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procédure admin — Construire ou mettre à jour un composant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etape-1-preparer-driverszip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Préparer drivers.zip
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-2-generer-modelestxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Générer modeles.txt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-3-generer-les-cpt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Générer les .cpt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-4-importer-dans-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Importer dans Datto RMM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure-deploiement-installer-un-copieur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Procédure déploiement — Installer un copieur
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procédure déploiement — Installer un copieur">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etape-1-selectionner-le-composant-et-renseigner-les-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Sélectionner le composant et renseigner les variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-2-verification-apres-deploiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Vérification après déploiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibilite-profil-dimpression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilité profil d'impression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dépannage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dépannage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cannot-auto-detect-driver-name-from-inf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cannot auto-detect driver name from .inf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-ping-response-avertissement-sur-le-ping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No ping response — avertissement sur le ping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imprimante-non-definie-par-defaut-malgre-usrsetdefaultvrai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Imprimante non définie par défaut malgré usrSetDefault=Vrai
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pnputil-exited-x-trying-rundll32-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pnputil exited X -- trying rundll32 fallback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-profil-nb-nest-pas-applique-apres-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le profil N/B n'est pas appliqué après installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-skip-driverszip-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build : [SKIP] drivers.zip missing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-lire-ensuite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À lire ensuite
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1801,10 +2181,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#etape-2-generer-les-cpt" class="md-nav__link">
+  <a href="#etape-2-generer-modelestxt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Étape 2 — Générer les .cpt
+        Étape 2 — Générer modeles.txt
       
     </span>
   </a>
@@ -1812,10 +2192,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#etape-3-importer-dans-datto-rmm" class="md-nav__link">
+  <a href="#etape-3-generer-les-cpt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Étape 3 — Importer dans Datto RMM
+        Étape 3 — Générer les .cpt
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-4-importer-dans-datto-rmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Importer dans Datto RMM
       
     </span>
   </a>
@@ -2071,9 +2462,9 @@
 <tr>
 <td><code>usrDriverName</code></td>
 <td>Chaîne</td>
-<td><em>(vide)</em></td>
+<td><em>(1er modèle de <code>modeles.txt</code>)</em></td>
 <td>❌</td>
-<td>Nom exact du driver — détecté auto depuis le <code>.inf</code> si vide</td>
+<td>Nom exact du driver — pré-rempli depuis <code>modeles.txt</code>, détecté auto depuis le <code>.inf</code> si vide</td>
 </tr>
 <tr>
 <td><code>usrReplace</code></td>
@@ -2157,8 +2548,8 @@
 <p class="admonition-title">Info</p>
 <p>Les fichiers <code>drivers.zip</code> ne sont pas versionnés (<code>.gitignore</code>). À conserver localement ou sur un partage réseau.</p>
 </div>
-<h3 id="etape-2-generer-les-cpt">Étape 2 — Générer les <code>.cpt</code><a class="headerlink" href="#etape-2-generer-les-cpt" title="Permanent link">&para;</a></h3>
-<p>Depuis le dossier du composant :</p>
+<h3 id="etape-2-generer-modelestxt">Étape 2 — Générer <code>modeles.txt</code><a class="headerlink" href="#etape-2-generer-modelestxt" title="Permanent link">&para;</a></h3>
+<p>Avant de construire le <code>.cpt</code>, générer la liste des modèles détectés dans chaque <code>drivers.zip</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
@@ -2167,36 +2558,66 @@
 <span class="normal"><a href="#__codelineno-3-6">6</a></span>
 <span class="normal"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nb">cd </span><span class="s2">&quot;myrepo\Datto RMM\install printer&quot;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c"># Toutes les marques (ignore les marques sans drivers.zip)</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">.\</span><span class="n">Build-Composants</span><span class="p">.</span><span class="n">ps1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c"># Toutes les marques</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">.\</span><span class="n">Generate-ModelesTxt</span><span class="p">.</span><span class="n">ps1</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5"></a>
 <a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c"># Une seule marque</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">.\</span><span class="n">Build-Composants</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Brand</span> <span class="n">kyocera-ta</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">.\</span><span class="n">Generate-ModelesTxt</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Brand</span> <span class="n">kyocera-ta</span>
+</code></pre></div></td></tr></table></div>
+<p>Le script crée <code>brands/&lt;marque&gt;/modeles.txt</code> avec la liste complète des modèles trouvés dans le <code>.inf</code>.</p>
+<p><strong>Éditer ensuite chaque fichier</strong> pour supprimer les modèles obsolètes ou non utilisés — seuls les modèles conservés apparaîtront dans la variable <code>usrDriverName</code> du composant.</p>
+<div class="admonition tip">
+<p class="admonition-title">Format du fichier</p>
+<p>Un modèle par ligne. Les lignes vides et les lignes commençant par <code>#</code> sont ignorées.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a># Actifs chez nos clients
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Kyocera TASKalfa 2554ci KX
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Kyocera TASKalfa 3554ci KX
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Kyocera TASKalfa 4054ci KX
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a># Kyocera TASKalfa 181 KX   &lt;-- ancien modèle, commenté
+</code></pre></div>
+</div>
+<h3 id="etape-3-generer-les-cpt">Étape 3 — Générer les <code>.cpt</code><a class="headerlink" href="#etape-3-generer-les-cpt" title="Permanent link">&para;</a></h3>
+<p>Depuis le dossier du composant :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">cd </span><span class="s2">&quot;myrepo\Datto RMM\install printer&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c"># Toutes les marques (ignore les marques sans drivers.zip)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="p">.\</span><span class="n">Build-Composants</span><span class="p">.</span><span class="n">ps1</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c"># Une seule marque</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="p">.\</span><span class="n">Build-Composants</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Brand</span> <span class="n">kyocera-ta</span>
 </code></pre></div></td></tr></table></div>
 <p>Les <code>.cpt</code> sont générés dans <code>dist/</code> :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dist/
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── Install-Copieur-Kyocera-Ta.cpt
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├── Install-Copieur-Konica-Develop.cpt
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>├── Install-Copieur-Canon.cpt
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>├── Install-Copieur-Ricoh.cpt
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>├── Install-Copieur-Epson.cpt
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>└── Install-Copieur-Sharp.cpt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dist/
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>├── Install-Copieur-Kyocera-Ta.cpt
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>├── Install-Copieur-Konica-Develop.cpt
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>├── Install-Copieur-Canon.cpt
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>├── Install-Copieur-Ricoh.cpt
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>├── Install-Copieur-Epson.cpt
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>└── Install-Copieur-Sharp.cpt
 </code></pre></div>
 <details class="note">
 <summary>Exemple de sortie du script</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[kyocera-ta]
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  [OK]   Install-Copieur-Kyocera-Ta.cpt  (driver: 45.2 MB  total: 45.3 MB)
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>[konica-develop]
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  [OK]   Install-Copieur-Konica-Develop.cpt  (driver: 38.1 MB  total: 38.2 MB)
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>[canon]
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>  [SKIP] drivers.zip missing -- copy the canon driver zip here as drivers.zip
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>Done -- Built: 2  Skipped: 1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[kyocera-ta]
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  [INFO] 12 models injected from modeles.txt
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  [OK]   Install-Copieur-Kyocera-Ta.cpt  (driver: 45.2 MB  total: 45.3 MB)
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>[konica-develop]
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  [INFO] 8 models injected from modeles.txt
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  [OK]   Install-Copieur-Konica-Develop.cpt  (driver: 38.1 MB  total: 38.2 MB)
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>[canon]
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  [SKIP] drivers.zip missing -- copy the canon driver zip here as drivers.zip
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>Done -- Built: 2  Skipped: 1
 </code></pre></div>
 </details>
-<h3 id="etape-3-importer-dans-datto-rmm">Étape 3 — Importer dans Datto RMM<a class="headerlink" href="#etape-3-importer-dans-datto-rmm" title="Permanent link">&para;</a></h3>
+<h3 id="etape-4-importer-dans-datto-rmm">Étape 4 — Importer dans Datto RMM<a class="headerlink" href="#etape-4-importer-dans-datto-rmm" title="Permanent link">&para;</a></h3>
 <p>Dans Datto RMM : <strong>Composants &gt; Importer</strong> → sélectionner le <code>.cpt</code>.</p>
 <p>Les GUIDs sont fixes par marque — un re-import met à jour le composant existant sans en créer un nouveau.</p>
 <hr />
@@ -2303,27 +2724,27 @@
 Si la détection échoue (log : <code>Cannot auto-detect driver name from .inf</code>), voir la section <a href="#cannot-auto-detect-driver-name-from-inf">Dépannage</a>.</p>
 <h3 id="etape-2-verification-apres-deploiement">Étape 2 — Vérification après déploiement<a class="headerlink" href="#etape-2-verification-apres-deploiement" title="Permanent link">&para;</a></h3>
 <p>Le log Datto doit se terminer par :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[SUCCESS] SUCCESS -- Printer &#39;NOM&#39; installed in XXs
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[INFO] Exit code: 0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[SUCCESS] SUCCESS -- Printer &#39;NOM&#39; installed in XXs
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>[INFO] Exit code: 0
 </code></pre></div>
 <p>Vérification sur le poste :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span>
-<span class="normal"><a href="#__codelineno-7-5">5</a></span>
-<span class="normal"><a href="#__codelineno-7-6">6</a></span>
-<span class="normal"><a href="#__codelineno-7-7">7</a></span>
-<span class="normal"><a href="#__codelineno-7-8">8</a></span>
-<span class="normal"><a href="#__codelineno-7-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c"># Imprimante présente</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">Get-Printer</span> <span class="n">-Name</span> <span class="s2">&quot;NOM DU COPIEUR&quot;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="c"># Profil appliqué — Color=False confirme N/B</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="nb">Get-PrintConfiguration</span> <span class="n">-PrinterName</span> <span class="s2">&quot;NOM DU COPIEUR&quot;</span> <span class="p">|</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>    <span class="nb">Select-Object</span> <span class="n">Color</span><span class="p">,</span> <span class="n">DuplexingMode</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="c"># Imprimante par défaut</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">-Query</span> <span class="s2">&quot;SELECT * FROM Win32_Printer WHERE Default=True&quot;</span><span class="p">).</span><span class="n">Name</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span>
+<span class="normal"><a href="#__codelineno-9-8">8</a></span>
+<span class="normal"><a href="#__codelineno-9-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c"># Imprimante présente</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nb">Get-Printer</span> <span class="n">-Name</span> <span class="s2">&quot;NOM DU COPIEUR&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c"># Profil appliqué — Color=False confirme N/B</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nb">Get-PrintConfiguration</span> <span class="n">-PrinterName</span> <span class="s2">&quot;NOM DU COPIEUR&quot;</span> <span class="p">|</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>    <span class="nb">Select-Object</span> <span class="n">Color</span><span class="p">,</span> <span class="n">DuplexingMode</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="c"># Imprimante par défaut</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="p">(</span><span class="nb">Get-WmiObject</span> <span class="n">-Query</span> <span class="s2">&quot;SELECT * FROM Win32_Printer WHERE Default=True&quot;</span><span class="p">).</span><span class="n">Name</span>
 </code></pre></div></td></tr></table></div>
 <hr />
 <h2 id="compatibilite-profil-dimpression">Compatibilité profil d'impression<a class="headerlink" href="#compatibilite-profil-dimpression" title="Permanent link">&para;</a></h2>
@@ -2373,8 +2794,8 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 <details class="tip">
 <summary>Vérifier le profil d'un nouveau fabricant</summary>
 <p>Configurer manuellement l'imprimante sur un poste de référence, puis exporter :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">(</span><span class="nb">Get-PrintConfiguration</span> <span class="n">-PrinterName</span> <span class="s2">&quot;NOM EXACT&quot;</span><span class="p">).</span><span class="n">PrintTicketXml</span> <span class="p">|</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="nb">Out-File</span> <span class="s2">&quot;$env:USERPROFILE\Desktop\export.xml&quot;</span> <span class="n">-Encoding</span> <span class="n">UTF8</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">(</span><span class="nb">Get-PrintConfiguration</span> <span class="n">-PrinterName</span> <span class="s2">&quot;NOM EXACT&quot;</span><span class="p">).</span><span class="n">PrintTicketXml</span> <span class="p">|</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="nb">Out-File</span> <span class="s2">&quot;$env:USERPROFILE\Desktop\export.xml&quot;</span> <span class="n">-Encoding</span> <span class="n">UTF8</span>
 </code></pre></div>
 <p>Vérifier dans le XML les features <code>psk:PageOutputColor</code> et duplex.</p>
 </details>
@@ -2382,7 +2803,7 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 <h2 id="depannage">Dépannage<a class="headerlink" href="#depannage" title="Permanent link">&para;</a></h2>
 <h3 id="cannot-auto-detect-driver-name-from-inf"><code>Cannot auto-detect driver name from .inf</code><a class="headerlink" href="#cannot-auto-detect-driver-name-from-inf" title="Permanent link">&para;</a></h3>
 <p>La détection auto n'a pas trouvé le nom dans le <code>.inf</code>. Récupérer le nom manuellement sur un poste où le driver est installé :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">Get-PrinterDriver</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">Name</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">Get-PrinterDriver</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span> <span class="p">|</span> <span class="nb">Sort-Object</span> <span class="n">Name</span>
 </code></pre></div>
 <p>Copier-coller <strong>exactement</strong> le nom retourné dans <code>usrDriverName</code> (la casse compte).</p>
 <details class="note">
@@ -2397,11 +2818,11 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 <tbody>
 <tr>
 <td>Konica Minolta / Develop</td>
-<td><code>Konica Minolta Universal PCL</code></td>
+<td><code>KONICA MINOLTA Universal PCL</code></td>
 </tr>
 <tr>
 <td>Kyocera / TA</td>
-<td><code>Kyocera TASKalfa XXXXX KX</code></td>
+<td><code>Kyocera TASKalfa XXXX ci KX</code></td>
 </tr>
 <tr>
 <td>Canon</td>
@@ -2409,7 +2830,7 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 </tr>
 <tr>
 <td>Ricoh</td>
-<td><code>RICOH PCL6 UniversalDriver V4.X</code></td>
+<td><code>RICOH MP CXXXX PCL 6</code></td>
 </tr>
 <tr>
 <td>Sharp</td>
@@ -2417,7 +2838,7 @@ Il envoie les deux noms de feature duplex simultanément pour couvrir Canon et l
 </tr>
 <tr>
 <td>Epson</td>
-<td><code>EPSON AL-CXXXX Advanced PCL6</code></td>
+<td><code>EPSON AM-C4000 Series</code></td>
 </tr>
 </tbody>
 </table>
@@ -2436,8 +2857,8 @@ Le script la désactive automatiquement via <code>LegacyDefaultPrinterMode=1</co
 <p>Avertissement normal — le fallback <code>rundll32</code> prend le relais. Pas d'action requise.</p>
 <h3 id="le-profil-nb-nest-pas-applique-apres-installation">Le profil N/B n'est pas appliqué après installation<a class="headerlink" href="#le-profil-nb-nest-pas-applique-apres-installation" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Vérifier que <code>usrColorMode = Monochrome</code> est renseigné</li>
-<li>Sur une imprimante déjà existante, passer <code>usrReplace = Vrai</code> pour forcer la réapplication du profil</li>
+<li>Vérifier que <code>usrMonochrome</code> est coché</li>
+<li>Sur une imprimante déjà existante, passer <code>usrReplace</code> à coché pour forcer la réapplication du profil</li>
 <li>Consulter le log pour la ligne <code>Config readback: Color=...</code> — <code>False</code> = N/B confirmé</li>
 </ol>
 <h3 id="build-skip-driverszip-missing">Build : <code>[SKIP] drivers.zip missing</code><a class="headerlink" href="#build-skip-driverszip-missing" title="Permanent link">&para;</a></h3>
