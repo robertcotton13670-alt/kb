@@ -30,7 +30,7 @@ Tous partagent le même script source : `myrepo/Datto RMM/install printer/Instal
 |---|---|---|---|---|
 | `usrPrinterIP` | Chaîne | — | ✅ | Adresse IP du copieur (ex. `192.168.1.50`) |
 | `usrPrinterName` | Chaîne | — | ✅ | Nom affiché dans Windows (ex. `MARSEILLE - RDC`) |
-| `usrDriverName` | Chaîne | *(vide)* | ❌ | Nom exact du driver — détecté auto depuis le `.inf` si vide |
+| `usrDriverName` | Chaîne | *(1er modèle de `modeles.txt`)* | ❌ | Nom exact du driver — pré-rempli depuis `modeles.txt`, détecté auto depuis le `.inf` si vide |
 | `usrReplace` | Booléen | `Faux` | ❌ | Supprime et réinstalle si l'imprimante existe déjà |
 | `usrSetDefault` | Booléen | `Faux` | ❌ | Définit comme imprimante par défaut pour l'utilisateur connecté |
 | `usrMonochrome` | Booléen | `Faux` | ❌ | Coché = Noir et Blanc — décoché = couleur automatique |
@@ -92,7 +92,36 @@ myrepo/Datto RMM/install printer/brands/
 !!! info
     Les fichiers `drivers.zip` ne sont pas versionnés (`.gitignore`). À conserver localement ou sur un partage réseau.
 
-### Étape 2 — Générer les `.cpt`
+### Étape 2 — Générer `modeles.txt`
+
+Avant de construire le `.cpt`, générer la liste des modèles détectés dans chaque `drivers.zip` :
+
+```powershell linenums="1"
+cd "myrepo\Datto RMM\install printer"
+
+# Toutes les marques
+.\Generate-ModelesTxt.ps1
+
+# Une seule marque
+.\Generate-ModelesTxt.ps1 -Brand kyocera-ta
+```
+
+Le script crée `brands/<marque>/modeles.txt` avec la liste complète des modèles trouvés dans le `.inf`.
+
+**Éditer ensuite chaque fichier** pour supprimer les modèles obsolètes ou non utilisés — seuls les modèles conservés apparaîtront dans la variable `usrDriverName` du composant.
+
+!!! tip "Format du fichier"
+    Un modèle par ligne. Les lignes vides et les lignes commençant par `#` sont ignorées.
+
+    ```
+    # Actifs chez nos clients
+    Kyocera TASKalfa 2554ci KX
+    Kyocera TASKalfa 3554ci KX
+    Kyocera TASKalfa 4054ci KX
+    # Kyocera TASKalfa 181 KX   <-- ancien modèle, commenté
+    ```
+
+### Étape 3 — Générer les `.cpt`
 
 Depuis le dossier du composant :
 
@@ -121,9 +150,11 @@ dist/
 ??? note "Exemple de sortie du script"
     ```
     [kyocera-ta]
+      [INFO] 12 models injected from modeles.txt
       [OK]   Install-Copieur-Kyocera-Ta.cpt  (driver: 45.2 MB  total: 45.3 MB)
 
     [konica-develop]
+      [INFO] 8 models injected from modeles.txt
       [OK]   Install-Copieur-Konica-Develop.cpt  (driver: 38.1 MB  total: 38.2 MB)
 
     [canon]
@@ -132,7 +163,7 @@ dist/
     Done -- Built: 2  Skipped: 1
     ```
 
-### Étape 3 — Importer dans Datto RMM
+### Étape 4 — Importer dans Datto RMM
 
 Dans Datto RMM : **Composants > Importer** → sélectionner le `.cpt`.
 
@@ -244,12 +275,12 @@ Copier-coller **exactement** le nom retourné dans `usrDriverName` (la casse com
 ??? note "Noms courants par fabricant"
     | Fabricant | Nom driver typique |
     |---|---|
-    | Konica Minolta / Develop | `Konica Minolta Universal PCL` |
-    | Kyocera / TA | `Kyocera TASKalfa XXXXX KX` |
+    | Konica Minolta / Develop | `KONICA MINOLTA Universal PCL` |
+    | Kyocera / TA | `Kyocera TASKalfa XXXX ci KX` |
     | Canon | `Canon Generic Plus PCL6` |
-    | Ricoh | `RICOH PCL6 UniversalDriver V4.X` |
+    | Ricoh | `RICOH MP CXXXX PCL 6` |
     | Sharp | `SHARP MX-XXXX PCL6` |
-    | Epson | `EPSON AL-CXXXX Advanced PCL6` |
+    | Epson | `EPSON AM-C4000 Series` |
 
     Ces noms varient selon la version du package driver — toujours vérifier avec `Get-PrinterDriver`.
 
@@ -271,8 +302,8 @@ Avertissement normal — le fallback `rundll32` prend le relais. Pas d'action re
 
 ### Le profil N/B n'est pas appliqué après installation
 
-1. Vérifier que `usrColorMode = Monochrome` est renseigné
-2. Sur une imprimante déjà existante, passer `usrReplace = Vrai` pour forcer la réapplication du profil
+1. Vérifier que `usrMonochrome` est coché
+2. Sur une imprimante déjà existante, passer `usrReplace` à coché pour forcer la réapplication du profil
 3. Consulter le log pour la ligne `Config readback: Color=...` — `False` = N/B confirmé
 
 ### Build : `[SKIP] drivers.zip missing`

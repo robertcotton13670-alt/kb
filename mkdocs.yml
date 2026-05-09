@@ -73,6 +73,9 @@ nav:
     - Vue d'ensemble: datto/index.md
     - Toast Notifications: datto/Toast notif depuis datto.md
     - Audit OneDrive / SharePoint V3: datto/audit-onedrive-sharepoint-v3.md
+    - Moniteur Defender — Signatures: datto/defender-signature-age.md
+    - Report Printers: datto/report-printers.md
+    - Install Copieur Réseau: datto/install-copieur.md
   - Microsoft 365:
     - Vue d'ensemble: m365/index.md
     - Scan-to-email via SMTP2GO: m365/smtp2go-scan-to-email.md
