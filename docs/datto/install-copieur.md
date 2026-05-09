@@ -33,13 +33,13 @@ Tous partagent le même script source : `myrepo/Datto RMM/install printer/Instal
 | `usrDriverName` | Chaîne | *(vide)* | ❌ | Nom exact du driver — détecté auto depuis le `.inf` si vide |
 | `usrReplace` | Booléen | `Faux` | ❌ | Supprime et réinstalle si l'imprimante existe déjà |
 | `usrSetDefault` | Booléen | `Faux` | ❌ | Définit comme imprimante par défaut pour l'utilisateur connecté |
-| `usrColorMode` | Chaîne | `Auto` | ❌ | `Auto` (couleur) ou `Monochrome` (N/B) |
-| `usrDuplexMode` | Chaîne | `OneSided` | ❌ | `OneSided`, `TwoSidedLongEdge`, `TwoSidedShortEdge` |
+| `usrMonochrome` | Booléen | `Faux` | ❌ | Coché = Noir et Blanc — décoché = couleur automatique |
+| `usrRectoverso` | Booléen | `Faux` | ❌ | Coché = recto-verso bord long — décoché = recto uniquement |
 
 !!! warning "Casse des variables dans l'interface Datto"
     Entrer les noms **sans le préfixe `env:`**.  
-    ✅ Correct : `usrDuplexMode`  
-    ❌ Incorrect : `env:usrDuplexMode`
+    ✅ Correct : `usrMonochrome`  
+    ❌ Incorrect : `env:usrMonochrome`
 
 ---
 
@@ -152,10 +152,10 @@ Dans Datto RMM, choisir le composant correspondant à la **marque du copieur** (
     |---|---|
     | `usrPrinterIP` | `192.168.1.50` |
     | `usrPrinterName` | `MARSEILLE - RDC` |
-    | `usrColorMode` | `Monochrome` |
-    | `usrDuplexMode` | `TwoSidedLongEdge` |
-    | `usrReplace` | `Faux` |
-    | `usrSetDefault` | `Faux` |
+    | `usrMonochrome` | ✅ Coché |
+    | `usrRectoverso` | ✅ Coché |
+    | `usrReplace` | Décoché |
+    | `usrSetDefault` | Décoché |
 
 === "Remplacement + imprimante par défaut"
 
@@ -163,17 +163,17 @@ Dans Datto RMM, choisir le composant correspondant à la **marque du copieur** (
     |---|---|
     | `usrPrinterIP` | `192.168.1.50` |
     | `usrPrinterName` | `MARSEILLE - RDC` |
-    | `usrColorMode` | `Monochrome` |
-    | `usrDuplexMode` | `TwoSidedLongEdge` |
-    | `usrReplace` | `Vrai` |
-    | `usrSetDefault` | `Vrai` |
+    | `usrMonochrome` | ✅ Coché |
+    | `usrRectoverso` | ✅ Coché |
+    | `usrReplace` | ✅ Coché |
+    | `usrSetDefault` | ✅ Coché |
 
 === "Copieur couleur recto"
 
     | Variable | Valeur |
     |---|---|
-    | `usrColorMode` | `Auto` |
-    | `usrDuplexMode` | `OneSided` |
+    | `usrMonochrome` | Décoché |
+    | `usrRectoverso` | Décoché |
 
 Laisser `usrDriverName` **vide** — le script détecte automatiquement le nom depuis le `.inf`.  
 Si la détection échoue (log : `Cannot auto-detect driver name from .inf`), voir la section [Dépannage](#cannot-auto-detect-driver-name-from-inf).
