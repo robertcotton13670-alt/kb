@@ -7,7 +7,7 @@ description: Envoi de notifications toast Windows aux utilisateurs via le compos
 
 Le composant Toast Notification envoie une notification toast Windows à l'utilisateur connecté sur un poste géré. Il s'exécute en contexte SYSTEM via l'agent Datto, et affiche la notification dans la session utilisateur grâce à CPAs.dll (murrayju.ProcessExtensions).
 
-Version courante : **V9.1** — Mars 2026.
+Version courante : **V9.2** — Mai 2026.
 
 ---
 
@@ -26,9 +26,14 @@ Version courante : **V9.1** — Mars 2026.
 |---|---|---|
 | `usrMessageType` | Sélection | Détermine le message et l'image affichés |
 | `usrMessageComplement` | Chaîne | Texte libre affiché sous le message prédéfini |
-| `usrShowRestart` | Booléen | Afficher le bouton "Redemarrer maintenant" |
+| `usrAlert` | Booléen | Notification persistante — reste à l'écran jusqu'à action utilisateur |
+| `usrShowRestart` | Booléen | Afficher le bouton "Redémarrer maintenant" |
 | `usrInfoLabel` | Sélection | Label du bouton lien (ex: "Accéder à mon ticket") |
 | `usrInfoURL` | Chaîne | URL du bouton lien — bouton affiché automatiquement si renseigné |
+
+!!! tip "usrAlert vs Standard"
+    `usrAlert = false` (défaut) → notification standard, disparaît après quelques secondes.  
+    `usrAlert = true` → notification persistante (`scenario incomingCall`), reste jusqu'à ce que l'utilisateur clique ou la ferme. Recommandé pour `panne` et `injoignable`.
 
 ---
 
@@ -47,6 +52,36 @@ Version courante : **V9.1** — Mars 2026.
 
 !!! tip "Valeur par défaut"
     Si `usrMessageType` est absent ou invalide, le script utilise `technicien_info`.
+
+---
+
+## Exemples d'affichage
+
+=== "Bienvenue"
+
+    ![Toast bienvenue sur poste client](../assets/toast/exemple-bienvenue.png)
+
+    Image hero associée :
+
+    ![Hero bienvenue](../assets/toast/hero-bienvenue.png)
+
+=== "Academy / Info / Panne"
+
+    Image hero utilisée pour `academy`, `technicien_info` et `panne` :
+
+    ![Hero information](../assets/toast/hero-information.png)
+
+=== "Ticket / Injoignable"
+
+    Image hero utilisée pour `ticket_fermeture`, `ticket_retour` et `injoignable` :
+
+    ![Hero ticket](../assets/toast/hero-ticket.png)
+
+=== "Technicien terminé"
+
+    Image hero utilisée pour `technicien_termine` :
+
+    ![Hero technicien](../assets/toast/hero-technicien.png)
 
 ---
 
@@ -86,7 +121,7 @@ flowchart TD
 | `hero-ticket.png` | Image hero — ticket_fermeture, ticket_retour, injoignable |
 
 !!! tip "Fallback image"
-    Si l'image attendue est introuvable, le script utilise la première `hero*.png` disponible dans le répertoire de travail.
+    Si l'image attendue est introuvable, le script utilise la première `hero*.png` disponible dans le répertoire de travail. Si aucune image n'est trouvée, la balise hero est omise et le toast reste valide.
 
 ---
 
@@ -108,7 +143,7 @@ Le nom affiché dans la notification est lu depuis :
 %ProgramData%\CentraStage\Brand\keys.xml  →  clé productShortNameText
 ```
 
-Fallback : `Support IT` si la valeur est absente. Le logo circulaire est lu depuis `primaryLogo.png` dans le même répertoire.
+Fallback : `Support IT` si la valeur est absente. Le logo circulaire est lu depuis `primaryLogo.png` dans le même répertoire. Si le fichier est absent, le logo est omis sans erreur.
 
 ---
 
@@ -123,19 +158,18 @@ Fallback : `Support IT` si la valeur est absente. Le logo circulaire est lu depu
 
 ## Log StdOut
 
-Le closeout produit deux blocs :
-
 ```
 ============================================
-  TOAST NOTIFICATION V9.1
+  TOAST NOTIFICATION V9.2
 ============================================
   Type     : technicien_info
+  Alerte   : Standard
   Titre    : Info de votre technicien
   Corps    : Votre technicien souhaite vous contacter...
   Bouton   : Accéder à mon ticket
   URL      : https://...
   Image    : hero-information.png
-  Expire   : 2026-03-15T10:32:00
+  Expire   : 2026-05-10T10:32:00
 ============================================
   Session  : DOMAIN\username
   Methode  : CPAs.dll
@@ -143,22 +177,23 @@ Le closeout produit deux blocs :
 ============================================
 ```
 
+Valeurs possibles pour `Alerte` : `Standard` / `Persistante (incomingCall)`.  
 Valeurs possibles pour `Statut` : `AFFICHE` / `NON AFFICHE` / `ERREUR`.
 
 ---
 
 ## Recommandations par cas d'usage
 
-| Type | Bouton recommandé | URL |
-|---|---|---|
-| `bienvenue` | Ouvrir Power Academy | `https://academy.poweriti.com/login` |
-| `academy` | Ouvrir Power Academy | Lien direct vers le cours |
-| `ticket_fermeture` | Accéder à mon ticket | Lien ticket Autotask |
-| `ticket_retour` | Donner mes informations | Lien ticket Autotask |
-| `injoignable` | Accéder à mon ticket | Lien ticket Autotask |
-| `technicien_termine` | *(aucun)* | — |
-| `panne` | *(aucun)* | — |
-| `technicien_info` | Optionnel | Selon contexte |
+| Type | `usrAlert` | Bouton recommandé | URL |
+|---|---|---|---|
+| `bienvenue` | false | Ouvrir Power Academy | `https://academy.poweriti.com/login` |
+| `academy` | false | Ouvrir Power Academy | Lien direct vers le cours |
+| `ticket_fermeture` | false | Accéder à mon ticket | Lien ticket Autotask |
+| `ticket_retour` | false | Donner mes informations | Lien ticket Autotask |
+| `injoignable` | **true** | Accéder à mon ticket | Lien ticket Autotask |
+| `technicien_termine` | false | *(aucun)* | — |
+| `panne` | **true** | *(aucun)* | — |
+| `technicien_info` | false | Optionnel | Selon contexte |
 
 ---
 
@@ -168,11 +203,12 @@ Valeurs possibles pour `Statut` : `AFFICHE` / `NON AFFICHE` / `ERREUR`.
 |---|---|---|
 | V9 | Mars 2026 | Messages prédéfinis, scenario `incomingCall`, suppression `usrMessageTitle` et `usrShowInfo`, nouveau format log |
 | V9.1 | Mars 2026 | Timeout CPAs.dll 10s via `Start-Job`, expiration toast +2h, try/catch sur écriture disque |
+| V9.2 | Mai 2026 | Variable `usrAlert` pour toast persistant, protection injection XML sur URL, image hero/logo conditionnel, `finally` sur job CPAs, `Get-CimInstance`, encodage ASCII pur dans le source |
 
 ---
 
 ## À lire ensuite
 
-- [Composants Datto RMM](composants-datto.md) *(à venir)*
-- [Audit OneDrive SharePoint](audit-onedrive-sharepoint.md) *(à venir)*
-- [Sync SharePoint Bibliothèque](sync-sharepoint.md) *(à venir)*
+- [Audit OneDrive SharePoint V4](audit-onedrive-sharepoint-v4.md)
+- [Audit Imprimante V1 [WIN]](report-printers.md)
+- [Moniteur Defender - Age des signatures](defender-signature-age.md)
