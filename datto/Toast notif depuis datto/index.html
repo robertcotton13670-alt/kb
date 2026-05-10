@@ -901,6 +901,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exemples-daffichage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemples d'affichage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#logique-dexecution" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2063,6 +2074,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exemples-daffichage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemples d'affichage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#logique-dexecution" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2183,7 +2205,7 @@
 
 <h1 id="toast-notifications-datto-rmm">Toast Notifications Datto RMM<a class="headerlink" href="#toast-notifications-datto-rmm" title="Permanent link">&para;</a></h1>
 <p>Le composant Toast Notification envoie une notification toast Windows à l'utilisateur connecté sur un poste géré. Il s'exécute en contexte SYSTEM via l'agent Datto, et affiche la notification dans la session utilisateur grâce à CPAs.dll (murrayju.ProcessExtensions).</p>
-<p>Version courante : <strong>V9.1</strong> — Mars 2026.</p>
+<p>Version courante : <strong>V9.2</strong> — Mai 2026.</p>
 <hr />
 <h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2214,9 +2236,14 @@
 <td>Texte libre affiché sous le message prédéfini</td>
 </tr>
 <tr>
+<td><code>usrAlert</code></td>
+<td>Booléen</td>
+<td>Notification persistante — reste à l'écran jusqu'à action utilisateur</td>
+</tr>
+<tr>
 <td><code>usrShowRestart</code></td>
 <td>Booléen</td>
-<td>Afficher le bouton "Redemarrer maintenant"</td>
+<td>Afficher le bouton "Redémarrer maintenant"</td>
 </tr>
 <tr>
 <td><code>usrInfoLabel</code></td>
@@ -2230,6 +2257,11 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">usrAlert vs Standard</p>
+<p><code>usrAlert = false</code> (défaut) → notification standard, disparaît après quelques secondes.<br />
+<code>usrAlert = true</code> → notification persistante (<code>scenario incomingCall</code>), reste jusqu'à ce que l'utilisateur clique ou la ferme. Recommandé pour <code>panne</code> et <code>injoignable</code>.</p>
+</div>
 <hr />
 <h2 id="messages-predefinis">Messages prédéfinis<a class="headerlink" href="#messages-predefinis" title="Permanent link">&para;</a></h2>
 <table>
@@ -2288,6 +2320,29 @@
 <p>Si <code>usrMessageType</code> est absent ou invalide, le script utilise <code>technicien_info</code>.</p>
 </div>
 <hr />
+<h2 id="exemples-daffichage">Exemples d'affichage<a class="headerlink" href="#exemples-daffichage" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Bienvenue</label><label for="__tabbed_1_2">Academy / Info / Panne</label><label for="__tabbed_1_3">Ticket / Injoignable</label><label for="__tabbed_1_4">Technicien terminé</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Toast bienvenue sur poste client" src="../../assets/toast/exemple-bienvenue.png" /></p>
+<p>Image hero associée :</p>
+<p><img alt="Hero bienvenue" src="../../assets/toast/hero-bienvenue.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Image hero utilisée pour <code>academy</code>, <code>technicien_info</code> et <code>panne</code> :</p>
+<p><img alt="Hero information" src="../../assets/toast/hero-information.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Image hero utilisée pour <code>ticket_fermeture</code>, <code>ticket_retour</code> et <code>injoignable</code> :</p>
+<p><img alt="Hero ticket" src="../../assets/toast/hero-ticket.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Image hero utilisée pour <code>technicien_termine</code> :</p>
+<p><img alt="Hero technicien" src="../../assets/toast/hero-technicien.png" /></p>
+</div>
+</div>
+</div>
+<hr />
 <h2 id="logique-dexecution">Logique d'exécution<a class="headerlink" href="#logique-dexecution" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>flowchart TD
     A[Démarrage SYSTEM] --&gt; B[Nettoyage tâche + fichiers existants]
@@ -2342,7 +2397,7 @@
 </table>
 <div class="admonition tip">
 <p class="admonition-title">Fallback image</p>
-<p>Si l'image attendue est introuvable, le script utilise la première <code>hero*.png</code> disponible dans le répertoire de travail.</p>
+<p>Si l'image attendue est introuvable, le script utilise la première <code>hero*.png</code> disponible dans le répertoire de travail. Si aucune image n'est trouvée, la balise hero est omise et le toast reste valide.</p>
 </div>
 <hr />
 <h2 id="fichiers-generes-sur-le-poste">Fichiers générés sur le poste<a class="headerlink" href="#fichiers-generes-sur-le-poste" title="Permanent link">&para;</a></h2>
@@ -2373,7 +2428,7 @@
 <p>Le nom affiché dans la notification est lu depuis :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>%ProgramData%\CentraStage\Brand\keys.xml  →  clé productShortNameText
 </code></pre></div>
-<p>Fallback : <code>Support IT</code> si la valeur est absente. Le logo circulaire est lu depuis <code>primaryLogo.png</code> dans le même répertoire.</p>
+<p>Fallback : <code>Support IT</code> si la valeur est absente. Le logo circulaire est lu depuis <code>primaryLogo.png</code> dans le même répertoire. Si le fichier est absent, le logo est omis sans erreur.</p>
 <hr />
 <h2 id="codes-de-sortie">Codes de sortie<a class="headerlink" href="#codes-de-sortie" title="Permanent link">&para;</a></h2>
 <table>
@@ -2396,30 +2451,32 @@
 </table>
 <hr />
 <h2 id="log-stdout">Log StdOut<a class="headerlink" href="#log-stdout" title="Permanent link">&para;</a></h2>
-<p>Le closeout produit deux blocs :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>============================================
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  TOAST NOTIFICATION V9.1
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  TOAST NOTIFICATION V9.2
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>============================================
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  Type     : technicien_info
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  Titre    : Info de votre technicien
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  Corps    : Votre technicien souhaite vous contacter...
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  Bouton   : Accéder à mon ticket
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  URL      : https://...
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  Image    : hero-information.png
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  Expire   : 2026-03-15T10:32:00
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>============================================
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>  Session  : DOMAIN\username
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  Methode  : CPAs.dll
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  Statut   : AFFICHE
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>============================================
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  Alerte   : Standard
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  Titre    : Info de votre technicien
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  Corps    : Votre technicien souhaite vous contacter...
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  Bouton   : Accéder à mon ticket
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  URL      : https://...
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>  Image    : hero-information.png
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  Expire   : 2026-05-10T10:32:00
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>============================================
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  Session  : DOMAIN\username
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  Methode  : CPAs.dll
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>  Statut   : AFFICHE
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>============================================
 </code></pre></div>
-<p>Valeurs possibles pour <code>Statut</code> : <code>AFFICHE</code> / <code>NON AFFICHE</code> / <code>ERREUR</code>.</p>
+<p>Valeurs possibles pour <code>Alerte</code> : <code>Standard</code> / <code>Persistante (incomingCall)</code>.<br />
+Valeurs possibles pour <code>Statut</code> : <code>AFFICHE</code> / <code>NON AFFICHE</code> / <code>ERREUR</code>.</p>
 <hr />
 <h2 id="recommandations-par-cas-dusage">Recommandations par cas d'usage<a class="headerlink" href="#recommandations-par-cas-dusage" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Type</th>
+<th><code>usrAlert</code></th>
 <th>Bouton recommandé</th>
 <th>URL</th>
 </tr>
@@ -2427,41 +2484,49 @@
 <tbody>
 <tr>
 <td><code>bienvenue</code></td>
+<td>false</td>
 <td>Ouvrir Power Academy</td>
 <td><code>https://academy.poweriti.com/login</code></td>
 </tr>
 <tr>
 <td><code>academy</code></td>
+<td>false</td>
 <td>Ouvrir Power Academy</td>
 <td>Lien direct vers le cours</td>
 </tr>
 <tr>
 <td><code>ticket_fermeture</code></td>
+<td>false</td>
 <td>Accéder à mon ticket</td>
 <td>Lien ticket Autotask</td>
 </tr>
 <tr>
 <td><code>ticket_retour</code></td>
+<td>false</td>
 <td>Donner mes informations</td>
 <td>Lien ticket Autotask</td>
 </tr>
 <tr>
 <td><code>injoignable</code></td>
+<td><strong>true</strong></td>
 <td>Accéder à mon ticket</td>
 <td>Lien ticket Autotask</td>
 </tr>
 <tr>
 <td><code>technicien_termine</code></td>
+<td>false</td>
 <td><em>(aucun)</em></td>
 <td>—</td>
 </tr>
 <tr>
 <td><code>panne</code></td>
+<td><strong>true</strong></td>
 <td><em>(aucun)</em></td>
 <td>—</td>
 </tr>
 <tr>
 <td><code>technicien_info</code></td>
+<td>false</td>
 <td>Optionnel</td>
 <td>Selon contexte</td>
 </tr>
@@ -2488,14 +2553,19 @@
 <td>Mars 2026</td>
 <td>Timeout CPAs.dll 10s via <code>Start-Job</code>, expiration toast +2h, try/catch sur écriture disque</td>
 </tr>
+<tr>
+<td>V9.2</td>
+<td>Mai 2026</td>
+<td>Variable <code>usrAlert</code> pour toast persistant, protection injection XML sur URL, image hero/logo conditionnel, <code>finally</code> sur job CPAs, <code>Get-CimInstance</code>, encodage ASCII pur dans le source</td>
+</tr>
 </tbody>
 </table>
 <hr />
 <h2 id="a-lire-ensuite">À lire ensuite<a class="headerlink" href="#a-lire-ensuite" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="composants-datto.md">Composants Datto RMM</a> <em>(à venir)</em></li>
-<li><a href="audit-onedrive-sharepoint.md">Audit OneDrive SharePoint</a> <em>(à venir)</em></li>
-<li><a href="sync-sharepoint.md">Sync SharePoint Bibliothèque</a> <em>(à venir)</em></li>
+<li><a href="../audit-onedrive-sharepoint-v4/">Audit OneDrive SharePoint V4</a></li>
+<li><a href="../report-printers/">Audit Imprimante V1 [WIN]</a></li>
+<li><a href="../defender-signature-age/">Moniteur Defender - Age des signatures</a></li>
 </ul>
 
 
