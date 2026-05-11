@@ -10,6 +10,7 @@ Déploiement et gestion des devices Windows via Microsoft Intune.
 ## Pages disponibles
 
 - [Windows Autopilot — vue d'ensemble](autopilot.md)
+- [Autopilot v1 — Modes de déploiement et TAP](autopilot-v1-modes-comparatif.md)
 - [Collecter le hardware hash avec Get-WindowsAutopilotInfo](autopilot-hash.md)
 - [Réinitialiser et effacer un poste](reset-wipe.md)
 - [LAPS via Intune](laps.md)
