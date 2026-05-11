@@ -6,35 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Autopilot, déploiement d'applications, conformité et gestion des devices">
+        <meta name="description" content="Configurer Web Sign-in via Intune et TAP via Entra ID pour les appareils Entra joined">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/web-sign-in-tap/">
       
       
-        <link rel="prev" href="..">
-      
-      
-        <link rel="next" href="autopilot/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Intune - ⚡ TechBase</title>
+        <title>Web Sign-in et Temporary Access Pass (TAP) - ⚡ TechBase</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intune" class="md-skip">
+        <a href="#web-sign-in-et-temporary-access-pass-tap" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href=".." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Intune
+              Web Sign-in et Temporary Access Pass (TAP)
             
           </span>
         </div>
@@ -227,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -244,13 +240,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -270,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../datto/" class="md-tabs__link">
+        <a href="../../datto/" class="md-tabs__link">
           
   
   
@@ -290,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../m365/" class="md-tabs__link">
+        <a href="../../m365/" class="md-tabs__link">
           
   
   
@@ -308,7 +302,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../entra/" class="md-tabs__link">
+      <a href="../../entra/" class="md-tabs__link">
         
   
   
@@ -329,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../refs/" class="md-tabs__link">
+        <a href="../../refs/" class="md-tabs__link">
           
   
   
@@ -349,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../poweracademy/" class="md-tabs__link">
+        <a href="../../poweracademy/" class="md-tabs__link">
           
   
   
@@ -383,7 +377,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -413,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -437,31 +431,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -479,7 +468,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -494,37 +483,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vue d'ensemble
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -540,37 +502,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages disponibles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -583,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="autopilot/" class="md-nav__link">
+      <a href="../autopilot/" class="md-nav__link">
         
   
   
@@ -611,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="autopilot-hash/" class="md-nav__link">
+      <a href="../autopilot-hash/" class="md-nav__link">
         
   
   
@@ -639,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="laps/" class="md-nav__link">
+      <a href="../laps/" class="md-nav__link">
         
   
   
@@ -667,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reset-wipe/" class="md-nav__link">
+      <a href="../reset-wipe/" class="md-nav__link">
         
   
   
@@ -695,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="imprimantes-intune-printservertointune/" class="md-nav__link">
+      <a href="../imprimantes-intune-printservertointune/" class="md-nav__link">
         
   
   
@@ -723,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="winget-deploy-intune/" class="md-nav__link">
+      <a href="../winget-deploy-intune/" class="md-nav__link">
         
   
   
@@ -751,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="best-practices-msp/" class="md-nav__link">
+      <a href="../best-practices-msp/" class="md-nav__link">
         
   
   
@@ -838,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/" class="md-nav__link">
+      <a href="../../datto/" class="md-nav__link">
         
   
   
@@ -866,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/Toast%20notif%20depuis%20datto/" class="md-nav__link">
+      <a href="../../datto/Toast%20notif%20depuis%20datto/" class="md-nav__link">
         
   
   
@@ -894,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/audit-onedrive-sharepoint-v3/" class="md-nav__link">
+      <a href="../../datto/audit-onedrive-sharepoint-v3/" class="md-nav__link">
         
   
   
@@ -922,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/defender-signature-age/" class="md-nav__link">
+      <a href="../../datto/defender-signature-age/" class="md-nav__link">
         
   
   
@@ -950,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/report-printers/" class="md-nav__link">
+      <a href="../../datto/report-printers/" class="md-nav__link">
         
   
   
@@ -978,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/install-copieur/" class="md-nav__link">
+      <a href="../../datto/install-copieur/" class="md-nav__link">
         
   
   
@@ -1065,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/" class="md-nav__link">
+      <a href="../../m365/" class="md-nav__link">
         
   
   
@@ -1093,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/smtp2go-scan-to-email/" class="md-nav__link">
+      <a href="../../m365/smtp2go-scan-to-email/" class="md-nav__link">
         
   
   
@@ -1121,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/onedrive-shortcuts-groupe/" class="md-nav__link">
+      <a href="../../m365/onedrive-shortcuts-groupe/" class="md-nav__link">
         
   
   
@@ -1156,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entra/" class="md-nav__link">
+      <a href="../../entra/" class="md-nav__link">
         
   
   
@@ -1235,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/" class="md-nav__link">
+      <a href="../../refs/" class="md-nav__link">
         
   
   
@@ -1263,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/dsregcmd/" class="md-nav__link">
+      <a href="../../refs/dsregcmd/" class="md-nav__link">
         
   
   
@@ -1291,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/ipconfig/" class="md-nav__link">
+      <a href="../../refs/ipconfig/" class="md-nav__link">
         
   
   
@@ -1319,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/winget/" class="md-nav__link">
+      <a href="../../refs/winget/" class="md-nav__link">
         
   
   
@@ -1347,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/autopilot-hash/" class="md-nav__link">
+      <a href="../../refs/autopilot-hash/" class="md-nav__link">
         
   
   
@@ -1375,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/rds-sessions/" class="md-nav__link">
+      <a href="../../refs/rds-sessions/" class="md-nav__link">
         
   
   
@@ -1462,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/" class="md-nav__link">
+      <a href="../../poweracademy/" class="md-nav__link">
         
   
   
@@ -1490,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-presentation/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-presentation/" class="md-nav__link">
         
   
   
@@ -1518,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-authentification/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-authentification/" class="md-nav__link">
         
   
   
@@ -1546,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-cybersecurite/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-cybersecurite/" class="md-nav__link">
         
   
   
@@ -1574,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-exchange-outlook/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-exchange-outlook/" class="md-nav__link">
         
   
   
@@ -1602,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-faq/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-faq/" class="md-nav__link">
         
   
   
@@ -1630,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-keeper/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-keeper/" class="md-nav__link">
         
   
   
@@ -1658,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-onedrive/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-onedrive/" class="md-nav__link">
         
   
   
@@ -1686,7 +1617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-outils-complementaires/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-outils-complementaires/" class="md-nav__link">
         
   
   
@@ -1714,7 +1645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-sharepoint/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-sharepoint/" class="md-nav__link">
         
   
   
@@ -1742,7 +1673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-support/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-support/" class="md-nav__link">
         
   
   
@@ -1770,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-teams/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-teams/" class="md-nav__link">
         
   
   
@@ -1798,7 +1729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-vade/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-vade/" class="md-nav__link">
         
   
   
@@ -1826,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/glossaire-m365/" class="md-nav__link">
+      <a href="../../poweracademy/glossaire-m365/" class="md-nav__link">
         
   
   
@@ -1854,7 +1785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/glossaire-securite/" class="md-nav__link">
+      <a href="../../poweracademy/glossaire-securite/" class="md-nav__link">
         
   
   
@@ -1909,10 +1840,109 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
+  <a href="#prerequis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pages disponibles
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-activer-tap-dans-entra-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Activer TAP dans Entra ID
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-creer-le-profil-web-sign-in-dans-intune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Créer le profil Web Sign-in dans Intune
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-3-forcer-le-credential-provider-par-defaut-sur-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Forcer le credential provider par défaut sur Password
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-4-generer-un-tap-pour-un-utilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Générer un TAP pour un utilisateur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-5-tester-sur-un-appareil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Tester sur un appareil
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guids-des-credential-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUIDs des credential providers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-registre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification registre
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-msp-typique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scénario MSP typique
       
     </span>
   </a>
@@ -1939,19 +1969,211 @@
   
 
 
-<h1 id="intune">Intune<a class="headerlink" href="#intune" title="Permanent link">&para;</a></h1>
-<p>Déploiement et gestion des devices Windows via Microsoft Intune.</p>
-<h2 id="pages-disponibles">Pages disponibles<a class="headerlink" href="#pages-disponibles" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="autopilot/">Windows Autopilot — vue d'ensemble</a></li>
-<li><a href="autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a></li>
-<li><a href="reset-wipe/">Réinitialiser et effacer un poste</a></li>
-<li><a href="laps/">LAPS via Intune</a></li>
-<li><a href="winget-deploy-intune/">Winget — Déploiement d'applications via Wintuner</a></li>
-<li><a href="imprimantes-intune-printservertointune/">Imprimantes — Migration vers Intune (PrintServerToIntune)</a></li>
-<li><a href="web-sign-in-tap/">Web Sign-in et Temporary Access Pass (TAP)</a></li>
-<li><a href="best-practices-msp/">Bonnes pratiques MSP</a></li>
+<h1 id="web-sign-in-et-temporary-access-pass-tap">Web Sign-in et Temporary Access Pass (TAP)<a class="headerlink" href="#web-sign-in-et-temporary-access-pass-tap" title="Permanent link">&para;</a></h1>
+<p>Web Sign-in est un credential provider Windows qui affiche une page d'authentification Entra ID sur l'écran de connexion. Combiné avec un TAP, il permet de déverrouiller une session sans connaître le mot de passe de l'utilisateur. Cas d'usage typique : onboarding Autopilot, reset de méthode d'authentification, dépannage à distance.</p>
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Exigence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type de jointure</td>
+<td>Entra ID joined uniquement</td>
+</tr>
+<tr>
+<td>Édition Windows</td>
+<td>Pro, Enterprise, Education, SE</td>
+</tr>
+<tr>
+<td>Version minimum</td>
+<td>Windows 11 22H2 (KB5030310)</td>
+</tr>
+<tr>
+<td>Réseau</td>
+<td>Connexion internet obligatoire au login</td>
+</tr>
+<tr>
+<td>Licence Entra</td>
+<td>Pas de licence spécifique requise pour TAP</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">Hybrid joined et domain joined</p>
+<p>Web Sign-in ne fonctionne pas sur les appareils hybrid joined ou domain joined, même si le profil Intune s'applique avec succès et que la clé registre est créée. L'authentification cloud aboutit mais le lien avec le DC on-prem est absent.</p>
+</div>
+<h2 id="etape-1-activer-tap-dans-entra-id">Étape 1 — Activer TAP dans Entra ID<a class="headerlink" href="#etape-1-activer-tap-dans-entra-id" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Aller dans <strong>Entra ID</strong> &gt; <strong>Protection</strong> &gt; <strong>Méthodes d'authentification</strong></li>
+<li>Sélectionner <strong>Temporary Access Pass</strong></li>
+<li>Activer la policy et cibler les utilisateurs ou groupes souhaités</li>
+<li>Configurer la durée de vie par défaut et l'usage unique/multiple</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Usage unique ou multiple ?</p>
+<p>Si l'utilisateur doit redémarrer le PC pendant le setup (fréquent avec Autopilot), configurer le TAP en usage multiple. Sinon, usage unique suffit.</p>
+</div>
+<h2 id="etape-2-creer-le-profil-web-sign-in-dans-intune">Étape 2 — Créer le profil Web Sign-in dans Intune<a class="headerlink" href="#etape-2-creer-le-profil-web-sign-in-dans-intune" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Aller dans <strong>Intune</strong> &gt; <strong>Appareils</strong> &gt; <strong>Configuration</strong> &gt; <strong>Créer</strong> &gt; <strong>Nouvelle stratégie</strong></li>
+<li>Plateforme : <strong>Windows 10 et versions ultérieures</strong></li>
+<li>Type de profil : <strong>Catalogue de paramètres</strong></li>
+<li>Nommer le profil (ex : <code>Web Sign-in - Enable</code>)</li>
+</ol>
+<p>Dans <strong>Ajouter des paramètres</strong>, catégorie <strong>Authentication</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable Web Sign In</td>
+<td>Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Assigner le profil au groupe d'appareils cible.</p>
+<h2 id="etape-3-forcer-le-credential-provider-par-defaut-sur-password">Étape 3 — Forcer le credential provider par défaut sur Password<a class="headerlink" href="#etape-3-forcer-le-credential-provider-par-defaut-sur-password" title="Permanent link">&para;</a></h2>
+<p>Sans cette étape, Web Sign-in peut devenir le mode de connexion par défaut. L'utilisateur tombe alors sur le flux web complet (MFA inclus) à chaque déverrouillage.</p>
+<ol>
+<li>Créer un second profil <strong>Catalogue de paramètres</strong></li>
+<li>Nommer le profil (ex : <code>Default Credential Provider - Password</code>)</li>
+</ol>
+<p>Dans <strong>Ajouter des paramètres</strong>, catégorie <strong>Administrative Templates &gt; System &gt; Logon</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assign a default credential provider</td>
+<td>Enabled</td>
+</tr>
+<tr>
+<td>GUID du fournisseur</td>
+<td><code>{60b78e88-ead8-445c-9cfd-0b87f74ea6cd}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Assigner au même groupe que le profil Web Sign-in.</p>
+<div class="admonition tip">
+<p class="admonition-title">Comportement avec WHfB</p>
+<p>Si l'utilisateur a déjà configuré Windows Hello (PIN, biométrie), WHfB prend le dessus automatiquement. Le GUID password sert surtout pour la tuile "Autre utilisateur" et avant la configuration de WHfB.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Alternative : PIN comme credential provider par défaut</p>
+<p>Il est possible d'utiliser le GUID PIN <code>{D6886603-9D2F-4EB2-B667-1971041FA96B}</code> à la place du GUID Password. L'écran de login affichera alors le PIN WHfB en premier. Cette option est pertinente uniquement si tous les utilisateurs ciblés ont déjà configuré WHfB. Si un utilisateur n'a pas encore de PIN (nouvel onboarding, premier login), il devra chercher dans "Options de connexion" pour trouver le mot de passe ou Web Sign-in. Pour un MSP multi-clients, le GUID Password reste le choix le plus sûr car il fonctionne dans tous les cas de figure.</p>
+</div>
+<h2 id="etape-4-generer-un-tap-pour-un-utilisateur">Étape 4 — Générer un TAP pour un utilisateur<a class="headerlink" href="#etape-4-generer-un-tap-pour-un-utilisateur" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Aller dans <strong>Entra ID</strong> &gt; <strong>Utilisateurs</strong> &gt; sélectionner l'utilisateur</li>
+<li><strong>Méthodes d'authentification</strong> &gt; <strong>Ajouter</strong> &gt; <strong>Temporary Access Pass</strong></li>
+<li>Configurer la durée et l'usage unique/multiple</li>
+<li>Noter le code affiché — il ne sera plus visible après fermeture</li>
+</ol>
+<p>Communiquer le TAP de manière sécurisée (gestionnaire de mots de passe, appel téléphonique).</p>
+<h2 id="etape-5-tester-sur-un-appareil">Étape 5 — Tester sur un appareil<a class="headerlink" href="#etape-5-tester-sur-un-appareil" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Forcer la synchronisation Intune sur le PC :<ul>
+<li><strong>Paramètres</strong> &gt; <strong>Comptes</strong> &gt; <strong>Accès professionnel ou scolaire</strong> &gt; cliquer sur la connexion &gt; <strong>Info</strong> &gt; <strong>Synchroniser</strong></li>
 </ul>
+</li>
+<li>Vérifier que les deux profils apparaissent dans les stratégies appliquées :<ul>
+<li><code>Authentication</code> (Web Sign-in)</li>
+<li><code>ADMX_CredentialProviders</code> (default credential provider)</li>
+</ul>
+</li>
+<li>Verrouiller le PC (<code>Win+L</code>)</li>
+<li>Dans <strong>Options de connexion</strong>, cliquer sur l'icône globe (Web Sign-in)</li>
+<li>Entrer l'adresse email complète de l'utilisateur</li>
+<li>Saisir le TAP à la place du mot de passe</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Première connexion</p>
+<p>L'icône globe peut ne pas apparaître immédiatement après le déploiement du profil. Il faut parfois un premier login classique + verrouillage avant de la voir.</p>
+</div>
+<h2 id="guids-des-credential-providers">GUIDs des credential providers<a class="headerlink" href="#guids-des-credential-providers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>GUID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Password</td>
+<td><code>{60b78e88-ead8-445c-9cfd-0b87f74ea6cd}</code></td>
+</tr>
+<tr>
+<td>Web Sign-in (Cloud Experience)</td>
+<td><code>{C5D7540A-CD51-453B-B22B-05305BA03F07}</code></td>
+</tr>
+<tr>
+<td>PIN (WHfB)</td>
+<td><code>{D6886603-9D2F-4EB2-B667-1971041FA96B}</code></td>
+</tr>
+<tr>
+<td>FIDO2 Security Key</td>
+<td><code>{F8A1793B-7873-4046-B2A7-1F318747F427}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Vérification sur un poste :</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Lister les credential providers installés</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">Get-ChildItem</span> <span class="s2">&quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers&quot;</span> <span class="p">|</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>        <span class="no">[PSCustomObject]</span><span class="p">@{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>            <span class="n">GUID</span> <span class="p">=</span> <span class="nv">$_</span><span class="p">.</span><span class="n">PSChildName</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>            <span class="n">Name</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ItemProperty</span> <span class="nv">$_</span><span class="p">.</span><span class="n">PSPath</span><span class="p">).</span><span class="s1">&#39;(Default)&#39;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="p">}</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="p">}</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-AutoSize</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="verification-registre">Vérification registre<a class="headerlink" href="#verification-registre" title="Permanent link">&para;</a></h2>
+<p>Pour confirmer que Web Sign-in est bien activé sur un poste :</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Vérifier la clé registre Web Sign-in</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">Get-ItemProperty</span> <span class="s2">&quot;HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Authentication&quot;</span> <span class="p">|</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="nb">Select-Object</span> <span class="n">EnableWebSignIn</span>
+</code></pre></div></td></tr></table></div>
+<p>La valeur doit être <code>1</code>.</p>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Pas de cache de credentials : sans réseau, Web Sign-in est inutilisable</li>
+<li>Le TAP expiré est automatiquement supprimé des méthodes d'authentification dans Entra</li>
+<li>Web Sign-in n'est pas supporté comme méthode de déverrouillage multi-facteur</li>
+<li>Sur un PC où personne ne s'est encore connecté, l'utilisateur n'apparaît pas sur l'écran de login (pas de tuile utilisateur)</li>
+</ul>
+<h2 id="scenario-msp-typique">Scénario MSP typique<a class="headerlink" href="#scenario-msp-typique" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Tech as Technicien
+    participant Entra as Entra ID
+    participant PC as PC Entra joined
+    participant User as Utilisateur
+
+    Tech-&gt;&gt;Entra: Crée un TAP pour l'utilisateur
+    Tech-&gt;&gt;User: Communique le TAP (Keeper, téléphone)
+    User-&gt;&gt;PC: Démarre le PC / Win+L
+    User-&gt;&gt;PC: Clique sur l'icône globe (Web Sign-in)
+    PC-&gt;&gt;Entra: Authentification web
+    User-&gt;&gt;Entra: Saisit email + TAP
+    Entra-&gt;&gt;PC: Session déverrouillée
+    PC-&gt;&gt;User: Prompt WHfB (configuration PIN)
+    Note over User,PC: Le PIN devient le mode par défaut</code></pre>
 
 
 
@@ -2010,10 +2232,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
