@@ -6,35 +6,31 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Autopilot, déploiement d'applications, conformité et gestion des devices">
+        <meta name="description" content="Comparatif des trois modes Autopilot v1 et apport du TAP + Web Sign-in pour la préparation en atelier">
       
       
       
-        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/">
+        <link rel="canonical" href="https://robertcotton13670-alt.github.io/kb/intune/autopilot-v1-modes-comparatif/">
       
       
-        <link rel="prev" href="..">
-      
-      
-        <link rel="next" href="autopilot/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Intune - ⚡ TechBase</title>
+        <title>Autopilot v1 — Modes de déploiement et TAP - ⚡ TechBase</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../assets/extra.css">
+      <link rel="stylesheet" href="../../assets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -80,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intune" class="md-skip">
+        <a href="#autopilot-v1-modes-de-deploiement-et-tap" class="md-skip">
           Aller au contenu
         </a>
       
@@ -94,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href=".." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-header__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Intune
+              Autopilot v1 — Modes de déploiement et TAP
             
           </span>
         </div>
@@ -227,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -244,13 +240,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -270,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../datto/" class="md-tabs__link">
+        <a href="../../datto/" class="md-tabs__link">
           
   
   
@@ -290,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../m365/" class="md-tabs__link">
+        <a href="../../m365/" class="md-tabs__link">
           
   
   
@@ -308,7 +302,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../entra/" class="md-tabs__link">
+      <a href="../../entra/" class="md-tabs__link">
         
   
   
@@ -329,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../refs/" class="md-tabs__link">
+        <a href="../../refs/" class="md-tabs__link">
           
   
   
@@ -349,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../poweracademy/" class="md-tabs__link">
+        <a href="../../poweracademy/" class="md-tabs__link">
           
   
   
@@ -383,7 +377,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
+    <a href="../.." title="⚡ TechBase" class="md-nav__button md-logo" aria-label="⚡ TechBase" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -413,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -437,31 +431,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -479,7 +468,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -494,37 +483,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vue d'ensemble
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -540,37 +502,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Pages disponibles
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -583,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="autopilot/" class="md-nav__link">
+      <a href="../autopilot/" class="md-nav__link">
         
   
   
@@ -611,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="autopilot-hash/" class="md-nav__link">
+      <a href="../autopilot-hash/" class="md-nav__link">
         
   
   
@@ -639,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="laps/" class="md-nav__link">
+      <a href="../laps/" class="md-nav__link">
         
   
   
@@ -667,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="reset-wipe/" class="md-nav__link">
+      <a href="../reset-wipe/" class="md-nav__link">
         
   
   
@@ -695,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="imprimantes-intune-printservertointune/" class="md-nav__link">
+      <a href="../imprimantes-intune-printservertointune/" class="md-nav__link">
         
   
   
@@ -723,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="winget-deploy-intune/" class="md-nav__link">
+      <a href="../winget-deploy-intune/" class="md-nav__link">
         
   
   
@@ -751,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="best-practices-msp/" class="md-nav__link">
+      <a href="../best-practices-msp/" class="md-nav__link">
         
   
   
@@ -838,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/" class="md-nav__link">
+      <a href="../../datto/" class="md-nav__link">
         
   
   
@@ -866,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/Toast%20notif%20depuis%20datto/" class="md-nav__link">
+      <a href="../../datto/Toast%20notif%20depuis%20datto/" class="md-nav__link">
         
   
   
@@ -894,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/audit-onedrive-sharepoint-v3/" class="md-nav__link">
+      <a href="../../datto/audit-onedrive-sharepoint-v3/" class="md-nav__link">
         
   
   
@@ -922,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/defender-signature-age/" class="md-nav__link">
+      <a href="../../datto/defender-signature-age/" class="md-nav__link">
         
   
   
@@ -950,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/report-printers/" class="md-nav__link">
+      <a href="../../datto/report-printers/" class="md-nav__link">
         
   
   
@@ -978,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../datto/install-copieur/" class="md-nav__link">
+      <a href="../../datto/install-copieur/" class="md-nav__link">
         
   
   
@@ -1065,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/" class="md-nav__link">
+      <a href="../../m365/" class="md-nav__link">
         
   
   
@@ -1093,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/smtp2go-scan-to-email/" class="md-nav__link">
+      <a href="../../m365/smtp2go-scan-to-email/" class="md-nav__link">
         
   
   
@@ -1121,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../m365/onedrive-shortcuts-groupe/" class="md-nav__link">
+      <a href="../../m365/onedrive-shortcuts-groupe/" class="md-nav__link">
         
   
   
@@ -1156,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entra/" class="md-nav__link">
+      <a href="../../entra/" class="md-nav__link">
         
   
   
@@ -1235,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/" class="md-nav__link">
+      <a href="../../refs/" class="md-nav__link">
         
   
   
@@ -1263,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/dsregcmd/" class="md-nav__link">
+      <a href="../../refs/dsregcmd/" class="md-nav__link">
         
   
   
@@ -1291,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/ipconfig/" class="md-nav__link">
+      <a href="../../refs/ipconfig/" class="md-nav__link">
         
   
   
@@ -1319,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/winget/" class="md-nav__link">
+      <a href="../../refs/winget/" class="md-nav__link">
         
   
   
@@ -1347,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/autopilot-hash/" class="md-nav__link">
+      <a href="../../refs/autopilot-hash/" class="md-nav__link">
         
   
   
@@ -1375,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../refs/rds-sessions/" class="md-nav__link">
+      <a href="../../refs/rds-sessions/" class="md-nav__link">
         
   
   
@@ -1462,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/" class="md-nav__link">
+      <a href="../../poweracademy/" class="md-nav__link">
         
   
   
@@ -1490,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-presentation/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-presentation/" class="md-nav__link">
         
   
   
@@ -1518,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-authentification/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-authentification/" class="md-nav__link">
         
   
   
@@ -1546,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-cybersecurite/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-cybersecurite/" class="md-nav__link">
         
   
   
@@ -1574,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-exchange-outlook/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-exchange-outlook/" class="md-nav__link">
         
   
   
@@ -1602,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-faq/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-faq/" class="md-nav__link">
         
   
   
@@ -1630,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-keeper/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-keeper/" class="md-nav__link">
         
   
   
@@ -1658,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-onedrive/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-onedrive/" class="md-nav__link">
         
   
   
@@ -1686,7 +1617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-outils-complementaires/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-outils-complementaires/" class="md-nav__link">
         
   
   
@@ -1714,7 +1645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-sharepoint/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-sharepoint/" class="md-nav__link">
         
   
   
@@ -1742,7 +1673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-support/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-support/" class="md-nav__link">
         
   
   
@@ -1770,7 +1701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-teams/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-teams/" class="md-nav__link">
         
   
   
@@ -1798,7 +1729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/myserenity-vade/" class="md-nav__link">
+      <a href="../../poweracademy/myserenity-vade/" class="md-nav__link">
         
   
   
@@ -1826,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/glossaire-m365/" class="md-nav__link">
+      <a href="../../poweracademy/glossaire-m365/" class="md-nav__link">
         
   
   
@@ -1854,7 +1785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../poweracademy/glossaire-securite/" class="md-nav__link">
+      <a href="../../poweracademy/glossaire-securite/" class="md-nav__link">
         
   
   
@@ -1909,10 +1840,132 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pages-disponibles" class="md-nav__link">
+  <a href="#les-trois-modes-autopilot-v1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pages disponibles
+        Les trois modes Autopilot v1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les trois modes Autopilot v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gere-par-lutilisateur-user-driven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Géré par l'utilisateur (user-driven)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploiement-preconfigure-pre-provisioning-ex-white-glove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déploiement préconfiguré (pre-provisioning / ex white glove)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-deploying-deploiement-autonome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-deploying (déploiement autonome)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tableau-comparatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau comparatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lapport-du-tap-web-sign-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'apport du TAP + Web Sign-in
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L&#39;apport du TAP + Web Sign-in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gere-par-lutilisateur-tap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Géré par l'utilisateur + TAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploiement-preconfigure-tap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déploiement préconfiguré + TAP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quel-mode-choisir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quel mode choisir ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis-pour-utiliser-le-tap-en-atelier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis pour utiliser le TAP en atelier
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-probleme-du-pin-temporaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le problème du PIN temporaire
       
     </span>
   </a>
@@ -1939,20 +1992,207 @@
   
 
 
-<h1 id="intune">Intune<a class="headerlink" href="#intune" title="Permanent link">&para;</a></h1>
-<p>Déploiement et gestion des devices Windows via Microsoft Intune.</p>
-<h2 id="pages-disponibles">Pages disponibles<a class="headerlink" href="#pages-disponibles" title="Permanent link">&para;</a></h2>
+<h1 id="autopilot-v1-modes-de-deploiement-et-tap">Autopilot v1 — Modes de déploiement et TAP<a class="headerlink" href="#autopilot-v1-modes-de-deploiement-et-tap" title="Permanent link">&para;</a></h1>
+<p>Autopilot v1 propose trois façons de provisionner un PC. Le choix du mode impacte directement le workflow en atelier, l'expérience utilisateur à réception, et ce qui est installé à quel moment. Cette page compare les trois modes et montre comment le TAP + Web Sign-in peut compléter le workflow MSP.</p>
+<h2 id="les-trois-modes-autopilot-v1">Les trois modes Autopilot v1<a class="headerlink" href="#les-trois-modes-autopilot-v1" title="Permanent link">&para;</a></h2>
+<h3 id="gere-par-lutilisateur-user-driven">Géré par l'utilisateur (user-driven)<a class="headerlink" href="#gere-par-lutilisateur-user-driven" title="Permanent link">&para;</a></h3>
+<p>C'est le mode par défaut. L'utilisateur (ou le tech en atelier) se connecte pendant l'OOBE avec un compte Entra ID. Tout s'installe d'un coup : scope device et scope user.</p>
+<p>Dans le profil Autopilot, le mode de déploiement est "Géré par l'utilisateur" et "Autoriser le déploiement préconfiguré" est sur Non.</p>
+<p>Avantages :</p>
 <ul>
-<li><a href="autopilot/">Windows Autopilot — vue d'ensemble</a></li>
-<li><a href="autopilot-v1-modes-comparatif/">Autopilot v1 — Modes de déploiement et TAP</a></li>
-<li><a href="autopilot-hash/">Collecter le hardware hash avec Get-WindowsAutopilotInfo</a></li>
-<li><a href="reset-wipe/">Réinitialiser et effacer un poste</a></li>
-<li><a href="laps/">LAPS via Intune</a></li>
-<li><a href="winget-deploy-intune/">Winget — Déploiement d'applications via Wintuner</a></li>
-<li><a href="imprimantes-intune-printservertointune/">Imprimantes — Migration vers Intune (PrintServerToIntune)</a></li>
-<li><a href="web-sign-in-tap/">Web Sign-in et Temporary Access Pass (TAP)</a></li>
-<li><a href="best-practices-msp/">Bonnes pratiques MSP</a></li>
+<li>Simple à configurer, un seul profil Autopilot suffit</li>
+<li>Tout s'installe en une seule passe (apps device + apps user, OneDrive, mail, imprimantes)</li>
+<li>Le PC est 100% prêt après l'OOBE</li>
 </ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Le tech en atelier doit connaître le mot de passe de l'utilisateur pour se connecter à sa place</li>
+<li>L'OOBE complet peut être long (30-60 min selon le nombre d'apps)</li>
+<li>Si l'utilisateur fait l'OOBE lui-même, il subit toute l'attente à réception</li>
+<li>Problème de sécurité : le tech qui se connecte avec le mot de passe utilisateur a accès à son compte</li>
+</ul>
+<h3 id="deploiement-preconfigure-pre-provisioning-ex-white-glove">Déploiement préconfiguré (pre-provisioning / ex white glove)<a class="headerlink" href="#deploiement-preconfigure-pre-provisioning-ex-white-glove" title="Permanent link">&para;</a></h3>
+<p>Le provisioning se fait en deux phases distinctes. Le tech fait la phase device en atelier, le PC est scellé, puis l'utilisateur finalise la phase user à réception.</p>
+<p>Dans le profil Autopilot, le mode de déploiement est "Géré par l'utilisateur" et "Autoriser le déploiement préconfiguré" est sur Oui.</p>
+<p>En atelier, le tech appuie 5 fois sur la touche Windows pendant l'OOBE pour accéder à l'écran de provisioning technicien.</p>
+<p>Avantages :</p>
+<ul>
+<li>Le tech n'a pas besoin du mot de passe utilisateur pour la phase device</li>
+<li>Possibilité de préparer des PC en lot sans savoir qui les utilisera</li>
+<li>La phase user à réception est plus courte qu'un OOBE complet</li>
+<li>Séparation claire entre le travail du tech et celui de l'utilisateur</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Les apps ciblées en user context ne s'installent qu'à la réception (mail, OneDrive KFM, imprimantes mappées, apps spécifiques au rôle)</li>
+<li>L'utilisateur a quand même une phase de setup à faire lui-même</li>
+<li>WHfB ne se configure qu'à la phase user</li>
+<li>Nécessite TPM 2.0 fonctionnel pour la phase technicien</li>
+</ul>
+<h3 id="self-deploying-deploiement-autonome">Self-deploying (déploiement autonome)<a class="headerlink" href="#self-deploying-deploiement-autonome" title="Permanent link">&para;</a></h3>
+<p>Le PC se provisionne entièrement seul, sans aucune interaction utilisateur. Conçu pour les kiosques, salles de réunion, appareils partagés.</p>
+<p>Dans le profil Autopilot, le mode de déploiement est "Self-deploying (preview)".</p>
+<p>Avantages :</p>
+<ul>
+<li>Aucune intervention humaine pendant le provisioning</li>
+<li>Pas besoin de credentials utilisateur</li>
+<li>Idéal pour les appareils sans affinité utilisateur</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Pas d'affinité utilisateur-appareil : rien en user context ne s'installe</li>
+<li>Nécessite TPM 2.0 avec attestation (peut poser problème sur certains modèles)</li>
+<li>Pas de déploiement préconfiguré possible</li>
+<li>L'utilisateur qui se connecte ensuite déclenche tout le scope user, sans optimisation OOBE</li>
+<li>Pas adapté pour les PC attribués à un utilisateur précis</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Self-deploying pour des PC utilisateurs</p>
+<p>Utiliser le self-deploying pour des PC destinés à des utilisateurs individuels est un détournement du scénario prévu par Microsoft. Ça fonctionne, mais l'utilisateur subit toute l'installation user context au premier login, sans les optimisations de l'OOBE user-driven.</p>
+</div>
+<h2 id="tableau-comparatif">Tableau comparatif<a class="headerlink" href="#tableau-comparatif" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Géré par l'utilisateur</th>
+<th>Déploiement préconfiguré</th>
+<th>Self-deploying</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intervention tech en atelier</td>
+<td>Oui (OOBE complet)</td>
+<td>Oui (phase device)</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Mot de passe user nécessaire</td>
+<td>Oui</td>
+<td>Non (phase device)</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Apps device context</td>
+<td>✅ en atelier</td>
+<td>✅ en atelier</td>
+<td>✅ auto</td>
+</tr>
+<tr>
+<td>Apps user context</td>
+<td>✅ en atelier</td>
+<td>❌ à réception</td>
+<td>❌ au premier login</td>
+</tr>
+<tr>
+<td>WHfB configuré en atelier</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Préparation en lot (stock)</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>TPM 2.0 attestation requis</td>
+<td>Non</td>
+<td>Oui</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Affinité utilisateur</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Option déploiement préconfiguré</td>
+<td>N/A</td>
+<td>Oui</td>
+<td>Non disponible</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lapport-du-tap-web-sign-in">L'apport du TAP + Web Sign-in<a class="headerlink" href="#lapport-du-tap-web-sign-in" title="Permanent link">&para;</a></h2>
+<p>Le TAP combiné avec Web Sign-in change la donne pour le mode géré par l'utilisateur et le déploiement préconfiguré.</p>
+<h3 id="gere-par-lutilisateur-tap">Géré par l'utilisateur + TAP<a class="headerlink" href="#gere-par-lutilisateur-tap" title="Permanent link">&para;</a></h3>
+<p>Le tech fait l'OOBE en atelier avec un TAP au lieu du mot de passe utilisateur. Le workflow devient :</p>
+<ol>
+<li>Le tech génère un TAP pour l'utilisateur dans Entra ID</li>
+<li>Pendant l'OOBE, il entre l'email de l'utilisateur et le TAP</li>
+<li>Le PC s'enrôle au nom de l'utilisateur</li>
+<li>Tout s'installe : scope device + scope user</li>
+<li>WHfB se configure (le tech crée un PIN temporaire)</li>
+<li>Le TAP expire, le tech n'a jamais connu le mot de passe</li>
+</ol>
+<p>Avantages par rapport au user-driven classique :</p>
+<ul>
+<li>Le tech ne connaît jamais le mot de passe de l'utilisateur</li>
+<li>Le TAP expire automatiquement après utilisation</li>
+<li>Le PC arrive 100% prêt chez le client</li>
+<li>Même résultat qu'avant, mais sans le problème de sécurité</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Il faut générer un TAP par utilisateur et par PC (étape manuelle dans Entra)</li>
+<li>Le PC est lié à un utilisateur précis dès l'atelier, pas de préparation en lot/stock</li>
+<li>Le tech connaît le PIN temporaire qu'il a configuré (l'utilisateur doit le changer)</li>
+<li>Le TAP a une durée de vie limitée, si le provisioning traîne il faut en regénérer un</li>
+</ul>
+<h3 id="deploiement-preconfigure-tap">Déploiement préconfiguré + TAP<a class="headerlink" href="#deploiement-preconfigure-tap" title="Permanent link">&para;</a></h3>
+<p>C'est la combinaison la plus complète. Le tech fait d'abord la phase device (déploiement préconfiguré), puis enchaîne avec un login TAP pour déclencher la phase user, le tout en atelier.</p>
+<ol>
+<li>Le tech appuie 5 fois sur Windows à l'OOBE → phase device</li>
+<li>Les apps device s'installent, le PC affiche "Réussite"</li>
+<li>Au lieu de sceller (Reseal), le tech continue l'OOBE</li>
+<li>Il se connecte avec le TAP de l'utilisateur</li>
+<li>La phase user se déclenche : mail, OneDrive, imprimantes, apps user</li>
+<li>Le PC est livré 100% prêt</li>
+</ol>
+<p>Avantages :</p>
+<ul>
+<li>Le PC arrive totalement prêt, aucune attente pour l'utilisateur à réception</li>
+<li>Le tech ne connaît pas le mot de passe</li>
+<li>Les deux phases (device + user) sont faites en atelier</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Double manipulation en atelier (phase device + login TAP)</li>
+<li>Nécessite de connaître l'affectation utilisateur au moment de la préparation</li>
+<li>Le PIN temporaire créé par le tech doit être changé par l'utilisateur</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Recommandation MSP</p>
+<p>Pour Poweriti, le déploiement préconfiguré + TAP est le workflow le plus propre quand l'affectation utilisateur est connue. Pour les PC en stock sans utilisateur assigné, le déploiement préconfiguré seul reste la meilleure option : la phase user se fera à réception.</p>
+</div>
+<h2 id="quel-mode-choisir">Quel mode choisir ?<a class="headerlink" href="#quel-mode-choisir" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A[Nouveau PC à préparer] --&gt; B{Utilisateur connu ?}
+    B --&gt;|Non| C{Appareil partagé / kiosque ?}
+    C --&gt;|Oui| D[Self-deploying]
+    C --&gt;|Non| E[Déploiement préconfiguré seul&lt;br/&gt;Phase user à réception]
+    B --&gt;|Oui| F{Apps user context importantes ?&lt;br/&gt;Imprimantes, apps métier...}
+    F --&gt;|Oui| G[Géré par l'utilisateur + TAP&lt;br/&gt;ou Déploiement préconfiguré + TAP&lt;br/&gt;Tout se fait en atelier]
+    F --&gt;|Non| H[Déploiement préconfiguré seul&lt;br/&gt;Suffisant, phase user rapide]</code></pre>
+<h2 id="prerequis-pour-utiliser-le-tap-en-atelier">Prérequis pour utiliser le TAP en atelier<a class="headerlink" href="#prerequis-pour-utiliser-le-tap-en-atelier" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Web Sign-in activé via Intune (voir <a href="../web-sign-in-tap/">Web Sign-in et TAP</a>)</li>
+<li>TAP activé dans Entra ID &gt; Protection &gt; Méthodes d'authentification</li>
+<li>Le TAP doit être en usage multiple si des redémarrages sont prévus pendant le provisioning</li>
+<li>Connexion internet en atelier</li>
+</ul>
+<h2 id="le-probleme-du-pin-temporaire">Le problème du PIN temporaire<a class="headerlink" href="#le-probleme-du-pin-temporaire" title="Permanent link">&para;</a></h2>
+<p>Quand le tech se connecte avec un TAP en atelier, WHfB demande de configurer un PIN. Ce PIN est connu du tech. Deux approches pour gérer ça :</p>
+<p>La première : demander à l'utilisateur de changer son PIN à réception via Paramètres &gt; Comptes &gt; Options de connexion &gt; PIN &gt; Modifier.</p>
+<p>La deuxième : supprimer l'enregistrement WHfB de l'utilisateur dans Entra ID après la préparation. Au prochain login, l'utilisateur devra reconfigurer son PIN lui-même. Plus propre, mais ajoute une étape à réception.</p>
+<div class="admonition warning">
+<p class="admonition-title">À vérifier</p>
+<p>Le comportement exact de WHfB après suppression de l'enregistrement dans Entra dépend de la configuration du tenant (cloud trust, key trust, etc.). Tester sur le tenant test avant de mettre en production.</p>
+</div>
 
 
 
@@ -2011,10 +2251,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
