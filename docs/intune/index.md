@@ -15,4 +15,5 @@ Déploiement et gestion des devices Windows via Microsoft Intune.
 - [LAPS via Intune](laps.md)
 - [Winget — Déploiement d'applications via Wintuner](winget-deploy-intune.md)
 - [Imprimantes — Migration vers Intune (PrintServerToIntune)](imprimantes-intune-printservertointune.md)
+- [Web Sign-in et Temporary Access Pass (TAP)](web-sign-in-tap.md)
 - [Bonnes pratiques MSP](best-practices-msp.md)
