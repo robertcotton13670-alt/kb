@@ -93,15 +93,27 @@ IntuneWinAppUtil.exe
 Upload printers to Intune now? (Y/N)
 ```
 
-Répondre `Y`. Le script demande alors :
+Répondre `Y`. Si tu utilises la version Poweriti (`msp-scripts\intune\PrintServerToIntune`), l'upload se lance directement avec le paramètre `-TenantId` obligatoire.
 
-1. **Authentification Graph** — fenêtre interactive Microsoft (utiliser un compte avec droits DeviceManagementApps.ReadWrite.All)
+!!! tip "Upload séparé"
+    Si tu as répondu N à l'upload ou si tu veux uploader plus tard, lancer `UploadIntuneWinPrinters.ps1` séparément depuis le dossier contenant `ExportedPrinters` :
+
+    ```powershell
+    .\UploadIntuneWinPrinters.ps1 -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    ```
+
+Le script demande alors :
+
+1. **Authentification Graph** — fenêtre interactive Microsoft (utiliser un compte avec droits DeviceManagementApps.ReadWrite.All sur le tenant cible)
 2. **Assigner en Available à All Users ?** — répondre `Y` pour que les imprimantes apparaissent directement dans le Portail d'entreprise
 
 Le script crée une Win32 app par imprimante dans Intune et uploade les packages.
 
-!!! tip "Upload séparé"
-    Si tu as répondu N à l'upload ou si tu veux uploader plus tard, lancer `UploadIntuneWinPrinters.ps1` séparément — il doit être dans le dossier parent d'`ExportedPrinters`.
+#### Trouver le Tenant ID d'un client
+
+- **Entra ID > Overview > Tenant ID**
+- Ou via URL : `https://login.microsoftonline.com/<domaine>.onmicrosoft.com/v2.0/.well-known/openid-configuration` (champ `issuer`)
+- Vérifier le tenant actif après connexion : `(Get-MgContext).TenantId`
 
 ---
 
@@ -124,7 +136,7 @@ Si assignée en **Available à All Users**, l'utilisateur ouvre le Portail d'ent
 
 1. Connecter l'imprimante en port TCP/IP sur le serveur (ou poste relais)
 2. Relancer `PackageMyPrinters.ps1` — sélectionner uniquement la nouvelle imprimante
-3. Uploader via `UploadIntuneWinPrinters.ps1` ou répondre Y à la fin du packaging
+3. Uploader : `.\UploadIntuneWinPrinters.ps1 -TenantId "<ID du client>"`
 4. Assigner la nouvelle app au groupe voulu dans Intune
 
 ### Supprimer une imprimante
@@ -146,9 +158,11 @@ Il n'y a pas de mise à jour en place — il faut recréer le package avec la no
 | Imprimante non exportée (pas de `infpath`) | Utiliser un driver 64 bits valide installé sur le serveur |
 | Imprimante connectée en UNC (\\\\serveur\\imprimante) | Reconnecter en TCP/IP direct avant d'exporter |
 | Upload échoue (auth) | Vérifier que le compte a `DeviceManagementApps.ReadWrite.All` |
-| Publisher "SMBtotheCloud" dans le portail | Éditer ligne 169 de `UploadIntuneWinPrinters.ps1` avant le premier run |
+| Publisher "SMBtotheCloud" dans le portail | Éditer ligne 159 de `UploadIntuneWinPrinters.ps1` (déjà "Poweriti" dans la version msp-scripts) |
 | Imprimante réapparaît après désinstallation | Vérifier que l'app n'est pas aussi assignée en Required |
 | Script bloqué par ExecutionPolicy | Lancer avec `-ExecutionPolicy Bypass` en scope Process uniquement |
+| `Connect-MgGraph` introuvable après install du module | Les modules Graph ne s'importent pas automatiquement dans la même session — la version msp-scripts corrige ça avec `Import-Module` explicite |
+| Mauvais tenant connecté | Toujours passer `-TenantId` à `UploadIntuneWinPrinters.ps1` — vérifier avec `(Get-MgContext).TenantId` après login |
 
 !!! warning "Pas adapté aux grands parcs"
     Pour des flottes de 20+ imprimantes ou des besoins de gestion fine (quotas, couleur, recto-verso forcé), prévoir une solution cloud print dédiée (PaperCut, Printix, Universal Print).
