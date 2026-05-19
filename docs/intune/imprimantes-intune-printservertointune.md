@@ -60,6 +60,7 @@ Sans Universal Print, la méthode la plus efficace pour exposer des imprimantes 
 Depuis `msp-scripts\intune\PrintServerToIntune\` en PowerShell admin :
 
 ```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\Start-PrinterMigration.ps1 -ClientName "NomClient"
 ```
 
