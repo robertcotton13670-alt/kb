@@ -2410,7 +2410,8 @@
 </div>
 <h3 id="preparer-un-repertoire-de-travail-client-version-poweriti">Préparer un répertoire de travail client (version Poweriti)<a class="headerlink" href="#preparer-un-repertoire-de-travail-client-version-poweriti" title="Permanent link">&para;</a></h3>
 <p>Depuis <code>msp-scripts\intune\PrintServerToIntune\</code> en PowerShell admin :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">.\</span><span class="nb">Start-PrinterMigration</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-ClientName</span> <span class="s2">&quot;NomClient&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-ExecutionPolicy</span> <span class="n">Bypass</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">.\</span><span class="nb">Start-PrinterMigration</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-ClientName</span> <span class="s2">&quot;NomClient&quot;</span>
 </code></pre></div>
 <p>Crée <code>C:\Temp\PrinterMigration-NomClient-YYYYMMDD\</code> avec les 3 fichiers et s'y positionne automatiquement. Tous les fichiers générés (ExportedPrinters, Logs, IntuneWinAppUtil.exe) restent dans ce dossier temporaire.</p>
 <h3 id="etape-1-packager-les-imprimantes">Étape 1 — Packager les imprimantes<a class="headerlink" href="#etape-1-packager-les-imprimantes" title="Permanent link">&para;</a></h3>
