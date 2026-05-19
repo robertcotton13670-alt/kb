@@ -52,9 +52,22 @@ Sans Universal Print, la méthode la plus efficace pour exposer des imprimantes 
 
 ## Utilisation
 
+!!! tip "Version Poweriti — workflow propre multi-clients"
+    Les scripts sont dans `msp-scripts\intune\PrintServerToIntune\`. Ne pas travailler directement dans ce dossier — utiliser le lanceur ci-dessous qui crée un répertoire isolé par client dans `C:\Temp\`.
+
+### Préparer un répertoire de travail client (version Poweriti)
+
+Depuis `msp-scripts\intune\PrintServerToIntune\` en PowerShell admin :
+
+```powershell
+.\Start-PrinterMigration.ps1 -ClientName "NomClient"
+```
+
+Crée `C:\Temp\PrinterMigration-NomClient-YYYYMMDD\` avec les 3 fichiers et s'y positionne automatiquement. Tous les fichiers générés (ExportedPrinters, Logs, IntuneWinAppUtil.exe) restent dans ce dossier temporaire.
+
 ### Étape 1 — Packager les imprimantes
 
-Exécuter depuis le serveur d'impression en PowerShell administrateur :
+Exécuter depuis le répertoire de travail client en PowerShell administrateur :
 
 ```powershell linenums="1"
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
@@ -109,6 +122,14 @@ Le script demande alors :
 
 Le script crée une Win32 app par imprimante dans Intune et uploade les packages.
 
+### Étape 3 — Nettoyer après migration
+
+Une fois l'upload confirmé dans Intune, supprimer le répertoire de travail :
+
+```powershell
+Remove-Item -Recurse -Force "C:\Temp\PrinterMigration-NomClient-YYYYMMDD"
+```
+
 #### Trouver le Tenant ID d'un client
 
 - **Entra ID > Overview > Tenant ID**
@@ -135,9 +156,11 @@ Si assignée en **Available à All Users**, l'utilisateur ouvre le Portail d'ent
 ### Ajouter une nouvelle imprimante chez un client
 
 1. Connecter l'imprimante en port TCP/IP sur le serveur (ou poste relais)
-2. Relancer `PackageMyPrinters.ps1` — sélectionner uniquement la nouvelle imprimante
-3. Uploader : `.\UploadIntuneWinPrinters.ps1 -TenantId "<ID du client>"`
-4. Assigner la nouvelle app au groupe voulu dans Intune
+2. Créer un nouveau répertoire de travail : `.\Start-PrinterMigration.ps1 -ClientName "NomClient"`
+3. Relancer `PackageMyPrinters.ps1` — sélectionner uniquement la nouvelle imprimante
+4. Uploader : `.\UploadIntuneWinPrinters.ps1 -TenantId "<ID du client>"`
+5. Assigner la nouvelle app au groupe voulu dans Intune
+6. Supprimer le répertoire de travail
 
 ### Supprimer une imprimante
 
