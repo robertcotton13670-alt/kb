@@ -778,6 +778,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Étape 2 — Uploader dans Intune">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trouver-le-tenant-id-dun-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trouver le Tenant ID d'un client
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2151,6 +2168,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Étape 2 — Uploader dans Intune">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trouver-le-tenant-id-dun-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trouver le Tenant ID d'un client
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2356,16 +2390,25 @@
 <p>À la fin du packaging, le script propose de lancer l'upload :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Upload printers to Intune now? (Y/N)
 </code></pre></div>
-<p>Répondre <code>Y</code>. Le script demande alors :</p>
+<p>Répondre <code>Y</code>. Si tu utilises la version Poweriti (<code>msp-scripts\intune\PrintServerToIntune</code>), l'upload se lance directement avec le paramètre <code>-TenantId</code> obligatoire.</p>
+<div class="admonition tip">
+<p class="admonition-title">Upload séparé</p>
+<p>Si tu as répondu N à l'upload ou si tu veux uploader plus tard, lancer <code>UploadIntuneWinPrinters.ps1</code> séparément depuis le dossier contenant <code>ExportedPrinters</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">.\</span><span class="n">UploadIntuneWinPrinters</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-TenantId</span> <span class="s2">&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;</span>
+</code></pre></div>
+</div>
+<p>Le script demande alors :</p>
 <ol>
-<li><strong>Authentification Graph</strong> — fenêtre interactive Microsoft (utiliser un compte avec droits DeviceManagementApps.ReadWrite.All)</li>
+<li><strong>Authentification Graph</strong> — fenêtre interactive Microsoft (utiliser un compte avec droits DeviceManagementApps.ReadWrite.All sur le tenant cible)</li>
 <li><strong>Assigner en Available à All Users ?</strong> — répondre <code>Y</code> pour que les imprimantes apparaissent directement dans le Portail d'entreprise</li>
 </ol>
 <p>Le script crée une Win32 app par imprimante dans Intune et uploade les packages.</p>
-<div class="admonition tip">
-<p class="admonition-title">Upload séparé</p>
-<p>Si tu as répondu N à l'upload ou si tu veux uploader plus tard, lancer <code>UploadIntuneWinPrinters.ps1</code> séparément — il doit être dans le dossier parent d'<code>ExportedPrinters</code>.</p>
-</div>
+<h4 id="trouver-le-tenant-id-dun-client">Trouver le Tenant ID d'un client<a class="headerlink" href="#trouver-le-tenant-id-dun-client" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Entra ID &gt; Overview &gt; Tenant ID</strong></li>
+<li>Ou via URL : <code>https://login.microsoftonline.com/&lt;domaine&gt;.onmicrosoft.com/v2.0/.well-known/openid-configuration</code> (champ <code>issuer</code>)</li>
+<li>Vérifier le tenant actif après connexion : <code>(Get-MgContext).TenantId</code></li>
+</ul>
 <hr />
 <h2 id="resultat-dans-intune">Résultat dans Intune<a class="headerlink" href="#resultat-dans-intune" title="Permanent link">&para;</a></h2>
 <p>Chaque imprimante apparaît dans <strong>Intune &gt; Applications &gt; Windows</strong> comme une Win32 app avec :</p>
@@ -2382,7 +2425,7 @@
 <ol>
 <li>Connecter l'imprimante en port TCP/IP sur le serveur (ou poste relais)</li>
 <li>Relancer <code>PackageMyPrinters.ps1</code> — sélectionner uniquement la nouvelle imprimante</li>
-<li>Uploader via <code>UploadIntuneWinPrinters.ps1</code> ou répondre Y à la fin du packaging</li>
+<li>Uploader : <code>.\UploadIntuneWinPrinters.ps1 -TenantId "&lt;ID du client&gt;"</code></li>
 <li>Assigner la nouvelle app au groupe voulu dans Intune</li>
 </ol>
 <h3 id="supprimer-une-imprimante">Supprimer une imprimante<a class="headerlink" href="#supprimer-une-imprimante" title="Permanent link">&para;</a></h3>
@@ -2414,7 +2457,7 @@
 </tr>
 <tr>
 <td>Publisher "SMBtotheCloud" dans le portail</td>
-<td>Éditer ligne 169 de <code>UploadIntuneWinPrinters.ps1</code> avant le premier run</td>
+<td>Éditer ligne 159 de <code>UploadIntuneWinPrinters.ps1</code> (déjà "Poweriti" dans la version msp-scripts)</td>
 </tr>
 <tr>
 <td>Imprimante réapparaît après désinstallation</td>
@@ -2423,6 +2466,14 @@
 <tr>
 <td>Script bloqué par ExecutionPolicy</td>
 <td>Lancer avec <code>-ExecutionPolicy Bypass</code> en scope Process uniquement</td>
+</tr>
+<tr>
+<td><code>Connect-MgGraph</code> introuvable après install du module</td>
+<td>Les modules Graph ne s'importent pas automatiquement dans la même session — la version msp-scripts corrige ça avec <code>Import-Module</code> explicite</td>
+</tr>
+<tr>
+<td>Mauvais tenant connecté</td>
+<td>Toujours passer <code>-TenantId</code> à <code>UploadIntuneWinPrinters.ps1</code> — vérifier avec <code>(Get-MgContext).TenantId</code> après login</td>
 </tr>
 </tbody>
 </table>
