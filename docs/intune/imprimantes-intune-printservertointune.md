@@ -46,7 +46,7 @@ Sans Universal Print, la méthode la plus efficace pour exposer des imprimantes 
     - `PrinterIcon.jpg` (remplaçable, garder le même nom)
 
 !!! tip "Personnalisation publisher"
-    Avant de lancer, éditer la ligne 169 de `UploadIntuneWinPrinters.ps1` pour changer le publisher affiché dans le Portail d'entreprise (par défaut : "SMBtotheCloud").
+    Avant de lancer, éditer la ligne 159 de `UploadIntuneWinPrinters.ps1` pour changer le publisher affiché dans le Portail d'entreprise (par défaut : "SMBtotheCloud"). Dans la version Poweriti (`msp-scripts\intune\PrintServerToIntune`), c'est déjà changé en "Poweriti".
 
 ---
 
